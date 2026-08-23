@@ -42,10 +42,13 @@ def save_json_file(path, data):
 
 
 def get_player_full_name(p):
-    fn = (p.get("first_name") or "").strip()
-    sn = (p.get("second_name") or "").strip()
-    n = (fn + " " + sn).strip()
-    return n if n else p["web_name"]
+    """
+    Bruger FPL's eget 'web_name'-felt - det navn de rent faktisk viser overalt i
+    virkeligheden (fx "Raya", "Thiago", "Bruno G."), IKKE det fulde juridiske navn
+    (fx "David Raya Martín"). Beholder funktionsnavnet af hensyn til alle steder
+    der allerede kalder den, men den bygger ikke længere et fuldt navn sammen.
+    """
+    return p.get("web_name") or (p.get("first_name", "") + " " + p.get("second_name", "")).strip()
 
 
 def get_player_positions(bootstrap):
