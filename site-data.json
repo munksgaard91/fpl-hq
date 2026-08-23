@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-23T19:23:05Z",
+  "updated": "2026-08-23T19:52:46Z",
   "current_gw": 0,
   "season_started": false,
   "next_deadline": "2026-08-28T17:30:00Z",
@@ -53,49 +53,50 @@
       "gw": 1,
       "entry_name": "Mainoo Character FC",
       "kind": "Waiver",
-      "player_in": "Enzo Le Fée",
-      "player_out": "Iliman Ndiaye",
+      "player_in": "E.Le Fée",
+      "player_out": "Ndiaye",
       "added": "2026-08-18T18:46:39.360936Z"
     },
     {
       "gw": 1,
       "entry_name": "HernDog IF",
       "kind": "Waiver",
-      "player_in": "Mathys Tel",
-      "player_out": "Diego Gómez Amarilla",
+      "player_in": "Tel",
+      "player_out": "Gomez",
       "added": "2026-08-18T18:52:29.457213Z"
     },
     {
       "gw": 1,
       "entry_name": "HaCunha Mateta",
       "kind": "Waiver",
-      "player_in": "Lewis Hall",
-      "player_out": "Marcos Senesi Barón",
+      "player_in": "Hall",
+      "player_out": "Senesi",
       "added": "2026-08-18T18:56:06.736236Z"
     },
     {
       "gw": 1,
       "entry_name": "Bottlers Anonymous",
       "kind": "Waiver",
-      "player_in": "Bruno Guimarães Rodriguez Moura",
-      "player_out": "Mikel Merino Zazón",
+      "player_in": "Bruno G.",
+      "player_out": "Merino",
       "added": "2026-08-18T18:56:45.549244Z"
     },
     {
       "gw": 1,
       "entry_name": "Kop of Jensen",
       "kind": "Free agent",
-      "player_in": "James Maddison",
-      "player_out": "Pascal Groß",
+      "player_in": "Maddison",
+      "player_out": "Groß",
       "added": "2026-08-21T15:46:45.953732Z"
     },
     {
       "gw": 1,
       "entry_name": "Kop of Jensen",
       "kind": "Free agent",
-      "player_in": "Sávio Moreira de Oliveira",
-      "player_out": "Ryan Gravenberch",
+      "player_in": "Savinho",
+      "player_out": "Gravenberch",
       "added": "2026-08-21T15:48:11.155384Z"
     }
-  ]
+  ],
+  "transfer_suggestions": []
 }

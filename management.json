@@ -4,7 +4,7 @@
   "starters": [
     {
       "id": 1,
-      "name": "David Raya Martín",
+      "name": "Raya",
       "club": "Arsenal",
       "pos": "GK",
       "status": "a",
@@ -12,7 +12,7 @@
     },
     {
       "id": 388,
-      "name": "Marc Guéhi",
+      "name": "Guéhi",
       "club": "Man City",
       "pos": "DEF",
       "status": "a",
@@ -20,7 +20,7 @@
     },
     {
       "id": 229,
-      "name": "James Tarkowski",
+      "name": "Tarkowski",
       "club": "Everton",
       "pos": "DEF",
       "status": "a",
@@ -28,7 +28,7 @@
     },
     {
       "id": 10,
-      "name": "Benjamin White",
+      "name": "White",
       "club": "Arsenal",
       "pos": "DEF",
       "status": "a",
@@ -36,7 +36,7 @@
     },
     {
       "id": 426,
-      "name": "Bruno Borges Fernandes",
+      "name": "B.Fernandes",
       "club": "Man Utd",
       "pos": "MID",
       "status": "a",
@@ -44,7 +44,7 @@
     },
     {
       "id": 12,
-      "name": "Bukayo Saka",
+      "name": "Saka",
       "club": "Arsenal",
       "pos": "MID",
       "status": "a",
@@ -52,7 +52,7 @@
     },
     {
       "id": 399,
-      "name": "Rayan Cherki",
+      "name": "Cherki",
       "club": "Man City",
       "pos": "MID",
       "status": "a",
@@ -60,7 +60,7 @@
     },
     {
       "id": 480,
-      "name": "Morgan Gibbs-White",
+      "name": "Gibbs-White",
       "club": "Nott'm Forest",
       "pos": "MID",
       "status": "a",
@@ -68,7 +68,7 @@
     },
     {
       "id": 154,
-      "name": "Cole Palmer",
+      "name": "Palmer",
       "club": "Chelsea",
       "pos": "MID",
       "status": "a",
@@ -76,7 +76,7 @@
     },
     {
       "id": 106,
-      "name": "Igor Thiago Nascimento Rodrigues",
+      "name": "Thiago",
       "club": "Brentford",
       "pos": "FWD",
       "status": "a",
@@ -84,7 +84,7 @@
     },
     {
       "id": 439,
-      "name": "Benjamin Sesko",
+      "name": "Šeško",
       "club": "Man Utd",
       "pos": "FWD",
       "status": "a",
@@ -94,7 +94,7 @@
   "bench": [
     {
       "id": 82,
-      "name": "Caoimhín Kelleher",
+      "name": "Kelleher",
       "club": "Brentford",
       "pos": "GK",
       "status": "a",
@@ -102,7 +102,7 @@
     },
     {
       "id": 449,
-      "name": "Lewis Hall",
+      "name": "Hall",
       "club": "Newcastle",
       "pos": "DEF",
       "status": "a",
@@ -110,7 +110,7 @@
     },
     {
       "id": 61,
-      "name": "Adrien Truffert",
+      "name": "Truffert",
       "club": "Bournemouth",
       "pos": "DEF",
       "status": "a",
@@ -118,7 +118,7 @@
     },
     {
       "id": 463,
-      "name": "Nick Woltemade",
+      "name": "Woltemade",
       "club": "Newcastle",
       "pos": "FWD",
       "status": "a",
@@ -228,5 +228,5 @@
     }
   ],
   "injury_news": [],
-  "updated": "2026-08-23T19:23:05Z"
+  "updated": "2026-08-23T19:52:46Z"
 }

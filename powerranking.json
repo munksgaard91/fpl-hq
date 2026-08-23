@@ -1,9 +1,9 @@
 {
-  "updated": "2026-08-23T19:23:05Z",
+  "updated": "2026-08-23T19:52:46Z",
   "players": [
     {
       "id": 12,
-      "name": "Bukayo Saka",
+      "name": "Saka",
       "club": "Arsenal",
       "team_id": 1,
       "pos": "MID",
@@ -13,11 +13,11 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Solid med 157 point sidste sæson, men 9 point i denne sæson indtil videre og halvhårdt kampprogram trækker ned."
+      "argument": "157 point sidste sæson."
     },
     {
       "id": 4,
-      "name": "Gabriel dos Santos Magalhães",
+      "name": "Gabriel",
       "club": "Arsenal",
       "team_id": 1,
       "pos": "DEF",
@@ -27,25 +27,25 @@
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Selvom han hentede 209 point sidste sæson, har han kun skaffet 5 point i denne sæson indtil videre."
+      "argument": "209 point sidste sæson."
     },
     {
       "id": 8,
-      "name": "Riccardo Calafiori",
+      "name": "Calafiori",
       "club": "Arsenal",
       "team_id": 1,
       "pos": "DEF",
-      "score": 54.5,
+      "score": 54.6,
       "last_season_points": 109,
       "points_this_season_so_far": 9,
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "En fin start på denne sæson med 9 point, der supplerer hans 109 point fra sidste sæson godt."
+      "argument": "109 point sidste sæson."
     },
     {
       "id": 399,
-      "name": "Rayan Cherki",
+      "name": "Cherki",
       "club": "Man City",
       "team_id": 15,
       "pos": "MID",
@@ -55,11 +55,11 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Attraktivt kampprogram forude (sværhedsgrad 2,7) parret med 135 solide point fra sidste sæson gør ham spændende."
+      "argument": "135 point sidste sæson."
     },
     {
       "id": 15,
-      "name": "Martin Ødegaard",
+      "name": "Ødegaard",
       "club": "Arsenal",
       "team_id": 1,
       "pos": "MID",
@@ -69,25 +69,25 @@
       "form": "11.0",
       "status": "a",
       "chance": null,
-      "argument": "Har allerede skrabet 11 point sammen i denne sæson, hvilket lover bedre end hans 74 point sidste sæson."
+      "argument": "74 point sidste sæson."
     },
     {
       "id": 115,
-      "name": "Maxim De Cuyper",
+      "name": "De Cuyper",
       "club": "Brighton",
       "team_id": 5,
       "pos": "DEF",
-      "score": 49.0,
+      "score": 49.1,
       "last_season_points": 84,
       "points_this_season_so_far": 17,
       "form": "17.0",
       "status": "a",
       "chance": null,
-      "argument": "Fremragende start på denne sæson med 17 point sammenlignet med de 84 point i hele sidste sæson."
+      "argument": "84 point sidste sæson."
     },
     {
       "id": 13,
-      "name": "Declan Rice",
+      "name": "Rice",
       "club": "Arsenal",
       "team_id": 1,
       "pos": "MID",
@@ -97,11 +97,11 @@
       "form": "3.0",
       "status": "a",
       "chance": null,
-      "argument": "Efter 184 point sidste sæson er blot 3 point i denne sæson indtil videre en skuffende start."
+      "argument": "184 point sidste sæson."
     },
     {
       "id": 335,
-      "name": "Anton Stach",
+      "name": "Stach",
       "club": "Leeds",
       "team_id": 13,
       "pos": "MID",
@@ -111,11 +111,11 @@
       "form": "13.0",
       "status": "a",
       "chance": null,
-      "argument": "Stabil her og nu med 13 point i denne sæson ovenpå en flot sidste sæson med 137 point."
+      "argument": "137 point sidste sæson."
     },
     {
       "id": 236,
-      "name": "Kiernan Dewsbury-Hall",
+      "name": "Dewsbury-Hall",
       "club": "Everton",
       "team_id": 9,
       "pos": "MID",
@@ -125,11 +125,11 @@
       "form": "11.0",
       "status": "a",
       "chance": null,
-      "argument": "Viser god form med 11 point i denne sæson, hvilket bygger flot videre på sidste sæsons 151 point."
+      "argument": "151 point sidste sæson."
     },
     {
       "id": 86,
-      "name": "Keane Lewis-Potter",
+      "name": "Lewis-Potter",
       "club": "Brentford",
       "team_id": 4,
       "pos": "MID",
@@ -139,11 +139,11 @@
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "Et let kampprogram forude og godkendte 10 point i denne sæson gør ham til en solid budgetmulighed."
+      "argument": "115 point sidste sæson."
     },
     {
       "id": 391,
-      "name": "Joško Gvardiol",
+      "name": "Gvardiol",
       "club": "Man City",
       "team_id": 15,
       "pos": "DEF",
@@ -153,11 +153,11 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Med 9 point i denne sæson indtil videre og tre lette kampe i vente, ser han lovende ud."
+      "argument": "79 point sidste sæson."
     },
     {
       "id": 1,
-      "name": "David Raya Martín",
+      "name": "Raya",
       "club": "Arsenal",
       "team_id": 1,
       "pos": "GK",
@@ -167,11 +167,11 @@
       "form": "6.0",
       "status": "a",
       "chance": null,
-      "argument": "Sidste sæsons 162 point viser hans potentiale, trods en lidt rolig start med 6 point i denne sæson."
+      "argument": "162 point sidste sæson."
     },
     {
       "id": 388,
-      "name": "Marc Guéhi",
+      "name": "Guéhi",
       "club": "Man City",
       "team_id": 15,
       "pos": "DEF",
@@ -181,11 +181,11 @@
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "Leverede hele 179 point sidste sæson, og de kommende letke kampe gør hans 10 point nu meget interessante."
+      "argument": "179 point sidste sæson."
     },
     {
       "id": 123,
-      "name": "Jack Hinshelwood",
+      "name": "Hinshelwood",
       "club": "Brighton",
       "team_id": 5,
       "pos": "MID",
@@ -195,11 +195,11 @@
       "form": "16.0",
       "status": "a",
       "chance": null,
-      "argument": "Allerede oppe på 16 point i denne sæson indtil videre, hvilket næsten matcher halvdelen af sidste sæsons total."
+      "argument": "91 point sidste sæson."
     },
     {
       "id": 544,
-      "name": "Granit Xhaka",
+      "name": "Xhaka",
       "club": "Sunderland",
       "team_id": 20,
       "pos": "MID",
@@ -209,11 +209,11 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Det milde kampprogram forude gør ham attraktiv kombineret med hans 9 point i denne sæson indtil videre."
+      "argument": "124 point sidste sæson."
     },
     {
       "id": 313,
-      "name": "Jack Clarke",
+      "name": "Clarke",
       "club": "Ipswich",
       "team_id": 12,
       "pos": "MID",
@@ -223,11 +223,11 @@
       "form": "7.0",
       "status": "a",
       "chance": null,
-      "argument": "Svært program forude kombineret med beskedne 7 point i denne sæson og 53 point i den forrige."
+      "argument": "53 point sidste sæson."
     },
     {
       "id": 327,
-      "name": "Jaka Bijol",
+      "name": "Bijol",
       "club": "Leeds",
       "team_id": 13,
       "pos": "DEF",
@@ -237,11 +237,11 @@
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "Har leveret stabile 10 point i denne sæson indtil videre, tæt på en tiendedel af sidste sæsons total."
+      "argument": "99 point sidste sæson."
     },
     {
       "id": 98,
-      "name": "Vitaly Janelt",
+      "name": "Janelt",
       "club": "Brentford",
       "team_id": 4,
       "pos": "MID",
@@ -251,11 +251,11 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Et overkommeligt program forude giver ham gode muligheder for at udbygge de nuværende 9 point i denne sæson."
+      "argument": "74 point sidste sæson."
     },
     {
       "id": 332,
-      "name": "James Justin",
+      "name": "Justin",
       "club": "Leeds",
       "team_id": 13,
       "pos": "DEF",
@@ -265,11 +265,11 @@
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "En fornuftig start med 10 point i denne sæson indtil videre gør ham til et stabilt valg på holdet."
+      "argument": "94 point sidste sæson."
     },
     {
       "id": 473,
-      "name": "Ola Aina",
+      "name": "Aina",
       "club": "Nott'm Forest",
       "team_id": 18,
       "pos": "DEF",
@@ -279,11 +279,11 @@
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Kun 5 point i denne sæson og beskedne 67 point i sidste sæson gør ham svær at anbefale."
+      "argument": "67 point sidste sæson."
     },
     {
       "id": 11,
-      "name": "Cristhian Mosquera",
+      "name": "Mosquera",
       "club": "Arsenal",
       "team_id": 1,
       "pos": "DEF",
@@ -293,11 +293,25 @@
       "form": "6.0",
       "status": "a",
       "chance": null,
-      "argument": "Med kun 40 point sidste sæson og et halvsvært program virker hans 6 point nu ikke helt nok."
+      "argument": "40 point sidste sæson."
+    },
+    {
+      "id": 368,
+      "name": "Szoboszlai",
+      "club": "Liverpool",
+      "team_id": 14,
+      "pos": "MID",
+      "score": 39.6,
+      "last_season_points": 160,
+      "points_this_season_so_far": 8,
+      "form": "8.0",
+      "status": "a",
+      "chance": null,
+      "argument": "160 point sidste sæson."
     },
     {
       "id": 483,
-      "name": "Dan Ndoye",
+      "name": "Ndoye",
       "club": "Nott'm Forest",
       "team_id": 18,
       "pos": "MID",
@@ -307,11 +321,11 @@
       "form": "3.0",
       "status": "a",
       "chance": null,
-      "argument": "Blot 3 point i denne sæson indtil videre og 50 point sidste sæson giver meget lidt appel lige nu."
+      "argument": "50 point sidste sæson."
     },
     {
       "id": 367,
-      "name": "Cody Gakpo",
+      "name": "Gakpo",
       "club": "Liverpool",
       "team_id": 14,
       "pos": "MID",
@@ -321,25 +335,11 @@
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "10 point i denne sæson og et favorabelt program forude gør ham til en stærk kandidat til dit hold."
-    },
-    {
-      "id": 368,
-      "name": "Dominik Szoboszlai",
-      "club": "Liverpool",
-      "team_id": 14,
-      "pos": "MID",
-      "score": 39.5,
-      "last_season_points": 160,
-      "points_this_season_so_far": 8,
-      "form": "8.0",
-      "status": "a",
-      "chance": null,
-      "argument": "Sidste sæsons 160 point og det lette program forude taler for ham, trods kun 8 point i denne sæson."
+      "argument": "131 point sidste sæson."
     },
     {
       "id": 249,
-      "name": "Thierno Barry",
+      "name": "Barry",
       "club": "Everton",
       "team_id": 9,
       "pos": "FWD",
@@ -349,7 +349,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Har hentet 8 point i denne sæson indtil videre, men det kommende svære kampprogram trækker desværre alvorligt ned."
+      "argument": "95 point sidste sæson."
     }
   ]
 }
