@@ -89,7 +89,9 @@
       "pos": "FWD",
       "status": "a",
       "chance": 100
-    },
+    }
+  ],
+  "bench": [
     {
       "id": 82,
       "name": "Caoimhín Kelleher",
@@ -123,7 +125,6 @@
       "chance": null
     }
   ],
-  "bench": [],
   "suggestions": [],
   "fixtures": [
     {
@@ -227,5 +228,5 @@
     }
   ],
   "injury_news": [],
-  "updated": "2026-08-23T19:14:20Z"
+  "updated": "2026-08-23T19:23:05Z"
 }
