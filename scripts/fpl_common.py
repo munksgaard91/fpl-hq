@@ -7,6 +7,7 @@ og kun når den kaldes eksplicit.
 """
 import json
 import urllib.request
+from datetime import datetime, timezone
 
 FPL_BASE = "https://fantasy.premierleague.com/api"
 DRAFT_BASE = "https://draft.premierleague.com/api"
@@ -87,7 +88,18 @@ def find_latest_finished_event(bootstrap):
 
 
 def find_next_event(bootstrap):
-    upcoming = [e for e in bootstrap["events"] if not e["finished"]]
+    """
+    Finder næste RELEVANTE deadline - dvs. den tidligste gameweek hvis deadline
+    stadig ligger i fremtiden. Vigtigt: 'finished' bliver ikke True i FPL's data
+    før ALLE kampe + bonuspoint er bekræftet, hvilket kan tage dage efter selve
+    deadline er passeret - så vi kan IKKE bare filtrere på 'not finished'.
+    """
+    now = datetime.now(timezone.utc)
+    upcoming = []
+    for e in bootstrap["events"]:
+        deadline = datetime.fromisoformat(e["deadline_time"].replace("Z", "+00:00"))
+        if deadline > now:
+            upcoming.append(e)
     if not upcoming:
         return None
     return min(upcoming, key=lambda e: e["id"])
