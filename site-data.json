@@ -1,34 +1,34 @@
 {
-  "updated": "2026-08-22T19:14:31Z",
+  "updated": "2026-08-23T07:24:02Z",
   "current_gw": 0,
   "season_started": false,
   "next_deadline": "2026-08-21T17:30:00Z",
   "standings": [
     {
-      "league_entry": 1510,
-      "name": "HaCunha Mateta",
-      "total": 26,
+      "league_entry": 48956,
+      "name": "Mainoo Character FC",
+      "total": 37,
       "rank": 1,
       "trend": null
     },
     {
-      "league_entry": 48956,
-      "name": "Mainoo Character FC",
-      "total": 23,
+      "league_entry": 1510,
+      "name": "HaCunha Mateta",
+      "total": 37,
       "rank": 2,
       "trend": null
     },
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 11,
+      "total": 15,
       "rank": 3,
       "trend": null
     },
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 6,
+      "total": 12,
       "rank": 4,
       "trend": null
     },
@@ -40,7 +40,7 @@
       "trend": null
     }
   ],
-  "point_gap": 20,
+  "point_gap": 31,
   "alerts": [
     {
       "player": "Pedro Porro Sauceda",
