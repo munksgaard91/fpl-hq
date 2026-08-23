@@ -154,13 +154,9 @@ def get_tottenham_result(bootstrap, live):
 
 
 def get_player_names(bootstrap):
-    names = {}
-    for p in bootstrap["elements"]:
-        fn = (p.get("first_name") or "").strip()
-        sn = (p.get("second_name") or "").strip()
-        full = (fn + " " + sn).strip() or p["web_name"]
-        names[p["id"]] = full
-    return names
+    # Bruger FPL's eget 'web_name' - det navn der reelt bruges (fx "Raya", "Thiago"),
+    # ikke det fulde juridiske navn (fx "David Raya Martín").
+    return {p["id"]: p["web_name"] for p in bootstrap["elements"]}
 
 
 def get_entry_gw_squad(entry_id, event_id):
