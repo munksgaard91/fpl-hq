@@ -401,12 +401,6 @@ def add_ai_arguments(ranked_list, list_label, fixture_by_team=None):
 # Management (kun for MY_ENTRY_ID): startopstilling, bænk, ombytninger
 # ---------------------------------------------------------------------------
 
-def build_management(bootstrap, current_gw, fixture_by_team):
-    positions = get_player_positions(bootstrap)
-    names = get_player_names(bootstrap)
-    clubs = get_player_clubs(bootstrap)
-    by_id = {p["id"]: p for p in bootstrap["elements"]}
-
 def build_management(bootstrap, current_gw, fixture_by_team, element_status=None):
     positions = get_player_positions(bootstrap)
     names = get_player_names(bootstrap)
@@ -555,6 +549,151 @@ def build_transaction_history(league_details_id, entry_name_map, player_names):
 # Main
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Transfer-forslag (waivers): sammenlign din trup mod ledige spillere
+# ---------------------------------------------------------------------------
+
+MIN_WAIVER_GAP = 12  # skal være et reelt løft, ikke 1-2 points forskel, for at foreslås
+
+def build_unowned_pool(bootstrap, element_status, fixture_by_team, kicked_off, position, top_n=15):
+    """Samme to-trins scoring som build_ranked_list, men kun blandt UEJEDE spillere."""
+    owned_ids = {es["element"] for es in element_status if es.get("owner")}
+    positions = get_player_positions(bootstrap)
+    candidates = []
+    for p in bootstrap["elements"]:
+        if p["id"] in owned_ids or p.get("removed"):
+            continue
+        if p["status"] not in ("a", "d"):
+            continue
+        if positions.get(p["id"]) != position:
+            continue
+        minutes = float(p.get("minutes") or 0)
+        if minutes == 0 and float(p.get("total_points") or 0) == 0:
+            continue
+        if not kicked_off and minutes < 900:
+            continue
+        candidates.append(p)
+
+    rough = [(p, compute_power_score(p, fixture_by_team, kicked_off)) for p in candidates]
+    rough.sort(key=lambda x: -x[1])
+    pool = rough[:min(len(rough), max(top_n * 2, 20))]
+
+    scored = []
+    for p, _ in pool:
+        last_stats = None
+        if kicked_off:
+            last_stats = fetch_last_season_stats(p["id"])
+            season_minutes = float(p.get("minutes") or 0)
+            if last_stats is None and season_minutes < 180:
+                continue
+            last_ppg = last_stats["ppg"] if last_stats else None
+            score = compute_power_score(p, fixture_by_team, kicked_off, last_season_ppg=last_ppg)
+        else:
+            score = compute_power_score(p, fixture_by_team, kicked_off)
+        scored.append({
+            "id": p["id"], "name": get_player_full_name(p),
+            "club": TEAM_NAMES.get(p["team"], "?"), "team_id": p["team"], "score": score,
+            "last_season_points": last_stats["total_points"] if last_stats else p.get("total_points", 0),
+        })
+    scored.sort(key=lambda x: -x["score"])
+    return scored[:top_n]
+
+
+HARD_FIXTURE_THRESHOLD = 4       # sværhedsgrad 4-5 tæller som "svær" kamp
+MAX_HARD_FIXTURES_ALLOWED = 3     # højst 3 ud af 5 svære kampe må den indkommende have
+QUALITY_TIER_RATIO = 1.7          # hvis din spiller havde >1.7x så mange point sidste sæson,
+                                    # er det formentlig en anden liga-klasse - byt ikke bare pga. et kort opsving
+
+
+def build_waiver_suggestions(bootstrap, element_status, fixture_by_team, kicked_off, management):
+    """
+    Sammenligner hver af dine spillere mod den bedst-scorende LEDIGE spiller på
+    samme position. Foreslår kun et bytte hvis:
+      1) forspringet er reelt (MIN_WAIVER_GAP), ikke marginale forskelle
+      2) den indkommende spillers næste 5 kampe ikke overvejende er svære
+      3) din spiller ikke er en klart anden liga-klasse end den indkommende
+         (forhindrer fx "byt Bruno Fernandes for en Brighton-reserve fordi
+         han har et blidt kampprogram lige nu" - det er stadig en dårlig idé)
+    Maks 5 forslag, ingen hvis intet reelt forbedrer sig.
+    """
+    if not management.get("available"):
+        return []
+    my_players = management.get("starters") or management.get("squad") or []
+    positions_needed = {p["pos"] for p in my_players}
+    unowned_by_pos = {pos: build_unowned_pool(bootstrap, element_status, fixture_by_team, kicked_off, pos)
+                       for pos in positions_needed}
+
+    by_id = {p["id"]: p for p in bootstrap["elements"]}
+    candidates = []
+    for mp in my_players:
+        p = by_id.get(mp["id"])
+        if not p:
+            continue
+        if kicked_off:
+            last_stats = fetch_last_season_stats(mp["id"])
+            my_last_season = last_stats["total_points"] if last_stats else p.get("total_points", 0)
+            last_ppg = last_stats["ppg"] if last_stats else None
+            my_score = compute_power_score(p, fixture_by_team, kicked_off, last_season_ppg=last_ppg)
+        else:
+            my_last_season = p.get("total_points", 0)
+            my_score = compute_power_score(p, fixture_by_team, kicked_off)
+
+        best_available = unowned_by_pos.get(mp["pos"], [])
+        best_available = [a for a in best_available if a["id"] != mp["id"]]
+        if not best_available:
+            continue
+        best = best_available[0]
+        gap = best["score"] - my_score
+        if gap < MIN_WAIVER_GAP:
+            continue
+
+        # Spærre-regel 1: for mange svære kampe i vente for den indkommende
+        diffs = fixture_by_team.get(best.get("team_id"), [])
+        hard_count = sum(1 for d in diffs[:5] if d >= HARD_FIXTURE_THRESHOLD)
+        if hard_count > MAX_HARD_FIXTURES_ALLOWED:
+            continue
+
+        # Spærre-regel 2: din spiller er en klart anden liga-klasse end den indkommende
+        incoming_last_season = best.get("last_season_points") or 0
+        if my_last_season > 0 and incoming_last_season > 0:
+            if my_last_season / max(incoming_last_season, 1) > QUALITY_TIER_RATIO:
+                continue
+
+        candidates.append({
+            "out": mp["name"], "out_score": round(my_score, 1),
+            "in": best["name"], "in_club": best["club"], "in_score": round(best["score"], 1),
+            "gap": round(gap, 1), "pos": mp["pos"],
+        })
+    candidates.sort(key=lambda x: -x["gap"])
+    return candidates[:5]
+
+
+def add_waiver_arguments(suggestions):
+    """Ét samlet Gemini-kald - argumentet skal pege på DIN fordel, ikke generisk statistik."""
+    if not suggestions:
+        return suggestions
+    lines = [
+        f"{i+1}. Drop {s['out']} (score {s['out_score']}) for {s['in']} fra {s['in_club']} "
+        f"(score {s['in_score']}, {s['pos']})"
+        for i, s in enumerate(suggestions)
+    ]
+    prompt = (
+        "Du får en liste over foreslåede waiver-bytter i Fantasy Premier League Draft. Skriv ÉT kort "
+        "argument pr. forslag (maks 25 ord, på dansk) der forklarer hvorfor DENNE ÆNDRING gavner "
+        "brugeren specifikt - fokusér på hvad brugeren vinder, ikke generel statistik. Brug KUN tallene "
+        "givet, opfind aldrig konkrete kampe eller hændelser.\n\n"
+        + "\n".join(lines) +
+        '\n\nSvar KUN som gyldig JSON: en liste af strenge i samme rækkefølge, fx ["argument 1", ...].'
+    )
+    fallback = [f"{s['in']} scorer {s['gap']} point højere end {s['out']} lige nu." for s in suggestions]
+    args = safe_gemini_json(prompt, fallback)
+    if not isinstance(args, list) or len(args) != len(suggestions):
+        args = fallback
+    for s, arg in zip(suggestions, args):
+        s["reason"] = arg
+    return suggestions
+
+
 def main():
     bootstrap = fetch_json(f"{FPL_BASE}/bootstrap-static/")
     fixtures = fetch_json(f"{FPL_BASE}/fixtures/")
@@ -659,6 +798,13 @@ def main():
     management["updated"] = site_data["updated"]
     save_json_file("management.json", management)
     print("management.json skrevet, available=", management.get("available"))
+
+    # ---- waiver-forslag (kræver management-data, derfor tilføjet til site-data.json bagefter) ----
+    waiver_suggestions = build_waiver_suggestions(bootstrap, element_status, fixture_by_team, kicked_off, management)
+    waiver_suggestions = add_waiver_arguments(waiver_suggestions)
+    site_data["transfer_suggestions"] = waiver_suggestions
+    save_json_file("site-data.json", site_data)
+    print(f"site-data.json opdateret med {len(waiver_suggestions)} waiver-forslag")
 
 
 if __name__ == "__main__":
