@@ -19,6 +19,7 @@ import os
 import sys
 import urllib.request
 import urllib.error
+from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(__file__))
 from fpl_common import (
@@ -137,7 +138,7 @@ def build_bench_trend(bootstrap, entry_ids, live_points_by_gw):
             picks = get_entry_gw_picks(eid, gw)
             if not picks:
                 continue
-            bench = [p for p in picks if p.get("multiplier", 1) == 0]
+            bench = [p for p in picks if p.get("position", 0) > 11]
             totals[str(eid)] += sum(live_points.get(p["element"], 0) for p in bench)
     return totals
 
@@ -178,7 +179,70 @@ def build_gw_summary(gw, standings_rows, entry_name_map, best_line, worst_line):
 # Powerranking / Draft-rankings (formel + AI-argumenter)
 # ---------------------------------------------------------------------------
 
-def compute_power_score(p, fixture_by_team, season_started):
+def find_current_playing_gw(bootstrap):
+    """
+    Den gameweek der reelt spilles lige nu (eller senest er startet) - den højeste
+    event-id hvis deadline er passeret. Bruges til at hente MANAGEMENT-picks, som
+    findes så snart deadline passerer, uanset om FPL selv har markeret gameweeken
+    som 'finished' (det sker først når alle kampe + bonuspoint er bekræftet).
+    """
+    now = datetime.now(timezone.utc)
+    passed = []
+    for e in bootstrap["events"]:
+        deadline = datetime.fromisoformat(e["deadline_time"].replace("Z", "+00:00"))
+        if deadline <= now:
+            passed.append(e)
+    if not passed:
+        return None
+    return max(passed, key=lambda e: e["id"])["id"]
+
+
+def has_season_kicked_off(bootstrap):
+    """
+    Adskilt fra season_started (som kræver finished+data_checked og bruges til
+    historik-logning). Denne tjekker kun om GW1's deadline er passeret - dvs. om
+    kampe reelt bliver spillet og friske form/minutter-tal findes, UANSET om FPL
+    selv har markeret gameweeken som 'finished' endnu (det tager ofte dage efter
+    deadline, mens bonuspoint bekræftes). Uden dette skel ville powerranking-
+    formlen fejlagtigt prøve at bruge sidste sæsons 900-minutters-krav på et
+    datasæt hvor minutter allerede er nulstillet til den nye sæsons friske (lave) tal.
+    """
+    now = datetime.now(timezone.utc)
+    gw1 = next((e for e in bootstrap["events"] if e["id"] == 1), None)
+    if not gw1:
+        return False
+    deadline = datetime.fromisoformat(gw1["deadline_time"].replace("Z", "+00:00"))
+    return now > deadline
+
+
+def fetch_last_season_stats(player_id):
+    """
+    Bootstrap-static's points_per_game OG total_points nulstiller begge til DENNE
+    sæson med det samme sæsonen starter (bekræftet: efter 1 spillet GW viste
+    points_per_game samme tal som 'form', og total_points var kun ét GW's spæde
+    sum - ikke sidste sæsons rigtige total som antaget). Ægte sidste-sæson-data
+    findes kun via dette per-spiller endpoint - for dyrt at kalde for alle ~590
+    spillere, så det bruges kun til en lille kandidat-pulje i build_ranked_list.
+    Returnerer {"ppg": float, "total_points": int} eller None hvis util.
+    """
+    try:
+        data = fetch_json(f"{FPL_BASE}/element-summary/{player_id}/")
+        history_past = data.get("history_past", [])
+        if not history_past:
+            return None
+        last = history_past[-1]
+        minutes = last.get("minutes", 0)
+        total_points = last.get("total_points", 0)
+        if minutes < 900:
+            return None
+        games = minutes / 90.0
+        ppg = total_points / games if games > 0 else 0.0
+        return {"ppg": ppg, "total_points": total_points}
+    except Exception:
+        return None
+
+
+def compute_power_score(p, fixture_by_team, kicked_off, last_season_ppg=None):
     """
     Vægtet Power Score:
       55% form (FPL's egen 'form'-stat; falder tilbage til points_per_game før sæsonstart)
@@ -189,13 +253,19 @@ def compute_power_score(p, fixture_by_team, season_started):
     """
     form = float(p.get("form") or 0)
     ppg = float(p.get("points_per_game") or 0)
-    effective_form = form if form > 0 else ppg  # fallback før sæsonstart
+    season_minutes = float(p.get("minutes") or 0)
+    reference_ppg = last_season_ppg if last_season_ppg is not None else ppg
+    if form > 0:
+        w = min(season_minutes / 900, 1.0)
+        effective_form = w * form + (1 - w) * reference_ppg
+    else:
+        effective_form = reference_ppg
 
     fixtures = fixture_by_team.get(p["team"], [])
     next_diff = fixtures[0] if fixtures else 3
     fixture_score = (5 - next_diff) / 4 * 10  # 1=let->10, 5=svært->0
 
-    if season_started and form > 0:
+    if kicked_off and form > 0:
         trend = form - ppg  # er formen bedre end sæson-snittet lige nu?
     else:
         trend = 0
@@ -207,9 +277,9 @@ def compute_power_score(p, fixture_by_team, season_started):
     return round(raw * 10, 1)  # skaleret til en mere "point-agtig" 0-100ish størrelse
 
 
-def build_ranked_list(bootstrap, fixture_by_team, season_started, position_filter=None, top_n=25):
+def build_ranked_list(bootstrap, fixture_by_team, kicked_off, position_filter=None, top_n=25):
     positions = get_player_positions(bootstrap)
-    scored = []
+    candidates = []
     for p in bootstrap["elements"]:
         if p.get("removed"):
             continue
@@ -221,24 +291,57 @@ def build_ranked_list(bootstrap, fixture_by_team, season_started, position_filte
         minutes = float(p.get("minutes") or 0)
         if minutes == 0 and float(p.get("total_points") or 0) == 0:
             continue  # ingen reelt spillegrundlag at vurdere ud fra
-        # Reliability-filter: før sæsonstart bruger vi sidste sæsons points_per_game som
-        # form-proxy - men et gennemsnit fra få kampe er ikke retvisende (fx en reserve-
-        # målmand med 1 kamp og et enkelt clean sheet). Kræv et minimum af spilletid for
-        # at undgå at småsample-outliers topper listen.
-        if not season_started and minutes < 900:
+        if not kicked_off and minutes < 900:
+            # Reliability-filter FØR sæsonstart: her ER points_per_game reelt sidste
+            # sæsons snit, så et lavt minuttal betyder et upålideligt lille sample.
             continue
-        score = compute_power_score(p, fixture_by_team, season_started)
+        candidates.append(p)
+
+    if not kicked_off:
+        # Pre-season: bootstrap's egen points_per_game ER sidste sæsons stabile snit,
+        # ingen grund til dyre ekstra-kald.
+        scored = [
+            {
+                "id": p["id"], "name": get_player_full_name(p),
+                "club": TEAM_NAMES.get(p["team"], "?"), "team_id": p["team"],
+                "pos": positions[p["id"]], "score": compute_power_score(p, fixture_by_team, kicked_off),
+                "last_season_points": p.get("total_points", 0), "points_this_season_so_far": 0, "form": p.get("form"),
+                "status": p["status"], "chance": p.get("chance_of_playing_next_round"),
+            }
+            for p in candidates
+        ]
+        scored.sort(key=lambda x: -x["score"])
+        return scored[:top_n]
+
+    # Sæsonen er i gang: points_per_game er IKKE længere sidste sæson (den nulstiller
+    # med det samme), så et groft førsteudkast (uden ægte sidste-sæson-reference) bruges
+    # kun til at finde en kandidat-pulje - derefter hentes ægte sidste-sæson-data (dyrere
+    # per-spiller-kald) KUN for de kandidater, ikke for alle ~590 spillere.
+    rough = [(p, compute_power_score(p, fixture_by_team, kicked_off)) for p in candidates]
+    rough.sort(key=lambda x: -x[1])
+    pool_size = min(len(rough), max(top_n * 3, 60))
+    pool = rough[:pool_size]
+
+    scored = []
+    for p, _rough_score in pool:
+        last_stats = fetch_last_season_stats(p["id"])
+        season_minutes = float(p.get("minutes") or 0)
+        if last_stats is None and season_minutes < 180:
+            # Hverken en pålidelig sidste-sæson-historik ELLER nok kampe i den nye
+            # sæson til at stå alene - uden nogen bremseklods kan én god/dårlig
+            # enkeltkamp fuldstændig dominere. Springes over indtil et af de to
+            # kriterier er opfyldt.
+            continue
+        last_ppg = last_stats["ppg"] if last_stats else None
+        real_score = compute_power_score(p, fixture_by_team, kicked_off, last_season_ppg=last_ppg)
         scored.append({
-            "id": p["id"],
-            "name": get_player_full_name(p),
-            "club": TEAM_NAMES.get(p["team"], "?"),
-            "team_id": p["team"],
-            "pos": pos,
-            "score": score,
-            "total_points": p.get("total_points", 0),
+            "id": p["id"], "name": get_player_full_name(p),
+            "club": TEAM_NAMES.get(p["team"], "?"), "team_id": p["team"],
+            "pos": positions[p["id"]], "score": real_score,
+            "last_season_points": last_stats["total_points"] if last_stats else None,
+            "points_this_season_so_far": p.get("total_points", 0),
             "form": p.get("form"),
-            "status": p["status"],
-            "chance": p.get("chance_of_playing_next_round"),
+            "status": p["status"], "chance": p.get("chance_of_playing_next_round"),
         })
     scored.sort(key=lambda x: -x["score"])
     return scored[:top_n]
@@ -256,23 +359,36 @@ def add_ai_arguments(ranked_list, list_label, fixture_by_team=None):
             if diffs:
                 avg = sum(diffs[:3]) / len(diffs[:3])
                 fixt = f", næste 3 kampes sværhedsgrad-snit {avg:.1f}/5"
+        last_season = p.get("last_season_points")
+        this_season = p.get("points_this_season_so_far") or 0
+        season_bits = []
+        if last_season is not None:
+            season_bits.append(f"{last_season} point sidste sæson (2025/26)")
+        if this_season > 0:
+            season_bits.append(f"{this_season} point denne sæson indtil videre")
+        season_txt = ", ".join(season_bits) if season_bits else "ingen sæsondata"
         lines.append(
-            f"{i+1}. {p['name']} ({p['club']}, {p['pos']}) - {p['total_points']} point sidste sæson, "
+            f"{i+1}. {p['name']} ({p['club']}, {p['pos']}) - {season_txt}, "
             f"status {p['status']}{fixt}"
         )
     players_block = "\n".join(lines)
     prompt = (
         f"Du får en rangeret liste over {list_label} i Fantasy Premier League. Skriv ÉT kort, "
         "naturligt argument pr. spiller (maks 20 ord, på dansk) for hvorfor de er et godt/dårligt "
-        "valg lige nu. Varier formuleringen mellem spillerne - gentag IKKE samme sætningsskabelon "
-        "('med en score på X og Y point...') for hver spiller. Brug KUN de tal der er givet, opfind "
-        "aldrig kampresultater, mål eller hændelser der ikke fremgår af dataen - er der ikke andet at "
-        "sige end pointtal og fixtures, så sig det naturligt uden at lyde robotagtigt.\n\n"
+        "valg lige nu. Vær PRÆCIS om hvilken sæson et tal refererer til - bland ALDRIG 'sidste sæson' "
+        "og 'denne sæson indtil videre' sammen. Varier formuleringen mellem spillerne - gentag IKKE "
+        "samme sætningsskabelon ('med en score på X og Y point...') for hver spiller. Brug KUN de tal "
+        "der er givet, opfind aldrig kampresultater, mål eller hændelser der ikke fremgår af dataen - "
+        "er der ikke andet at sige end pointtal og fixtures, så sig det naturligt uden at lyde robotagtigt.\n\n"
         f"{players_block}\n\n"
         'Svar KUN som gyldig JSON: en liste af strenge, i samme rækkefølge som spillerne, '
         'fx ["argument 1", "argument 2", ...]. Ingen anden tekst.'
     )
-    fallback = [f"{p['total_points']} point sidste sæson." for p in ranked_list]
+    fallback = [
+        f"{p['last_season_points']} point sidste sæson." if p.get("last_season_points") is not None
+        else "Ingen sæsondata tilgængelig."
+        for p in ranked_list
+    ]
     args = safe_gemini_json(prompt, fallback)
     if not isinstance(args, list) or len(args) != len(ranked_list):
         args = fallback
@@ -366,7 +482,7 @@ def build_management(bootstrap, current_gw, fixture_by_team, element_status=None
             "pos": positions.get(pid, "?"), "status": p["status"],
             "chance": p.get("chance_of_playing_next_round"),
         }
-        (starters if pick.get("multiplier", 1) > 0 else bench).append(entry)
+        (starters if pick.get("position", 0) <= 11 else bench).append(entry)
 
     # Ombytningsforslag: kun starter->bænk-spillere på SAMME position, og kun hvis starteren
     # er flagget (skadet/tvivlsom). Maks 3, ingen hvis der ikke er noget reelt problem.
@@ -451,6 +567,7 @@ def main():
     next_event = find_next_event(bootstrap)
     current_gw = latest_event["id"] if latest_event else 0
     season_started = latest_event is not None
+    kicked_off = has_season_kicked_off(bootstrap)  # GW1-deadline passeret, uanset 'finished'-status
 
     fixture_by_team = get_team_fixture_difficulty(fixtures, num_gws=5)
 
@@ -526,7 +643,7 @@ def main():
     print(f"site-data.json skrevet ({len(standings_rows)} hold, GW{current_gw}, season_started={season_started})")
 
     # ---- powerranking ----
-    pr_list = build_ranked_list(bootstrap, fixture_by_team, season_started, position_filter=None, top_n=25)
+    pr_list = build_ranked_list(bootstrap, fixture_by_team, kicked_off, position_filter=None, top_n=25)
     pr_list = add_ai_arguments(pr_list, "spillere i Fantasy Premier League (alle positioner)", fixture_by_team)
     save_json_file("powerranking.json", {"updated": site_data["updated"], "players": pr_list})
     print(f"powerranking.json skrevet ({len(pr_list)} spillere)")
@@ -537,7 +654,8 @@ def main():
     # (og fjern deaktiveringen i index.html) når redraften nærmer sig.
 
     # ---- management (kun dig) ----
-    management = build_management(bootstrap, current_gw if season_started else next_event["id"] if next_event else None, fixture_by_team, element_status)
+    current_playing_gw = find_current_playing_gw(bootstrap)
+    management = build_management(bootstrap, current_playing_gw, fixture_by_team, element_status)
     management["updated"] = site_data["updated"]
     save_json_file("management.json", management)
     print("management.json skrevet, available=", management.get("available"))
