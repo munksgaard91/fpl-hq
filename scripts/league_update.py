@@ -69,7 +69,19 @@ def format_deadline_da(iso_ts):
 
 
 def find_next_deadline(bootstrap):
-    upcoming = [e for e in bootstrap["events"] if not e["finished"]]
+    """
+    Finder næste RELEVANTE deadline - dvs. tidligste gameweek hvis deadline
+    stadig ligger i fremtiden. 'finished' bliver ikke True før alle kampe +
+    bonuspoint er bekræftet, hvilket kan tage dage efter deadline er passeret,
+    så vi kan IKKE bare filtrere på 'not finished'.
+    """
+    from datetime import datetime, timezone
+    now = datetime.now(timezone.utc)
+    upcoming = []
+    for e in bootstrap["events"]:
+        deadline = datetime.fromisoformat(e["deadline_time"].replace("Z", "+00:00"))
+        if deadline > now:
+            upcoming.append(e)
     if not upcoming:
         return None
     nxt = min(upcoming, key=lambda e: e["id"])
@@ -163,7 +175,105 @@ def get_entry_gw_squad(entry_id, event_id):
     return data["picks"]
 
 
+def run_season_kickoff():
+    """
+    Engangs-besked til sæsonstart: ønsker held og lykke, opsummerer de waivers/trades
+    folk har lavet i preseason. Bruger samme humor/tone som de normale GW-opdateringer,
+    men er ikke en gameweek-rapport - ingen stilling/bedste-spiller-data findes endnu.
+    Trigges kun manuelt (SEASON_KICKOFF=true), påvirker ikke last_posted_event-state.
+    """
+    bootstrap = fetch_json(f"{FPL_BASE}/bootstrap-static/")
+    next_deadline = find_next_deadline(bootstrap)
+    player_names = get_player_names(bootstrap)
+
+    league = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/details")
+    entry_name_map = {}
+    for e in league["league_entries"]:
+        entry_name_map[e["id"]] = e["entry_name"]
+        entry_name_map[e["entry_id"]] = e["entry_name"]
+
+    trans_data = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions")
+    accepted = [t for t in trans_data.get("transactions", []) if t.get("result") == "a"]
+    kind_labels = {"w": "Waiver", "f": "Free agent", "t": "Trade"}
+    trans_lines = []
+    for t in accepted:
+        kind = kind_labels.get(t.get("kind"), t.get("kind", "transaction"))
+        entry_id = t.get("entry")
+        in_name = player_names.get(t.get("element_in"), f"spiller {t.get('element_in')}")
+        out_name = player_names.get(t.get("element_out"))
+        ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
+        desc = f"{in_name} ind, {out_name} ud" if out_name else f"{in_name} ind"
+        trans_lines.append(f"{ename}: {desc} ({kind})")
+
+    deadline_line = "Ukendt — tjek draft.premierleague.com"
+    if next_deadline:
+        next_gw, deadline_ts = next_deadline
+        deadline_line = f"GW{next_gw}: {format_deadline_da(deadline_ts)}"
+
+    context = f"""I dag starter Premier League-sæsonen 2026/27, og dermed også vores FPL Draft-liga
+"{league['league']['name']}" for alvor - GW1-deadline er {deadline_line}.
+
+TRANSFERS LAVET I PRESEASON (waivers/trades siden draften):
+{chr(10).join(trans_lines) if trans_lines else "Ingen waivers eller trades er lavet endnu."}
+"""
+
+    prompt = (
+        "Du skriver en kort kickoff-besked (180-200 ord, på dansk) til en lille FPL Draft-liga "
+        "mellem venner, til at poste i Discord - sæsonen starter i dag. Skriv i Discord-markdown "
+        "(**fed** på navne), del op i korte afsnit, gerne et par relevante emojis, ikke overdrevet.\n\n"
+        "Ønsk holdene held og lykke for sæsonen, og opsummér/kommentér på de transfers/waivers folk "
+        "har lavet i preseason - vær gerne drillende og letsindig omkring valgene (kammeratligt, ikke "
+        "ondskabsfuldt), præcis samme stil som vores almindelige gameweek-opdateringer. Brug KUN "
+        "dataen herunder, opfind ALDRIG konkrete spillerpræstationer eller nyheder der ikke er givet.\n\n"
+        f"Data:\n{context}"
+    )
+    body = json.dumps({"contents": [{"parts": [{"text": prompt}]}]}).encode("utf-8")
+    api_key = os.environ["GEMINI_API_KEY"]
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"
+    req = urllib.request.Request(
+        url, data=body,
+        headers={
+            "Content-Type": "application/json", "x-goog-api-key": api_key,
+            "User-Agent": "Mozilla/5.0 (compatible; drafthq-bot/1.0)",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        summary_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+    except Exception as e:
+        print("Gemini-kald fejlede:", e, file=sys.stderr)
+        summary_text = "Sæsonen starter i dag — held og lykke til alle! (AI-opsummeringen kunne ikke genereres denne gang.)"
+
+    webhook = os.environ["DISCORD_WEBHOOK_URL"]
+    embed = {
+        "title": "⚽ Sæsonstart!",
+        "description": summary_text,
+        "color": 2926465,
+        "footer": {"text": f"Første deadline: {deadline_line}"},
+    }
+    discord_body = json.dumps({
+        "username": "Update Bot", "content": "@everyone",
+        "embeds": [embed], "allowed_mentions": {"parse": ["everyone"]},
+    }).encode("utf-8")
+    discord_req = urllib.request.Request(
+        webhook, data=discord_body,
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (compatible; drafthq-bot/1.0; +https://github.com/munksgaard91/fpl-hq)",
+        },
+        method="POST",
+    )
+    with urllib.request.urlopen(discord_req, timeout=20) as resp:
+        print("Sæsonstart-besked postet, Discord response:", resp.status)
+
+
 def main():
+    if os.environ.get("SEASON_KICKOFF", "").lower() == "true":
+        run_season_kickoff()
+        return
+
     state = load_state()
     test_mode = os.environ.get("FORCE_TEST", "").lower() == "true"
 
@@ -211,14 +321,15 @@ def main():
         live = {"elements": {}}
         live_points = {}
 
-    # -------- injury/news for owned players + top overall PL performers this gw --------
+    # -------- injury/news for owned players (altid aktuel, kræver ikke en spillet gameweek) --------
+    element_status = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/element-status")["element_status"]
+    owned_injury_lines = get_owned_player_news(bootstrap, element_status, entry_name_map)
+
+    # -------- top overall PL performers + Tottenham-resultat (kræver reelt spillede kampe) --------
     if gw > 0:
-        element_status = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/element-status")["element_status"]
-        owned_injury_lines = get_owned_player_news(bootstrap, element_status, entry_name_map)
         top_performers = get_top_gw_performers(bootstrap, live)
         tottenham_result = get_tottenham_result(bootstrap, live)
     else:
-        owned_injury_lines = []
         top_performers = []
         tottenham_result = None
 
@@ -235,8 +346,8 @@ def main():
             picks = get_entry_gw_squad(entry_id, gw)
             if not picks:
                 continue
-            starters = [p for p in picks if p.get("multiplier", 1) > 0]
-            bench = [p for p in picks if p.get("multiplier", 1) == 0]
+            starters = [p for p in picks if p.get("position", 0) <= 11]
+            bench = [p for p in picks if p.get("position", 0) > 11]
             total = 0
             best = None
             worst = None
@@ -311,16 +422,18 @@ def main():
 
     # -------- transactions since last post --------
     trans_data = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions")
-    all_trans = trans_data.get("transactions", [])
+    all_trans = [t for t in trans_data.get("transactions", []) if t.get("result") == "a"]
     new_trans = all_trans[state["last_transaction_count"]:]
+    kind_labels = {"w": "Waiver", "f": "Free agent", "t": "Trade"}
     trans_lines = []
     for t in new_trans:
-        kind = t.get("kind") or t.get("result") or "transaction"
+        kind = kind_labels.get(t.get("kind"), t.get("kind", "transaction"))
         entry_id = t.get("entry")
-        player_id = t.get("element") or t.get("element_in")
-        pname = player_names.get(player_id, f"spiller {player_id}")
+        in_name = player_names.get(t.get("element_in"), f"spiller {t.get('element_in')}")
+        out_name = player_names.get(t.get("element_out"))
         ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
-        trans_lines.append(f"{ename}: {kind} — {pname}")
+        desc = f"{in_name} ind, {out_name} ud" if out_name else f"{in_name} ind"
+        trans_lines.append(f"{ename}: {desc} ({kind})")
 
     # -------- assemble context for Gemini --------
     best_line = "Ingen data"
@@ -370,7 +483,7 @@ TOP PRÆSTATIONER I HELE PREMIER LEAGUE DENNE UGE (uafhængigt af vores liga, ti
 TOTTENHAM-REGEL: {tottenham_result if tottenham_result else "Tottenham vandt eller spillede ikke denne uge — ingen særlig omtale nødvendig."}
 """
     if gw == 0:
-        context += "\n(Dette er en systemtest før sæsonstart — alle tal er 0/tomme, det er forventet. Skriv opsummeringen som om det er en sjov test-besked, ikke en rigtig gameweek.)"
+        context += "\n(Dette er 'Gameweek 0' — en forhåndsvisning før sæsonstart, så ligaen kan se hvordan beskeden ser ud. Alle tal er 0/tomme, det er forventet. Skriv opsummeringen som en sjov, uskyldig forsmag, ikke som en rigtig gameweek med resultater.)"
 
     manual_roast = os.environ.get("ROAST_TARGET", "").strip() or None
     # Uden manuel override: roast automatisk sidstepladsen + ejeren af ugens dårligste spiller —
@@ -461,7 +574,7 @@ def call_gemini(context, roast_target=None, forced=False):
 
 def post_to_discord(gw, standings_lines, best_line, worst_line, mover_line, bench_line, trans_lines, summary_text, point_gap, deadline_line, test_mode=False):
     webhook = os.environ["DISCORD_WEBHOOK_URL"]
-    title = "🧪 TEST-besked (ingen rigtig gameweek endnu)" if test_mode and gw == 0 else f"⚽ Gameweek {gw}"
+    title = "⚽ Gameweek 0" if test_mode and gw == 0 else f"⚽ Gameweek {gw}"
 
     # Markdown-overskrifter (##) virker kun i description, IKKE i fields[].value (Discord-begrænsning) —
     # derfor bygges Stilling ind i description med tom linje over/under for luft, i stedet for som field.
