@@ -1,64 +1,47 @@
 {
-  "updated": "2026-08-23T13:23:55Z",
+  "updated": "2026-08-23T19:14:20Z",
   "current_gw": 0,
   "season_started": false,
   "next_deadline": "2026-08-21T17:30:00Z",
   "standings": [
     {
-      "league_entry": 48956,
-      "name": "Mainoo Character FC",
-      "total": 37,
+      "league_entry": 1510,
+      "name": "HaCunha Mateta",
+      "total": 55,
       "rank": 1,
       "trend": null
     },
     {
-      "league_entry": 1510,
-      "name": "HaCunha Mateta",
-      "total": 37,
+      "league_entry": 48956,
+      "name": "Mainoo Character FC",
+      "total": 48,
       "rank": 2,
-      "trend": null
-    },
-    {
-      "league_entry": 2539,
-      "name": "Bottlers Anonymous",
-      "total": 15,
-      "rank": 3,
       "trend": null
     },
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 12,
+      "total": 32,
+      "rank": 3,
+      "trend": null
+    },
+    {
+      "league_entry": 2539,
+      "name": "Bottlers Anonymous",
+      "total": 21,
       "rank": 4,
       "trend": null
     },
     {
       "league_entry": 17813,
       "name": "Kop of Jensen",
-      "total": 6,
+      "total": 19,
       "rank": 5,
       "trend": null
     }
   ],
-  "point_gap": 31,
-  "alerts": [
-    {
-      "player": "Pedro Porro Sauceda",
-      "club": "Spurs",
-      "owner_entry_id": 126623,
-      "owner": "HernDog IF",
-      "news": "Lack of match fitness - Expected back 29 Aug",
-      "chance": 0
-    },
-    {
-      "player": "Micky van de Ven",
-      "club": "Spurs",
-      "owner_entry_id": 126623,
-      "owner": "HernDog IF",
-      "news": "Unspecified injury - Expected back 29 Aug",
-      "chance": 0
-    }
-  ],
+  "point_gap": 36,
+  "alerts": [],
   "gw_summaries": [],
   "highlights": {
     "highest_gw_score": null,
