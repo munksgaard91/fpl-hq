@@ -335,16 +335,16 @@
     </div>
     <div class="chat-box">
       <div class="chat-msgs" id="chatMsgs">
-        <div class="msg ai">Hej! Assistent Manager er endnu ikke koblet til en AI-backend — det kræver en Cloudflare Worker vi ikke har bygget færdig endnu. Denne rude er klar til at blive koblet til, når den del er på plads.</div>
+        <div class="msg ai">Hej! Spørg mig om din trup, transfers, eller ligaen generelt.</div>
       </div>
       <div class="chat-chips">
-        <button class="chat-chip" disabled>Hvem skal jeg trade?</button>
-        <button class="chat-chip" disabled>Skader på min trup</button>
-        <button class="chat-chip" disabled>Vurdér min startopstilling</button>
+        <button class="chat-chip" data-q="Hvem bør jeg overveje at hente som waiver lige nu?">Hvem skal jeg trade?</button>
+        <button class="chat-chip" data-q="Er der skader eller advarsler jeg skal kende til på min trup?">Skader på min trup</button>
+        <button class="chat-chip" data-q="Vurdér min nuværende startopstilling — er der noget jeg bør ændre?">Vurdér min startopstilling</button>
       </div>
       <div class="chat-input-row">
-        <input type="text" id="chatInput" placeholder="Ikke tilsluttet endnu..." disabled>
-        <button class="chat-send" id="chatSend" disabled>Send</button>
+        <input type="text" id="chatInput" placeholder="Spørg om din trup, transfers, eller ligaen...">
+        <button class="chat-send" id="chatSend">Send</button>
       </div>
     </div>
   </div>
@@ -643,7 +643,7 @@ function renderRankedList(cardId, toggleBtnId, list){
     return `<div class="pr-row">
       <div class="pr-main">
         <div class="pr-top"><span class="rank num">${i+1}</span><span class="name">${p.name}</span><span class="club">${p.club}</span></div>
-        <p class="pr-arg">${p.argument || (p.total_points + ' point sidste sæson.')}</p>
+        <p class="pr-arg">${p.argument || (p.last_season_points != null ? p.last_season_points + ' point sidste sæson.' : 'Ingen sæsondata tilgængelig.')}</p>
       </div>
       <div class="pr-score-box" style="background:${scoreGradientBg(i)}"><span class="num" style="color:#FFFFFF">${Math.round(p.score)}</span></div>
     </div>`;
@@ -752,6 +752,71 @@ function closeAllDrawers(){
     document.getElementById(prefix+'Drawer').classList.remove('open');
   });
 }
+// ---------- ASSISTENT MANAGER CHAT ----------
+// VIGTIGT: Udfyld med jeres rigtige Worker-URL efter deployment (fra Cloudflare-dashboardet).
+const AM_WORKER_URL = "PASTE_YOUR_WORKER_URL_HERE";
+
+let chatHistory = []; // session-only, nulstilles ved reload (som aftalt)
+let chatBusy = false;
+
+function appendChatMsg(role, text){
+  const box = document.getElementById('chatMsgs');
+  const div = document.createElement('div');
+  div.className = 'msg ' + (role === 'user' ? 'user' : 'ai');
+  div.textContent = text;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+async function sendChatMessage(text){
+  if(!text.trim() || chatBusy) return;
+  if(AM_WORKER_URL.includes("PASTE_YOUR_WORKER_URL_HERE")){
+    appendChatMsg('ai', 'Assistent Manager er ikke koblet til en Worker-URL endnu — se koden i app.js.');
+    return;
+  }
+  chatBusy = true;
+  document.getElementById('chatSend').disabled = true;
+  appendChatMsg('user', text);
+  chatHistory.push({role:'user', text});
+  const input = document.getElementById('chatInput');
+  input.value = '';
+
+  const thinking = document.createElement('div');
+  thinking.className = 'msg ai';
+  thinking.textContent = '…';
+  thinking.id = 'chatThinking';
+  document.getElementById('chatMsgs').appendChild(thinking);
+
+  try{
+    const res = await fetch(AM_WORKER_URL, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({message: text, history: chatHistory}),
+    });
+    const data = await res.json();
+    document.getElementById('chatThinking')?.remove();
+    const reply = data.reply || 'Fik intet svar tilbage — prøv igen.';
+    appendChatMsg('ai', reply);
+    chatHistory.push({role:'ai', text: reply});
+  }catch(e){
+    document.getElementById('chatThinking')?.remove();
+    appendChatMsg('ai', 'Kunne ikke få forbindelse til Assistent Manager lige nu — prøv igen om lidt.');
+  }finally{
+    chatBusy = false;
+    document.getElementById('chatSend').disabled = false;
+  }
+}
+
+document.getElementById('chatSend').addEventListener('click', ()=>{
+  sendChatMessage(document.getElementById('chatInput').value);
+});
+document.getElementById('chatInput').addEventListener('keydown', (e)=>{
+  if(e.key === 'Enter') sendChatMessage(e.target.value);
+});
+document.querySelectorAll('.chat-chip').forEach(chip=>{
+  chip.addEventListener('click', ()=> sendChatMessage(chip.dataset.q));
+});
+
 function openAM(){
   closeAllDrawers();
   document.getElementById('amOverlay').classList.add('open');
