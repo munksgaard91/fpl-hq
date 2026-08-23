@@ -370,15 +370,6 @@ const MY_ENTRY_ID = 1510;
 let state = { siteData:null, rankHistory:{}, powerranking:null, management:null };
 
 // ---------- tiny helpers ----------
-function shortName(full){
-  if(!full) return '?';
-  const parts = full.split(' ');
-  const particles = ['van','de','dos','da','der','den','du','la','le'];
-  if(parts.length>=2 && particles.includes(parts[parts.length-2].toLowerCase())){
-    return parts.slice(-2).join(' ');
-  }
-  return parts[parts.length-1];
-}
 function translateInjuryNews(text){
   if(!text) return text;
   let t = text;
@@ -580,14 +571,14 @@ function renderManagement(mgmt, sd){
       const chanceTxt = flagged && p.chance!=null ? ` · ${p.chance}%` : '';
       chips += `<div class="pchip" style="left:${left}%;top:${rowTop[pos]}%;">
         <div class="dot">${pos}${flagDot}</div>
-        <span class="pname">${shortName(p.name)}</span><span class="pclub">${p.club}${chanceTxt}</span>
+        <span class="pname">${p.name}</span><span class="pclub">${p.club}${chanceTxt}</span>
       </div>`;
     });
   });
   document.getElementById('mgmtLabel').textContent = `Startopstilling (${rows.DEF.length}-${rows.MID.length}-${rows.FWD.length})`;
 
   const benchHtml = mgmt.bench.map(p=>
-    `<div class="bchip"><span class="bpos">${p.pos}</span><span class="bname">${shortName(p.name)}</span><span class="bclub">${p.club}</span></div>`
+    `<div class="bchip"><span class="bpos">${p.pos}</span><span class="bname">${p.name}</span><span class="bclub">${p.club}</span></div>`
   ).join('');
 
   const suggHtml = (!mgmt.suggestions || mgmt.suggestions.length===0)
@@ -672,9 +663,17 @@ function renderRankedList(cardId, toggleBtnId, list){
 function renderTransfersTab(sd){
   document.getElementById('deadlineLabel').textContent = sd.next_deadline ? `— ${fmtDate(sd.next_deadline)}` : '';
 
-  document.getElementById('suggestionsBody').innerHTML =
-    '<div class="empty-state"><p>Transfer-forslag på tværs af hele spillerfeltet er ikke bygget endnu.</p>' +
-    '<p class="sub">Se Management-fanen for interne ombytningsforslag fra din egen bænk.</p></div>';
+  const suggestions = sd.transfer_suggestions || [];
+  const suggBody = document.getElementById('suggestionsBody');
+  if(suggestions.length === 0){
+    suggBody.innerHTML = '<div class="empty-state"><p>Ingen waiver-forslag lige nu — din trup er stærk nok, ingen ledig spiller er et reelt løft.</p></div>';
+  } else {
+    suggBody.innerHTML = suggestions.map(s => `
+      <div class="sugg">
+        <div class="move">${s.out} <span class="arrow">→</span> ${s.in} <span class="type">Waiver</span></div>
+        <p>${s.reason}</p>
+      </div>`).join('');
+  }
 
   const hist = sd.transactions || [];
   const historyCard = document.getElementById('historyCard');
