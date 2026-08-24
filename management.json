@@ -63,8 +63,8 @@
       "name": "Gibbs-White",
       "club": "Nott'm Forest",
       "pos": "MID",
-      "status": "a",
-      "chance": null
+      "status": "d",
+      "chance": 75
     },
     {
       "id": 154,
@@ -125,7 +125,14 @@
       "chance": null
     }
   ],
-  "suggestions": [],
+  "suggestions": [
+    {
+      "out": "Gibbs-White",
+      "in": null,
+      "type": "Formation",
+      "reason": "Gibbs-White er flagget (75% spilchance), men ingen bænket spiller på samme position kan erstatte 1:1 - overvej et formationsskift."
+    }
+  ],
   "fixtures": [
     {
       "club": "Arsenal",
@@ -227,6 +234,14 @@
       ]
     }
   ],
-  "injury_news": [],
-  "updated": "2026-08-24T13:41:26Z"
+  "injury_news": [
+    {
+      "player": "Gibbs-White",
+      "club": "Nott'm Forest",
+      "news": "Knee injury - 75% chance of playing",
+      "status": "d",
+      "chance": 75
+    }
+  ],
+  "updated": "2026-08-24T19:21:12Z"
 }
