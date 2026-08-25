@@ -16,6 +16,7 @@ import urllib.error
 
 LEAGUE_ID = 668
 STATE_FILE = "league-state.json"
+PICKS_HISTORY_FILE = "picks-history.json"
 
 FPL_BASE = "https://fantasy.premierleague.com/api"
 DRAFT_BASE = "https://draft.premierleague.com/api"
@@ -44,6 +45,40 @@ def load_state():
 def save_state(state):
     with open(STATE_FILE, "w", encoding="utf-8") as f:
         json.dump(state, f, ensure_ascii=False, indent=2)
+
+
+def load_picks_history():
+    if os.path.exists(PICKS_HISTORY_FILE):
+        with open(PICKS_HISTORY_FILE, encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def save_picks_history(history):
+    with open(PICKS_HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+
+
+def get_frozen_squad(entry_id, gw, picks_history):
+    """
+    FPL Draft's /entry/{id}/event/{gw} viste sig IKKE at være et pålideligt
+    historisk øjebliksbillede - det kan reflektere en senere ændret trup, hvis
+    nogen bytter spillere på en måde der ikke går gennem den sporede
+    waiver/trade-log (bekræftet med et konkret, uforklaret tilfælde). Løsningen:
+    første gang vi ser en gameweek, fryser vi picks-dataen permanent i
+    picks-history.json. Alle senere kald genbruger den frosne kopi i stedet for
+    at spørge FPL igen, så data aldrig kan "drifte" efter at være gemt.
+    """
+    gw_key = f"GW{gw}"
+    entry_key = str(entry_id)
+    if gw_key in picks_history and entry_key in picks_history[gw_key]:
+        return picks_history[gw_key][entry_key]
+
+    picks = get_entry_gw_squad(entry_id, gw)
+    if picks is None:
+        return None
+    picks_history.setdefault(gw_key, {})[entry_key] = picks
+    return picks
 
 
 def find_latest_finished_event(bootstrap):
@@ -232,7 +267,9 @@ TRANSFERS LAVET I PRESEASON (waivers/trades siden draften):
         "Ønsk holdene held og lykke for sæsonen, og opsummér/kommentér på de transfers/waivers folk "
         "har lavet i preseason - vær gerne drillende og letsindig omkring valgene (kammeratligt, ikke "
         "ondskabsfuldt), præcis samme stil som vores almindelige gameweek-opdateringer. Brug KUN "
-        "dataen herunder, opfind ALDRIG konkrete spillerpræstationer eller nyheder der ikke er givet.\n\n"
+        "dataen herunder, opfind ALDRIG noget som helst der ikke er givet - ingen spillerpræstationer, "
+        "skader, klubskifter, kampresultater eller andre nyheder du ikke kender. Brug ALDRIG egen "
+        "baggrundsviden om spillere eller klubber (dette er en fiktiv liga-sæson).\n\n"
         f"Data:\n{context}"
     )
     summary_text = call_gemini_raw(prompt)
@@ -252,6 +289,13 @@ TRANSFERS LAVET I PRESEASON (waivers/trades siden draften):
         "username": "Update Bot", "content": "@everyone",
         "embeds": [embed], "allowed_mentions": {"parse": ["everyone"]},
     }).encode("utf-8")
+
+    if os.environ.get("DRY_RUN", "").lower() == "true":
+        print("=== DRY_RUN: intet sendt til Discord, dette er hvad der VILLE være sendt ===")
+        print(json.dumps(json.loads(discord_body), ensure_ascii=False, indent=2))
+        print("=== DRY_RUN slut ===")
+        return
+
     discord_req = urllib.request.Request(
         webhook, data=discord_body,
         headers={
@@ -270,6 +314,7 @@ def main():
         return
 
     state = load_state()
+    picks_history = load_picks_history()
     test_mode = os.environ.get("FORCE_TEST", "").lower() == "true"
 
     bootstrap = fetch_json(f"{FPL_BASE}/bootstrap-static/")
@@ -340,7 +385,7 @@ def main():
 
     if gw > 0:
         for entry_id in real_entry_ids:
-            picks = get_entry_gw_squad(entry_id, gw)
+            picks = get_frozen_squad(entry_id, gw, picks_history)
             if not picks:
                 continue
             starters = [p for p in picks if p.get("position", 0) <= 11]
@@ -504,6 +549,11 @@ TOTTENHAM-REGEL: {tottenham_result if tottenham_result else "Tottenham vandt ell
 
     post_to_discord(gw, standings_lines, best_line, worst_line, mover_line, bench_line, trans_lines, summary_text, point_gap, deadline_line, test_mode)
 
+    # picks-history er et rent arkiv (ikke en duplikat-spærre som last_posted_event),
+    # så den gemmes altid, også under test - jo før en gameweeks picks bliver frosset,
+    # jo mindre risiko for at data allerede har nået at drifte.
+    save_picks_history(picks_history)
+
     # -------- persist state --------
     if gw > 0 and not test_mode:
         state["last_posted_event"] = gw
@@ -551,12 +601,39 @@ def call_gemini(context, roast_target=None, forced=False):
         "uge, SKAL du altid inkludere et drillende sidespark til Tottenham et sted i teksten — det er "
         "en fast kammeratlig tradition i vores liga, uanset om nogen ejer Spurs-spillere eller ej. "
         "Hvis Spurs vandt eller ikke spillede, spring det over.\n"
-        "Opfind ALDRIG konkrete skader eller nyheder der ikke står i dataen — hold dig til det der "
-        "faktisk er givet, ellers spring det simpelthen over."
+        "Opfind ALDRIG noget som helst der ikke står i dataen herunder — ingen skader, ingen "
+        "transfers/lejeaftaler/klubskifter, ingen kampresultater, ingen begrundelser for hvorfor en "
+        "spiller scorede 0 point. Du kender IKKE hvorfor en spiller ikke leverede point (skade, "
+        "rotation, bænk i den rigtige kamp, klubskifte - hvad som helst) medmindre det STÅR i dataen. "
+        "Nævn kun de bare tal og navne hvis du ikke har en given forklaring - gæt eller opfind aldrig en. "
+        "KONKRET EKSEMPEL på noget du IKKE må gøre: at skrive 'det hjælper ikke at han er lejet ud til "
+        "en anden klub' eller lignende forklaring på en spillers 0 point, medmindre det ordret står i "
+        "dataen — selvom du tror du kender til et klubskifte fra din egen viden, er det IKKE en del af "
+        "denne ligas fiktive univers medmindre det er givet dig her. Brug ALDRIG egen baggrundsviden om "
+        "spillere, kun det der eksplicit er skrevet i dataen."
         f"{roast_instruction}\n\n"
         f"Data:\n{context}"
     )
     return call_gemini_raw(prompt)
+
+
+SUSPICIOUS_FABRICATION_WORDS = [
+    "lejeaftale", "udlejet", "på leje", "på lån", "skiftet til", "solgt til",
+    "købt af", "transfer til", "forlader klubben", "skiftede klub",
+]
+
+
+def contains_likely_fabrication(text):
+    """
+    Har konkret, gentagen erfaring med at Gemini opfinder plausible-lydende
+    transfer/leje-detaljer om spillere ud fra egen (formentlig virkelighedsnær,
+    men irrelevant i dette fiktive liga-univers) baggrundsviden, SELV efter
+    eksplicitte instrukser om ikke at gøre det (bekræftet i 2 ud af 3 test-
+    forsøg). Prompt-instrukser alene var ikke nok, så dette er et andet
+    sikkerhedslag: fanger og forkaster teksten i stedet for at poste den.
+    """
+    lower = text.lower()
+    return any(word in lower for word in SUSPICIOUS_FABRICATION_WORDS)
 
 
 def call_gemini_raw(prompt):
@@ -586,12 +663,16 @@ def call_gemini_raw(prompt):
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
-            return data["candidates"][0]["content"]["parts"][0]["text"].strip()
+            text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+            if contains_likely_fabrication(text):
+                print(f"Gemini-svar ({model}) indeholder formentlig opfundet transfer/leje-detalje, forkastet: {text[:200]}", file=sys.stderr)
+                continue
+            return text
         except Exception as e:
             print(f"Gemini-kald fejlede med model {model}:", e, file=sys.stderr)
             continue
 
-    print("Begge Gemini-modeller fejlede - springer denne post helt over.", file=sys.stderr)
+    print("Begge Gemini-modeller fejlede eller leverede upålideligt indhold - springer denne post helt over.", file=sys.stderr)
     return None
 
 
@@ -635,6 +716,13 @@ def post_to_discord(gw, standings_lines, best_line, worst_line, mover_line, benc
         "embeds": [embed],
         "allowed_mentions": {"parse": ["everyone"]},
     }).encode("utf-8")
+
+    if os.environ.get("DRY_RUN", "").lower() == "true":
+        print("=== DRY_RUN: intet sendt til Discord, dette er hvad der VILLE være sendt ===")
+        print(json.dumps(json.loads(body), ensure_ascii=False, indent=2))
+        print("=== DRY_RUN slut ===")
+        return
+
     req = urllib.request.Request(
         webhook,
         data=body,

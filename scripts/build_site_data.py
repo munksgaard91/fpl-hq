@@ -142,12 +142,38 @@ def build_alerts(bootstrap, element_status, entry_name_map):
     return alerts
 
 
-def build_bench_trend(bootstrap, entry_ids, live_points_by_gw):
+PICKS_HISTORY_FILE = "picks-history.json"
+
+
+def get_frozen_squad(entry_id, gw, picks_history):
+    """
+    FPL Draft's /entry/{id}/event/{gw} viste sig IKKE at være et pålideligt
+    historisk øjebliksbillede - det kan reflektere en senere ændret trup, hvis
+    nogen bytter spillere på en måde der ikke går gennem den sporede
+    waiver/trade-log (bekræftet med et konkret, uforklaret tilfælde for GW1).
+    Løsningen: første gang vi ser en gameweek, fryser vi picks-dataen permanent
+    i picks-history.json (delt med league_update.py). Alle senere kald genbruger
+    den frosne kopi i stedet for at spørge FPL igen, så data aldrig kan
+    "drifte" efter at være gemt.
+    """
+    gw_key = f"GW{gw}"
+    entry_key = str(entry_id)
+    if gw_key in picks_history and entry_key in picks_history[gw_key]:
+        return picks_history[gw_key][entry_key]
+
+    picks = get_entry_gw_picks(entry_id, gw)
+    if picks is None:
+        return None
+    picks_history.setdefault(gw_key, {})[entry_key] = picks
+    return picks
+
+
+def build_bench_trend(bootstrap, entry_ids, live_points_by_gw, picks_history):
     """Kumuleret sæson-bænkpoint pr. manager, på tværs af alle spillede gameweeks."""
     totals = {str(eid): 0 for eid in entry_ids}
     for gw, live_points in live_points_by_gw.items():
         for eid in entry_ids:
-            picks = get_entry_gw_picks(eid, gw)
+            picks = get_frozen_squad(eid, gw, picks_history)
             if not picks:
                 continue
             bench = [p for p in picks if p.get("position", 0) > 11]
@@ -178,7 +204,10 @@ def build_gw_summary(gw, standings_rows, entry_name_map, best_line, worst_line):
         "korte afsnit. Nævn kort hvem der lå bedst og dårligst, og en generel observation om ugen.\n\n"
         f"Stilling efter GW{gw}:\n"
         + "\n".join(f"{r['rank']}. {r['name']} — {r['total']} point" for r in standings_rows)
-        + f"\n\nBedste enkeltspiller: {best_line}\nDårligste enkeltspiller: {worst_line}\n"
+        + f"\n\nBedste enkeltspiller: {best_line}\nDårligste enkeltspiller: {worst_line}\n\n"
+        "Opfind ALDRIG noget som helst der ikke fremgår af dataen ovenfor - ingen kampresultater, "
+        "skader, klubskifter eller andre forklaringer/nyheder du ikke kender. Brug ALDRIG egen "
+        "baggrundsviden om spillere eller klubber (dette er en fiktiv liga-sæson) - kun de bare tal."
     )
     try:
         return gemini_call(prompt)
@@ -390,7 +419,9 @@ def add_ai_arguments(ranked_list, list_label, fixture_by_team=None):
         "valg lige nu. Vær PRÆCIS om hvilken sæson et tal refererer til - bland ALDRIG 'sidste sæson' "
         "og 'denne sæson indtil videre' sammen. Varier formuleringen mellem spillerne - gentag IKKE "
         "samme sætningsskabelon ('med en score på X og Y point...') for hver spiller. Brug KUN de tal "
-        "der er givet, opfind aldrig kampresultater, mål eller hændelser der ikke fremgår af dataen - "
+        "der er givet, opfind ALDRIG noget som helst der ikke fremgår af dataen - ingen kampresultater, "
+        "mål, hændelser, skader, klubskifter, lejeaftaler eller andre forklaringer du ikke kender. Brug "
+        "ALDRIG egen baggrundsviden om spillere eller klubber (dette er en fiktiv liga-sæson) - "
         "er der ikke andet at sige end pointtal og fixtures, så sig det naturligt uden at lyde robotagtigt.\n\n"
         f"{players_block}\n\n"
         'Svar KUN som gyldig JSON: en liste af strenge, i samme rækkefølge som spillerne, '
@@ -693,7 +724,9 @@ def add_waiver_arguments(suggestions):
         "Du får en liste over foreslåede waiver-bytter i Fantasy Premier League Draft. Skriv ÉT kort "
         "argument pr. forslag (maks 25 ord, på dansk) der forklarer hvorfor DENNE ÆNDRING gavner "
         "brugeren specifikt - fokusér på hvad brugeren vinder, ikke generel statistik. Brug KUN tallene "
-        "givet, opfind aldrig konkrete kampe eller hændelser.\n\n"
+        "givet, opfind ALDRIG noget som helst der ikke fremgår af dataen - ingen kampe, hændelser, "
+        "skader, klubskifter eller andre forklaringer du ikke kender. Brug ALDRIG egen baggrundsviden "
+        "om spillere eller klubber (dette er en fiktiv liga-sæson).\n\n"
         + "\n".join(lines) +
         '\n\nSvar KUN som gyldig JSON: en liste af strenge i samme rækkefølge, fx ["argument 1", ...].'
     )
@@ -711,6 +744,7 @@ def main():
     fixtures = fetch_json(f"{FPL_BASE}/fixtures/")
     league_details = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/details")
     element_status = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/element-status")["element_status"]
+    picks_history = load_json_file(PICKS_HISTORY_FILE, {})
 
     entry_name_map, entry_id_by_league_id, real_entry_ids = get_league_entries(league_details)
 
@@ -771,7 +805,7 @@ def main():
         for gw in range(1, current_gw + 1):
             live = fetch_json(f"{FPL_BASE}/event/{gw}/live")
             live_points_by_gw[gw] = get_live_points_map(live)
-        bench_trend = build_bench_trend(bootstrap, real_entry_ids, live_points_by_gw)
+        bench_trend = build_bench_trend(bootstrap, real_entry_ids, live_points_by_gw, picks_history)
 
     # ---- transaktionshistorik ----
     player_names_all = get_player_names(bootstrap)
@@ -817,6 +851,9 @@ def main():
     site_data["transfer_suggestions"] = waiver_suggestions
     save_json_file("site-data.json", site_data)
     print(f"site-data.json opdateret med {len(waiver_suggestions)} waiver-forslag")
+
+    save_json_file(PICKS_HISTORY_FILE, picks_history)
+    print(f"picks-history.json opdateret ({len(picks_history)} gameweeks frosset)")
 
 
 if __name__ == "__main__":
