@@ -17,6 +17,7 @@ import urllib.error
 LEAGUE_ID = 668
 STATE_FILE = "league-state.json"
 PICKS_HISTORY_FILE = "picks-history.json"
+TEAM_SNAPSHOT_FILE = "team-snapshot.json"
 
 FPL_BASE = "https://fantasy.premierleague.com/api"
 DRAFT_BASE = "https://draft.premierleague.com/api"
@@ -57,6 +58,87 @@ def load_picks_history():
 def save_picks_history(history):
     with open(PICKS_HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
+
+
+def load_team_snapshot():
+    if os.path.exists(TEAM_SNAPSHOT_FILE):
+        with open(TEAM_SNAPSHOT_FILE, encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def save_team_snapshot(snapshot):
+    with open(TEAM_SNAPSHOT_FILE, "w", encoding="utf-8") as f:
+        json.dump(snapshot, f, ensure_ascii=False, indent=2)
+
+
+BIG_TRANSFER_THRESHOLD = 100  # sidste sæsons point - grænsen for at tælle som "stor nok" uden at være ejet
+
+
+def fetch_last_season_stats(player_id):
+    """Se build_site_data.py's tilsvarende funktion - samme logik, delt formål."""
+    try:
+        data = fetch_json(f"{FPL_BASE}/element-summary/{player_id}/")
+        history_past = data.get("history_past", [])
+        if not history_past:
+            return None
+        last = history_past[-1]
+        if last.get("minutes", 0) < 900:
+            return None
+        return {"total_points": last.get("total_points", 0)}
+    except Exception:
+        return None
+
+
+def get_league_transfer_news(bootstrap, element_status, entry_name_map, player_names, season_kicked_off):
+    """
+    Sporer ALLE Premier League-spillere (ikke kun ejede) for to ting, kun ud
+    fra FPL's egen bekræftede data - ikke AI, ikke søgning:
+      1) Helt nye spillere i ligaen (dukker op i bootstrap-static for første gang)
+      2) Klubskifte for eksisterende spillere - nævnes KUN hvis enten ejet i
+         vores liga, eller en 'stor' spiller (>= BIG_TRANSFER_THRESHOLD point
+         sidste sæson). Deler team-snapshot.json med build_site_data.py.
+    """
+    by_id = {p["id"]: p for p in bootstrap["elements"]}
+    owner_by_element = {es["element"]: es["owner"] for es in element_status if es.get("owner")}
+    snapshot = load_team_snapshot()
+    is_first_ever_run = not snapshot
+    new_snapshot = {}
+    news_items = []
+
+    for p in bootstrap["elements"]:
+        pid = p["id"]
+        current_team = p["team"]
+        new_snapshot[str(pid)] = current_team
+        previous_team = snapshot.get(str(pid))
+
+        if previous_team is None:
+            if not is_first_ever_run:
+                news_items.append({"type": "new_to_league", "player": player_names.get(pid, "?"),
+                                    "club": TEAM_NAMES.get(current_team, "?")})
+            continue
+
+        if previous_team != current_team:
+            owner_entry_id = owner_by_element.get(pid)
+            is_owned = owner_entry_id is not None
+            is_big = False
+            if not is_owned:
+                if season_kicked_off:
+                    stats = fetch_last_season_stats(pid)
+                    last_points = stats["total_points"] if stats else 0
+                else:
+                    last_points = p.get("total_points", 0)
+                is_big = last_points >= BIG_TRANSFER_THRESHOLD
+            if is_owned or is_big:
+                news_items.append({
+                    "type": "transfer", "player": player_names.get(pid, "?"),
+                    "owner": entry_name_map.get(owner_entry_id) if is_owned else None,
+                    "old_club": TEAM_NAMES.get(previous_team, "?"),
+                    "new_club": TEAM_NAMES.get(current_team, "?"),
+                })
+
+    save_team_snapshot(new_snapshot)
+    return news_items
 
 
 def get_frozen_squad(entry_id, gw, picks_history):
@@ -366,6 +448,7 @@ def main():
     # -------- injury/news for owned players (altid aktuel, kræver ikke en spillet gameweek) --------
     element_status = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/element-status")["element_status"]
     owned_injury_lines = get_owned_player_news(bootstrap, element_status, entry_name_map)
+    league_transfer_news = get_league_transfer_news(bootstrap, element_status, entry_name_map, player_names, gw > 0)
 
     # -------- top overall PL performers + Tottenham-resultat (kræver reelt spillede kampe) --------
     if gw > 0:
@@ -518,6 +601,9 @@ TRANSAKTIONER SIDEN SIDST:
 
 SKADER/STATUS PÅ EJEDE SPILLERE (fra FPL's officielle data, kun nævn hvis relevant):
 {chr(10).join(owned_injury_lines) if owned_injury_lines else "Ingen kendte skader på ejede spillere lige nu."}
+
+BEKRÆFTEDE KLUBSKIFTER/NYE SPILLERE I LIGAEN SIDEN SIDST (fra FPL's officielle data):
+{chr(10).join((f"{t['player']} ({t['owner']}) skiftede fra {t['old_club']} til {t['new_club']}" if t['type']=='transfer' and t.get('owner') else f"{t['player']} skiftede fra {t['old_club']} til {t['new_club']}" if t['type']=='transfer' else f"{t['player']} er ny i Premier League, hos {t['club']}") for t in league_transfer_news) if league_transfer_news else "Ingen registrerede klubskifter eller nye spillere siden sidst."}
 
 TOP PRÆSTATIONER I HELE PREMIER LEAGUE DENNE UGE (uafhængigt af vores liga, til generel PL-flavor):
 {chr(10).join(f"{name} — {pts} point" for pts, name in top_performers) if top_performers else "Ingen data."}

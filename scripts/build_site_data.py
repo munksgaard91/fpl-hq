@@ -36,6 +36,19 @@ RANK_HISTORY_FILE = "rank-history.json"
 GW_SUMMARIES_FILE = "gw-summaries.json"
 
 
+SUSPICIOUS_FABRICATION_WORDS = [
+    "lejeaftale", "udlejet", "på leje", "på lån", "skiftet til", "solgt til",
+    "købt af", "transfer til", "forlader klubben", "skiftede klub",
+]
+
+
+def contains_likely_fabrication(text):
+    """Se league_update.py's tilsvarende funktion - samme, gentagne, bekræftede risiko for at
+    Gemini opfinder plausible-lydende transfer/leje-detaljer ud fra egen baggrundsviden."""
+    lower = text.lower()
+    return any(word in lower for word in SUSPICIOUS_FABRICATION_WORDS)
+
+
 def gemini_call(prompt, expect_json=False):
     api_key = os.environ["GEMINI_API_KEY"]
     body = {"contents": [{"parts": [{"text": prompt}]}]}
@@ -61,7 +74,12 @@ def gemini_call(prompt, expect_json=False):
         try:
             with urllib.request.urlopen(req, timeout=45) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
-            return data["candidates"][0]["content"]["parts"][0]["text"].strip()
+            text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+            if not expect_json and contains_likely_fabrication(text):
+                print(f"Gemini-svar ({model}) indeholder formentlig opfundet transfer/leje-detalje, forkastet.", file=sys.stderr)
+                last_error = RuntimeError("fabrication filter triggered")
+                continue
+            return text
         except Exception as e:
             print(f"Gemini-kald fejlede med model {model}: {e}", file=sys.stderr)
             last_error = e
@@ -142,6 +160,69 @@ def build_alerts(bootstrap, element_status, entry_name_map):
     return alerts
 
 
+TEAM_SNAPSHOT_FILE = "team-snapshot.json"
+
+
+BIG_TRANSFER_THRESHOLD = 100  # sidste sæsons point - grænsen for at tælle som "stor nok" uden at være ejet
+
+
+def build_league_transfer_news(bootstrap, element_status, entry_name_map, kicked_off):
+    """
+    Sporer ALLE Premier League-spillere (ikke kun ejede) for to ting, kun ud fra
+    FPL's egen bekræftede data - ikke AI, ikke søgning:
+      1) Helt nye spillere i ligaen (dukker op i bootstrap-static for første gang)
+      2) Klubskifte for eksisterende spillere - nævnes KUN hvis enten ejet i
+         vores liga, eller en 'stor' spiller (>= BIG_TRANSFER_THRESHOLD point
+         sidste sæson) - undgår at oversvømme listen med hver eneste ubetydelige
+         reserve-spillers klubskifte.
+    """
+    by_id = {p["id"]: p for p in bootstrap["elements"]}
+    owner_by_element = {es["element"]: es["owner"] for es in element_status if es.get("owner")}
+
+    snapshot = load_json_file(TEAM_SNAPSHOT_FILE, {})
+    is_first_ever_run = not snapshot  # tomt snapshot = intet at sammenligne mod, undgå at kalde alle 590 "nye"
+    new_snapshot = {}
+    news_items = []
+
+    for p in bootstrap["elements"]:
+        pid = p["id"]
+        current_team = p["team"]
+        new_snapshot[str(pid)] = current_team
+        previous_team = snapshot.get(str(pid))
+
+        if previous_team is None:
+            if not is_first_ever_run:
+                news_items.append({
+                    "type": "new_to_league",
+                    "player": get_player_full_name(p),
+                    "club": TEAM_NAMES.get(current_team, "?"),
+                })
+            continue
+
+        if previous_team != current_team:
+            owner_entry_id = owner_by_element.get(pid)
+            is_owned = owner_entry_id is not None
+            is_big = False
+            if not is_owned:
+                if kicked_off:
+                    stats = fetch_last_season_stats(pid)
+                    last_points = stats["total_points"] if stats else 0
+                else:
+                    last_points = p.get("total_points", 0)
+                is_big = last_points >= BIG_TRANSFER_THRESHOLD
+            if is_owned or is_big:
+                news_items.append({
+                    "type": "transfer",
+                    "player": get_player_full_name(p),
+                    "owner": entry_name_map.get(owner_entry_id) if is_owned else None,
+                    "old_club": TEAM_NAMES.get(previous_team, "?"),
+                    "new_club": TEAM_NAMES.get(current_team, "?"),
+                })
+
+    save_json_file(TEAM_SNAPSHOT_FILE, new_snapshot)
+    return news_items
+
+
 PICKS_HISTORY_FILE = "picks-history.json"
 
 
@@ -196,15 +277,27 @@ def get_entry_gw_picks(entry_id, event_id):
 # Gameweek-resumé (AI, seriøs tone, ~150 ord)
 # ---------------------------------------------------------------------------
 
-def build_gw_summary(gw, standings_rows, entry_name_map, best_line, worst_line):
+def build_gw_summary(gw, standings_rows, entry_name_map, best_line, worst_line, league_transfer_news=None):
+    transfer_block = ""
+    if league_transfer_news:
+        lines = []
+        for t in league_transfer_news:
+            if t["type"] == "transfer":
+                who = f" ({t['owner']})" if t.get("owner") else ""
+                lines.append(f"{t['player']}{who} skiftede fra {t['old_club']} til {t['new_club']}")
+            else:
+                lines.append(f"{t['player']} er ny i Premier League, hos {t['club']}")
+        transfer_block = "\n\nBekræftede klubskifter/nye spillere i ligaen:\n" + "\n".join(lines)
     prompt = (
         "Skriv et sagligt, analytisk resumé (omkring 150 ord, på dansk) af en gameweek i en lille "
         "Fantasy Premier League Draft-liga mellem venner. Seriøs, journalistisk tone - IKKE drillende "
         "eller morsom, det er en anden kanal end vores Discord-bot. Brug holdenes navne. Del op i "
-        "korte afsnit. Nævn kort hvem der lå bedst og dårligst, og en generel observation om ugen.\n\n"
+        "korte afsnit. Nævn kort hvem der lå bedst og dårligst, og en generel observation om ugen. "
+        "Nævn evt. klubskifter/nye spillere hvis der er nogen givet nedenfor.\n\n"
         f"Stilling efter GW{gw}:\n"
         + "\n".join(f"{r['rank']}. {r['name']} — {r['total']} point" for r in standings_rows)
-        + f"\n\nBedste enkeltspiller: {best_line}\nDårligste enkeltspiller: {worst_line}\n\n"
+        + f"\n\nBedste enkeltspiller: {best_line}\nDårligste enkeltspiller: {worst_line}"
+        + transfer_block + "\n\n"
         "Opfind ALDRIG noget som helst der ikke fremgår af dataen ovenfor - ingen kampresultater, "
         "skader, klubskifter eller andre forklaringer/nyheder du ikke kender. Brug ALDRIG egen "
         "baggrundsviden om spillere eller klubber (dette er en fiktiv liga-sæson) - kun de bare tal."
@@ -648,6 +741,148 @@ QUALITY_TIER_RATIO = 1.7          # hvis din spiller havde >1.7x så mange point
                                     # er det formentlig en anden liga-klasse - byt ikke bare pga. et kort opsving
 
 
+def build_bench_poach_pool(bootstrap, fixture_by_team, kicked_off, current_playing_gw,
+                            real_entry_ids, entry_name_map, position):
+    """
+    Samme to-trins scoring som build_unowned_pool, men blandt ANDRE managers'
+    BÆNKEDE spillere (position > 11) i stedet for ledige agenter. Bruges til
+    "overvej at bytte til dig"-forslag - simplere end en fuld tosidet
+    handel-matching, viser bare hvem der reelt er stærkere end det du selv har.
+    """
+    positions = get_player_positions(bootstrap)
+    by_id = {p["id"]: p for p in bootstrap["elements"]}
+    candidates = []
+    for eid in real_entry_ids:
+        if eid == MY_ENTRY_ID:
+            continue
+        picks = get_entry_gw_picks(eid, current_playing_gw) if current_playing_gw else None
+        if not picks:
+            continue
+        bench = [pk for pk in picks if pk.get("position", 0) > 11]
+        for pk in bench:
+            p = by_id.get(pk["element"])
+            if not p or positions.get(p["id"]) != position:
+                continue
+            if p["status"] not in ("a", "d"):
+                continue
+            candidates.append((p, eid))
+
+    rough = [(p, eid, compute_power_score(p, fixture_by_team, kicked_off)) for p, eid in candidates]
+    rough.sort(key=lambda x: -x[2])
+    pool = rough[:10]  # bænke er små, ingen grund til en stor pulje
+
+    scored = []
+    for p, eid, _rough_score in pool:
+        last_stats = None
+        if kicked_off:
+            last_stats = fetch_last_season_stats(p["id"])
+            season_minutes = float(p.get("minutes") or 0)
+            if last_stats is None and season_minutes < 180:
+                continue
+            last_ppg = last_stats["ppg"] if last_stats else None
+            score = compute_power_score(p, fixture_by_team, kicked_off, last_season_ppg=last_ppg)
+        else:
+            score = compute_power_score(p, fixture_by_team, kicked_off)
+        scored.append({
+            "id": p["id"], "name": get_player_full_name(p),
+            "club": TEAM_NAMES.get(p["team"], "?"), "team_id": p["team"], "score": score,
+            "last_season_points": last_stats["total_points"] if last_stats else p.get("total_points", 0),
+            "owner_entry_id": eid, "owner": entry_name_map.get(eid, "?"),
+        })
+    scored.sort(key=lambda x: -x["score"])
+    return scored
+
+
+def build_trade_suggestions(bootstrap, fixture_by_team, kicked_off, current_playing_gw,
+                             real_entry_ids, entry_name_map, management):
+    """
+    Samme princip og spærre-regler som build_waiver_suggestions, men kigger på
+    hvad der sidder ubrugt på ANDRE managers' bænke - simplere end at forsøge at
+    vurdere om et bytte er fair for begge parter, viser bare "denne spiller er
+    stærkere end en af dine, og han spiller ikke engang hos sin nuværende ejer".
+    Maks 5 forslag, ingen hvis intet reelt forbedrer sig.
+    """
+    if not management.get("available"):
+        return []
+    my_players = management.get("starters") or management.get("squad") or []
+    positions_needed = {p["pos"] for p in my_players}
+    bench_pool_by_pos = {
+        pos: build_bench_poach_pool(bootstrap, fixture_by_team, kicked_off, current_playing_gw,
+                                     real_entry_ids, entry_name_map, pos)
+        for pos in positions_needed
+    }
+
+    by_id = {p["id"]: p for p in bootstrap["elements"]}
+    candidates = []
+    for mp in my_players:
+        p = by_id.get(mp["id"])
+        if not p:
+            continue
+        if kicked_off:
+            last_stats = fetch_last_season_stats(mp["id"])
+            my_last_season = last_stats["total_points"] if last_stats else p.get("total_points", 0)
+            last_ppg = last_stats["ppg"] if last_stats else None
+            my_score = compute_power_score(p, fixture_by_team, kicked_off, last_season_ppg=last_ppg)
+        else:
+            my_last_season = p.get("total_points", 0)
+            my_score = compute_power_score(p, fixture_by_team, kicked_off)
+
+        pool = bench_pool_by_pos.get(mp["pos"], [])
+        pool = [a for a in pool if a["id"] != mp["id"]]
+        if not pool:
+            continue
+        best = pool[0]
+        gap = best["score"] - my_score
+        if gap < MIN_WAIVER_GAP:
+            continue
+
+        diffs = fixture_by_team.get(best.get("team_id"), [])
+        hard_count = sum(1 for d in diffs[:5] if d >= HARD_FIXTURE_THRESHOLD)
+        if hard_count > MAX_HARD_FIXTURES_ALLOWED:
+            continue
+
+        incoming_last_season = best.get("last_season_points") or 0
+        if my_last_season > 0 and incoming_last_season > 0:
+            if my_last_season / max(incoming_last_season, 1) > QUALITY_TIER_RATIO:
+                continue
+
+        candidates.append({
+            "my_player": mp["name"], "my_score": round(my_score, 1),
+            "target": best["name"], "target_owner": best["owner"],
+            "target_score": round(best["score"], 1), "gap": round(gap, 1), "pos": mp["pos"],
+        })
+    candidates.sort(key=lambda x: -x["gap"])
+    return candidates[:5]
+
+
+def add_trade_arguments(suggestions):
+    """Ét samlet Gemini-kald - argumentet skal pege på DIN fordel ved at overveje handlen."""
+    if not suggestions:
+        return suggestions
+    lines = [
+        f"{i+1}. Din {s['my_player']} (score {s['my_score']}) vs. {s['target']} "
+        f"(score {s['target_score']}, {s['pos']}) som {s['target_owner']} lader sidde på bænken"
+        for i, s in enumerate(suggestions)
+    ]
+    prompt = (
+        "Du får en liste over spillere andre managers i en Fantasy Premier League Draft-liga lader "
+        "sidde ubrugt på bænken, som kunne være et bytte-emne. Skriv ÉT kort argument pr. forslag "
+        "(maks 25 ord, på dansk) der forklarer hvorfor det kan være værd at foreslå en handel - "
+        "fokusér på at spilleren er stærkere OG ikke bliver brugt af sin nuværende ejer. Brug KUN "
+        "tallene givet, opfind ALDRIG noget som helst der ikke fremgår af dataen. Brug ALDRIG egen "
+        "baggrundsviden om spillere eller klubber (dette er en fiktiv liga-sæson).\n\n"
+        + "\n".join(lines) +
+        '\n\nSvar KUN som gyldig JSON: en liste af strenge i samme rækkefølge, fx ["argument 1", ...].'
+    )
+    fallback = [f"{s['target']} scorer {s['gap']} point højere end {s['my_player']}, og sidder på bænken hos {s['target_owner']}." for s in suggestions]
+    args = safe_gemini_json(prompt, fallback)
+    if not isinstance(args, list) or len(args) != len(suggestions):
+        args = fallback
+    for s, arg in zip(suggestions, args):
+        s["reason"] = arg
+    return suggestions
+
+
 def build_waiver_suggestions(bootstrap, element_status, fixture_by_team, kicked_off, management):
     """
     Sammenligner hver af dine spillere mod den bedst-scorende LEDIGE spiller på
@@ -768,13 +1003,14 @@ def main():
 
     # ---- alerts ----
     alerts = build_alerts(bootstrap, element_status, entry_name_map)
+    league_transfer_news = build_league_transfer_news(bootstrap, element_status, entry_name_map, kicked_off)
 
     # ---- gw summaries (kun ved en NY færdigspillet gameweek) ----
     gw_summaries = load_json_file(GW_SUMMARIES_FILE, [])
     already_summarized = {s["gw"] for s in gw_summaries}
     if season_started and current_gw not in already_summarized:
         best_line = worst_line = "Ingen data"  # kræver picks pr. manager - se league_update.py for fuld logik
-        text = build_gw_summary(current_gw, standings_rows, entry_name_map, best_line, worst_line)
+        text = build_gw_summary(current_gw, standings_rows, entry_name_map, best_line, worst_line, league_transfer_news)
         if text:
             gw_summaries.insert(0, {"gw": current_gw, "text": text})
             gw_summaries = gw_summaries[:10]  # behold kun de seneste 10
@@ -819,6 +1055,7 @@ def main():
         "standings": standings_rows,
         "point_gap": point_gap,
         "alerts": alerts,
+        "league_transfer_news": league_transfer_news,
         "gw_summaries": gw_summaries,
         "highlights": highlights,
         "bench_trend": bench_trend,
@@ -849,8 +1086,15 @@ def main():
     waiver_suggestions = build_waiver_suggestions(bootstrap, element_status, fixture_by_team, kicked_off, management)
     waiver_suggestions = add_waiver_arguments(waiver_suggestions)
     site_data["transfer_suggestions"] = waiver_suggestions
+
+    # ---- bytte-forslag (andre managers' bænkede spillere) ----
+    trade_suggestions = build_trade_suggestions(bootstrap, fixture_by_team, kicked_off, current_playing_gw,
+                                                 real_entry_ids, entry_name_map, management)
+    trade_suggestions = add_trade_arguments(trade_suggestions)
+    site_data["trade_suggestions"] = trade_suggestions
+
     save_json_file("site-data.json", site_data)
-    print(f"site-data.json opdateret med {len(waiver_suggestions)} waiver-forslag")
+    print(f"site-data.json opdateret med {len(waiver_suggestions)} waiver-forslag og {len(trade_suggestions)} bytte-forslag")
 
     save_json_file(PICKS_HISTORY_FILE, picks_history)
     print(f"picks-history.json opdateret ({len(picks_history)} gameweeks frosset)")
