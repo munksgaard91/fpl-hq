@@ -29,6 +29,6 @@ jobs:
         run: |
           git config user.name "fplhq-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add site-data.json powerranking.json management.json rank-history.json gw-summaries.json
+          git add site-data.json powerranking.json management.json rank-history.json gw-summaries.json picks-history.json
           git diff --cached --quiet || git commit -m "Auto-update site data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
