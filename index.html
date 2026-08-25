@@ -38,13 +38,6 @@
     padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid var(--border);
   }
   .wordmark{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;letter-spacing:-0.01em;}
-  .refresh-btn{
-    display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text);font-weight:500;
-    background:var(--surface);border:1px solid var(--border-strong,#D5D5D0);border-radius:7px;padding:8px 14px;cursor:pointer;
-  }
-  .refresh-btn:disabled{opacity:.7;cursor:default;}
-  .refresh-btn .spin{display:inline-block;animation:spin 0.8s linear infinite;}
-  @keyframes spin{to{transform:rotate(360deg);}}
 
   nav{display:flex;gap:4px;margin-bottom:28px;overflow-x:auto;}
   nav button{
@@ -256,7 +249,6 @@
     <span class="wordmark">Fantasy Premier League HQ</span>
     <div style="display:flex;gap:8px;">
       <button class="am-btn" id="amBtn"><span>✦</span> Assistent Manager</button>
-      <button class="refresh-btn" id="refreshBtn"><span id="refreshIcon">↻</span> <span id="refreshLabel">Opdatér</span></button>
     </div>
   </header>
 
@@ -292,6 +284,11 @@
       <div class="hl-grid" id="highlightsGrid"></div>
     </section>
 
+    <section>
+      <p class="label">Klubskifter &amp; nye spillere <span style="text-transform:none;color:var(--text-dim);">— bekræftede, fra FPL's egen data</span></p>
+      <div id="leagueTransferBody"></div>
+    </section>
+
     <div class="links">
       <a href="https://draft.premierleague.com/league/668" target="_blank" rel="noopener">↗ Fantasy Premier League: 404 Clean Sheet Not Found</a>
       <a href="#" id="discordLink" target="_blank" rel="noopener">↗ Discord</a>
@@ -308,6 +305,12 @@
   <div class="panel" data-panel="3">
     <p class="label">Forslag inden næste deadline <span id="deadlineLabel" style="text-transform:none;color:var(--text-dim);"></span></p>
     <div id="suggestionsBody"></div>
+
+    <p class="label" style="margin-top:28px;">Bytte-forslag <span style="text-transform:none;color:var(--text-dim);">— fra andre managers' bænke</span></p>
+    <div id="tradeSuggestionsBody"></div>
+
+    <p class="label" style="margin-top:28px;">Klubskifter <span style="text-transform:none;color:var(--text-dim);">— bekræftede, for spillere I ejer</span></p>
+    <div id="clubTransfersBody"></div>
 
     <p class="label" style="margin-top:28px;">Historik</p>
     <div class="card" id="historyCard"></div>
@@ -493,6 +496,27 @@ function renderHighlights(h){
   grid.innerHTML = `<div class="hl-box"><div class="v num">${h.highest_gw_score.score}</div><div class="l">Højeste GW-score (${h.highest_gw_score.name}, ${h.highest_gw_score.gw})</div></div>`;
 }
 
+function renderLeagueTransferNews(items){
+  const body = document.getElementById('leagueTransferBody');
+  if(!items || items.length === 0){
+    body.innerHTML = '<div class="empty-state"><p>Ingen klubskifter eller nye spillere registreret for nylig.</p></div>';
+    return;
+  }
+  body.innerHTML = `<div class="card" style="padding:0 16px;">` + items.map(t=>{
+    if(t.type === 'new_to_league'){
+      return `<div class="news-item">
+        <div class="top left"><span class="tag" style="background:var(--accent-tint);color:var(--accent);">Ny i ligaen</span></div>
+        <p><span class="who">${t.player}</span> er ny i Premier League, hos ${t.club}.</p>
+      </div>`;
+    }
+    const ownerTxt = t.owner ? ` (${t.owner})` : '';
+    return `<div class="news-item">
+      <div class="top left"><span class="tag" style="background:var(--warning-tint);color:var(--warning);">Klubskifte</span></div>
+      <p><span class="who">${t.player}</span>${ownerTxt} skiftede fra ${t.old_club} til ${t.new_club}.</p>
+    </div>`;
+  }).join('') + `</div>`;
+}
+
 // ---------- MANAGEMENT ----------
 function buildFixtureTicker(fixtures, startGw){
   if(!fixtures || fixtures.length===0){
@@ -675,6 +699,30 @@ function renderTransfersTab(sd){
       </div>`).join('');
   }
 
+  const trades = sd.trade_suggestions || [];
+  const tradeBody = document.getElementById('tradeSuggestionsBody');
+  if(trades.length === 0){
+    tradeBody.innerHTML = '<div class="empty-state"><p>Ingen bytte-forslag lige nu — ingen bænket spiller hos de andre er et reelt løft over din egen trup.</p></div>';
+  } else {
+    tradeBody.innerHTML = trades.map(t => `
+      <div class="sugg">
+        <div class="move">${t.my_player} <span class="arrow">→</span> ${t.target} <span class="type">Bytte</span></div>
+        <p>${t.reason}</p>
+      </div>`).join('');
+  }
+
+  const clubTransfers = sd.transfer_club_alerts || [];
+  const clubBody = document.getElementById('clubTransfersBody');
+  if(clubTransfers.length === 0){
+    clubBody.innerHTML = '<div class="empty-state"><p>Ingen klubskifter registreret for jeres spillere.</p></div>';
+  } else {
+    clubBody.innerHTML = `<div class="card" style="padding:0 16px;">` + clubTransfers.map(t => `
+      <div class="news-item">
+        <div class="top left"><span class="tag" style="background:var(--accent-tint);color:var(--accent);">Transfer</span></div>
+        <p><span class="who">${t.player}</span> (${t.owner}) skiftede fra ${t.old_club} til ${t.new_club}.</p>
+      </div>`).join('') + `</div>`;
+  }
+
   const hist = sd.transactions || [];
   const historyCard = document.getElementById('historyCard');
   if(hist.length===0){
@@ -721,6 +769,7 @@ async function loadAll(){
     renderChart(state.rankHistory, siteData);
     renderFeed(siteData.gw_summaries);
     renderHighlights(siteData.highlights);
+    renderLeagueTransferNews(siteData.league_transfer_news);
     renderTransfersTab(siteData);
   }
   if(powerranking) renderRankedList('prCard', 'prToggle', powerranking.players);
@@ -735,14 +784,6 @@ document.querySelectorAll('nav .tab').forEach(btn=>{
     btn.classList.add('active');
     document.querySelector('[data-panel="'+btn.dataset.p+'"]').classList.add('active');
   });
-});
-
-document.getElementById('refreshBtn').addEventListener('click', async function(){
-  const btn=this, icon=document.getElementById('refreshIcon'), label=document.getElementById('refreshLabel');
-  btn.disabled=true; icon.classList.add('spin'); icon.textContent='↻'; label.textContent='Opdaterer…';
-  await loadAll();
-  icon.classList.remove('spin'); icon.textContent='✓'; label.textContent='Opdateret';
-  setTimeout(()=>{ icon.textContent='↻'; label.textContent='Opdatér'; btn.disabled=false; }, 1200);
 });
 
 function closeAllDrawers(){
