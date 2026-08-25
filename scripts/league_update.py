@@ -235,24 +235,11 @@ TRANSFERS LAVET I PRESEASON (waivers/trades siden draften):
         "dataen herunder, opfind ALDRIG konkrete spillerpræstationer eller nyheder der ikke er givet.\n\n"
         f"Data:\n{context}"
     )
-    body = json.dumps({"contents": [{"parts": [{"text": prompt}]}]}).encode("utf-8")
-    api_key = os.environ["GEMINI_API_KEY"]
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"
-    req = urllib.request.Request(
-        url, data=body,
-        headers={
-            "Content-Type": "application/json", "x-goog-api-key": api_key,
-            "User-Agent": "Mozilla/5.0 (compatible; drafthq-bot/1.0)",
-        },
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-        summary_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-    except Exception as e:
-        print("Gemini-kald fejlede:", e, file=sys.stderr)
-        summary_text = "Sæsonen starter i dag — held og lykke til alle! (AI-opsummeringen kunne ikke genereres denne gang.)"
+    summary_text = call_gemini_raw(prompt)
+
+    if summary_text is None:
+        print("Springer sæsonstart-besked over pga. Gemini-fejl - kør igen senere.", file=sys.stderr)
+        return
 
     webhook = os.environ["DISCORD_WEBHOOK_URL"]
     embed = {
@@ -501,6 +488,14 @@ TOTTENHAM-REGEL: {tottenham_result if tottenham_result else "Tottenham vandt ell
     roast_target = manual_roast or last_place_name
     summary_text = call_gemini(context, roast_target, forced=bool(manual_roast))
 
+    if summary_text is None:
+        # Begge Gemini-forsøg fejlede. Springer HELE posten over i stedet for at
+        # sende en synligt degraderet besked til @everyone - state opdateres IKKE,
+        # så næste planlagte kørsel (om få timer) prøver hele gameweeken igen fra
+        # bunden, formentlig når Google's midlertidige problem er væk.
+        print("Springer post over pga. Gemini-fejl - prøves igen ved næste kørsel.", file=sys.stderr)
+        return
+
     next_deadline = find_next_deadline(bootstrap)
     deadline_line = "Ukendt — tjek draft.premierleague.com"
     if next_deadline:
@@ -510,20 +505,19 @@ TOTTENHAM-REGEL: {tottenham_result if tottenham_result else "Tottenham vandt ell
     post_to_discord(gw, standings_lines, best_line, worst_line, mover_line, bench_line, trans_lines, summary_text, point_gap, deadline_line, test_mode)
 
     # -------- persist state --------
-    if gw > 0:
+    if gw > 0 and not test_mode:
         state["last_posted_event"] = gw
         state["last_ranks"] = current_ranks
         state["last_transaction_count"] = len(all_trans)
         save_state(state)
         print(f"GW{gw} postet og state gemt.")
+    elif test_mode:
+        print(f"Test-tilstand: besked postet, men state IKKE gemt (for ikke at blokere en ægte fremtidig post).")
     else:
         print("Test postet — league-state.json IKKE ændret (ingen rigtig gameweek).")
 
 
 def call_gemini(context, roast_target=None, forced=False):
-    api_key = os.environ["GEMINI_API_KEY"]
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"
-
     roast_instruction = ""
     if roast_target and forced:
         roast_instruction = (
@@ -562,24 +556,43 @@ def call_gemini(context, roast_target=None, forced=False):
         f"{roast_instruction}\n\n"
         f"Data:\n{context}"
     )
+    return call_gemini_raw(prompt)
+
+
+def call_gemini_raw(prompt):
+    """
+    Delt lav-niveau Gemini-kalder, genbrugt af både call_gemini() (gameweek-
+    opsummeringer) og run_season_kickoff(). Prøver primær model, og ved fejl én
+    backup-model (fx hvis Google melder "high demand" på den primære) - fejler
+    BEGGE, returneres None, ikke en synlig fejltekst, så den kaldende kode kan
+    vælge at springe hele posten over i stedet for at sende en synligt
+    "degraderet" besked ud til @everyone.
+    """
+    api_key = os.environ["GEMINI_API_KEY"]
     body = json.dumps({"contents": [{"parts": [{"text": prompt}]}]}).encode("utf-8")
-    req = urllib.request.Request(
-        url,
-        data=body,
-        headers={
-            "Content-Type": "application/json",
-            "x-goog-api-key": api_key,
-            "User-Agent": "Mozilla/5.0 (compatible; drafthq-bot/1.0; +https://github.com/munksgaard91/drafthq)",
-        },
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-        return data["candidates"][0]["content"]["parts"][0]["text"].strip()
-    except Exception as e:
-        print("Gemini-kald fejlede, falder tilbage til simpel tekst:", e, file=sys.stderr)
-        return "Ugens AI-opsummering kunne ikke genereres denne gang — men tallene taler for sig selv nedenfor."
+
+    for model in ("gemini-3.5-flash", "gemini-3.6-flash"):
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        req = urllib.request.Request(
+            url,
+            data=body,
+            headers={
+                "Content-Type": "application/json",
+                "x-goog-api-key": api_key,
+                "User-Agent": "Mozilla/5.0 (compatible; drafthq-bot/1.0; +https://github.com/munksgaard91/drafthq)",
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            return data["candidates"][0]["content"]["parts"][0]["text"].strip()
+        except Exception as e:
+            print(f"Gemini-kald fejlede med model {model}:", e, file=sys.stderr)
+            continue
+
+    print("Begge Gemini-modeller fejlede - springer denne post helt over.", file=sys.stderr)
+    return None
 
 
 def post_to_discord(gw, standings_lines, best_line, worst_line, mover_line, bench_line, trans_lines, summary_text, point_gap, deadline_line, test_mode=False):

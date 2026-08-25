@@ -38,23 +38,35 @@ GW_SUMMARIES_FILE = "gw-summaries.json"
 
 def gemini_call(prompt, expect_json=False):
     api_key = os.environ["GEMINI_API_KEY"]
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"
     body = {"contents": [{"parts": [{"text": prompt}]}]}
     if expect_json:
         body["generationConfig"] = {"responseMimeType": "application/json"}
-    req = urllib.request.Request(
-        url,
-        data=json.dumps(body).encode("utf-8"),
-        headers={
-            "Content-Type": "application/json",
-            "x-goog-api-key": api_key,
-            "User-Agent": "Mozilla/5.0 (compatible; fplhq-bot/1.0)",
-        },
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=45) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
-    return data["candidates"][0]["content"]["parts"][0]["text"].strip()
+    body_bytes = json.dumps(body).encode("utf-8")
+
+    # Prøv primær model, og ved fejl én backup-model (fx hvis Google melder "high
+    # demand" på den primære, som skete i praksis under udvikling af dette script).
+    last_error = None
+    for model in ("gemini-3.5-flash", "gemini-3.6-flash"):
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        req = urllib.request.Request(
+            url,
+            data=body_bytes,
+            headers={
+                "Content-Type": "application/json",
+                "x-goog-api-key": api_key,
+                "User-Agent": "Mozilla/5.0 (compatible; fplhq-bot/1.0)",
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=45) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            return data["candidates"][0]["content"]["parts"][0]["text"].strip()
+        except Exception as e:
+            print(f"Gemini-kald fejlede med model {model}: {e}", file=sys.stderr)
+            last_error = e
+            continue
+    raise last_error
 
 
 def safe_gemini_json(prompt, fallback):
