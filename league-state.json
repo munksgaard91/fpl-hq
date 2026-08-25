@@ -1,5 +1,11 @@
 {
-  "last_posted_event": 0,
-  "last_ranks": {},
-  "last_transaction_count": 0
+  "last_posted_event": 1,
+  "last_ranks": {
+    "1510": 1,
+    "48956": 2,
+    "127144": 3,
+    "2539": 4,
+    "17813": 5
+  },
+  "last_transaction_count": 6
 }
