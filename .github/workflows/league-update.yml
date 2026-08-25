@@ -3,8 +3,12 @@ name: League gameweek update
 on:
   schedule:
     - cron: '0 8,14,22 * * *'   # kl. 08, 14 og 22 UTC dagligt — fanger de fleste GW-afslutninger uden unødig spam
-  workflow_dispatch:             # tillader manuelt "Run workflow" i GitHub-UI, til test
+  workflow_dispatch:             # tillader manuelt "Run workflow" i GitHub-UI
     inputs:
+      real_run:
+        description: 'Sæt til "true" for at køre den RIGTIGE gameweek-tjek nu (ikke bare en test) - fx hvis du ikke vil vente på næste planlagte kørsel'
+        required: false
+        default: 'false'
       roast_target:
         description: 'Valgfrit: navn på den der skal 100% roastes denne kørsel (kun test-tilstand)'
         required: false
@@ -29,7 +33,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          FORCE_TEST: ${{ github.event_name == 'workflow_dispatch' && 'true' || 'false' }}
+          FORCE_TEST: ${{ (github.event_name == 'workflow_dispatch' && inputs.real_run != 'true') && 'true' || 'false' }}
           ROAST_TARGET: ${{ inputs.roast_target }}
         run: python3 scripts/league_update.py
 
