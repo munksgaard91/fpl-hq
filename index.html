@@ -499,17 +499,23 @@ function renderHighlights(h){
 function renderLeagueTransferNews(items){
   const body = document.getElementById('leagueTransferBody');
   if(!items || items.length === 0){
-    body.innerHTML = '<div class="empty-state"><p>Ingen klubskifter eller nye spillere registreret for nylig.</p></div>';
+    body.innerHTML = '<div class="empty-state"><p>Ingen klubskifter, nye spillere eller afgange registreret for nylig.</p></div>';
     return;
   }
   body.innerHTML = `<div class="card" style="padding:0 16px;">` + items.map(t=>{
+    const ownerTxt = t.owner ? ` (${t.owner})` : '';
     if(t.type === 'new_to_league'){
       return `<div class="news-item">
         <div class="top left"><span class="tag" style="background:var(--accent-tint);color:var(--accent);">Ny i ligaen</span></div>
         <p><span class="who">${t.player}</span> er ny i Premier League, hos ${t.club}.</p>
       </div>`;
     }
-    const ownerTxt = t.owner ? ` (${t.owner})` : '';
+    if(t.type === 'left_league'){
+      return `<div class="news-item">
+        <div class="top left"><span class="tag injury">Forladt ligaen</span></div>
+        <p><span class="who">${t.player}</span>${ownerTxt} har forladt Premier League (var hos ${t.old_club}).</p>
+      </div>`;
+    }
     return `<div class="news-item">
       <div class="top left"><span class="tag" style="background:var(--warning-tint);color:var(--warning);">Klubskifte</span></div>
       <p><span class="who">${t.player}</span>${ownerTxt} skiftede fra ${t.old_club} til ${t.new_club}.</p>
