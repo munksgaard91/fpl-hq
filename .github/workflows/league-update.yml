@@ -2,7 +2,7 @@ name: League gameweek update
 
 on:
   schedule:
-    - cron: '0 8,14,22 * * *'   # kl. 08, 14 og 22 UTC dagligt — fanger de fleste GW-afslutninger uden unødig spam
+    - cron: '0 * * * *'   # hver time - selve tjekket er gratis, kun den faktiske post koster et Gemini-kald
   workflow_dispatch:             # tillader manuelt "Run workflow" i GitHub-UI
     inputs:
       real_run:
