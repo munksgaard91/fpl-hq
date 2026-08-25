@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T19:21:12Z",
+  "updated": "2026-08-25T07:34:55Z",
   "current_gw": 0,
   "season_started": false,
   "next_deadline": "2026-08-28T17:30:00Z",
@@ -7,28 +7,28 @@
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 55,
+      "total": 68,
       "rank": 1,
       "trend": null
     },
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 48,
+      "total": 59,
       "rank": 2,
       "trend": null
     },
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 32,
+      "total": 34,
       "rank": 3,
       "trend": null
     },
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 21,
+      "total": 30,
       "rank": 4,
       "trend": null
     },
@@ -40,7 +40,7 @@
       "trend": null
     }
   ],
-  "point_gap": 36,
+  "point_gap": 49,
   "alerts": [],
   "gw_summaries": [],
   "highlights": {

@@ -71,8 +71,8 @@
       "name": "Palmer",
       "club": "Chelsea",
       "pos": "MID",
-      "status": "a",
-      "chance": null
+      "status": "d",
+      "chance": 75
     },
     {
       "id": 106,
@@ -131,6 +131,12 @@
       "in": null,
       "type": "Formation",
       "reason": "Gibbs-White er flagget (75% spilchance), men ingen bænket spiller på samme position kan erstatte 1:1 - overvej et formationsskift."
+    },
+    {
+      "out": "Palmer",
+      "in": null,
+      "type": "Formation",
+      "reason": "Palmer er flagget (75% spilchance), men ingen bænket spiller på samme position kan erstatte 1:1 - overvej et formationsskift."
     }
   ],
   "fixtures": [
@@ -241,7 +247,14 @@
       "news": "Knee injury - 75% chance of playing",
       "status": "d",
       "chance": 75
+    },
+    {
+      "player": "Palmer",
+      "club": "Chelsea",
+      "news": "Calf injury - 75% chance of playing",
+      "status": "d",
+      "chance": 75
     }
   ],
-  "updated": "2026-08-24T19:21:12Z"
+  "updated": "2026-08-25T07:34:55Z"
 }
