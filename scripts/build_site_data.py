@@ -168,30 +168,36 @@ BIG_TRANSFER_THRESHOLD = 100  # sidste sæsons point - grænsen for at tælle so
 
 def build_league_transfer_news(bootstrap, element_status, entry_name_map, kicked_off):
     """
-    Sporer ALLE Premier League-spillere (ikke kun ejede) for to ting, kun ud fra
-    FPL's egen bekræftede data - ikke AI, ikke søgning:
+    Sporer ALLE Premier League-spillere (ikke kun ejede) for tre ting, kun ud
+    fra FPL's egen bekræftede data - ikke AI, ikke søgning:
       1) Helt nye spillere i ligaen (dukker op i bootstrap-static for første gang)
       2) Klubskifte for eksisterende spillere - nævnes KUN hvis enten ejet i
          vores liga, eller en 'stor' spiller (>= BIG_TRANSFER_THRESHOLD point
          sidste sæson) - undgår at oversvømme listen med hver eneste ubetydelige
          reserve-spillers klubskifte.
+      3) Spillere der FORLADER ligaen - enten FPL's eget 'removed'-flag slår til,
+         eller spilleren helt forsvinder fra bootstrap-static. Altid nævnt hvis
+         ejet af os (akut relevant - vedkommende er dødvægt i din trup), ellers
+         samme 'stor spiller'-tærskel som klubskifter.
     """
-    by_id = {p["id"]: p for p in bootstrap["elements"]}
     owner_by_element = {es["element"]: es["owner"] for es in element_status if es.get("owner")}
 
     snapshot = load_json_file(TEAM_SNAPSHOT_FILE, {})
     is_first_ever_run = not snapshot  # tomt snapshot = intet at sammenligne mod, undgå at kalde alle 590 "nye"
     new_snapshot = {}
     news_items = []
+    seen_ids = set()
 
     for p in bootstrap["elements"]:
         pid = p["id"]
+        seen_ids.add(pid)
         current_team = p["team"]
-        new_snapshot[str(pid)] = current_team
-        previous_team = snapshot.get(str(pid))
+        is_removed_now = bool(p.get("removed"))
+        new_snapshot[str(pid)] = {"team": current_team, "removed": is_removed_now, "name": get_player_full_name(p)}
+        prev = snapshot.get(str(pid))
 
-        if previous_team is None:
-            if not is_first_ever_run:
+        if prev is None:
+            if not is_first_ever_run and not is_removed_now:
                 news_items.append({
                     "type": "new_to_league",
                     "player": get_player_full_name(p),
@@ -199,25 +205,61 @@ def build_league_transfer_news(bootstrap, element_status, entry_name_map, kicked
                 })
             continue
 
-        if previous_team != current_team:
-            owner_entry_id = owner_by_element.get(pid)
-            is_owned = owner_entry_id is not None
-            is_big = False
-            if not is_owned:
-                if kicked_off:
-                    stats = fetch_last_season_stats(pid)
-                    last_points = stats["total_points"] if stats else 0
-                else:
-                    last_points = p.get("total_points", 0)
-                is_big = last_points >= BIG_TRANSFER_THRESHOLD
-            if is_owned or is_big:
-                news_items.append({
-                    "type": "transfer",
-                    "player": get_player_full_name(p),
-                    "owner": entry_name_map.get(owner_entry_id) if is_owned else None,
-                    "old_club": TEAM_NAMES.get(previous_team, "?"),
-                    "new_club": TEAM_NAMES.get(current_team, "?"),
-                })
+        previous_team = prev.get("team") if isinstance(prev, dict) else prev  # bagudkompatibel med gammelt format
+        was_removed = prev.get("removed", False) if isinstance(prev, dict) else False
+        owner_entry_id = owner_by_element.get(pid)
+        is_owned = owner_entry_id is not None
+
+        if is_removed_now and not was_removed:
+            if not _is_notable(p, kicked_off, is_owned):
+                continue
+            news_items.append({
+                "type": "left_league",
+                "player": get_player_full_name(p),
+                "owner": entry_name_map.get(owner_entry_id) if is_owned else None,
+                "old_club": TEAM_NAMES.get(previous_team, "?"),
+            })
+        elif previous_team != current_team and not is_removed_now:
+            if not _is_notable(p, kicked_off, is_owned):
+                continue
+            news_items.append({
+                "type": "transfer",
+                "player": get_player_full_name(p),
+                "owner": entry_name_map.get(owner_entry_id) if is_owned else None,
+                "old_club": TEAM_NAMES.get(previous_team, "?"),
+                "new_club": TEAM_NAMES.get(current_team, "?"),
+            })
+
+    # Spillere der er helt forsvundet fra bootstrap-static (ikke bare markeret removed)
+    for pid_str, prev in snapshot.items():
+        pid = int(pid_str)
+        if pid in seen_ids:
+            continue
+        if isinstance(prev, dict) and prev.get("removed"):
+            continue  # allerede rapporteret dengang han blev markeret removed
+        owner_entry_id = owner_by_element.get(pid)
+        is_owned = owner_entry_id is not None
+        news_items.append({
+            "type": "left_league",
+            "player": prev.get("name", "Ukendt spiller") if isinstance(prev, dict) else "Ukendt spiller",
+            "owner": entry_name_map.get(owner_entry_id) if is_owned else None,
+            "old_club": TEAM_NAMES.get(prev.get("team"), "?") if isinstance(prev, dict) else "?",
+        })
+
+    save_json_file(TEAM_SNAPSHOT_FILE, new_snapshot)
+    return news_items
+
+
+def _is_notable(p, kicked_off, is_owned):
+    """Ejet = altid relevant. Ikke ejet = kun hvis en 'stor' spiller (sidste sæsons point)."""
+    if is_owned:
+        return True
+    if kicked_off:
+        stats = fetch_last_season_stats(p["id"])
+        last_points = stats["total_points"] if stats else 0
+    else:
+        last_points = p.get("total_points", 0)
+    return last_points >= BIG_TRANSFER_THRESHOLD
 
     save_json_file(TEAM_SNAPSHOT_FILE, new_snapshot)
     return news_items
@@ -282,12 +324,14 @@ def build_gw_summary(gw, standings_rows, entry_name_map, best_line, worst_line, 
     if league_transfer_news:
         lines = []
         for t in league_transfer_news:
+            who = f" ({t['owner']})" if t.get("owner") else ""
             if t["type"] == "transfer":
-                who = f" ({t['owner']})" if t.get("owner") else ""
                 lines.append(f"{t['player']}{who} skiftede fra {t['old_club']} til {t['new_club']}")
+            elif t["type"] == "left_league":
+                lines.append(f"{t['player']}{who} har forladt Premier League (var hos {t['old_club']})")
             else:
                 lines.append(f"{t['player']} er ny i Premier League, hos {t['club']}")
-        transfer_block = "\n\nBekræftede klubskifter/nye spillere i ligaen:\n" + "\n".join(lines)
+        transfer_block = "\n\nBekræftede klubskifter/nye spillere/afgange i ligaen:\n" + "\n".join(lines)
     prompt = (
         "Skriv et sagligt, analytisk resumé (omkring 150 ord, på dansk) af en gameweek i en lille "
         "Fantasy Premier League Draft-liga mellem venner. Seriøs, journalistisk tone - IKKE drillende "
