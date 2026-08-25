@@ -71,8 +71,8 @@
       "name": "Palmer",
       "club": "Chelsea",
       "pos": "MID",
-      "status": "d",
-      "chance": 75
+      "status": "a",
+      "chance": 100
     },
     {
       "id": 106,
@@ -131,12 +131,6 @@
       "in": null,
       "type": "Formation",
       "reason": "Gibbs-White er flagget (75% spilchance), men ingen bænket spiller på samme position kan erstatte 1:1 - overvej et formationsskift."
-    },
-    {
-      "out": "Palmer",
-      "in": null,
-      "type": "Formation",
-      "reason": "Palmer er flagget (75% spilchance), men ingen bænket spiller på samme position kan erstatte 1:1 - overvej et formationsskift."
     }
   ],
   "fixtures": [
@@ -144,21 +138,21 @@
       "club": "Arsenal",
       "count": 3,
       "difficulty": [
-        2,
         4,
         4,
         3,
-        3
+        3,
+        2
       ]
     },
     {
       "club": "Bournemouth",
       "count": 1,
       "difficulty": [
-        5,
         3,
         3,
         3,
+        4,
         4
       ]
     },
@@ -167,9 +161,9 @@
       "count": 2,
       "difficulty": [
         3,
-        3,
         2,
         3,
+        4,
         4
       ]
     },
@@ -177,10 +171,10 @@
       "club": "Chelsea",
       "count": 1,
       "difficulty": [
-        3,
         2,
         5,
         2,
+        3,
         3
       ]
     },
@@ -189,9 +183,9 @@
       "count": 1,
       "difficulty": [
         3,
-        3,
         4,
         3,
+        2,
         2
       ]
     },
@@ -200,10 +194,10 @@
       "count": 2,
       "difficulty": [
         3,
-        3,
         2,
         4,
-        2
+        2,
+        4
       ]
     },
     {
@@ -211,9 +205,9 @@
       "count": 2,
       "difficulty": [
         2,
-        2,
         3,
         4,
+        3,
         3
       ]
     },
@@ -221,10 +215,10 @@
       "club": "Newcastle",
       "count": 2,
       "difficulty": [
-        4,
         3,
         3,
         3,
+        2,
         2
       ]
     },
@@ -232,11 +226,11 @@
       "club": "Nott'm Forest",
       "count": 1,
       "difficulty": [
-        2,
         4,
         3,
         4,
-        2
+        2,
+        3
       ]
     }
   ],
@@ -247,14 +241,7 @@
       "news": "Knee injury - 75% chance of playing",
       "status": "d",
       "chance": 75
-    },
-    {
-      "player": "Palmer",
-      "club": "Chelsea",
-      "news": "Calf injury - 75% chance of playing",
-      "status": "d",
-      "chance": 75
     }
   ],
-  "updated": "2026-08-25T07:34:55Z"
+  "updated": "2026-08-25T19:22:17Z"
 }

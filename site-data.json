@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-25T07:34:55Z",
-  "current_gw": 0,
-  "season_started": false,
+  "updated": "2026-08-25T19:22:17Z",
+  "current_gw": 1,
+  "season_started": true,
   "next_deadline": "2026-08-28T17:30:00Z",
   "standings": [
     {
@@ -21,33 +21,57 @@
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 34,
+      "total": 44,
       "rank": 3,
       "trend": null
     },
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 30,
+      "total": 34,
       "rank": 4,
       "trend": null
     },
     {
       "league_entry": 17813,
       "name": "Kop of Jensen",
-      "total": 19,
+      "total": 24,
       "rank": 5,
       "trend": null
     }
   ],
-  "point_gap": 49,
-  "alerts": [],
-  "gw_summaries": [],
+  "point_gap": 44,
+  "alerts": [
+    {
+      "player": "Van Oevelen",
+      "club": "Ipswich",
+      "owner_entry_id": 126623,
+      "owner": "HernDog IF",
+      "news": "Has joined Valencia on loan for the rest of the season",
+      "chance": 0
+    }
+  ],
+  "gw_summaries": [
+    {
+      "gw": 1,
+      "text": "Første runde af den nye sæson i Draft-ligaen er færdigspillet, og der tegner sig allerede tidlige konturer i tabellen efter en pointmæssigt varieret åbningsuge. GW1 bød på en markant spredning mellem top og bund, hvilket indikerer, at den indledende draftsammensætning har haft en umiddelbar og mærkbar effekt på holdenes præstationer fra start.\n\nI toppen af tabellen har HaCunha Mateta lagt sig i spidsen med en overbevisende præstation, der udmøntede sig i 68 point. Holdet efterfølges tæt af Mainoo Character FC, som med 59 point ligeledes har fået en solid start på sæsonen og etablerer sig i den øvre del af tabellen.\n\nI den modsatte ende af spektret befinder Kop of Jensen sig på en foreløbig sidsteplads med 24 point efter en svær åbningsrunde. HernDog IF indtager en stabil midterposition som nummer tre med 44 point, mens Bottlers Anonymous ligger lige under på fjerdepladsen med 34 point. Udviklingen viser et tidligt gab i ligaen, som de nederste hold hurtigt skal forsøge at lukke."
+    }
+  ],
   "highlights": {
-    "highest_gw_score": null,
+    "highest_gw_score": {
+      "name": "HaCunha Mateta",
+      "score": 68,
+      "gw": "GW1"
+    },
     "longest_streak": null
   },
-  "bench_trend": {},
+  "bench_trend": {
+    "1510": 11,
+    "2538": 3,
+    "17803": 3,
+    "48885": 16,
+    "126623": 6
+  },
   "transactions": [
     {
       "gw": 1,
@@ -98,5 +122,16 @@
       "added": "2026-08-21T15:48:11.155384Z"
     }
   ],
-  "transfer_suggestions": []
+  "transfer_suggestions": [
+    {
+      "out": "Gibbs-White",
+      "out_score": 31.9,
+      "in": "Stach",
+      "in_club": "Leeds",
+      "in_score": 46.3,
+      "gap": 14.4,
+      "pos": "MID",
+      "reason": "Du opgraderer din midtbane og øger dit pointpotentiale ved at skifte til Stach, der leverer en markant højere score på 46.3 mod Gibbs-Whites 31.9."
+    }
+  ]
 }
