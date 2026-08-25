@@ -41,12 +41,21 @@ SUSPICIOUS_FABRICATION_WORDS = [
     "købt af", "transfer til", "forlader klubben", "skiftede klub",
 ]
 
+# Kendte ikke-PL klubber Gemini har vist en tendens til at nævne uopfordret,
+# selv i formuleringer der ikke matcher ordlisten ovenfor (fx "er lejet ud
+# til Valencia" i stedet for "udlejet"). Simplere og mere robust end at
+# jagte hver eneste mulige sætningskonstruktion - hele vores liga lever kun
+# i Premier League-universet, så ethvert andet klubnavn er mistænkeligt.
+FOREIGN_CLUB_WARNING_LIST = ["Valencia", "Real Madrid", "Barcelona", "Bayern", "PSG", "Juventus", "Inter Milan", "AC Milan"]
+
 
 def contains_likely_fabrication(text):
     """Se league_update.py's tilsvarende funktion - samme, gentagne, bekræftede risiko for at
     Gemini opfinder plausible-lydende transfer/leje-detaljer ud fra egen baggrundsviden."""
     lower = text.lower()
-    return any(word in lower for word in SUSPICIOUS_FABRICATION_WORDS)
+    if any(word in lower for word in SUSPICIOUS_FABRICATION_WORDS):
+        return True
+    return any(club.lower() in lower for club in FOREIGN_CLUB_WARNING_LIST)
 
 
 def gemini_call(prompt, expect_json=False):

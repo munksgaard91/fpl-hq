@@ -756,12 +756,27 @@ def contains_likely_fabrication(text):
     Har konkret, gentagen erfaring med at Gemini opfinder plausible-lydende
     transfer/leje-detaljer om spillere ud fra egen (formentlig virkelighedsnær,
     men irrelevant i dette fiktive liga-univers) baggrundsviden, SELV efter
-    eksplicitte instrukser om ikke at gøre det (bekræftet i 2 ud af 3 test-
-    forsøg). Prompt-instrukser alene var ikke nok, så dette er et andet
-    sikkerhedslag: fanger og forkaster teksten i stedet for at poste den.
+    eksplicitte instrukser om ikke at gøre det. Ren nøgleords-matching viste
+    sig at være for skrøbelig - modellen fandt en formulering ("er lejet ud
+    til Valencia") der ikke matchede nogen af ordene, selvom det var præcis
+    samme opfundne detalje. Derfor et andet, mere robust lag: hele vores liga
+    lever udelukkende i Premier League-universet, så ETHVERT nævnt klubnavn
+    der ikke er en af vores 20 kendte PL-klubber er i sig selv mistænkeligt,
+    uanset hvilken sætning det står i.
     """
     lower = text.lower()
-    return any(word in lower for word in SUSPICIOUS_FABRICATION_WORDS)
+    if any(word in lower for word in SUSPICIOUS_FABRICATION_WORDS):
+        return True
+    for club in FOREIGN_CLUB_WARNING_LIST:
+        if club.lower() in lower:
+            return True
+    return False
+
+
+# Kendte ikke-PL klubber Gemini har vist en tendens til at nævne uopfordret.
+# Udvid listen hvis nye tilfælde dukker op - simplere og mere robust end at
+# jagte hver eneste mulige sætningskonstruktion.
+FOREIGN_CLUB_WARNING_LIST = ["Valencia", "Real Madrid", "Barcelona", "Bayern", "PSG", "Juventus", "Inter Milan", "AC Milan"]
 
 
 def call_gemini_raw(prompt):
