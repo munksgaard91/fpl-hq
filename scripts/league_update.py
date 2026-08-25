@@ -105,12 +105,24 @@ def get_owned_player_news(bootstrap, element_status, entry_name_map):
     return lines
 
 
+def get_live_elements_normalized(live):
+    """
+    FPL's /event/{gw}/live returnerer 'elements' som et dict (nøglet på spiller-ID
+    som streng) MENS en gameweek er i gang, men som en LISTE (hvert element med sit
+    eget 'id'-felt) når gameweeken er markeret helt færdig. Bekræftet begge dele
+    direkte - denne normaliserer til en liste af (player_id, stats_dict).
+    """
+    elements = live.get("elements", {})
+    if isinstance(elements, dict):
+        return [(int(pid), d) for pid, d in elements.items()]
+    return [(item["id"], item) for item in elements]
+
+
 def get_top_gw_performers(bootstrap, live, top_n=3):
     """Top-scorere i HELE Premier League denne gameweek (ikke kun i vores liga) — ægte data, ikke gæt."""
     by_id = {p["id"]: p for p in bootstrap["elements"]}
     scored = []
-    for pid_str, pdata in live["elements"].items():
-        pid = int(pid_str)
+    for pid, pdata in get_live_elements_normalized(live):
         pts = pdata["stats"]["total_points"]
         if pts <= 0:
             continue
@@ -312,7 +324,9 @@ def main():
     # -------- live points for the gameweek (hentes én gang, bruges flere steder) --------
     if gw > 0:
         live = fetch_json(f"{FPL_BASE}/event/{gw}/live")
-        live_points = {int(pid): pdata["stats"]["total_points"] for pid, pdata in live["elements"].items()}
+        live_points = dict(
+            (pid, pdata["stats"]["total_points"]) for pid, pdata in get_live_elements_normalized(live)
+        )
     else:
         live = {"elements": {}}
         live_points = {}

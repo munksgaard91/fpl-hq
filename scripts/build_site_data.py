@@ -27,7 +27,7 @@ from fpl_common import (
     fetch_json, load_json_file, save_json_file,
     get_player_full_name, get_player_positions, get_player_names, get_player_clubs,
     get_league_entries, find_latest_finished_event, find_next_event,
-    get_team_fixture_difficulty,
+    get_team_fixture_difficulty, get_live_points_map,
 )
 
 MY_ENTRY_ID = 1510  # Rasmus / "HaCunha Mateta" - Management-fanen er bygget til dig specifikt
@@ -758,7 +758,7 @@ def main():
         live_points_by_gw = {}
         for gw in range(1, current_gw + 1):
             live = fetch_json(f"{FPL_BASE}/event/{gw}/live")
-            live_points_by_gw[gw] = {int(pid): d["stats"]["total_points"] for pid, d in live["elements"].items()}
+            live_points_by_gw[gw] = get_live_points_map(live)
         bench_trend = build_bench_trend(bootstrap, real_entry_ids, live_points_by_gw)
 
     # ---- transaktionshistorik ----

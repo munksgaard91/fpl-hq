@@ -123,3 +123,17 @@ def get_team_fixture_difficulty(fixtures, num_gws=5):
             if len(by_team[tid]) < num_gws:
                 by_team[tid].append(f[opp_diff_key])
     return by_team
+
+
+def get_live_points_map(live):
+    """
+    FPL's /event/{gw}/live returnerer 'elements' som et dict (nøglet på spiller-ID
+    som streng) MENS en gameweek er i gang, men som en LISTE (hvert element med sit
+    eget 'id'-felt) når gameweeken er markeret helt færdig. Bekræftet begge dele
+    direkte - denne normaliserer til {player_id: total_points} uanset hvilken form
+    der kommer.
+    """
+    elements = live.get("elements", {})
+    if isinstance(elements, dict):
+        return {int(pid): d["stats"]["total_points"] for pid, d in elements.items()}
+    return {item["id"]: item["stats"]["total_points"] for item in elements}
