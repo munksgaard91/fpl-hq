@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-26T07:36:35Z",
+  "updated": "2026-08-26T13:44:08Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-08-28T17:30:00Z",
@@ -118,7 +118,7 @@
       "gw": 1,
       "entry_name": "Kop of Jensen",
       "kind": "Free agent",
-      "player_in": "Savinho",
+      "player_in": "Sávio",
       "player_out": "Gravenberch",
       "added": "2026-08-21T15:48:11.155384Z"
     }
@@ -132,7 +132,7 @@
       "in_score": 46.4,
       "gap": 14.5,
       "pos": "MID",
-      "reason": "Ved at hente Stach får du en midtbanespiller med en højere score på 46,4 i stedet for Gibbs-Whites score på 31,9."
+      "reason": "Ved at skifte Gibbs-White ud med Stach opgraderer du din midtbane med en spiller, der har en markant højere score på 46,4 mod 31,9."
     }
   ],
   "trade_suggestions": []
