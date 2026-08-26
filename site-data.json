@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-25T19:22:17Z",
+  "updated": "2026-08-26T07:36:35Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-08-28T17:30:00Z",
@@ -51,6 +51,7 @@
       "chance": 0
     }
   ],
+  "league_transfer_news": [],
   "gw_summaries": [
     {
       "gw": 1,
@@ -128,10 +129,11 @@
       "out_score": 31.9,
       "in": "Stach",
       "in_club": "Leeds",
-      "in_score": 46.3,
-      "gap": 14.4,
+      "in_score": 46.4,
+      "gap": 14.5,
       "pos": "MID",
-      "reason": "Du opgraderer din midtbane og øger dit pointpotentiale ved at skifte til Stach, der leverer en markant højere score på 46.3 mod Gibbs-Whites 31.9."
+      "reason": "Ved at hente Stach får du en midtbanespiller med en højere score på 46,4 i stedet for Gibbs-Whites score på 31,9."
     }
-  ]
+  ],
+  "trade_suggestions": []
 }
