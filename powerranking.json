@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-26T13:44:08Z",
+  "updated": "2026-08-26T21:30:29Z",
   "players": [
     {
       "id": 165,
@@ -13,7 +13,7 @@
       "form": "11.0",
       "status": "a",
       "chance": null,
-      "argument": "Han leverede stærke 177 point i sidste sæson (2025/26), men har kun hentet 11 point i denne sæson."
+      "argument": "Trods 177 point i 2025/26-sæsonen har han indtil videre blot hentet 11 point i denne sæson."
     },
     {
       "id": 154,
@@ -27,7 +27,7 @@
       "form": "13.0",
       "status": "a",
       "chance": 100,
-      "argument": "Med 13 point i denne sæson indtil videre og et godkendt kampprogram, er han en solid, tilgængelig mulighed."
+      "argument": "Han brillerer med 13 point i denne sæson efter en godkendt 2025/26-sæson med 114 point."
     },
     {
       "id": 399,
@@ -41,7 +41,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Efter 135 point i sidste sæson (2025/26), har han startet denne sæson lidt trægt med kun 8 point."
+      "argument": "Efter 135 point i 2025/26-sæsonen har han indtil videre kun præsteret 8 point i denne sæson."
     },
     {
       "id": 40,
@@ -55,7 +55,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Rogers var fremragende sidste sæson (2025/26) med 169 point, men har blot hentet 8 point i denne sæson."
+      "argument": "Hans 169 point i 2025/26-sæsonen lover godt, trods en mere stille start på denne sæson med 8 point."
     },
     {
       "id": 335,
@@ -63,13 +63,13 @@
       "club": "Leeds",
       "team_id": 13,
       "pos": "MID",
-      "score": 46.4,
+      "score": 46.5,
       "last_season_points": 137,
       "points_this_season_so_far": 13,
       "form": "13.0",
       "status": "a",
       "chance": null,
-      "argument": "Han har fået en flot start med 13 point i denne sæson, og de næste kampe ser lette ud."
+      "argument": "Et let kampprogram på 2,7 og stærke 13 point i denne sæson gør ham yderst attraktiv lige nu."
     },
     {
       "id": 236,
@@ -77,13 +77,13 @@
       "club": "Everton",
       "team_id": 9,
       "pos": "MID",
-      "score": 46.0,
+      "score": 46.1,
       "last_season_points": 151,
       "points_this_season_so_far": 11,
       "form": "11.0",
       "status": "a",
       "chance": null,
-      "argument": "Trods fine 151 point i sidste sæson (2025/26), venter der sværere modstand med et sværhedsgrad-snit på 3.3."
+      "argument": "Trods fine 151 point i 2025/26-sæsonen trækker de kommende kampes sværhedsgrad på 3,3 betydeligt ned."
     },
     {
       "id": 388,
@@ -97,7 +97,7 @@
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "En defensiv klippe fra sidste sæson (2025/26) med 179 point, der fortsat er klar til at levere nu."
+      "argument": "Sidste sæsons 179 point viser klassen, selvom denne sæson indtil videre kun har budt på 10 point."
     },
     {
       "id": 391,
@@ -111,7 +111,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "9 point i denne sæson indtil videre er godkendt efter blot 79 point i hele sidste sæson (2025/26)."
+      "argument": "Hans 9 point i denne sæson minder om den svage 2025/26-sæson, hvor han kun fik 79 point."
     },
     {
       "id": 295,
@@ -125,7 +125,7 @@
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Svært valg med kun 5 point i denne sæson indtil videre, efter en svag sidste sæson (2025/26)."
+      "argument": "Med kun 5 point i denne sæson og beskedne 66 point i 2025/26-sæsonen er han svær at anbefale."
     },
     {
       "id": 86,
@@ -133,13 +133,13 @@
       "club": "Brentford",
       "team_id": 4,
       "pos": "MID",
-      "score": 44.7,
+      "score": 44.8,
       "last_season_points": 115,
       "points_this_season_so_far": 10,
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "Godt potentiale grundet et nemt kampprogram på 2.7 og 10 point på kontoen i denne sæson indtil videre."
+      "argument": "Et attraktivt program med sværhedsgrad 2,7 gør ham spændende med 10 point i denne sæson indtil videre."
     },
     {
       "id": 200,
@@ -153,7 +153,7 @@
       "form": "6.0",
       "status": "a",
       "chance": null,
-      "argument": "Skuffende med kun 6 point i denne sæson, selvom han leverede hele 154 point i sidste sæson (2025/26)."
+      "argument": "Trods flotte 154 point i 2025/26-sæsonen har han skuffet fælt i denne sæson med kun 6 point."
     },
     {
       "id": 115,
@@ -167,7 +167,7 @@
       "form": "17.0",
       "status": "a",
       "chance": null,
-      "argument": "Fremragende form med 17 point i denne sæson og et attraktivt kampprogram med et snit på kun 2.7."
+      "argument": "Han leverer varen med 17 point i denne sæson, og det lette program på 2,7 hjælper ham yderligere."
     },
     {
       "id": 12,
@@ -181,7 +181,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Sidste sæsons (2025/26) 157 point frister, men et svært kampprogram på 3.7 udfordrer hans 9 point nu."
+      "argument": "En sværhed på 3,7 i de næste kampe og kun 9 point i denne sæson gør ham fravælgelig."
     },
     {
       "id": 544,
@@ -195,7 +195,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Han holder et stabilt niveau med 9 point i denne sæson efter 124 point i sidste sæson (2025/26)."
+      "argument": "Han har ikke helt fulgt 2025/26-sæsonens 124 point op og står kun med 9 point i denne sæson."
     },
     {
       "id": 367,
@@ -209,7 +209,7 @@
       "form": "12.0",
       "status": "a",
       "chance": null,
-      "argument": "Rigtig god mulighed med 12 point i denne sæson indtil videre og et meget let kommende kampprogram (2.3)."
+      "argument": "Et let kampprogram på 2,3 i sværhedsgrad passer perfekt til hans fine form med 12 point denne sæson."
     },
     {
       "id": 8,
@@ -223,7 +223,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Svært program på 3.7 forude, trods solide 9 point i denne sæson indtil videre for forsvarsspilleren."
+      "argument": "Selvom han leverede 109 point i 2025/26-sæsonen, skræmmer det svære kampprogram på 3,7 i sværhedsgrad lige nu."
     },
     {
       "id": 327,
@@ -237,7 +237,7 @@
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "Solidt valg med 10 point i denne sæson samt et nemt kampprogram med et snit på 2.7."
+      "argument": "Han er solid med 10 point i denne sæson, og de næste kampe ser lette ud med sværhedsgrad 2,7."
     },
     {
       "id": 368,
@@ -251,7 +251,21 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Glimrende program (2.3) forude, hvilket kan sparke gang i hans pointhøst efter kun 8 point i denne sæson."
+      "argument": "Efter 160 point i 2025/26-sæsonen venter et let program på 2,3, trods kun 8 point i denne sæson."
+    },
+    {
+      "id": 68,
+      "name": "Tavernier",
+      "club": "Bournemouth",
+      "team_id": 3,
+      "pos": "MID",
+      "score": 41.4,
+      "last_season_points": 137,
+      "points_this_season_so_far": 10,
+      "form": "10.0",
+      "status": "a",
+      "chance": null,
+      "argument": "Han bekræfter takterne fra 2025/26-sæsonens 137 point med fornuftige 10 point i den nuværende sæson."
     },
     {
       "id": 502,
@@ -265,21 +279,7 @@
       "form": "3.0",
       "status": "a",
       "chance": null,
-      "argument": "Et risikabelt valg efter kun 55 point i sidste sæson (2025/26) og sølle 3 point i denne sæson."
-    },
-    {
-      "id": 68,
-      "name": "Tavernier",
-      "club": "Bournemouth",
-      "team_id": 3,
-      "pos": "MID",
-      "score": 41.3,
-      "last_season_points": 137,
-      "points_this_season_so_far": 10,
-      "form": "10.0",
-      "status": "a",
-      "chance": null,
-      "argument": "Stabil midtbanespiller med 10 point i denne sæson indtil videre, efter solide 137 point i den foregående sæson (2025/26)."
+      "argument": "Kun 3 point i denne sæson og svage 55 point i 2025/26-sæsonen gør ham meget uinteressant."
     },
     {
       "id": 98,
@@ -287,13 +287,13 @@
       "club": "Brentford",
       "team_id": 4,
       "pos": "MID",
-      "score": 40.8,
+      "score": 40.9,
       "last_season_points": 74,
       "points_this_season_so_far": 9,
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Med et let kampprogram forude (2.7) kan han måske overgå sine 74 point fra sidste sæson (2025/26)."
+      "argument": "Et nemt program på 2,7 i sværhedsgrad kan hjælpe ham i gang efter 9 point denne sæson."
     },
     {
       "id": 332,
@@ -307,7 +307,7 @@
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "Justin har hentet godkendte 10 point i denne sæson indtil videre og møder overkommelig modstand i de næste kampe."
+      "argument": "En godkendt høst på 10 point i denne sæson følges op af et nemt kampprogram på 2,7."
     },
     {
       "id": 249,
@@ -315,13 +315,13 @@
       "club": "Everton",
       "team_id": 9,
       "pos": "FWD",
-      "score": 40.3,
+      "score": 40.5,
       "last_season_points": 95,
       "points_this_season_so_far": 8,
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Hans 8 point i denne sæson kan blive svære at udbygge mod de kommende modstandere (sværhedsgrad 3.3)."
+      "argument": "Selvom han fik 95 point i 2025/26-sæsonen, gør denne sæsons 8 point og programmet på 3,3 ham tvivlsom."
     },
     {
       "id": 237,
@@ -335,7 +335,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Leverede pæne 128 point i sidste sæson (2025/26), men står overfor et vanskeligt kampprogram med 3.3 i sværhedsgrad."
+      "argument": "Han mangler at ramme niveauet fra 2025/26-sæsonens 128 point med kun 9 point i denne sæson indtil videre."
     },
     {
       "id": 123,
@@ -349,7 +349,7 @@
       "form": "16.0",
       "status": "a",
       "chance": null,
-      "argument": "Fantastisk form med 16 point i denne sæson og et yderst gunstigt kampprogram på kun 2.7 forude."
+      "argument": "De flotte 16 point i denne sæson kombineret med et let program på 2,7 gør ham til et fantastisk køb."
     }
   ]
 }

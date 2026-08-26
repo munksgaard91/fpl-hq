@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-26T13:44:08Z",
+  "updated": "2026-08-26T21:30:29Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-08-28T17:30:00Z",
@@ -41,16 +41,7 @@
     }
   ],
   "point_gap": 44,
-  "alerts": [
-    {
-      "player": "Van Oevelen",
-      "club": "Ipswich",
-      "owner_entry_id": 126623,
-      "owner": "HernDog IF",
-      "news": "Has joined Valencia on loan for the rest of the season",
-      "chance": 0
-    }
-  ],
+  "alerts": [],
   "league_transfer_news": [],
   "gw_summaries": [
     {
@@ -129,10 +120,10 @@
       "out_score": 31.9,
       "in": "Stach",
       "in_club": "Leeds",
-      "in_score": 46.4,
-      "gap": 14.5,
+      "in_score": 46.5,
+      "gap": 14.6,
       "pos": "MID",
-      "reason": "Ved at skifte Gibbs-White ud med Stach opgraderer du din midtbane med en spiller, der har en markant højere score på 46,4 mod 31,9."
+      "reason": "Du får en væsentligt højere score på 46,5 i stedet for 31,9 ved at erstatte Gibbs-White med Stach (MID) fra Leeds."
     }
   ],
   "trade_suggestions": []
