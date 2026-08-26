@@ -27,7 +27,7 @@ from fpl_common import (
     fetch_json, load_json_file, save_json_file,
     get_player_full_name, get_player_positions, get_player_names, get_player_clubs,
     get_league_entries, find_latest_finished_event, find_next_event,
-    get_team_fixture_difficulty, get_live_points_map,
+    get_team_fixture_difficulty, get_live_points_map, get_corrected_element_status,
 )
 
 MY_ENTRY_ID = 1510  # Rasmus / "HaCunha Mateta" - Management-fanen er bygget til dig specifikt
@@ -1032,6 +1032,8 @@ def main():
     fixtures = fetch_json(f"{FPL_BASE}/fixtures/")
     league_details = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/details")
     element_status = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/element-status")["element_status"]
+    raw_transactions = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions").get("transactions", [])
+    element_status = get_corrected_element_status(element_status, raw_transactions)
     picks_history = load_json_file(PICKS_HISTORY_FILE, {})
 
     entry_name_map, entry_id_by_league_id, real_entry_ids = get_league_entries(league_details)

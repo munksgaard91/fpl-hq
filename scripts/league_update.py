@@ -75,6 +75,42 @@ def save_team_snapshot(snapshot):
 BIG_TRANSFER_THRESHOLD = 100  # sidste sæsons point - grænsen for at tælle som "stor nok" uden at være ejet
 
 
+# Kendte, bekræftede fejl i FPL's egen element-status-data - IKKE noget vi selv har
+# cachet forkert, men FPL's live-server der selv svarer forkert. Bekræftet direkte:
+# Kayne van Oevelen (id 554) vises som ejet af HernDog IF (entry 126623), men optræder
+# IKKE i hans faktiske trup ifølge FPL's egen resultatside (bekræftet af Rasmus'
+# screenshot, 25/26. august 2026) - formentlig FPL's eget rod pga. hans Ipswich->
+# Valencia-transfer. Fjern denne linje når FPL selv har rettet det (fx når hans
+# team-felt opdaterer til Valencia, eller han igen er aktiv i Premier League).
+# Delt konstant med fpl_common.py - samme korrektion, to selvstændige filer.
+OWNERSHIP_OVERRIDES = {
+    554: None,     # Kayne van Oevelen - fejlagtigt vist som ejet, er det ikke reelt
+    557: 126623,   # Christos Tzolis - fejlagtigt vist som uejet, tilhører reelt HernDog IF.
+                    # Formentlig samme underliggende FPL-rod som Van Oevelen-sagen.
+}
+
+
+def get_corrected_element_status(element_status, transactions=None):
+    """Se fpl_common.py's tilsvarende funktion - samme korrektion, delt formål."""
+    since_traded = set()
+    if transactions:
+        for t in transactions:
+            if t.get("result") != "a":
+                continue
+            for pid in (t.get("element_in"), t.get("element_out")):
+                if pid in OWNERSHIP_OVERRIDES:
+                    since_traded.add(pid)
+
+    corrected = []
+    for es in element_status:
+        eid = es.get("element")
+        if eid in OWNERSHIP_OVERRIDES and eid not in since_traded:
+            es = dict(es)
+            es["owner"] = OWNERSHIP_OVERRIDES[eid]
+        corrected.append(es)
+    return corrected
+
+
 def fetch_last_season_stats(player_id):
     """Se build_site_data.py's tilsvarende funktion - samme logik, delt formål."""
     try:
@@ -489,6 +525,8 @@ def main():
 
     # -------- injury/news for owned players (altid aktuel, kræver ikke en spillet gameweek) --------
     element_status = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/element-status")["element_status"]
+    raw_transactions_for_correction = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions").get("transactions", [])
+    element_status = get_corrected_element_status(element_status, raw_transactions_for_correction)
     owned_injury_lines = get_owned_player_news(bootstrap, element_status, entry_name_map)
     league_transfer_news = get_league_transfer_news(bootstrap, element_status, entry_name_map, player_names, gw > 0)
 
