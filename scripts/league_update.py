@@ -468,9 +468,150 @@ TRANSFERS LAVET I PRESEASON (waivers/trades siden draften):
         print("Sæsonstart-besked postet, Discord response:", resp.status)
 
 
+KNOWN_GW1_TRANSACTION_IDS = {347294, 347638, 347914, 348087, 836238, 836364}
+
+
+def run_post_transactions():
+    """
+    Engangs-besked, trigges manuelt (POST_TRANSACTIONS=true) når brugeren beder
+    om det - viser KUN de nyeste transaktioner (denne gameweeks waivers/trades),
+    ikke hele historikken. Grupperer trades først, waivers bagefter. Selve
+    listen er ren, deterministisk tekst (ingen AI) for at garantere 100%
+    korrekte navne/retninger - kun den korte hype-intro er AI-skrevet.
+    """
+    bootstrap = fetch_json(f"{FPL_BASE}/bootstrap-static/")
+    player_names = get_player_names(bootstrap)
+
+    league = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/details")
+    entry_name_map = {}
+    for e in league["league_entries"]:
+        entry_name_map[e["id"]] = e["entry_name"]
+        entry_name_map[e["entry_id"]] = e["entry_name"]
+
+    trans_data = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions")
+    accepted = [t for t in trans_data.get("transactions", []) if t.get("result") == "a"]
+    new_ones = [t for t in accepted if t["id"] not in KNOWN_GW1_TRANSACTION_IDS]
+
+    trades = [t for t in new_ones if t.get("kind") == "t"]
+    waivers = [t for t in new_ones if t.get("kind") in ("w", "f")]
+
+    def format_line(t):
+        kind_label = "Waiver" if t.get("kind") == "w" else "Fri agent"
+        entry_id = t.get("entry")
+        in_name = player_names.get(t.get("element_in"), f"spiller {t.get('element_in')}")
+        out_name = player_names.get(t.get("element_out"))
+        ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
+        desc = f"{in_name} ind, {out_name} ud" if out_name else f"{in_name} ind"
+        return f"**{ename}**: {desc} ({kind_label})"
+
+    def format_trade_line(t):
+        entry_id = t.get("entry")
+        in_name = player_names.get(t.get("element_in"), f"spiller {t.get('element_in')}")
+        out_name = player_names.get(t.get("element_out"), f"spiller {t.get('element_out')}")
+        ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
+        return f"**{ename}**: {in_name} ind, {out_name} ud (Trade)"
+
+    next_deadline = find_next_deadline(bootstrap)
+    deadline_line = "Ukendt"
+    next_gw_id = None
+    if next_deadline:
+        next_gw_id, deadline_ts = next_deadline
+        deadline_line = format_deadline_da(deadline_ts)
+
+    # Ægte åbningskamp for den kommende gameweek - til at bygge hype op omkring,
+    # ikke opdigtet. Bruges kun hvis vi kender den kommende gameweek.
+    opening_fixture_line = None
+    if next_gw_id:
+        try:
+            fixtures = fetch_json(f"{FPL_BASE}/fixtures/?event={next_gw_id}")
+            if fixtures:
+                from datetime import datetime, timezone, timedelta
+                earliest = min(fixtures, key=lambda f: f["kickoff_time"])
+                h = TEAM_NAMES.get(earliest["team_h"], "?")
+                a = TEAM_NAMES.get(earliest["team_a"], "?")
+                dt_utc = datetime.fromisoformat(earliest["kickoff_time"].replace("Z", "+00:00"))
+                dt_da = dt_utc.astimezone(timezone.utc) + timedelta(hours=2)  # CEST (dansk sommertid) - korrekt for perioden frem til udgangen af oktober
+                weekday = DA_WEEKDAYS[dt_da.weekday()]
+                month = DA_MONTHS[dt_da.month - 1]
+                kickoff_da = f"{weekday} {dt_da.day}. {month} kl. {dt_da.strftime('%H:%M')}"
+                opening_fixture_line = f"Første kamp i GW{next_gw_id}: {h} v {a}, {kickoff_da} dansk tid"
+        except Exception:
+            pass
+
+    if trades or waivers:
+        trans_summary = (
+            f"Der er lige gået {len(trades)} trade(s) og {len(waivers)} waiver(s)/fri agent-hentning(er) "
+            f"igennem i vores FPL Draft-liga \"{league['league']['name']}\".\n"
+            + "\n".join(format_trade_line(t) for t in trades)
+            + "\n" + "\n".join(format_line(t) for t in waivers)
+        )
+    else:
+        trans_summary = "Ingen nye waivers eller trades er gået igennem siden sidst - stille og roligt på transfer-fronten lige nu."
+
+    context = trans_summary
+    if opening_fixture_line:
+        context += f"\n\n{opening_fixture_line}"
+    if next_gw_id:
+        context += f"\n\nNæste deadline: GW{next_gw_id}, {deadline_line}"
+
+    prompt = (
+        "Skriv en KORT, hypende introsætning (maks 40 ord, på dansk, letsindig/kammeratlig tone) til en "
+        "Discord-besked der opsummerer denne gameweeks waivers og trades i en lille FPL Draft-liga mellem "
+        "venner. Nævn kort at de seneste officielle transfers er tikket ind, og byg spænding op til den "
+        "kommende gameweek - brug evt. åbningskampen givet nedenfor som en del af hypen, hvis den er givet. "
+        "Brug KUN dataen givet, opfind ALDRIG noget som helst der ikke fremgår af den - ingen kampe, skader "
+        "eller klubskifter du ikke kender. Brug ALDRIG egen baggrundsviden om spillere eller klubber (dette "
+        "er en fiktiv liga-sæson).\n\n"
+        f"{context}"
+    )
+    intro = call_gemini_raw(prompt)
+    if intro is None:
+        intro = f"Så er de seneste officielle transfers tikket ind! {opening_fixture_line or ''}".strip()
+    summary_text = intro
+
+    lines = [summary_text, ""]
+    if trades:
+        lines.append("**🔄 Trades**")
+        lines.extend(format_trade_line(t) for t in trades)
+        lines.append("")
+    if waivers:
+        lines.append("**📝 Waivers & frie agenter**")
+        lines.extend(format_line(t) for t in waivers)
+        lines.append("")
+    lines.append(f"-# Der er nu frie transfers indtil deadline ({deadline_line}) — det betyder I kan hente frie spillere med det samme, uden at vente på en waiver-runde.")
+
+    description = "\n".join(lines)
+
+    if os.environ.get("DRY_RUN", "").lower() == "true":
+        print("=== DRY_RUN: intet sendt til Discord, dette er hvad der VILLE være sendt ===")
+        print(json.dumps({"embeds": [{"title": "📋 Transfer News", "description": description}]}, ensure_ascii=False, indent=2))
+        print("=== DRY_RUN slut ===")
+        return
+
+    webhook = os.environ["DISCORD_WEBHOOK_URL"]
+    body = json.dumps({
+        "username": "Update Bot", "content": "@everyone",
+        "embeds": [{"title": "📋 Transfer News", "description": description, "color": 2926465}],
+        "allowed_mentions": {"parse": ["everyone"]},
+    }).encode("utf-8")
+    req = urllib.request.Request(
+        webhook, data=body,
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (compatible; drafthq-bot/1.0; +https://github.com/munksgaard91/fpl-hq)",
+        },
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        print("Transaktions-besked postet, Discord response:", resp.status)
+
+
 def main():
     if os.environ.get("SEASON_KICKOFF", "").lower() == "true":
         run_season_kickoff()
+        return
+    if os.environ.get("POST_TRANSACTIONS", "").lower() == "true":
+        run_post_transactions()
         return
 
     state = load_state()
