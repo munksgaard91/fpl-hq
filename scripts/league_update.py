@@ -441,7 +441,7 @@ TRANSFERS LAVET I PRESEASON (waivers/trades siden draften):
     webhook = os.environ["DISCORD_WEBHOOK_URL"]
     embed = {
         "title": "⚽ Sæsonstart!",
-        "description": summary_text,
+        "description": f"{summary_text}\n\n{BOT_DISCLAIMER}",
         "color": 2926465,
         "footer": {"text": f"Første deadline: {deadline_line}"},
     }
@@ -469,6 +469,10 @@ TRANSFERS LAVET I PRESEASON (waivers/trades siden draften):
 
 
 KNOWN_GW1_TRANSACTION_IDS = {347294, 347638, 347914, 348087, 836238, 836364}
+
+# Tilføjes i bunden af ALLE Discord-beskeder - besluttet efter flere fund af
+# ejerskabs-data-fejl i FPL's egen API, som vi ikke kan garantere at fange alle af.
+BOT_DISCLAIMER = "*botten tager ikke ansvar for fejl, er bare en simpel clanker*"
 
 
 def run_post_transactions():
@@ -579,6 +583,8 @@ def run_post_transactions():
         lines.extend(format_line(t) for t in waivers)
         lines.append("")
     lines.append(f"-# Der er nu frie transfers indtil deadline ({deadline_line}) — det betyder I kan hente frie spillere med det samme, uden at vente på en waiver-runde.")
+    lines.append("")
+    lines.append(BOT_DISCLAIMER)
 
     description = "\n".join(lines)
 
@@ -1007,7 +1013,8 @@ def post_to_discord(gw, standings_lines, best_line, worst_line, mover_line, benc
     full_description = (
         f"{summary_text}\n\n"
         f"## Stilling\n"
-        f"{chr(10).join(standings_lines) or '—'}\n"
+        f"{chr(10).join(standings_lines) or '—'}\n\n"
+        f"{BOT_DISCLAIMER}"
     )
 
     embed = {
