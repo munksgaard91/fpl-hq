@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-26T21:30:29Z",
+  "updated": "2026-08-27T17:57:26Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-08-28T17:30:00Z",
@@ -41,7 +41,16 @@
     }
   ],
   "point_gap": 44,
-  "alerts": [],
+  "alerts": [
+    {
+      "player": "Osula",
+      "club": "Newcastle",
+      "owner_entry_id": 2538,
+      "owner": "Bottlers Anonymous",
+      "news": "Foot injury - 25% chance of playing",
+      "chance": 25
+    }
+  ],
   "league_transfer_news": [],
   "gw_summaries": [
     {
@@ -112,6 +121,86 @@
       "player_in": "Sávio",
       "player_out": "Gravenberch",
       "added": "2026-08-21T15:48:11.155384Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Wissa",
+      "player_out": "Gyökeres",
+      "added": "2026-08-24T14:54:07.755858Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Trafford",
+      "player_out": "Martinez",
+      "added": "2026-08-24T14:54:07.755900Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Waiver",
+      "player_in": "Florentino",
+      "player_out": "Henderson",
+      "added": "2026-08-26T15:59:31.640004Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Lewis-Skelly",
+      "player_out": "Dorgu",
+      "added": "2026-08-26T18:57:03.990264Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Xhaka",
+      "player_out": "Cunha",
+      "added": "2026-08-26T18:57:03.990326Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "HaCunha Mateta",
+      "kind": "Waiver",
+      "player_in": "De Cuyper",
+      "player_out": "Truffert",
+      "added": "2026-08-27T16:50:58.636990Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "HaCunha Mateta",
+      "kind": "Waiver",
+      "player_in": "Barry",
+      "player_out": "Woltemade",
+      "added": "2026-08-27T16:50:58.637053Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Gonzalo",
+      "player_out": "Watkins",
+      "added": "2026-08-27T16:51:24.844016Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Targett",
+      "player_out": "Tel",
+      "added": "2026-08-27T16:51:24.844065Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Ajer",
+      "player_out": "Milenković",
+      "added": "2026-08-27T16:51:24.844086Z"
     }
   ],
   "transfer_suggestions": [
@@ -120,10 +209,10 @@
       "out_score": 31.9,
       "in": "Stach",
       "in_club": "Leeds",
-      "in_score": 46.5,
-      "gap": 14.6,
+      "in_score": 46.6,
+      "gap": 14.7,
       "pos": "MID",
-      "reason": "Du får en væsentligt højere score på 46,5 i stedet for 31,9 ved at erstatte Gibbs-White med Stach (MID) fra Leeds."
+      "reason": "Ved at skifte til Stach fra Leeds får du en midtbanespiller med en højere score på 46,6 mod Gibbs-Whites 31,9."
     }
   ],
   "trade_suggestions": []
