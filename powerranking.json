@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-27T17:57:26Z",
+  "updated": "2026-08-28T02:22:48Z",
   "players": [
     {
       "id": 165,
@@ -13,7 +13,7 @@
       "form": "11.0",
       "status": "a",
       "chance": null,
-      "argument": "Han lavede 177 point i 2025/26 og har samlet 11 point i denne sæson."
+      "argument": "Har 11 point i denne sæson indtil videre, men overbeviste i sidste sæson (2025/26) med 177 point."
     },
     {
       "id": 154,
@@ -27,7 +27,7 @@
       "form": "13.0",
       "status": "a",
       "chance": 100,
-      "argument": "Med 13 point i denne sæson og overkommelige kampe forude er han en fin mulighed."
+      "argument": "Solid start med 13 point i denne sæson indtil videre, der følger op på 114 point i sidste sæson (2025/26)."
     },
     {
       "id": 399,
@@ -41,7 +41,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Hentede 135 point i 2025/26, men står kun noteret for 8 point i denne sæson indtil videre."
+      "argument": "Har kun hentet 8 point i denne sæson indtil videre efter 135 point i sidste sæson (2025/26)."
     },
     {
       "id": 40,
@@ -55,7 +55,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Stærk sidste sæson med 169 point, men en beskeden start med 8 point i denne sæson."
+      "argument": "Sværere program forude (FDR 3.0), og han har kun hentet 8 point i denne sæson indtil videre."
     },
     {
       "id": 335,
@@ -63,13 +63,13 @@
       "club": "Leeds",
       "team_id": 13,
       "pos": "MID",
-      "score": 46.6,
+      "score": 46.7,
       "last_season_points": 137,
       "points_this_season_so_far": 13,
       "form": "13.0",
       "status": "a",
       "chance": null,
-      "argument": "God start med 13 point i denne sæson samt et overkommeligt program på 2.7 i sværhedsgrad."
+      "argument": "Et stærkt valg med 13 point i denne sæson indtil videre og et let program (FDR 2.7)."
     },
     {
       "id": 236,
@@ -77,13 +77,13 @@
       "club": "Everton",
       "team_id": 9,
       "pos": "MID",
-      "score": 46.2,
+      "score": 46.3,
       "last_season_points": 151,
       "points_this_season_so_far": 11,
       "form": "11.0",
       "status": "a",
       "chance": null,
-      "argument": "Fast mand med 11 point i denne sæson, men programmet er lidt svært med snit på 3.3."
+      "argument": "Efter 151 point i sidste sæson (2025/26) står han nu med 11 point i denne sæson indtil videre."
     },
     {
       "id": 388,
@@ -97,7 +97,7 @@
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "Imponerende 179 point i 2025/26, men har blot hentet 10 point indtil videre i denne sæson."
+      "argument": "Hele 179 point i sidste sæson (2025/26) gør ham spændende, selvom han kun har 10 point nu."
     },
     {
       "id": 295,
@@ -111,7 +111,7 @@
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Leverede blot 66 point i 2025/26 og står kun med 5 point i denne sæson."
+      "argument": "Svagt valg med blot 5 point i denne sæson indtil videre og kun 66 i sidste sæson (2025/26)."
     },
     {
       "id": 391,
@@ -125,7 +125,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "En relativt afdæmpet mulighed med 9 point indtil videre i denne sæson og gennemsnitlig modstand."
+      "argument": "Med kun 9 point i denne sæson indtil videre har han ikke ramt sidste sæsons (2025/26) niveau endnu."
     },
     {
       "id": 86,
@@ -133,13 +133,13 @@
       "club": "Brentford",
       "team_id": 4,
       "pos": "MID",
-      "score": 44.9,
+      "score": 45.0,
       "last_season_points": 115,
       "points_this_season_so_far": 10,
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "Har 10 point i denne sæson og ser ind i et fornuftigt kampprogram med FDR på 2.7."
+      "argument": "Godt kampprogram på 2.7 i sværhedsgrad og 10 point i denne sæson indtil videre gør ham interessant."
     },
     {
       "id": 200,
@@ -153,7 +153,7 @@
       "form": "6.0",
       "status": "a",
       "chance": null,
-      "argument": "Fik 154 point i 2025/26, men blot 6 point i denne sæson gør ham uattraktiv lige nu."
+      "argument": "Skuffende 6 point i denne sæson indtil videre sammenlignet med de flotte 154 point i sidste sæson (2025/26)."
     },
     {
       "id": 115,
@@ -167,7 +167,7 @@
       "form": "17.0",
       "status": "a",
       "chance": null,
-      "argument": "Formstærk med 17 point i denne sæson kombineret med lette kommende kampe på 2.7 i sværhedsgrad."
+      "argument": "Fremragende form med 17 point i denne sæson indtil videre samt et overkommeligt kampprogram på FDR 2.7."
     },
     {
       "id": 12,
@@ -175,13 +175,13 @@
       "club": "Arsenal",
       "team_id": 1,
       "pos": "MID",
-      "score": 43.5,
+      "score": 43.6,
       "last_season_points": 157,
       "points_this_season_so_far": 9,
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Svært program forude med snit på 3.7 og kun 9 point i denne sæson indtil videre."
+      "argument": "Programmet er svært med FDR 3.7, og han har blot hentet 9 point i denne sæson indtil videre."
     },
     {
       "id": 544,
@@ -195,7 +195,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Skrabede 124 point sammen i 2025/26 og har leveret 9 point i denne sæson."
+      "argument": "Leverede 124 point i sidste sæson (2025/26), men står kun med 9 point i denne sæson indtil videre."
     },
     {
       "id": 367,
@@ -209,7 +209,7 @@
       "form": "12.0",
       "status": "a",
       "chance": null,
-      "argument": "Attraktivt program med sværhedsgrad 2.3 og solide 12 point indtil videre i denne sæson."
+      "argument": "Meget attraktivt program på FDR 2.3 og fornuftige 12 point i denne sæson indtil videre."
     },
     {
       "id": 327,
@@ -223,7 +223,7 @@
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "Møder overkommelig modstand fremadrettet, men har kun 10 point i den nuværende sæson."
+      "argument": "Stabil mulighed med 10 point i denne sæson indtil videre og et let kampprogram med FDR 2.7."
     },
     {
       "id": 8,
@@ -237,7 +237,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Hård modstand i vente med et snit på 3.7 efter blot 9 point i denne sæson."
+      "argument": "Hans 9 point i denne sæson indtil videre udfordres af et vanskeligt kampprogram med FDR 3.7."
     },
     {
       "id": 68,
@@ -245,13 +245,13 @@
       "club": "Bournemouth",
       "team_id": 3,
       "pos": "MID",
-      "score": 41.5,
+      "score": 41.6,
       "last_season_points": 137,
       "points_this_season_so_far": 10,
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "137 point i 2025/26 viser potentiale, om end han kun har 10 point i denne sæson."
+      "argument": "Holdt status som tilgængelig og har hentet 10 point i denne sæson indtil videre mod 137 sidste sæson (2025/26)."
     },
     {
       "id": 368,
@@ -265,7 +265,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Meget let program med 2.3 i FDR, selvom han kun står med 8 point i denne sæson."
+      "argument": "Hele 160 point i sidste sæson (2025/26) og et yderst let kommende program med FDR 2.3 taler for ham."
     },
     {
       "id": 502,
@@ -279,7 +279,7 @@
       "form": "3.0",
       "status": "a",
       "chance": null,
-      "argument": "Svagt udbytte med kun 3 point i denne sæson ovenpå en skuffende 2025/26-sæson."
+      "argument": "Kun 3 point i denne sæson indtil videre efter en i forvejen svag sidste sæson (2025/26) med 55 point."
     },
     {
       "id": 249,
@@ -287,13 +287,13 @@
       "club": "Everton",
       "team_id": 9,
       "pos": "FWD",
-      "score": 41.1,
+      "score": 41.3,
       "last_season_points": 95,
       "points_this_season_so_far": 8,
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Begrænsede 8 point i denne sæson kombineret med en lidt svær modstander-stribe på 3.3."
+      "argument": "Har fået 8 point i denne sæson indtil videre, men det kommende program (FDR 3.3) ser svært ud."
     },
     {
       "id": 98,
@@ -301,13 +301,13 @@
       "club": "Brentford",
       "team_id": 4,
       "pos": "MID",
-      "score": 40.9,
+      "score": 41.0,
       "last_season_points": 74,
       "points_this_season_so_far": 9,
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Mildt kampprogram venter, men 9 point indtil videre i denne sæson er i den lave ende."
+      "argument": "Et let program forude (FDR 2.7) supplerer hans nuværende 9 point i denne sæson indtil videre flot."
     },
     {
       "id": 332,
@@ -315,13 +315,13 @@
       "club": "Leeds",
       "team_id": 13,
       "pos": "DEF",
-      "score": 40.7,
+      "score": 40.8,
       "last_season_points": 94,
       "points_this_season_so_far": 10,
       "form": "10.0",
       "status": "a",
       "chance": null,
-      "argument": "Et fint FDR-snit på 2.7 gør ham interessant, efter 10 point i den igangværende sæson."
+      "argument": "Viser stabile takter med 10 point i denne sæson indtil videre og et godt program med FDR 2.7."
     },
     {
       "id": 237,
@@ -335,7 +335,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Lavet 9 point i denne sæson og har et mere udfordrende program foran sig."
+      "argument": "Har opnået 9 point i denne sæson indtil videre, men det svære program (FDR 3.3) trækker ned."
     },
     {
       "id": 123,
@@ -347,9 +347,9 @@
       "last_season_points": 91,
       "points_this_season_so_far": 16,
       "form": "16.0",
-      "status": "a",
-      "chance": null,
-      "argument": "Flot start på denne sæson med 16 point og et gunstigt program på 2.7 i sværhedsgrad."
+      "status": "d",
+      "chance": 75,
+      "argument": "God form med 16 point i denne sæson indtil videre, men hans status d gør ham usikker lige nu."
     }
   ]
 }

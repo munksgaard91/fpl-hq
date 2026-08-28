@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-27T17:57:26Z",
+  "updated": "2026-08-28T02:22:48Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-08-28T17:30:00Z",
@@ -41,16 +41,7 @@
     }
   ],
   "point_gap": 44,
-  "alerts": [
-    {
-      "player": "Osula",
-      "club": "Newcastle",
-      "owner_entry_id": 2538,
-      "owner": "Bottlers Anonymous",
-      "news": "Foot injury - 25% chance of playing",
-      "chance": 25
-    }
-  ],
+  "alerts": [],
   "league_transfer_news": [],
   "gw_summaries": [
     {
@@ -201,6 +192,30 @@
       "player_in": "Ajer",
       "player_out": "Milenković",
       "added": "2026-08-27T16:51:24.844086Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Free agent",
+      "player_in": "McBurnie",
+      "player_out": "Osula",
+      "added": "2026-08-27T18:38:37.550752Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Free agent",
+      "player_in": "Ajayi",
+      "player_out": "Robinson",
+      "added": "2026-08-27T18:41:12.868026Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Free agent",
+      "player_in": "Sánchez",
+      "player_out": "A.Becker",
+      "added": "2026-08-27T18:43:21.466785Z"
     }
   ],
   "transfer_suggestions": [
@@ -209,10 +224,10 @@
       "out_score": 31.9,
       "in": "Stach",
       "in_club": "Leeds",
-      "in_score": 46.6,
-      "gap": 14.7,
+      "in_score": 46.7,
+      "gap": 14.8,
       "pos": "MID",
-      "reason": "Ved at skifte til Stach fra Leeds får du en midtbanespiller med en højere score på 46,6 mod Gibbs-Whites 31,9."
+      "reason": "Ved at skifte Gibbs-White ud med Stach (MID) får du en højere score på 46,7 i stedet for 31,9."
     }
   ],
   "trade_suggestions": []
