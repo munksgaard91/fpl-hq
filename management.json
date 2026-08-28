@@ -11,12 +11,12 @@
       "chance": null
     },
     {
-      "id": 388,
-      "name": "Guéhi",
-      "club": "Man City",
+      "id": 10,
+      "name": "White",
+      "club": "Arsenal",
       "pos": "DEF",
       "status": "a",
-      "chance": null
+      "chance": 100
     },
     {
       "id": 229,
@@ -27,18 +27,18 @@
       "chance": null
     },
     {
-      "id": 10,
-      "name": "White",
-      "club": "Arsenal",
+      "id": 388,
+      "name": "Guéhi",
+      "club": "Man City",
       "pos": "DEF",
       "status": "a",
-      "chance": 100
+      "chance": null
     },
     {
-      "id": 426,
-      "name": "B.Fernandes",
-      "club": "Man Utd",
-      "pos": "MID",
+      "id": 115,
+      "name": "De Cuyper",
+      "club": "Brighton",
+      "pos": "DEF",
       "status": "a",
       "chance": null
     },
@@ -51,20 +51,12 @@
       "chance": null
     },
     {
-      "id": 399,
-      "name": "Cherki",
-      "club": "Man City",
+      "id": 426,
+      "name": "B.Fernandes",
+      "club": "Man Utd",
       "pos": "MID",
       "status": "a",
       "chance": null
-    },
-    {
-      "id": 480,
-      "name": "Gibbs-White",
-      "club": "Nott'm Forest",
-      "pos": "MID",
-      "status": "d",
-      "chance": 75
     },
     {
       "id": 154,
@@ -75,6 +67,14 @@
       "chance": 100
     },
     {
+      "id": 399,
+      "name": "Cherki",
+      "club": "Man City",
+      "pos": "MID",
+      "status": "a",
+      "chance": null
+    },
+    {
       "id": 106,
       "name": "Thiago",
       "club": "Brentford",
@@ -83,12 +83,12 @@
       "chance": null
     },
     {
-      "id": 439,
-      "name": "Šeško",
-      "club": "Man Utd",
+      "id": 249,
+      "name": "Barry",
+      "club": "Everton",
       "pos": "FWD",
       "status": "a",
-      "chance": 100
+      "chance": null
     }
   ],
   "bench": [
@@ -101,6 +101,14 @@
       "chance": null
     },
     {
+      "id": 439,
+      "name": "Šeško",
+      "club": "Man Utd",
+      "pos": "FWD",
+      "status": "a",
+      "chance": 100
+    },
+    {
       "id": 449,
       "name": "Hall",
       "club": "Newcastle",
@@ -109,30 +117,15 @@
       "chance": null
     },
     {
-      "id": 61,
-      "name": "Truffert",
-      "club": "Bournemouth",
-      "pos": "DEF",
+      "id": 480,
+      "name": "Gibbs-White",
+      "club": "Nott'm Forest",
+      "pos": "MID",
       "status": "a",
-      "chance": null
-    },
-    {
-      "id": 463,
-      "name": "Woltemade",
-      "club": "Newcastle",
-      "pos": "FWD",
-      "status": "a",
-      "chance": null
+      "chance": 100
     }
   ],
-  "suggestions": [
-    {
-      "out": "Gibbs-White",
-      "in": null,
-      "type": "Formation",
-      "reason": "Gibbs-White er flagget (75% spilchance), men ingen bænket spiller på samme position kan erstatte 1:1 - overvej et formationsskift."
-    }
-  ],
+  "suggestions": [],
   "fixtures": [
     {
       "club": "Arsenal",
@@ -146,17 +139,6 @@
       ]
     },
     {
-      "club": "Bournemouth",
-      "count": 1,
-      "difficulty": [
-        3,
-        3,
-        3,
-        4,
-        4
-      ]
-    },
-    {
       "club": "Brentford",
       "count": 2,
       "difficulty": [
@@ -165,6 +147,17 @@
         3,
         4,
         4
+      ]
+    },
+    {
+      "club": "Brighton",
+      "count": 1,
+      "difficulty": [
+        4,
+        2,
+        2,
+        4,
+        3
       ]
     },
     {
@@ -180,7 +173,7 @@
     },
     {
       "club": "Everton",
-      "count": 1,
+      "count": 2,
       "difficulty": [
         3,
         4,
@@ -213,7 +206,7 @@
     },
     {
       "club": "Newcastle",
-      "count": 2,
+      "count": 1,
       "difficulty": [
         3,
         3,
@@ -234,14 +227,6 @@
       ]
     }
   ],
-  "injury_news": [
-    {
-      "player": "Gibbs-White",
-      "club": "Nott'm Forest",
-      "news": "Knee injury - 75% chance of playing",
-      "status": "d",
-      "chance": 75
-    }
-  ],
-  "updated": "2026-08-28T02:22:48Z"
+  "injury_news": [],
+  "updated": "2026-08-28T19:07:40Z"
 }
