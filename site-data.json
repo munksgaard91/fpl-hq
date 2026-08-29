@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T12:52:16Z",
+  "updated": "2026-08-29T16:54:41Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -227,38 +227,6 @@
       "added": "2026-08-27T18:43:21.466785Z"
     }
   ],
-  "transfer_suggestions": [
-    {
-      "out": "Barry",
-      "out_score": 31.3,
-      "in": "Isidor",
-      "in_club": "Sunderland",
-      "in_score": 49.1,
-      "gap": 17.8,
-      "pos": "FWD",
-      "reason": "Du erstatter Barry (score 31,3) med Isidor (score 49,1), hvilket giver dit hold en direkte gevinst i score på 17,8 point."
-    },
-    {
-      "out": "De Cuyper",
-      "out_score": 26.0,
-      "in": "Senesi",
-      "in_club": "Spurs",
-      "in_score": 40.9,
-      "gap": 14.9,
-      "pos": "DEF",
-      "reason": "Du udskifter De Cuyper (score 26,0) med Senesi (score 40,9) og opnår derved en væsentligt højere score på 40,9 point."
-    }
-  ],
-  "trade_suggestions": [
-    {
-      "my_player": "De Cuyper",
-      "my_score": 26.0,
-      "target": "Lacroix",
-      "target_owner": "Mainoo Character FC",
-      "target_score": 38.1,
-      "gap": 12.1,
-      "pos": "DEF",
-      "reason": "Lacroix har en højere score (38.1) end Din De Cuyper (26.0) og sidder ubrugt på bænken hos Mainoo Character FC."
-    }
-  ]
+  "transfer_suggestions": [],
+  "trade_suggestions": []
 }
