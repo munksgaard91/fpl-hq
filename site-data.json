@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28T19:07:40Z",
+  "updated": "2026-08-29T12:52:16Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -7,14 +7,14 @@
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 68,
+      "total": 84,
       "rank": 1,
       "trend": null
     },
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 59,
+      "total": 69,
       "rank": 2,
       "trend": null
     },
@@ -26,22 +26,31 @@
       "trend": null
     },
     {
-      "league_entry": 2539,
-      "name": "Bottlers Anonymous",
-      "total": 34,
+      "league_entry": 17813,
+      "name": "Kop of Jensen",
+      "total": 39,
       "rank": 4,
       "trend": null
     },
     {
-      "league_entry": 17813,
-      "name": "Kop of Jensen",
-      "total": 24,
+      "league_entry": 2539,
+      "name": "Bottlers Anonymous",
+      "total": 39,
       "rank": 5,
       "trend": null
     }
   ],
-  "point_gap": 44,
-  "alerts": [],
+  "point_gap": 45,
+  "alerts": [
+    {
+      "player": "Mateta",
+      "club": "Crystal Palace",
+      "owner_entry_id": 2538,
+      "owner": "Bottlers Anonymous",
+      "news": "Hamstring injury - Expected back 11 Oct",
+      "chance": 0
+    }
+  ],
   "league_transfer_news": [],
   "gw_summaries": [
     {
@@ -52,7 +61,7 @@
   "highlights": {
     "highest_gw_score": {
       "name": "HaCunha Mateta",
-      "score": 68,
+      "score": 84,
       "gw": "GW1"
     },
     "longest_streak": null
@@ -221,35 +230,35 @@
   "transfer_suggestions": [
     {
       "out": "Barry",
-      "out_score": 31.1,
+      "out_score": 31.3,
       "in": "Isidor",
       "in_club": "Sunderland",
-      "in_score": 49.2,
-      "gap": 18.1,
+      "in_score": 49.1,
+      "gap": 17.8,
       "pos": "FWD",
-      "reason": "Du opgraderer din trup og vinder flere point ved at skifte Barry (31,1) ud med Isidor (49,2, FWD)."
+      "reason": "Du erstatter Barry (score 31,3) med Isidor (score 49,1), hvilket giver dit hold en direkte gevinst i score på 17,8 point."
     },
     {
       "out": "De Cuyper",
-      "out_score": 24.6,
+      "out_score": 26.0,
       "in": "Senesi",
       "in_club": "Spurs",
-      "in_score": 41.0,
-      "gap": 16.4,
+      "in_score": 40.9,
+      "gap": 14.9,
       "pos": "DEF",
-      "reason": "Du styrker dit hold og vinder flere point ved at skifte De Cuyper (24,6) ud med Senesi (41,0, DEF)."
+      "reason": "Du udskifter De Cuyper (score 26,0) med Senesi (score 40,9) og opnår derved en væsentligt højere score på 40,9 point."
     }
   ],
   "trade_suggestions": [
     {
       "my_player": "De Cuyper",
-      "my_score": 24.6,
+      "my_score": 26.0,
       "target": "Lacroix",
       "target_owner": "Mainoo Character FC",
       "target_score": 38.1,
-      "gap": 13.5,
+      "gap": 12.1,
       "pos": "DEF",
-      "reason": "Lacroix (score 38.1) er stærkere end De Cuyper (24.6) og sidder ubrugt på bænken hos Mainoo Character FC, hvilket gør en byttehandel oplagt."
+      "reason": "Lacroix har en højere score (38.1) end Din De Cuyper (26.0) og sidder ubrugt på bænken hos Mainoo Character FC."
     }
   ]
 }

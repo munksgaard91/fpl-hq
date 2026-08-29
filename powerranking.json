@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28T19:07:40Z",
+  "updated": "2026-08-29T12:52:16Z",
   "players": [
     {
       "id": 399,
@@ -7,27 +7,27 @@
       "club": "Man City",
       "team_id": 15,
       "pos": "MID",
-      "score": 49.8,
+      "score": 55.4,
       "last_season_points": 135,
-      "points_this_season_so_far": 9,
-      "form": "4.5",
+      "points_this_season_so_far": 22,
+      "form": "11.0",
       "status": "a",
       "chance": null,
-      "argument": "Leverede 135 point i 2025/26, men står kun med 9 point indtil videre i denne sæson."
+      "argument": "Med 22 point denne sæson indtil videre og en solid form, er han et stærkt valg trods sværhedsgrad 3.0."
     },
     {
-      "id": 165,
-      "name": "João Pedro",
-      "club": "Chelsea",
-      "team_id": 6,
+      "id": 411,
+      "name": "Haaland",
+      "club": "Man City",
+      "team_id": 15,
       "pos": "FWD",
-      "score": 43.2,
-      "last_season_points": 177,
-      "points_this_season_so_far": 11,
-      "form": "5.5",
+      "score": 53.9,
+      "last_season_points": 239,
+      "points_this_season_so_far": 15,
+      "form": "7.5",
       "status": "a",
       "chance": null,
-      "argument": "Et stærkt valg efter 177 point i sidste sæson og overkommelige kampe forude med sværhedsgrad 3,0."
+      "argument": "Efter fantastiske 239 point i sidste sæson (2025/26), skuffer han med kun 15 point denne sæson indtil videre."
     },
     {
       "id": 391,
@@ -35,27 +35,41 @@
       "club": "Man City",
       "team_id": 15,
       "pos": "DEF",
-      "score": 41.0,
+      "score": 44.5,
       "last_season_points": 79,
+      "points_this_season_so_far": 14,
+      "form": "7.0",
+      "status": "a",
+      "chance": null,
+      "argument": "Hans 14 point denne sæson indtil videre viser god form i forhold til sidste sæsons samlede 79 point."
+    },
+    {
+      "id": 165,
+      "name": "João Pedro",
+      "club": "Chelsea",
+      "team_id": 6,
+      "pos": "FWD",
+      "score": 43.6,
+      "last_season_points": 177,
+      "points_this_season_so_far": 11,
+      "form": "5.5",
+      "status": "a",
+      "chance": null,
+      "argument": "Svær at fravælge efter 177 point i sidste sæson (2025/26), selvom han kun har 11 point nu."
+    },
+    {
+      "id": 398,
+      "name": "Foden",
+      "club": "Man City",
+      "team_id": 15,
+      "pos": "MID",
+      "score": 43.2,
+      "last_season_points": 131,
       "points_this_season_so_far": 10,
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Med blot 79 point i 2025/26 og 10 point i år er udbyttet fortsat i den lavere ende."
-    },
-    {
-      "id": 498,
-      "name": "Senesi",
-      "club": "Spurs",
-      "team_id": 19,
-      "pos": "DEF",
-      "score": 41.0,
-      "last_season_points": 175,
-      "points_this_season_so_far": 3,
-      "form": "1.5",
-      "status": "a",
-      "chance": null,
-      "argument": "Imponerede med 175 point sidste sæson, men er startet trægt i denne sæson med kun 3 point."
+      "argument": "Med kun 10 point denne sæson indtil videre, lever han ikke op til sidste sæsons 131 point endnu."
     },
     {
       "id": 388,
@@ -63,13 +77,27 @@
       "club": "Man City",
       "team_id": 15,
       "pos": "DEF",
-      "score": 40.9,
+      "score": 41.5,
       "last_season_points": 179,
-      "points_this_season_so_far": 11,
-      "form": "5.5",
+      "points_this_season_so_far": 12,
+      "form": "6.0",
       "status": "a",
       "chance": null,
-      "argument": "Mødte høje forventninger med 179 point i 2025/26 og har hentet 11 point indtil videre i år."
+      "argument": "Leverede flotte 179 point i sidste sæson (2025/26) og er startet stabilt med 12 point denne sæson."
+    },
+    {
+      "id": 154,
+      "name": "Palmer",
+      "club": "Chelsea",
+      "team_id": 6,
+      "pos": "MID",
+      "score": 39.5,
+      "last_season_points": 114,
+      "points_this_season_so_far": 13,
+      "form": "6.5",
+      "status": "a",
+      "chance": 100,
+      "argument": "Et fint budgetvalg med 13 point denne sæson indtil videre, efter at have hentet 114 point sidste sæson."
     },
     {
       "id": 295,
@@ -83,35 +111,21 @@
       "form": "2.5",
       "status": "a",
       "chance": null,
-      "argument": "Lavt afkast på blot 5 point i denne sæson og beskedne 66 point i sidste sæson."
+      "argument": "Skuffende start med blot 5 point denne sæson indtil videre efter 66 point i hele sidste sæson (2025/26)."
     },
     {
-      "id": 154,
-      "name": "Palmer",
-      "club": "Chelsea",
-      "team_id": 6,
+      "id": 367,
+      "name": "Gakpo",
+      "club": "Liverpool",
+      "team_id": 14,
       "pos": "MID",
-      "score": 38.6,
-      "last_season_points": 114,
+      "score": 38.3,
+      "last_season_points": 131,
       "points_this_season_so_far": 13,
       "form": "6.5",
       "status": "a",
-      "chance": 100,
-      "argument": "God start på denne sæson med 13 point indtil videre efter 114 point i 2025/26."
-    },
-    {
-      "id": 502,
-      "name": "Robertson",
-      "club": "Spurs",
-      "team_id": 19,
-      "pos": "DEF",
-      "score": 38.4,
-      "last_season_points": 55,
-      "points_this_season_so_far": 3,
-      "form": "1.5",
-      "status": "a",
       "chance": null,
-      "argument": "Selvom de næste kampe har en sværhedsgrad på 2,7, giver blot 3 point i år grund til bekymring."
+      "argument": "Attraktivt valg med lette kampe (2.3 i sværhedsgrad) og fine 13 point i denne sæson indtil videre."
     },
     {
       "id": 200,
@@ -125,7 +139,7 @@
       "form": "3.0",
       "status": "a",
       "chance": null,
-      "argument": "Lavede 154 point i sidste sæson, men har blot skaffet 6 point i denne sæson indtil videre."
+      "argument": "Sidste sæsons 154 point var flotte, men 6 point denne sæson indtil videre trækker gevaldigt ned lige nu."
     },
     {
       "id": 40,
@@ -139,7 +153,21 @@
       "form": "4.0",
       "status": "a",
       "chance": null,
-      "argument": "Noteret for 8 point i den nuværende sæson, men har et solidt fundament fra 169 point i 2025/26."
+      "argument": "Imponerede med 169 point i sidste sæson (2025/26), men har kun skrabet 8 point sammen denne sæson."
+    },
+    {
+      "id": 368,
+      "name": "Szoboszlai",
+      "club": "Liverpool",
+      "team_id": 14,
+      "pos": "MID",
+      "score": 37.2,
+      "last_season_points": 160,
+      "points_this_season_so_far": 9,
+      "form": "4.5",
+      "status": "a",
+      "chance": null,
+      "argument": "Gode modstandere i vente (sværhedsgrad 2.3) gør ham spændende, efter 160 point i sidste sæson (2025/26)."
     },
     {
       "id": 86,
@@ -147,13 +175,13 @@
       "club": "Brentford",
       "team_id": 4,
       "pos": "MID",
-      "score": 33.9,
+      "score": 34.0,
       "last_season_points": 115,
       "points_this_season_so_far": 10,
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Fin start på den nye sæson med 10 point og et fordelagtigt program på sværhedsgrad 2,7."
+      "argument": "Solid start med 10 point denne sæson indtil videre og et godkendt kampprogram på 2.7 i sværhedsgrad."
     },
     {
       "id": 12,
@@ -161,13 +189,13 @@
       "club": "Arsenal",
       "team_id": 1,
       "pos": "MID",
-      "score": 33.8,
+      "score": 33.7,
       "last_season_points": 157,
       "points_this_season_so_far": 9,
       "form": "4.5",
       "status": "a",
       "chance": null,
-      "argument": "Hentede 157 point sidste sæson, men møder svære kampe fremover med en sværhedsgrad på 3,7."
+      "argument": "Svært program forude med sværhedsgrad 3.7, og han har kun hentet 9 point denne sæson indtil videre."
     },
     {
       "id": 544,
@@ -181,7 +209,7 @@
       "form": "4.5",
       "status": "a",
       "chance": null,
-      "argument": "Står på 9 point indtil videre i år og leverede 124 point i løbet af 2025/26-sæsonen."
+      "argument": "Holdt pænt niveau med 124 point i sidste sæson (2025/26), men 9 point nu er lidt lunkent."
     },
     {
       "id": 236,
@@ -195,7 +223,7 @@
       "form": "5.5",
       "status": "a",
       "chance": null,
-      "argument": "Har samlet 11 point sammen i denne sæson efter en flot 2025/26-sæson med 151 point."
+      "argument": "Sidste sæsons 151 point lover godt, men et svært program (3.3 i sværhedsgrad) udfordrer ham lige nu."
     },
     {
       "id": 229,
@@ -203,13 +231,13 @@
       "club": "Everton",
       "team_id": 9,
       "pos": "DEF",
-      "score": 32.4,
+      "score": 32.3,
       "last_season_points": 170,
       "points_this_season_so_far": 6,
       "form": "3.0",
       "status": "a",
       "chance": null,
-      "argument": "Svær modstand forude med 3,3 i sværhedsgrad og kun 6 point i den igangværende sæson."
+      "argument": "Langt fra sidste sæsons 170 point med blot 6 point indtil videre i denne sæson."
     },
     {
       "id": 335,
@@ -217,13 +245,13 @@
       "club": "Leeds",
       "team_id": 13,
       "pos": "MID",
-      "score": 32.1,
+      "score": 32.2,
       "last_season_points": 137,
       "points_this_season_so_far": 13,
       "form": "6.5",
       "status": "a",
       "chance": null,
-      "argument": "Rigtig stærk mulighed med 13 point i år samt lette modstandere forude med sværhedsgrad 2,7."
+      "argument": "Stærk start med 13 point denne sæson indtil videre og et fornuftigt kampprogram med sværhedsgrad 2.7."
     },
     {
       "id": 371,
@@ -237,7 +265,7 @@
       "form": "2.5",
       "status": "a",
       "chance": null,
-      "argument": "Et gunstigt kampprogram på 2,3 i sværhedsgrad giver håb trods blot 5 point indtil videre i år."
+      "argument": "Meget lette kampe forude (2.3 i sværhedsgrad), hvilket kan hjælpe på de blot 5 point denne sæson."
     },
     {
       "id": 98,
@@ -245,27 +273,13 @@
       "club": "Brentford",
       "team_id": 4,
       "pos": "MID",
-      "score": 31.2,
+      "score": 31.3,
       "last_season_points": 74,
       "points_this_season_so_far": 9,
       "form": "4.5",
       "status": "a",
       "chance": null,
-      "argument": "Med 9 point indtil videre i år har han et udmærket program foran sig med sværhedsgrad 2,7."
-    },
-    {
-      "id": 327,
-      "name": "Bijol",
-      "club": "Leeds",
-      "team_id": 13,
-      "pos": "DEF",
-      "score": 31.1,
-      "last_season_points": 99,
-      "points_this_season_so_far": 10,
-      "form": "5.0",
-      "status": "a",
-      "chance": null,
-      "argument": "Har skaffet 10 point i denne sæson og har overkommelige modstandere i de næste tre opgør."
+      "argument": "Har allerede hentet 9 point denne sæson indtil videre, hvilket lover godt mod sidste sæsons 74 point."
     },
     {
       "id": 249,
@@ -273,41 +287,27 @@
       "club": "Everton",
       "team_id": 9,
       "pos": "FWD",
-      "score": 31.1,
+      "score": 31.3,
       "last_season_points": 95,
       "points_this_season_so_far": 8,
       "form": "4.0",
       "status": "a",
       "chance": null,
-      "argument": "Skrabede 95 point sammen i 2025/26, men har haft en jævn start på i år med 8 point."
+      "argument": "Kampene ser svære ud (3.3), og 8 point denne sæson indtil videre gør ham svær at anbefale."
     },
     {
-      "id": 268,
-      "name": "King",
-      "club": "Fulham",
-      "team_id": 10,
-      "pos": "MID",
-      "score": 30.9,
-      "last_season_points": 63,
-      "points_this_season_so_far": 7,
-      "form": "3.5",
+      "id": 327,
+      "name": "Bijol",
+      "club": "Leeds",
+      "team_id": 13,
+      "pos": "DEF",
+      "score": 31.2,
+      "last_season_points": 99,
+      "points_this_season_so_far": 10,
+      "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Har kun hentet 7 point i denne sæson indtil videre og leverede 63 point i sidste sæson."
-    },
-    {
-      "id": 368,
-      "name": "Szoboszlai",
-      "club": "Liverpool",
-      "team_id": 14,
-      "pos": "MID",
-      "score": 30.8,
-      "last_season_points": 160,
-      "points_this_season_so_far": 8,
-      "form": "4.0",
-      "status": "a",
-      "chance": null,
-      "argument": "Lavede 160 point i 2025/26 og har nu tre meget lette kampe med sværhedsgrad 2,3 forude."
+      "argument": "Fin start med 10 point denne sæson indtil videre, og kampprogrammet på 2.7 er absolut overkommeligt."
     },
     {
       "id": 8,
@@ -315,13 +315,27 @@
       "club": "Arsenal",
       "team_id": 1,
       "pos": "DEF",
-      "score": 30.7,
+      "score": 31.0,
       "last_season_points": 109,
       "points_this_season_so_far": 9,
       "form": "4.5",
       "status": "a",
       "chance": null,
-      "argument": "Har 9 point i år, men en høj sværhedsgrad på 3,7 gør de næste kampe vanskelige."
+      "argument": "Svært kampprogram på 3.7 gør ham uattraktiv, selvom han lavede 109 point i sidste sæson (2025/26)."
+    },
+    {
+      "id": 268,
+      "name": "King",
+      "club": "Fulham",
+      "team_id": 10,
+      "pos": "MID",
+      "score": 31.0,
+      "last_season_points": 63,
+      "points_this_season_so_far": 7,
+      "form": "3.5",
+      "status": "a",
+      "chance": null,
+      "argument": "Kun 7 point denne sæson indtil videre og et svært program (3.3) trækker desværre alvorligt ned."
     },
     {
       "id": 68,
@@ -329,27 +343,13 @@
       "club": "Bournemouth",
       "team_id": 3,
       "pos": "MID",
-      "score": 30.1,
+      "score": 30.2,
       "last_season_points": 137,
       "points_this_season_so_far": 10,
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Solid historik med 137 point i 2025/26 og er kommet fornuftigt i gang i år med 10 point."
-    },
-    {
-      "id": 332,
-      "name": "Justin",
-      "club": "Leeds",
-      "team_id": 13,
-      "pos": "DEF",
-      "score": 29.9,
-      "last_season_points": 94,
-      "points_this_season_so_far": 10,
-      "form": "5.0",
-      "status": "a",
-      "chance": null,
-      "argument": "10 point i denne sæson kombineret med et overkommeligt program gør ham til en fin mulighed."
+      "argument": "Stabil med 10 point denne sæson indtil videre, efter en flot sidste sæson (2025/26) med 137 point."
     }
   ]
 }
