@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T16:54:41Z",
+  "updated": "2026-08-29T21:21:51Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -7,40 +7,40 @@
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 84,
+      "total": 98,
       "rank": 1,
       "trend": null
     },
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 69,
+      "total": 72,
       "rank": 2,
       "trend": null
     },
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 44,
+      "total": 63,
       "rank": 3,
       "trend": null
     },
     {
       "league_entry": 17813,
       "name": "Kop of Jensen",
-      "total": 39,
+      "total": 53,
       "rank": 4,
       "trend": null
     },
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 39,
+      "total": 46,
       "rank": 5,
       "trend": null
     }
   ],
-  "point_gap": 45,
+  "point_gap": 52,
   "alerts": [
     {
       "player": "Mateta",
@@ -61,7 +61,7 @@
   "highlights": {
     "highest_gw_score": {
       "name": "HaCunha Mateta",
-      "score": 84,
+      "score": 98,
       "gw": "GW1"
     },
     "longest_streak": null
