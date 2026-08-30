@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30T17:02:13Z",
+  "updated": "2026-08-30T21:42:44Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -7,40 +7,40 @@
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 98,
+      "total": 130,
       "rank": 1,
       "trend": null
     },
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 72,
+      "total": 106,
       "rank": 2,
       "trend": null
     },
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 63,
+      "total": 82,
       "rank": 3,
-      "trend": null
-    },
-    {
-      "league_entry": 17813,
-      "name": "Kop of Jensen",
-      "total": 53,
-      "rank": 4,
       "trend": null
     },
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 46,
+      "total": 60,
+      "rank": 4,
+      "trend": null
+    },
+    {
+      "league_entry": 17813,
+      "name": "Kop of Jensen",
+      "total": 55,
       "rank": 5,
       "trend": null
     }
   ],
-  "point_gap": 52,
+  "point_gap": 75,
   "alerts": [
     {
       "player": "Mateta",
@@ -61,7 +61,7 @@
   "highlights": {
     "highest_gw_score": {
       "name": "HaCunha Mateta",
-      "score": 98,
+      "score": 130,
       "gw": "GW1"
     },
     "longest_streak": null
@@ -230,13 +230,13 @@
   "transfer_suggestions": [
     {
       "out": "Saka",
-      "out_score": 33.6,
+      "out_score": 33.4,
       "in": "Cunha",
       "in_club": "Man Utd",
-      "in_score": 47.1,
-      "gap": 13.5,
+      "in_score": 46.4,
+      "gap": 13.0,
       "pos": "MID",
-      "reason": "Ved at erstatte Saka med Cunha får du en spiller med en væsentligt højere score på 47,1 i forhold til Sakas score på 33,6."
+      "reason": "Ved at skifte Saka ud med Cunha får du en midtbanespiller, der øger dit holds score med 13,0 point."
     }
   ],
   "trade_suggestions": []
