@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30T12:23:37Z",
+  "updated": "2026-08-30T17:02:13Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -227,6 +227,17 @@
       "added": "2026-08-27T18:43:21.466785Z"
     }
   ],
-  "transfer_suggestions": [],
+  "transfer_suggestions": [
+    {
+      "out": "Saka",
+      "out_score": 33.6,
+      "in": "Cunha",
+      "in_club": "Man Utd",
+      "in_score": 47.1,
+      "gap": 13.5,
+      "pos": "MID",
+      "reason": "Ved at erstatte Saka med Cunha får du en spiller med en væsentligt højere score på 47,1 i forhold til Sakas score på 33,6."
+    }
+  ],
   "trade_suggestions": []
 }
