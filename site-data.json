@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-31T14:32:40Z",
+  "updated": "2026-08-31T23:03:37Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -7,14 +7,14 @@
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 130,
+      "total": 154,
       "rank": 1,
       "trend": null
     },
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 106,
+      "total": 123,
       "rank": 2,
       "trend": null
     },
@@ -28,19 +28,19 @@
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 60,
+      "total": 76,
       "rank": 4,
       "trend": null
     },
     {
       "league_entry": 17813,
       "name": "Kop of Jensen",
-      "total": 55,
+      "total": 62,
       "rank": 5,
       "trend": null
     }
   ],
-  "point_gap": 75,
+  "point_gap": 92,
   "alerts": [
     {
       "player": "Mateta",
@@ -61,7 +61,7 @@
   "highlights": {
     "highest_gw_score": {
       "name": "HaCunha Mateta",
-      "score": 130,
+      "score": 154,
       "gw": "GW1"
     },
     "longest_streak": null
@@ -227,27 +227,6 @@
       "added": "2026-08-27T18:43:21.466785Z"
     }
   ],
-  "transfer_suggestions": [
-    {
-      "out": "Saka",
-      "out_score": 33.3,
-      "in": "Cunha",
-      "in_club": "Man Utd",
-      "in_score": 46.2,
-      "gap": 12.9,
-      "pos": "MID",
-      "reason": "Du opgraderer din midtbane ved at skifte til Cunha, hvilket øger din score fra 33.3 til 46.2."
-    },
-    {
-      "out": "White",
-      "out_score": 55.7,
-      "in": "Egan",
-      "in_club": "Hull",
-      "in_score": 67.7,
-      "gap": 12.0,
-      "pos": "DEF",
-      "reason": "Du styrker dit forsvar ved at skifte White ud med Egan, hvilket øger din score fra 55.7 til 67.7."
-    }
-  ],
+  "transfer_suggestions": [],
   "trade_suggestions": []
 }
