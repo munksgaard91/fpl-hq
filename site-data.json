@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-31T23:03:37Z",
+  "updated": "2026-09-01T12:12:26Z",
   "current_gw": 1,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -14,7 +14,7 @@
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 123,
+      "total": 125,
       "rank": 2,
       "trend": null
     },
@@ -28,19 +28,19 @@
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 76,
+      "total": 77,
       "rank": 4,
       "trend": null
     },
     {
       "league_entry": 17813,
       "name": "Kop of Jensen",
-      "total": 62,
+      "total": 67,
       "rank": 5,
       "trend": null
     }
   ],
-  "point_gap": 92,
+  "point_gap": 87,
   "alerts": [
     {
       "player": "Mateta",
@@ -227,6 +227,27 @@
       "added": "2026-08-27T18:43:21.466785Z"
     }
   ],
-  "transfer_suggestions": [],
+  "transfer_suggestions": [
+    {
+      "out": "Barry",
+      "out_score": 32.6,
+      "in": "Wilson",
+      "in_club": "Brentford",
+      "in_score": 50.6,
+      "gap": 18.0,
+      "pos": "FWD",
+      "reason": "Dette skifte giver dig Wilson, som har en markant højere score på 50.6 sammenlignet med Barrys score på 32.6."
+    },
+    {
+      "out": "Palmer",
+      "out_score": 36.4,
+      "in": "Lewis-Potter",
+      "in_club": "Brentford",
+      "in_score": 51.6,
+      "gap": 15.2,
+      "pos": "MID",
+      "reason": "Ved at hente Lewis-Potter i stedet for Palmer øger du din score på midtbanen fra 36.4 til 51.6."
+    }
+  ],
   "trade_suggestions": []
 }
