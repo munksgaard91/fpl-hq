@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-01T17:03:14Z",
+  "updated": "2026-09-01T21:29:07Z",
   "current_gw": 2,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -240,7 +240,7 @@
       "in_score": 50.5,
       "gap": 17.8,
       "pos": "FWD",
-      "reason": "Du vinder en direkte opgradering på FWD-positionen, da du erstatter Barrys score på 32,7 med Wilsons højere score på 50,5."
+      "reason": "Ved at skifte Barry ud med Wilson opgraderer du din score markant fra 32.7 til 50.5 med en Brentford FWD."
     },
     {
       "out": "Palmer",
@@ -250,7 +250,7 @@
       "in_score": 51.7,
       "gap": 15.3,
       "pos": "MID",
-      "reason": "Du opnår en markant pointgevinst på MID-positionen ved at skifte Palmer ud med Lewis-Potter, hvilket øger din score fra 36,4 til 51,7."
+      "reason": "Ved at skifte Palmer ud med Lewis-Potter øger du din score fra 36.4 til 51.7 og sikrer dig en Brentford MID."
     }
   ],
   "trade_suggestions": []
