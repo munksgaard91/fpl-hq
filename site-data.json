@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-02T11:49:29Z",
+  "updated": "2026-09-02T16:54:09Z",
   "current_gw": 2,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -42,6 +42,14 @@
   ],
   "point_gap": 87,
   "alerts": [
+    {
+      "player": "Sánchez",
+      "club": "Chelsea",
+      "owner_entry_id": 2538,
+      "owner": "Bottlers Anonymous",
+      "news": "Has joined Como on loan for the rest of the season",
+      "chance": 0
+    },
     {
       "player": "Mateta",
       "club": "Crystal Palace",
@@ -234,23 +242,23 @@
   "transfer_suggestions": [
     {
       "out": "Barry",
-      "out_score": 32.9,
+      "out_score": 33.0,
       "in": "Wilson",
       "in_club": "Brentford",
       "in_score": 50.5,
-      "gap": 17.6,
+      "gap": 17.5,
       "pos": "FWD",
-      "reason": "Du opgraderer din score fra 32.9 til 50.5 og får Brentford-angriberen Wilson i stedet for Barry."
+      "reason": "Med Wilson (FWD) øger du din score fra 33,0 til 50,5, hvilket giver dig en direkte gevinst på 17,5 point."
     },
     {
       "out": "Palmer",
       "out_score": 36.4,
       "in": "Lewis-Potter",
       "in_club": "Brentford",
-      "in_score": 51.8,
-      "gap": 15.4,
+      "in_score": 51.9,
+      "gap": 15.5,
       "pos": "MID",
-      "reason": "Du udskifter Palmer med Brentford-midtbanespilleren Lewis-Potter, hvilket øger din score direkte fra 36.4 til 51.8."
+      "reason": "Med Lewis-Potter (MID) øger du din score fra 36,4 til 51,9, hvilket giver dig en direkte gevinst på 15,5 point."
     }
   ],
   "trade_suggestions": []
