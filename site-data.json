@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-03T11:49:04Z",
+  "updated": "2026-09-03T16:44:17Z",
   "current_gw": 2,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -242,23 +242,23 @@
   "transfer_suggestions": [
     {
       "out": "Barry",
-      "out_score": 33.2,
+      "out_score": 33.3,
       "in": "Wilson",
       "in_club": "Brentford",
       "in_score": 50.5,
-      "gap": 17.3,
+      "gap": 17.2,
       "pos": "FWD",
-      "reason": "Ved at skifte Barry ud med Wilson får du en FWD med en markant højere score på 50,5 i stedet for 33,2."
+      "reason": "Ved at skifte Barry ud med Wilson får du en FWD med en markant højere score på 50.5 i stedet for 33.3."
     },
     {
       "out": "Palmer",
       "out_score": 36.4,
       "in": "Lewis-Potter",
       "in_club": "Brentford",
-      "in_score": 52.0,
-      "gap": 15.6,
+      "in_score": 52.1,
+      "gap": 15.7,
       "pos": "MID",
-      "reason": "Dette skifte giver dig en MID med en markant højere score på 52,0 i stedet for Palmers score på 36,4."
+      "reason": "Ved at skifte Palmer ud med Lewis-Potter får du en MID med en væsentligt højere score på 52.1 i stedet for 36.4."
     }
   ],
   "trade_suggestions": []
