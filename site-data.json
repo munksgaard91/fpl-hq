@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-03T16:44:17Z",
+  "updated": "2026-09-03T21:28:45Z",
   "current_gw": 2,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -48,14 +48,6 @@
       "owner_entry_id": 2538,
       "owner": "Bottlers Anonymous",
       "news": "Has joined Como on loan for the rest of the season",
-      "chance": 0
-    },
-    {
-      "player": "Mateta",
-      "club": "Crystal Palace",
-      "owner_entry_id": 2538,
-      "owner": "Bottlers Anonymous",
-      "news": "Hamstring injury - Expected back 11 Oct",
       "chance": 0
     }
   ],
@@ -237,28 +229,108 @@
       "player_in": "Sánchez",
       "player_out": "A.Becker",
       "added": "2026-08-27T18:43:21.466785Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Isidor",
+      "player_out": "Mateta",
+      "added": "2026-09-01T04:56:35.494790Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Hato",
+      "player_out": "Khusanov",
+      "added": "2026-09-01T04:56:35.494841Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Foden",
+      "player_out": "Anderson",
+      "added": "2026-09-01T04:56:35.494864Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Waiver",
+      "player_in": "Cunha",
+      "player_out": "E.Le Fée",
+      "added": "2026-09-02T19:07:44.672994Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Allan",
+      "player_out": "Sávio",
+      "added": "2026-09-03T14:06:16.081674Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Kayode",
+      "player_out": "James",
+      "added": "2026-09-03T14:06:16.081779Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Munoz",
+      "player_out": "Mac Allister",
+      "added": "2026-09-03T14:06:16.081809Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Elanga",
+      "player_out": "Van Oevelen",
+      "added": "2026-09-03T16:43:16.043861Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Free agent",
+      "player_in": "Marmoush",
+      "player_out": "McBurnie",
+      "added": "2026-09-03T18:04:22.654344Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Free agent",
+      "player_in": "Lewis-Potter",
+      "player_out": "Lewis-Skelly",
+      "added": "2026-09-03T18:08:31.117467Z"
     }
   ],
   "transfer_suggestions": [
     {
       "out": "Barry",
-      "out_score": 33.3,
+      "out_score": 33.5,
       "in": "Wilson",
       "in_club": "Brentford",
       "in_score": 50.5,
-      "gap": 17.2,
+      "gap": 17.0,
       "pos": "FWD",
-      "reason": "Ved at skifte Barry ud med Wilson får du en FWD med en markant højere score på 50.5 i stedet for 33.3."
+      "reason": "Ved at skifte Barry ud med Wilson opgraderer du din angrebsposition og vinder 17 point mere til dit hold."
     },
     {
       "out": "Palmer",
       "out_score": 36.4,
-      "in": "Lewis-Potter",
-      "in_club": "Brentford",
-      "in_score": 52.1,
-      "gap": 15.7,
+      "in": "Groß",
+      "in_club": "Brighton",
+      "in_score": 48.4,
+      "gap": 12.0,
       "pos": "MID",
-      "reason": "Ved at skifte Palmer ud med Lewis-Potter får du en MID med en væsentligt højere score på 52.1 i stedet for 36.4."
+      "reason": "Du vinder 12 point mere på din midtbane ved at erstatte Palmer med Groß fra Brighton."
     }
   ],
   "trade_suggestions": []
