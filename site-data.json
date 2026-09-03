@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-02T21:25:24Z",
+  "updated": "2026-09-03T11:49:04Z",
   "current_gw": 2,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -242,23 +242,23 @@
   "transfer_suggestions": [
     {
       "out": "Barry",
-      "out_score": 33.1,
+      "out_score": 33.2,
       "in": "Wilson",
       "in_club": "Brentford",
       "in_score": 50.5,
-      "gap": 17.4,
+      "gap": 17.3,
       "pos": "FWD",
-      "reason": "Ved at skifte Barry ud med Wilson får du en angriber med en markant højere score på 50.5 i stedet for 33.1."
+      "reason": "Ved at skifte Barry ud med Wilson får du en FWD med en markant højere score på 50,5 i stedet for 33,2."
     },
     {
       "out": "Palmer",
       "out_score": 36.4,
       "in": "Lewis-Potter",
       "in_club": "Brentford",
-      "in_score": 51.9,
-      "gap": 15.5,
+      "in_score": 52.0,
+      "gap": 15.6,
       "pos": "MID",
-      "reason": "Du opgraderer din midtbane og øger din score fra 36.4 til 51.9 ved at erstatte Palmer med Lewis-Potter fra Brentford."
+      "reason": "Dette skifte giver dig en MID med en markant højere score på 52,0 i stedet for Palmers score på 36,4."
     }
   ],
   "trade_suggestions": []
