@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04T11:51:07Z",
+  "updated": "2026-09-04T16:38:29Z",
   "current_gw": 2,
   "season_started": true,
   "next_deadline": "2026-09-04T17:30:00Z",
@@ -317,18 +317,26 @@
       "player_in": "Dewsbury-Hall",
       "player_out": "Maddison",
       "added": "2026-09-04T08:54:23.632805Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Kop of Jensen",
+      "kind": "Free agent",
+      "player_in": "Enzo",
+      "player_out": "McGinn",
+      "added": "2026-09-04T14:41:26.714194Z"
     }
   ],
   "transfer_suggestions": [
     {
       "out": "Barry",
-      "out_score": 33.7,
+      "out_score": 33.9,
       "in": "Wilson",
       "in_club": "Brentford",
       "in_score": 50.5,
-      "gap": 16.8,
+      "gap": 16.6,
       "pos": "FWD",
-      "reason": "Ved at skifte Barry (score 33.7) ud med Wilson (FWD) vinder du en markant højere score på 50.5 til dit hold."
+      "reason": "Du vinder en langt højere score ved at opgradere din FWD-position fra Barrys 33.9 til Wilsons markante score på 50.5."
     },
     {
       "out": "Palmer",
@@ -338,7 +346,7 @@
       "in_score": 48.4,
       "gap": 12.0,
       "pos": "MID",
-      "reason": "Ved at skifte Palmer (score 36.4) ud med Groß (MID) vinder dit hold en væsentligt højere score på 48.4."
+      "reason": "Du vinder en væsentligt højere score ved at erstatte Palmer med Groß, hvilket løfter din MID-score fra 36.4 til 48.4."
     }
   ],
   "trade_suggestions": []
