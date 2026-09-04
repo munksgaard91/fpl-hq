@@ -3,20 +3,20 @@
   "lineup_set": true,
   "starters": [
     {
-      "id": 1,
-      "name": "Raya",
-      "club": "Arsenal",
+      "id": 82,
+      "name": "Kelleher",
+      "club": "Brentford",
       "pos": "GK",
       "status": "a",
       "chance": null
     },
     {
-      "id": 10,
-      "name": "White",
-      "club": "Arsenal",
+      "id": 449,
+      "name": "Hall",
+      "club": "Newcastle",
       "pos": "DEF",
       "status": "a",
-      "chance": 100
+      "chance": null
     },
     {
       "id": 229,
@@ -41,6 +41,14 @@
       "pos": "DEF",
       "status": "a",
       "chance": null
+    },
+    {
+      "id": 480,
+      "name": "Gibbs-White",
+      "club": "Nott'm Forest",
+      "pos": "MID",
+      "status": "a",
+      "chance": 100
     },
     {
       "id": 12,
@@ -81,6 +89,24 @@
       "pos": "FWD",
       "status": "a",
       "chance": null
+    }
+  ],
+  "bench": [
+    {
+      "id": 1,
+      "name": "Raya",
+      "club": "Arsenal",
+      "pos": "GK",
+      "status": "a",
+      "chance": null
+    },
+    {
+      "id": 10,
+      "name": "White",
+      "club": "Arsenal",
+      "pos": "DEF",
+      "status": "a",
+      "chance": 100
     },
     {
       "id": 249,
@@ -89,38 +115,12 @@
       "pos": "FWD",
       "status": "a",
       "chance": null
-    }
-  ],
-  "bench": [
-    {
-      "id": 82,
-      "name": "Kelleher",
-      "club": "Brentford",
-      "pos": "GK",
-      "status": "a",
-      "chance": null
     },
     {
       "id": 439,
       "name": "Šeško",
       "club": "Man Utd",
       "pos": "FWD",
-      "status": "a",
-      "chance": 100
-    },
-    {
-      "id": 449,
-      "name": "Hall",
-      "club": "Newcastle",
-      "pos": "DEF",
-      "status": "a",
-      "chance": null
-    },
-    {
-      "id": 480,
-      "name": "Gibbs-White",
-      "club": "Nott'm Forest",
-      "pos": "MID",
       "status": "a",
       "chance": 100
     }
@@ -228,5 +228,5 @@
     }
   ],
   "injury_news": [],
-  "updated": "2026-09-04T16:38:29Z"
+  "updated": "2026-09-04T21:07:52Z"
 }

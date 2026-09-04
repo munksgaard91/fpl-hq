@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-04T16:38:29Z",
+  "updated": "2026-09-04T21:07:52Z",
   "current_gw": 2,
   "season_started": true,
-  "next_deadline": "2026-09-04T17:30:00Z",
+  "next_deadline": "2026-09-12T12:30:00Z",
   "standings": [
     {
       "league_entry": 1510,
@@ -329,24 +329,14 @@
   ],
   "transfer_suggestions": [
     {
-      "out": "Barry",
-      "out_score": 33.9,
-      "in": "Wilson",
-      "in_club": "Brentford",
-      "in_score": 50.5,
-      "gap": 16.6,
-      "pos": "FWD",
-      "reason": "Du vinder en langt højere score ved at opgradere din FWD-position fra Barrys 33.9 til Wilsons markante score på 50.5."
-    },
-    {
       "out": "Palmer",
-      "out_score": 36.4,
-      "in": "Groß",
-      "in_club": "Brighton",
-      "in_score": 48.4,
-      "gap": 12.0,
+      "out_score": 26.0,
+      "in": "O.Dango",
+      "in_club": "Brentford",
+      "in_score": 45.0,
+      "gap": 19.0,
       "pos": "MID",
-      "reason": "Du vinder en væsentligt højere score ved at erstatte Palmer med Groß, hvilket løfter din MID-score fra 36.4 til 48.4."
+      "reason": "Du opgraderer dit hold ved at udskifte Palmer med O.Dango, hvilket giver dig en spiller med 45.0 point i stedet for 26.0."
     }
   ],
   "trade_suggestions": []
