@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05T11:00:03Z",
+  "updated": "2026-09-05T15:41:27Z",
   "current_gw": 2,
   "season_started": true,
   "next_deadline": "2026-09-12T12:30:00Z",
@@ -327,17 +327,6 @@
       "added": "2026-09-04T14:41:26.714194Z"
     }
   ],
-  "transfer_suggestions": [
-    {
-      "out": "Palmer",
-      "out_score": 26.6,
-      "in": "O.Dango",
-      "in_club": "Brentford",
-      "in_score": 44.9,
-      "gap": 18.3,
-      "pos": "MID",
-      "reason": "Ved at hente O.Dango får du en midtbanespiller med en markant højere score på 44.9 sammenlignet med Palmers score på 26.6."
-    }
-  ],
+  "transfer_suggestions": [],
   "trade_suggestions": []
 }
