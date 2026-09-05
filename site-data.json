@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05T15:41:27Z",
+  "updated": "2026-09-05T20:47:50Z",
   "current_gw": 2,
   "season_started": true,
   "next_deadline": "2026-09-12T12:30:00Z",
@@ -7,40 +7,40 @@
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 154,
+      "total": 180,
       "rank": 1,
       "trend": 0
     },
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 125,
+      "total": 149,
       "rank": 2,
       "trend": 0
     },
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 109,
+      "total": 135,
       "rank": 3,
       "trend": 0
     },
     {
       "league_entry": 17813,
       "name": "Kop of Jensen",
-      "total": 80,
+      "total": 107,
       "rank": 4,
       "trend": 1
     },
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 77,
+      "total": 94,
       "rank": 5,
       "trend": -1
     }
   ],
-  "point_gap": 77,
+  "point_gap": 86,
   "alerts": [
     {
       "player": "Sánchez",
