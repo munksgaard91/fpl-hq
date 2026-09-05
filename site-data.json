@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04T21:07:52Z",
+  "updated": "2026-09-05T11:00:03Z",
   "current_gw": 2,
   "season_started": true,
   "next_deadline": "2026-09-12T12:30:00Z",
@@ -21,26 +21,26 @@
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 82,
+      "total": 109,
       "rank": 3,
-      "trend": 0
-    },
-    {
-      "league_entry": 2539,
-      "name": "Bottlers Anonymous",
-      "total": 77,
-      "rank": 4,
       "trend": 0
     },
     {
       "league_entry": 17813,
       "name": "Kop of Jensen",
-      "total": 67,
+      "total": 80,
+      "rank": 4,
+      "trend": 1
+    },
+    {
+      "league_entry": 2539,
+      "name": "Bottlers Anonymous",
+      "total": 77,
       "rank": 5,
-      "trend": 0
+      "trend": -1
     }
   ],
-  "point_gap": 87,
+  "point_gap": 77,
   "alerts": [
     {
       "player": "Sánchez",
@@ -330,13 +330,13 @@
   "transfer_suggestions": [
     {
       "out": "Palmer",
-      "out_score": 26.0,
+      "out_score": 26.6,
       "in": "O.Dango",
       "in_club": "Brentford",
-      "in_score": 45.0,
-      "gap": 19.0,
+      "in_score": 44.9,
+      "gap": 18.3,
       "pos": "MID",
-      "reason": "Du opgraderer dit hold ved at udskifte Palmer med O.Dango, hvilket giver dig en spiller med 45.0 point i stedet for 26.0."
+      "reason": "Ved at hente O.Dango får du en midtbanespiller med en markant højere score på 44.9 sammenlignet med Palmers score på 26.6."
     }
   ],
   "trade_suggestions": []
