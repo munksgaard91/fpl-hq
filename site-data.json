@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05T20:47:50Z",
+  "updated": "2026-09-06T11:24:46Z",
   "current_gw": 2,
   "season_started": true,
   "next_deadline": "2026-09-12T12:30:00Z",
@@ -49,6 +49,14 @@
       "owner": "Bottlers Anonymous",
       "news": "Has joined Como on loan for the rest of the season",
       "chance": 0
+    },
+    {
+      "player": "Collins",
+      "club": "Brentford",
+      "owner_entry_id": 48885,
+      "owner": "Mainoo Character FC",
+      "news": "Calf injury - 25% chance of playing",
+      "chance": 25
     }
   ],
   "league_transfer_news": [],
