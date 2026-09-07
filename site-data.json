@@ -1,46 +1,46 @@
 {
-  "updated": "2026-09-06T20:55:26Z",
-  "current_gw": 2,
+  "updated": "2026-09-07T13:06:34Z",
+  "current_gw": 3,
   "season_started": true,
   "next_deadline": "2026-09-12T12:30:00Z",
   "standings": [
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 180,
+      "total": 188,
       "rank": 1,
       "trend": 0
     },
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 149,
+      "total": 169,
       "rank": 2,
       "trend": 0
     },
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 135,
+      "total": 143,
       "rank": 3,
       "trend": 0
     },
     {
-      "league_entry": 17813,
-      "name": "Kop of Jensen",
-      "total": 107,
+      "league_entry": 2539,
+      "name": "Bottlers Anonymous",
+      "total": 115,
       "rank": 4,
       "trend": 1
     },
     {
-      "league_entry": 2539,
-      "name": "Bottlers Anonymous",
-      "total": 94,
+      "league_entry": 17813,
+      "name": "Kop of Jensen",
+      "total": 109,
       "rank": 5,
       "trend": -1
     }
   ],
-  "point_gap": 86,
+  "point_gap": 79,
   "alerts": [
     {
       "player": "Sánchez",
@@ -62,6 +62,10 @@
   "league_transfer_news": [],
   "gw_summaries": [
     {
+      "gw": 3,
+      "text": "Efter tredje spillerunde i den private draft-liga tegner der sig et tydeligt billede af den aktuelle stilling. Holdet HaCunha Mateta indtager førstepladsen med en samlet score på 188 point, skarpt forfulgt af Mainoo Character FC, der ligger på andenpladsen med 169 point. \n\nI den midterste og nederste del af tabellen finder vi HernDog IF på en foreløbig tredjeplads med 143 point. Bottlers Anonymous indtager fjerdepladsen med 115 point, mens Kop of Jensen i øjeblikket ligger dårligst placeret i ligaen med en samlet score på 109 point. \n\nEn generel observation af stillingen efter tredje runde viser en pointmæssig spredning på i alt 79 point fra listens top til bund. Der er etableret et forspring på 19 point fra første- til andenpladsen, mens konkurrencen i den nedre ende er mere snæver med kun 6 points forskel mellem de to lavest placerede hold. \n\nDer er til denne runde ikke registreret yderligere data vedrørende individuelle spillerpræstationer eller klubskifter."
+    },
+    {
       "gw": 2,
       "text": "Anden spillerunde er nu afsluttet, og stillingen efter GW2 begynder at tage form. En generel observation af runden viser, at der allerede tidligt i sæsonen er opstået en betydelig pointmæssig spredning mellem de fem hold i ligaen.\n\nI toppen af tabellen befinder HaCunha Mateta sig på en foreløbig førsteplads med i alt 154 point. Holdet er skarpt forfulgt af Mainoo Character FC, der indtager andenpladsen med 125 point. \n\nI den modsatte ende af tabellen ligger Kop of Jensen i øjeblikket dårligst placeret som nummer fem med i alt 67 point. Midterfeltet udgøres af HernDog IF på tredjepladsen med 82 point og Bottlers Anonymous på fjerdepladsen med 77 point. \n\nDer er ikke registreret eller opgivet data om klubskifter eller nye spillere forud for denne runde."
     },
@@ -79,11 +83,11 @@
     "longest_streak": null
   },
   "bench_trend": {
-    "1510": 38,
-    "2538": 6,
-    "17803": 12,
-    "48885": 21,
-    "126623": 11
+    "1510": 50,
+    "2538": 10,
+    "17803": 16,
+    "48885": 28,
+    "126623": 33
   },
   "transactions": [
     {
