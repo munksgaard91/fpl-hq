@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-08T11:51:52Z",
+  "updated": "2026-09-08T16:53:55Z",
   "players": [
     {
       "id": 379,
@@ -13,7 +13,7 @@
       "form": "7.7",
       "status": "a",
       "chance": null,
-      "argument": "Han er klar og har samlet 23 point denne sæson indtil videre med et gennemsnitligt kampprogram på 3.0."
+      "argument": "Isak har hentet 23 point denne sæson indtil videre, men de næste kampe har en sværhedsgrad på middelmådige 3,0."
     },
     {
       "id": 572,
@@ -27,7 +27,7 @@
       "form": "8.7",
       "status": "a",
       "chance": null,
-      "argument": "En solid start med 26 point denne sæson indtil videre, selvom de næste tre kampe har sværhedsgrad 3.3."
+      "argument": "En solid start med 26 point denne sæson indtil videre trækkes ned af et svært kampprogram på 3,3."
     },
     {
       "id": 165,
@@ -41,7 +41,7 @@
       "form": "7.0",
       "status": "a",
       "chance": null,
-      "argument": "Med 177 point sidste sæson (2025/26) og 21 point denne sæson indtil videre venter et let program på 2.7."
+      "argument": "Med 177 point sidste sæson og 21 point denne sæson indtil videre lover kampprogrammet på 2,7 godt."
     },
     {
       "id": 115,
@@ -55,7 +55,7 @@
       "form": "7.0",
       "status": "a",
       "chance": null,
-      "argument": "De Cuyper har 21 point denne sæson indtil videre efter 84 point sidste sæson (2025/26) med moderat modstand (3.0)."
+      "argument": "Med 84 point sidste sæson og 21 point denne sæson indtil videre afventer en jævn sværhedsgrad på 3,0 nu."
     },
     {
       "id": 154,
@@ -69,7 +69,7 @@
       "form": "7.0",
       "status": "a",
       "chance": 100,
-      "argument": "Efter 114 point sidste sæson (2025/26) og 21 point denne sæson indtil videre, lokker det lette program på 2.7."
+      "argument": "Han leverede 114 point sidste sæson og har 21 denne sæson indtil videre med et nemt program på 2,7."
     },
     {
       "id": 586,
@@ -83,7 +83,7 @@
       "form": "8.0",
       "status": "a",
       "chance": 100,
-      "argument": "Han står noteret for 24 point denne sæson indtil videre, men kampprogrammet på 3.3 bliver en hård test."
+      "argument": "Mendy har sikret 24 point denne sæson indtil videre, men står overfor sværere kampe med 3,3 i snit."
     },
     {
       "id": 504,
@@ -97,7 +97,7 @@
       "form": "6.0",
       "status": "a",
       "chance": null,
-      "argument": "Vuskovic har hentet 18 point denne sæson indtil videre og står overfor en gennemsnitlig sværhedsgrad på 3.0."
+      "argument": "Kun 18 point denne sæson indtil videre og et middelsvært kampprogram på 3,0 gør ham til et tvivlsomt valg."
     },
     {
       "id": 367,
@@ -111,7 +111,7 @@
       "form": "9.3",
       "status": "a",
       "chance": null,
-      "argument": "Han har leveret hele 28 point denne sæson indtil videre, hvilket følger flot op på sidste sæsons (2025/26) 131 point."
+      "argument": "Gakpo imponerer med 28 point denne sæson indtil videre ovenpå de flotte 131 point i sidste sæson."
     },
     {
       "id": 277,
@@ -125,7 +125,7 @@
       "form": "7.7",
       "status": "a",
       "chance": null,
-      "argument": "23 point denne sæson indtil videre er godkendt, men sværhedsgraden på 3.3 i de næste kampe trækker ned."
+      "argument": "Han har hentet 23 point denne sæson indtil videre, men programmet ser udfordrende ud med sværhedsgrad på 3,3."
     },
     {
       "id": 12,
@@ -139,7 +139,7 @@
       "form": "7.3",
       "status": "a",
       "chance": null,
-      "argument": "Han har 22 point denne sæson indtil videre efter 157 point sidste sæson (2025/26) og møder let modstand (2.7)."
+      "argument": "Saka fik 157 point sidste sæson, har 22 point denne sæson indtil videre og et nemt program på 2,7."
     },
     {
       "id": 10,
@@ -153,7 +153,7 @@
       "form": "6.7",
       "status": "a",
       "chance": 100,
-      "argument": "Med en sværhedsgrad på kun 2.7 fremadrettet er hans 20 point denne sæson indtil videre ganske attraktive."
+      "argument": "White har fået 20 point denne sæson indtil videre, men de kommende kampe på 2,7 ser yderst overkommelige ud."
     },
     {
       "id": 40,
@@ -167,7 +167,7 @@
       "form": "6.3",
       "status": "a",
       "chance": null,
-      "argument": "Efter 169 point sidste sæson (2025/26) har han 19 point denne sæson indtil videre og et let program på 2.7."
+      "argument": "Efter 169 point sidste sæson har han kun 19 point denne sæson indtil videre trods et kampprogram på 2,7."
     },
     {
       "id": 8,
@@ -181,7 +181,7 @@
       "form": "7.3",
       "status": "a",
       "chance": null,
-      "argument": "Han har 22 point denne sæson indtil videre efter 109 point sidste sæson (2025/26) med let program på 2.7."
+      "argument": "Med 109 point sidste sæson og 22 point denne sæson indtil videre ser programmet på 2,7 lovende ud."
     },
     {
       "id": 335,
@@ -195,7 +195,7 @@
       "form": "6.3",
       "status": "a",
       "chance": null,
-      "argument": "Efter 137 point sidste sæson (2025/26) virker 19 point denne sæson indtil videre og sværhedsgrad 3.3 mindre fristende."
+      "argument": "Sidste sæsons 137 point følges op af blot 19 point denne sæson indtil videre og svære kampe på 3,3."
     },
     {
       "id": 411,
@@ -209,7 +209,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Med 239 point sidste sæson (2025/26) og 24 point denne sæson indtil videre, hæmmes han dog af sværhedsgrad 3.3."
+      "argument": "Med 239 point sidste sæson har han kun 24 point denne sæson indtil videre før svære kampe på 3,3."
     },
     {
       "id": 173,
@@ -217,13 +217,13 @@
       "club": "Coventry",
       "team_id": 7,
       "pos": "DEF",
-      "score": 46.7,
+      "score": 46.8,
       "last_season_points": null,
       "points_this_season_so_far": 15,
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Han har kun hentet 15 point denne sæson indtil videre, men det kommende program er let med sværhedsgrad 2.3."
+      "argument": "Blot 15 point denne sæson indtil videre, men det kommende program er ekstremt let med et snit på 2,3."
     },
     {
       "id": 385,
@@ -237,7 +237,7 @@
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Kun 15 point denne sæson indtil videre og et svært program på 3.3 gør ham svær at anbefale."
+      "argument": "Med blot 15 point denne sæson indtil videre og et svært snit på 3,3 ser det sværere ud."
     },
     {
       "id": 15,
@@ -251,7 +251,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Med 24 point denne sæson indtil videre efter 74 point sidste sæson (2025/26) er programmet på 2.7 gunstigt."
+      "argument": "Han har 24 point denne sæson indtil videre og et let kampprogram med et sværhedsgrad-snit på 2,7."
     },
     {
       "id": 399,
@@ -265,7 +265,7 @@
       "form": "8.3",
       "status": "a",
       "chance": null,
-      "argument": "Med 135 point sidste sæson (2025/26) og 25 point denne sæson indtil videre venter en sværhedsgrad på 3.3."
+      "argument": "Cherki har fået 25 point denne sæson indtil videre, men de kommende kampe har en sværhedsgrad på 3,3."
     },
     {
       "id": 124,
@@ -273,13 +273,13 @@
       "club": "Brighton",
       "team_id": 5,
       "pos": "MID",
-      "score": 45.3,
+      "score": 45.4,
       "last_season_points": 78,
       "points_this_season_so_far": 16,
       "form": "5.3",
       "status": "a",
       "chance": null,
-      "argument": "Sidste sæson (2025/26) gav 78 point, men kun 16 point denne sæson indtil videre og sværhedsgrad 3.0 skuffer."
+      "argument": "Kun 16 point denne sæson indtil videre sammenlignet med 78 point sidste sæson gør ham til et usikkert kort."
     },
     {
       "id": 426,
@@ -293,7 +293,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Efter 235 point sidste sæson (2025/26) har han nu 27 point denne sæson indtil videre trods modstand på 3.3."
+      "argument": "Flotte 235 point sidste sæson og 27 point denne sæson indtil videre, men kampprogrammet på 3,3 er svært."
     },
     {
       "id": 334,
@@ -301,27 +301,13 @@
       "club": "Leeds",
       "team_id": 13,
       "pos": "DEF",
-      "score": 45.0,
+      "score": 45.1,
       "last_season_points": null,
       "points_this_season_so_far": 14,
       "form": "4.7",
       "status": "a",
       "chance": null,
-      "argument": "Med blot 14 point denne sæson indtil videre og et kampprogram på 3.3 er han et usikkert kort."
-    },
-    {
-      "id": 4,
-      "name": "Gabriel",
-      "club": "Arsenal",
-      "team_id": 1,
-      "pos": "DEF",
-      "score": 44.8,
-      "last_season_points": 209,
-      "points_this_season_so_far": 15,
-      "form": "5.0",
-      "status": "a",
-      "chance": null,
-      "argument": "Trods 15 point denne sæson indtil videre lokker 2.7 sværhedsgraden ovenpå sidste sæsons (2025/26) 209 point."
+      "argument": "Kun 14 point denne sæson indtil videre og svære kampe forude med 3,3 i snit fraråder ham lige nu."
     },
     {
       "id": 69,
@@ -335,7 +321,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Sidste sæsons (2025/26) 136 point overskygges af 24 point denne sæson indtil videre og svær modstand på 3.7."
+      "argument": "Trods 136 point sidste sæson og 24 point denne sæson indtil videre, gør kampprogrammet på 3,7 ham uattraktiv."
     },
     {
       "id": 332,
@@ -349,7 +335,21 @@
       "form": "5.3",
       "status": "a",
       "chance": null,
-      "argument": "Efter 94 point sidste sæson (2025/26) skuffer 16 point denne sæson indtil videre under sværhedsgrad på 3.3."
+      "argument": "Justin har samlet 16 point denne sæson indtil videre og står overfor svære kampe med 3,3 i sværhedsgrad."
+    },
+    {
+      "id": 4,
+      "name": "Gabriel",
+      "club": "Arsenal",
+      "team_id": 1,
+      "pos": "DEF",
+      "score": 44.7,
+      "last_season_points": 209,
+      "points_this_season_so_far": 15,
+      "form": "5.0",
+      "status": "a",
+      "chance": null,
+      "argument": "Efter 209 point sidste sæson har han kun 15 point denne sæson indtil videre, trods kampprogram på 2,7."
     }
   ]
 }
