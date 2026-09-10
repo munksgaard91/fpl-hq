@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-10T11:56:17Z",
+  "updated": "2026-09-10T16:43:51Z",
   "players": [
     {
       "id": 379,
@@ -13,7 +13,7 @@
       "form": "7.7",
       "status": "a",
       "chance": null,
-      "argument": "Solid start med 23 point denne sæson indtil videre og et middelsvært kampprogram forude."
+      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 572,
@@ -27,7 +27,7 @@
       "form": "8.7",
       "status": "a",
       "chance": null,
-      "argument": "Har hentet fine 26 point denne sæson indtil videre, men de næste kampe ser svære ud."
+      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 165,
@@ -41,7 +41,7 @@
       "form": "7.0",
       "status": "a",
       "chance": null,
-      "argument": "Leverede hele 177 point sidste sæson, og det kommende kampprogram ser nu meget lovende ud."
+      "argument": "177 point sidste sæson."
     },
     {
       "id": 115,
@@ -55,7 +55,7 @@
       "form": "7.0",
       "status": "a",
       "chance": null,
-      "argument": "En stabil defensiv mulighed med 21 point denne sæson indtil videre og gennemsnitlig modstand i vente."
+      "argument": "84 point sidste sæson."
     },
     {
       "id": 504,
@@ -63,13 +63,13 @@
       "club": "Brighton",
       "team_id": 5,
       "pos": "DEF",
-      "score": 53.0,
+      "score": 53.1,
       "last_season_points": null,
       "points_this_season_so_far": 18,
       "form": "6.0",
       "status": "a",
       "chance": null,
-      "argument": "Klar til at spille med 18 point denne sæson indtil videre og moderat sværhedsgrad i vente."
+      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 154,
@@ -83,7 +83,7 @@
       "form": "7.0",
       "status": "a",
       "chance": 100,
-      "argument": "Efter 114 point sidste sæson får han nu et let kampprogram med 2,7 i sværhedsgrad."
+      "argument": "114 point sidste sæson."
     },
     {
       "id": 586,
@@ -97,7 +97,7 @@
       "form": "8.0",
       "status": "a",
       "chance": 100,
-      "argument": "Har præsteret 24 point denne sæson indtil videre, men modstanden bliver mere udfordrende nu."
+      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 367,
@@ -111,7 +111,7 @@
       "form": "9.3",
       "status": "d",
       "chance": 75,
-      "argument": "Trods stærke 28 point denne sæson indtil videre, gør hans tvivlsomme status d ham usikker."
+      "argument": "131 point sidste sæson."
     },
     {
       "id": 277,
@@ -125,7 +125,7 @@
       "form": "7.7",
       "status": "a",
       "chance": null,
-      "argument": "Med status klar har han hentet 23 point denne sæson indtil videre trods kommende svære kampe."
+      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 12,
@@ -139,7 +139,7 @@
       "form": "7.3",
       "status": "a",
       "chance": null,
-      "argument": "En topspiller med 157 point sidste sæson, som nu går i møde med et nemt kampprogram."
+      "argument": "157 point sidste sæson."
     },
     {
       "id": 10,
@@ -153,7 +153,7 @@
       "form": "6.7",
       "status": "a",
       "chance": 100,
-      "argument": "Glimrende valg med 20 point denne sæson indtil videre og lette opgør i de næste tre."
+      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 40,
@@ -167,7 +167,7 @@
       "form": "6.3",
       "status": "a",
       "chance": null,
-      "argument": "Flot historik med 169 point sidste sæson og attraktive, lette kampe forude lige nu."
+      "argument": "169 point sidste sæson."
     },
     {
       "id": 8,
@@ -181,7 +181,7 @@
       "form": "7.3",
       "status": "a",
       "chance": null,
-      "argument": "Viste sit værd med 109 point sidste sæson og har herlige, lette kampe i vente nu."
+      "argument": "109 point sidste sæson."
     },
     {
       "id": 335,
@@ -195,7 +195,7 @@
       "form": "6.3",
       "status": "a",
       "chance": null,
-      "argument": "Efter flotte 137 point sidste sæson, trækker de kommende sværere kampe på 3,3 ned lige nu."
+      "argument": "137 point sidste sæson."
     },
     {
       "id": 411,
@@ -209,7 +209,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Sidste sæsons topscorer med 239 point er klar, selvom de næste modstandere ser svære ud."
+      "argument": "239 point sidste sæson."
     },
     {
       "id": 173,
@@ -223,7 +223,7 @@
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Rigtig spændende mulighed med et meget let program på kun 2,3 i sværhedsgrad forude."
+      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 385,
@@ -237,7 +237,7 @@
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Har kun 15 point denne sæson indtil videre, og de svære kampe gør ham uattraktiv."
+      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 15,
@@ -251,7 +251,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Er startet godt med 24 point denne sæson indtil videre og møder nu overkommelig modstand."
+      "argument": "74 point sidste sæson."
     },
     {
       "id": 124,
@@ -265,7 +265,7 @@
       "form": "5.3",
       "status": "a",
       "chance": null,
-      "argument": "Hentede 78 point sidste sæson, men hans 16 point denne sæson indtil videre trækker lidt ned."
+      "argument": "78 point sidste sæson."
     },
     {
       "id": 334,
@@ -279,7 +279,7 @@
       "form": "4.7",
       "status": "a",
       "chance": null,
-      "argument": "Et usikkert valg med blot 14 point denne sæson indtil videre og et svært kampprogram."
+      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 426,
@@ -293,7 +293,7 @@
       "form": "9.0",
       "status": "a",
       "chance": null,
-      "argument": "Hele 235 point sidste sæson viser hans potentiale, trods de kommende sværere kampe i programmet."
+      "argument": "235 point sidste sæson."
     },
     {
       "id": 399,
@@ -301,13 +301,13 @@
       "club": "Man City",
       "team_id": 15,
       "pos": "MID",
-      "score": 45.0,
+      "score": 44.8,
       "last_season_points": 135,
       "points_this_season_so_far": 25,
       "form": "8.3",
       "status": "a",
       "chance": null,
-      "argument": "Fulgte op på 135 point sidste sæson med godkendte 25 point denne sæson indtil videre."
+      "argument": "135 point sidste sæson."
     },
     {
       "id": 332,
@@ -321,7 +321,7 @@
       "form": "5.3",
       "status": "a",
       "chance": null,
-      "argument": "Efter 94 point sidste sæson har han kun formået 16 point denne sæson indtil videre."
+      "argument": "94 point sidste sæson."
     },
     {
       "id": 69,
@@ -335,7 +335,7 @@
       "form": "8.0",
       "status": "a",
       "chance": null,
-      "argument": "Imponerede med 136 point sidste sæson, men står overfor et ekstremt svært program lige nu."
+      "argument": "136 point sidste sæson."
     },
     {
       "id": 4,
@@ -349,7 +349,7 @@
       "form": "5.0",
       "status": "a",
       "chance": null,
-      "argument": "Suveræne 209 point sidste sæson gør ham attraktiv, især med det kommende lette kampprogram."
+      "argument": "209 point sidste sæson."
     }
   ]
 }
