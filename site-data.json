@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11T11:55:15Z",
+  "updated": "2026-09-11T16:48:12Z",
   "current_gw": 3,
   "season_started": true,
   "next_deadline": "2026-09-12T12:30:00Z",
@@ -43,20 +43,20 @@
   "point_gap": 79,
   "alerts": [
     {
-      "player": "Sánchez",
-      "club": "Chelsea",
-      "owner_entry_id": 2538,
-      "owner": "Bottlers Anonymous",
-      "news": "Has joined Como on loan for the rest of the season",
-      "chance": 0
-    },
-    {
       "player": "Collins",
       "club": "Brentford",
       "owner_entry_id": 48885,
       "owner": "Mainoo Character FC",
-      "news": "Calf injury - 25% chance of playing",
-      "chance": 25
+      "news": "Calf injury - Unknown return date",
+      "chance": 0
+    },
+    {
+      "player": "Van Oevelen",
+      "club": "Ipswich",
+      "owner_entry_id": 2538,
+      "owner": "Bottlers Anonymous",
+      "news": "Has joined Valencia on loan for the rest of the season",
+      "chance": 0
     }
   ],
   "league_transfer_news": [],
@@ -337,6 +337,62 @@
       "player_in": "Enzo",
       "player_out": "McGinn",
       "added": "2026-09-04T14:41:26.714194Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Van Oevelen",
+      "player_out": "Foden",
+      "added": "2026-09-06T19:20:24.313590Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Mendy",
+      "player_out": "O'Reilly",
+      "added": "2026-09-06T19:20:24.313674Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "A.Becker",
+      "player_out": "Sánchez",
+      "added": "2026-09-06T19:20:24.313712Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "HaCunha Mateta",
+      "kind": "Waiver",
+      "player_in": "Suzuki",
+      "player_out": "Kelleher",
+      "added": "2026-09-07T14:59:23.706339Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Kamada",
+      "player_out": "Elanga",
+      "added": "2026-09-09T12:23:32.795848Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Groß",
+      "player_out": "Targett",
+      "added": "2026-09-09T12:23:32.795900Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Charles",
+      "player_out": "Mosquera",
+      "added": "2026-09-11T05:26:59.565094Z"
     }
   ],
   "transfer_suggestions": [],
