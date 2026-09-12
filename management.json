@@ -3,9 +3,9 @@
   "lineup_set": true,
   "starters": [
     {
-      "id": 82,
-      "name": "Kelleher",
-      "club": "Brentford",
+      "id": 597,
+      "name": "Suzuki",
+      "club": "Aston Villa",
       "pos": "GK",
       "status": "a",
       "chance": null
@@ -43,12 +43,20 @@
       "chance": null
     },
     {
-      "id": 480,
-      "name": "Gibbs-White",
-      "club": "Nott'm Forest",
-      "pos": "MID",
+      "id": 10,
+      "name": "White",
+      "club": "Arsenal",
+      "pos": "DEF",
       "status": "a",
       "chance": 100
+    },
+    {
+      "id": 399,
+      "name": "Cherki",
+      "club": "Man City",
+      "pos": "MID",
+      "status": "a",
+      "chance": null
     },
     {
       "id": 12,
@@ -75,14 +83,6 @@
       "chance": 100
     },
     {
-      "id": 399,
-      "name": "Cherki",
-      "club": "Man City",
-      "pos": "MID",
-      "status": "a",
-      "chance": null
-    },
-    {
       "id": 106,
       "name": "Thiago",
       "club": "Brentford",
@@ -101,20 +101,20 @@
       "chance": null
     },
     {
-      "id": 10,
-      "name": "White",
-      "club": "Arsenal",
-      "pos": "DEF",
-      "status": "a",
-      "chance": 100
-    },
-    {
       "id": 249,
       "name": "Barry",
       "club": "Everton",
       "pos": "FWD",
       "status": "a",
       "chance": null
+    },
+    {
+      "id": 480,
+      "name": "Gibbs-White",
+      "club": "Nott'm Forest",
+      "pos": "MID",
+      "status": "a",
+      "chance": 100
     },
     {
       "id": 439,
@@ -139,8 +139,19 @@
       ]
     },
     {
+      "club": "Aston Villa",
+      "count": 1,
+      "difficulty": [
+        3,
+        3,
+        3,
+        3,
+        4
+      ]
+    },
+    {
       "club": "Brentford",
-      "count": 2,
+      "count": 1,
       "difficulty": [
         3,
         4,
@@ -228,5 +239,5 @@
     }
   ],
   "injury_news": [],
-  "updated": "2026-09-12T11:21:48Z"
+  "updated": "2026-09-12T15:55:25Z"
 }
