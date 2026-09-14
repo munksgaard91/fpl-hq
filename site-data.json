@@ -1,22 +1,22 @@
 {
-  "updated": "2026-09-14T13:27:44Z",
+  "updated": "2026-09-14T22:11:12Z",
   "current_gw": 3,
   "season_started": true,
   "next_deadline": "2026-09-18T17:30:00Z",
   "standings": [
     {
+      "league_entry": 48956,
+      "name": "Mainoo Character FC",
+      "total": 239,
+      "rank": 1,
+      "trend": 1
+    },
+    {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
       "total": 233,
-      "rank": 1,
-      "trend": 0
-    },
-    {
-      "league_entry": 48956,
-      "name": "Mainoo Character FC",
-      "total": 229,
       "rank": 2,
-      "trend": 0
+      "trend": -1
     },
     {
       "league_entry": 127144,
@@ -28,7 +28,7 @@
     {
       "league_entry": 17813,
       "name": "Kop of Jensen",
-      "total": 152,
+      "total": 155,
       "rank": 4,
       "trend": 0
     },
@@ -40,7 +40,7 @@
       "trend": 0
     }
   ],
-  "point_gap": 89,
+  "point_gap": 95,
   "alerts": [
     {
       "player": "Collins",
@@ -395,6 +395,17 @@
       "added": "2026-09-11T05:26:59.565094Z"
     }
   ],
-  "transfer_suggestions": [],
+  "transfer_suggestions": [
+    {
+      "out": "Hall",
+      "out_score": 34.6,
+      "in": "Bogle",
+      "in_club": "Leeds",
+      "in_score": 47.6,
+      "gap": 13.0,
+      "pos": "DEF",
+      "reason": "Du forbedrer dit hold ved at hente Bogle (DEF), som sikrer dig en markant højere score på 47,6 point mod Halls 34,6 point."
+    }
+  ],
   "trade_suggestions": []
 }
