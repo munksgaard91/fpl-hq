@@ -75,38 +75,36 @@ def save_team_snapshot(snapshot):
 BIG_TRANSFER_THRESHOLD = 100  # sidste sæsons point - grænsen for at tælle som "stor nok" uden at være ejet
 
 
-# Kendte, bekræftede fejl i FPL's egen element-status-data - IKKE noget vi selv har
-# cachet forkert, men FPL's live-server der selv svarer forkert. Bekræftet direkte:
-# Kayne van Oevelen (id 554) vises som ejet af HernDog IF (entry 126623), men optræder
-# IKKE i hans faktiske trup ifølge FPL's egen resultatside (bekræftet af Rasmus'
-# screenshot, 25/26. august 2026) - formentlig FPL's eget rod pga. hans Ipswich->
-# Valencia-transfer. Fjern denne linje når FPL selv har rettet det (fx når hans
-# team-felt opdaterer til Valencia, eller han igen er aktiv i Premier League).
-# Delt konstant med fpl_common.py - samme korrektion, to selvstændige filer.
-OWNERSHIP_OVERRIDES = {
-    554: None,     # Kayne van Oevelen - fejlagtigt vist som ejet, er det ikke reelt
-    557: 126623,   # Christos Tzolis - fejlagtigt vist som uejet, tilhører reelt HernDog IF.
-                    # Formentlig samme underliggende FPL-rod som Van Oevelen-sagen.
-}
+BIG_TRANSFER_THRESHOLD = 100  # sidste sæsons point - grænsen for at tælle som "stor nok" uden at være ejet
+
+
+VAN_OEVELEN_ID = 554   # Kayne van Oevelen - reelt udlånt til Valencia, spiller ikke i vores liga
+TZOLIS_ID = 557        # Christos Tzolis - hans RIGTIGE bevægelser bliver fejlagtigt logget under Van Oevelens ID
 
 
 def get_corrected_element_status(element_status, transactions=None):
-    """Se fpl_common.py's tilsvarende funktion - samme korrektion, delt formål."""
-    since_traded = set()
+    """Se fpl_common.py's tilsvarende funktion - samme korrektion, delt formål.
+    BEKRÆFTET (15. sep 2026, screenshot af Bottlers Anonymous' faktiske GW4-trup):
+    Tzolis' rigtige transfers logges fejlagtigt under Van Oevelens ID i FPL's
+    system. Sporer derfor Tzolis' rigtige ejer via Van Oevelens transaktioner,
+    i stedet for en fast værdi."""
+    tzolis_owner = 126623  # udgangspunkt: HernDog IF (bekræftet ejerskab fra GW1)
     if transactions:
-        for t in transactions:
-            if t.get("result") != "a":
-                continue
-            for pid in (t.get("element_in"), t.get("element_out")):
-                if pid in OWNERSHIP_OVERRIDES:
-                    since_traded.add(pid)
+        van_oevelen_txns = [
+            t for t in transactions
+            if t.get("result") == "a" and (t.get("element_in") == VAN_OEVELEN_ID or t.get("element_out") == VAN_OEVELEN_ID)
+        ]
+        if van_oevelen_txns:
+            latest = max(van_oevelen_txns, key=lambda t: t["id"])
+            tzolis_owner = latest["entry"] if latest.get("element_in") == VAN_OEVELEN_ID else None
 
+    overrides = {VAN_OEVELEN_ID: None, TZOLIS_ID: tzolis_owner}
     corrected = []
     for es in element_status:
         eid = es.get("element")
-        if eid in OWNERSHIP_OVERRIDES and eid not in since_traded:
+        if eid in overrides:
             es = dict(es)
-            es["owner"] = OWNERSHIP_OVERRIDES[eid]
+            es["owner"] = overrides[eid]
         corrected.append(es)
     return corrected
 
@@ -313,6 +311,53 @@ def get_live_elements_normalized(live):
     return [(item["id"], item) for item in elements]
 
 
+def get_worst_discipline(live, element_status, entry_name_map, player_names):
+    """
+    Finder manageren/managerne med flest kort blandt deres ejede spillere denne
+    gameweek. Tie-break: flest røde kort først, dernæst flest gule. Hvis stadig
+    lige, nævnes ALLE tilfælde. Returnerer None hvis ingen kort er uddelt
+    overhovedet i hele ligaen denne uge - feltet skal så udelades helt.
+    """
+    stats_by_id = {pid: pdata["stats"] for pid, pdata in get_live_elements_normalized(live)}
+    owner_by_element = {es["element"]: es["owner"] for es in element_status if es.get("owner")}
+
+    cards_by_entry = {}
+    for pid, owner in owner_by_element.items():
+        stats = stats_by_id.get(pid)
+        if not stats:
+            continue
+        yellow = stats.get("yellow_cards", 0)
+        red = stats.get("red_cards", 0)
+        if not yellow and not red:
+            continue
+        entry = cards_by_entry.setdefault(owner, {"yellow": 0, "red": 0, "players": []})
+        entry["yellow"] += yellow
+        entry["red"] += red
+        entry["players"].append(player_names.get(pid, "?"))
+
+    if not cards_by_entry:
+        return None
+
+    max_red = max(c["red"] for c in cards_by_entry.values())
+    candidates = [eid for eid, c in cards_by_entry.items() if c["red"] == max_red]
+    max_yellow = max(cards_by_entry[eid]["yellow"] for eid in candidates)
+    winners = [eid for eid in candidates if cards_by_entry[eid]["yellow"] == max_yellow]
+
+    parts = []
+    for eid in winners:
+        c = cards_by_entry[eid]
+        ename = entry_name_map.get(eid, "?")
+        card_bits = []
+        if c["red"]:
+            card_bits.append(f"{c['red']} rødt")
+        if c["yellow"]:
+            card_bits.append(f"{c['yellow']} gult")
+        players_str = ", ".join(c["players"])
+        parts.append(f"{ename} med {' og '.join(card_bits)} kort ({players_str})")
+
+    return " — også lige så slemt: ".join(parts) if len(parts) > 1 else parts[0]
+
+
 def get_top_gw_performers(bootstrap, live, top_n=3):
     """Top-scorere i HELE Premier League denne gameweek (ikke kun i vores liga) — ægte data, ikke gæt."""
     by_id = {p["id"]: p for p in bootstrap["elements"]}
@@ -398,15 +443,20 @@ def run_season_kickoff():
     trans_data = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions")
     accepted = [t for t in trans_data.get("transactions", []) if t.get("result") == "a"]
     kind_labels = {"w": "Waiver", "f": "Free agent", "t": "Trade"}
-    trans_lines = []
+    by_entry = {}
     for t in accepted:
         kind = kind_labels.get(t.get("kind"), t.get("kind", "transaction"))
         entry_id = t.get("entry")
         in_name = player_names.get(t.get("element_in"), f"spiller {t.get('element_in')}")
         out_name = player_names.get(t.get("element_out"))
-        ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
         desc = f"{in_name} ind, {out_name} ud" if out_name else f"{in_name} ind"
-        trans_lines.append(f"{ename}: {desc} ({kind})")
+        by_entry.setdefault(entry_id, []).append(f"{desc} ({kind})")
+    trans_lines = []
+    for entry_id, moves in by_entry.items():
+        ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
+        trans_lines.append(f"**{ename}**")
+        trans_lines.extend(moves)
+        trans_lines.append("")
 
     deadline_line = "Ukendt — tjek draft.premierleague.com"
     if next_deadline:
@@ -441,9 +491,9 @@ TRANSFERS LAVET I PRESEASON (waivers/trades siden draften):
     webhook = os.environ["DISCORD_WEBHOOK_URL"]
     embed = {
         "title": "⚽ Sæsonstart!",
-        "description": f"{summary_text}\n\n{BOT_DISCLAIMER}",
+        "description": summary_text,
         "color": 2926465,
-        "footer": {"text": f"Første deadline: {deadline_line}"},
+        "footer": {"text": f"Første deadline: {deadline_line}\nBotten tager ikke ansvar for fejl, er bare en simpel clanker"},
     }
     discord_body = json.dumps({
         "username": "Update Bot", "content": "@everyone",
@@ -468,20 +518,34 @@ TRANSFERS LAVET I PRESEASON (waivers/trades siden draften):
         print("Sæsonstart-besked postet, Discord response:", resp.status)
 
 
-KNOWN_GW1_TRANSACTION_IDS = {347294, 347638, 347914, 348087, 836238, 836364}
 
-# Tilføjes i bunden af ALLE Discord-beskeder - besluttet efter flere fund af
-# ejerskabs-data-fejl i FPL's egen API, som vi ikke kan garantere at fange alle af.
-BOT_DISCLAIMER = "*botten tager ikke ansvar for fejl, er bare en simpel clanker*"
+TRANSFER_NEWS_STATE_FILE = "transfer-news-state.json"
+# Bootstrap-værdi: de 6 kendte GW1-transaktioner der lå der FØR denne funktion
+# fandtes. Bruges kun som udgangspunkt hvis state-filen ikke findes endnu.
+INITIAL_KNOWN_TRANSACTION_IDS = {347294, 347638, 347914, 348087, 836238, 836364}
+
+
+def load_transfer_news_state():
+    if os.path.exists(TRANSFER_NEWS_STATE_FILE):
+        with open(TRANSFER_NEWS_STATE_FILE, encoding="utf-8") as f:
+            return json.load(f)
+    return {"last_posted_id": max(INITIAL_KNOWN_TRANSACTION_IDS)}
+
+
+def save_transfer_news_state(state):
+    with open(TRANSFER_NEWS_STATE_FILE, "w", encoding="utf-8") as f:
+        json.dump(state, f, ensure_ascii=False, indent=2)
 
 
 def run_post_transactions():
     """
     Engangs-besked, trigges manuelt (POST_TRANSACTIONS=true) når brugeren beder
-    om det - viser KUN de nyeste transaktioner (denne gameweeks waivers/trades),
-    ikke hele historikken. Grupperer trades først, waivers bagefter. Selve
-    listen er ren, deterministisk tekst (ingen AI) for at garantere 100%
-    korrekte navne/retninger - kun den korte hype-intro er AI-skrevet.
+    om det - viser KUN de nyeste transaktioner siden sidste gang denne funktion
+    blev kørt FOR RIGTIGT (ikke DRY_RUN), sporet via transfer-news-state.json -
+    ikke en hårdkodet liste der skal opdateres manuelt hver gang. Grupperer
+    trades først, waivers bagefter. Selve listen er ren, deterministisk tekst
+    (ingen AI) for at garantere 100% korrekte navne/retninger - kun den korte
+    hype-intro er AI-skrevet.
     """
     bootstrap = fetch_json(f"{FPL_BASE}/bootstrap-static/")
     player_names = get_player_names(bootstrap)
@@ -492,9 +556,18 @@ def run_post_transactions():
         entry_name_map[e["id"]] = e["entry_name"]
         entry_name_map[e["entry_id"]] = e["entry_name"]
 
+    news_state = load_transfer_news_state()
+    last_posted_id = news_state.get("last_posted_id", 0)
+
     trans_data = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions")
     accepted = [t for t in trans_data.get("transactions", []) if t.get("result") == "a"]
-    new_ones = [t for t in accepted if t["id"] not in KNOWN_GW1_TRANSACTION_IDS]
+    new_ones_all = [t for t in accepted if t["id"] > last_posted_id]
+    # Vis kun den SENESTE gameweeks transaktioner, ikke en blanding hvis flere
+    # gameweeks' waivers er samlet op siden sidste post - undgår at gamle
+    # rester fra en tidligere gameweek dukker op sammen med de aktuelle.
+    latest_event = max((t["event"] for t in new_ones_all), default=None)
+    new_ones = [t for t in new_ones_all if t["event"] == latest_event] if latest_event else []
+    highest_id_seen = max((t["id"] for t in accepted), default=last_posted_id)
 
     trades = [t for t in new_ones if t.get("kind") == "t"]
     waivers = [t for t in new_ones if t.get("kind") in ("w", "f")]
@@ -583,21 +656,20 @@ def run_post_transactions():
         lines.extend(format_line(t) for t in waivers)
         lines.append("")
     lines.append(f"-# Der er nu frie transfers indtil deadline ({deadline_line}) — det betyder I kan hente frie spillere med det samme, uden at vente på en waiver-runde.")
-    lines.append("")
-    lines.append(BOT_DISCLAIMER)
 
     description = "\n".join(lines)
+    footer_text = "Botten tager ikke ansvar for fejl, er bare en simpel clanker"
 
     if os.environ.get("DRY_RUN", "").lower() == "true":
         print("=== DRY_RUN: intet sendt til Discord, dette er hvad der VILLE være sendt ===")
-        print(json.dumps({"embeds": [{"title": "📋 Transfer News", "description": description}]}, ensure_ascii=False, indent=2))
+        print(json.dumps({"embeds": [{"title": "📋 Transfer News", "description": description, "footer": {"text": footer_text}}]}, ensure_ascii=False, indent=2))
         print("=== DRY_RUN slut ===")
         return
 
     webhook = os.environ["DISCORD_WEBHOOK_URL"]
     body = json.dumps({
         "username": "Update Bot", "content": "@everyone",
-        "embeds": [{"title": "📋 Transfer News", "description": description, "color": 2926465}],
+        "embeds": [{"title": "📋 Transfer News", "description": description, "color": 2926465, "footer": {"text": footer_text}}],
         "allowed_mentions": {"parse": ["everyone"]},
     }).encode("utf-8")
     req = urllib.request.Request(
@@ -610,6 +682,8 @@ def run_post_transactions():
     )
     with urllib.request.urlopen(req, timeout=20) as resp:
         print("Transaktions-besked postet, Discord response:", resp.status)
+    save_transfer_news_state({"last_posted_id": highest_id_seen})
+    print(f"transfer-news-state.json opdateret, last_posted_id={highest_id_seen}")
 
 
 def main():
@@ -676,6 +750,7 @@ def main():
     element_status = get_corrected_element_status(element_status, raw_transactions_for_correction)
     owned_injury_lines = get_owned_player_news(bootstrap, element_status, entry_name_map)
     league_transfer_news = get_league_transfer_news(bootstrap, element_status, entry_name_map, player_names, gw > 0)
+    discipline_line = get_worst_discipline(live, element_status, entry_name_map, player_names) if gw > 0 else None
 
     # -------- top overall PL performers + Tottenham-resultat (kræver reelt spillede kampe) --------
     if gw > 0:
@@ -764,28 +839,27 @@ def main():
         last_eid = standings[-1]["league_entry"]
         last_place_name = entry_name_map.get(last_eid, f"Entry {last_eid}")
 
-    # -------- rank movement vs last posted gw --------
-    movers = []
-    for eid_str, rank_now in current_ranks.items():
-        prev_rank = state["last_ranks"].get(eid_str)
-        if prev_rank is not None:
-            movers.append((entry_name_map.get(int(eid_str), eid_str), prev_rank, rank_now, prev_rank - rank_now))
-    biggest_mover = max(movers, key=lambda m: abs(m[3])) if movers else None
-
     # -------- transactions since last post --------
     trans_data = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions")
     all_trans = [t for t in trans_data.get("transactions", []) if t.get("result") == "a"]
-    new_trans = all_trans[state["last_transaction_count"]:]
+    news_state = load_transfer_news_state()
+    last_shown_txn_id = news_state.get("last_posted_id", 0)
+    new_trans = [t for t in all_trans if t["id"] > last_shown_txn_id]
     kind_labels = {"w": "Waiver", "f": "Free agent", "t": "Trade"}
-    trans_lines = []
+    by_entry = {}
     for t in new_trans:
         kind = kind_labels.get(t.get("kind"), t.get("kind", "transaction"))
         entry_id = t.get("entry")
         in_name = player_names.get(t.get("element_in"), f"spiller {t.get('element_in')}")
         out_name = player_names.get(t.get("element_out"))
-        ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
         desc = f"{in_name} ind, {out_name} ud" if out_name else f"{in_name} ind"
-        trans_lines.append(f"{ename}: {desc} ({kind})")
+        by_entry.setdefault(entry_id, []).append(f"{desc} ({kind})")
+    trans_lines = []
+    for entry_id, moves in by_entry.items():
+        ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
+        trans_lines.append(f"**{ename}**")
+        trans_lines.extend(moves)
+        trans_lines.append("")
 
     # -------- assemble context for Gemini --------
     best_line = "Ingen data"
@@ -797,17 +871,11 @@ def main():
         pts, pid, eid = league_worst
         worst_line = f"{player_names.get(pid, pid)} ({entry_name_map.get(eid,'?')}) — {pts} point"
 
-    mover_line = "Ingen ændring"
-    if biggest_mover:
-        name, prev_r, now_r, delta = biggest_mover
-        retning = "op" if delta > 0 else "ned"
-        mover_line = f"{name}: {prev_r}. → {now_r}. plads ({abs(delta)} pladser {retning})"
-
     bench_line = None
     if biggest_bench_regret:
         diff, eid, bname, bpts, sname, spts = biggest_bench_regret
         bench_line = (
-            f"🤥 {entry_name_map.get(eid, '?')} lod **{bname}** ({bpts} point) sidde på bænken "
+            f"{entry_name_map.get(eid, '?')} lod **{bname}** ({bpts} point) sidde på bænken "
             f"i stedet for **{sname}** ({spts} point) — {diff} point forærede væk"
         )
 
@@ -820,7 +888,6 @@ Pointforskel mellem 1. og sidsteplads: {point_gap} point.
 
 BEDSTE ENKELTSPILLER DENNE UGE: {best_line}
 DÅRLIGSTE ENKELTSPILLER DENNE UGE (blandt startere): {worst_line}
-STØRSTE PLADS-BEVÆGELSE: {mover_line}
 STØRSTE "OUCH" PÅ BÆNKEN: {bench_line if bench_line else "Ingen — ingen bænkspiller ville reelt have gjort en forskel denne uge."}
 
 TRANSAKTIONER SIDEN SIDST:
@@ -860,7 +927,7 @@ TOTTENHAM-REGEL: {tottenham_result if tottenham_result else "Tottenham vandt ell
         next_gw, deadline_ts = next_deadline
         deadline_line = f"GW{next_gw}: {format_deadline_da(deadline_ts)}"
 
-    post_to_discord(gw, standings_lines, best_line, worst_line, mover_line, bench_line, trans_lines, summary_text, point_gap, deadline_line, test_mode)
+    post_to_discord(gw, standings_lines, best_line, worst_line, bench_line, discipline_line, trans_lines, summary_text, point_gap, deadline_line, test_mode)
 
     # picks-history er et rent arkiv (ikke en duplikat-spærre som last_posted_event),
     # så den gemmes altid, også under test - jo før en gameweeks picks bliver frosset,
@@ -871,8 +938,9 @@ TOTTENHAM-REGEL: {tottenham_result if tottenham_result else "Tottenham vandt ell
     if gw > 0 and not test_mode:
         state["last_posted_event"] = gw
         state["last_ranks"] = current_ranks
-        state["last_transaction_count"] = len(all_trans)
         save_state(state)
+        if all_trans:
+            save_transfer_news_state({"last_posted_id": max(t["id"] for t in all_trans)})
         print(f"GW{gw} postet og state gemt.")
     elif test_mode:
         print(f"Test-tilstand: besked postet, men state IKKE gemt (for ikke at blokere en ægte fremtidig post).")
@@ -1004,7 +1072,31 @@ def call_gemini_raw(prompt):
     return None
 
 
-def post_to_discord(gw, standings_lines, best_line, worst_line, mover_line, bench_line, trans_lines, summary_text, point_gap, deadline_line, test_mode=False):
+def truncate_for_discord_field(lines, max_len=1000):
+    """
+    Discord tillader max 1024 tegn pr. felt-værdi - bekræftet årsag til en reel
+    HTTP 400-fejl, da 'Waivers & trades siden sidst' voksede til 1929 tegn
+    efter flere gameweeks' ophobede transaktioner. Klipper til de SENESTE
+    linjer der kan være, og noterer hvor mange der blev udeladt, i stedet for
+    at lade hele posten fejle stille.
+    """
+    if not lines:
+        return "Ingen waivers eller trades siden sidst."
+    full = "\n".join(lines)
+    if len(full) <= max_len:
+        return full
+    kept = []
+    total = 0
+    for line in reversed(lines):  # behold de NYESTE, dropper ældre først
+        if total + len(line) + 1 > max_len - 30:  # luft til "+X flere"-linjen
+            break
+        kept.insert(0, line)
+        total += len(line) + 1
+    omitted = len(lines) - len(kept)
+    return "\n".join(kept) + f"\n*(+{omitted} flere, se historikken på siden)*"
+
+
+def post_to_discord(gw, standings_lines, best_line, worst_line, bench_line, discipline_line, trans_lines, summary_text, point_gap, deadline_line, test_mode=False):
     webhook = os.environ["DISCORD_WEBHOOK_URL"]
     title = "⚽ Gameweek 0" if test_mode and gw == 0 else f"⚽ Gameweek {gw}"
 
@@ -1013,8 +1105,7 @@ def post_to_discord(gw, standings_lines, best_line, worst_line, mover_line, benc
     full_description = (
         f"{summary_text}\n\n"
         f"## Stilling\n"
-        f"{chr(10).join(standings_lines) or '—'}\n\n"
-        f"{BOT_DISCLAIMER}"
+        f"{chr(10).join(standings_lines) or '—'}"
     )
 
     embed = {
@@ -1024,15 +1115,18 @@ def post_to_discord(gw, standings_lines, best_line, worst_line, mover_line, benc
         "fields": [
             {"name": "🔥 Ugens bedste", "value": best_line, "inline": True},
             {"name": "🥶 Ugens værste", "value": worst_line, "inline": True},
-            {"name": "📈 Størst bevægelse", "value": mover_line, "inline": False},
         ],
-        "footer": {"text": f"Pointforskel fra første til sidstepladsen: {point_gap} point"},
+        "footer": {"text": f"Pointforskel fra første til sidstepladsen: {point_gap} point\nBotten tager ikke ansvar for fejl, er bare en simpel clanker"},
     }
     if bench_line:
         embed["fields"].append({"name": "🤥 Dyreste bænk", "value": bench_line, "inline": False})
+    if discipline_line:
+        embed["fields"].append({"name": "🟨 Ugens synder", "value": discipline_line, "inline": False})
     if trans_lines:
-        embed["fields"].append({"name": "Waivers & trades siden sidst", "value": "\n".join(trans_lines), "inline": False})
+        embed["fields"].append({"name": "\u200b", "value": "\u200b", "inline": False})  # luft-felt
+        embed["fields"].append({"name": "Waivers & trades siden sidst", "value": truncate_for_discord_field(trans_lines), "inline": False})
 
+    embed["fields"].append({"name": "\u200b", "value": "\u200b", "inline": False})  # luft-felt
     embed["fields"].append({
         "name": "⏰ Husk at lave trades/waivers og sæt holdet",
         "value": f"Deadline: **{deadline_line}**",

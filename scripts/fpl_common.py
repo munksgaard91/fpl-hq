@@ -139,49 +139,44 @@ def get_live_points_map(live):
     return {item["id"]: item["stats"]["total_points"] for item in elements}
 
 
-# Kendte, bekræftede fejl i FPL's egen element-status-data - IKKE noget vi selv har
-# cachet forkert, men FPL's live-server der selv svarer forkert. Bekræftet direkte:
-# Kayne van Oevelen (id 554) vises som ejet af HernDog IF (entry 126623), men optræder
-# IKKE i hans faktiske trup ifølge FPL's egen resultatside (bekræftet af Rasmus'
-# screenshot, 25/26. august 2026) - formentlig FPL's eget rod pga. hans Ipswich->
-# Valencia-transfer. Fjern denne linje når FPL selv har rettet det (fx når hans
-# team-felt opdaterer til Valencia, eller han igen er aktiv i Premier League).
-OWNERSHIP_OVERRIDES = {
-    554: None,     # Kayne van Oevelen - fejlagtigt vist som ejet, er det ikke reelt
-    557: 126623,   # Christos Tzolis - fejlagtigt vist som uejet, tilhører reelt HernDog IF.
-                    # Formentlig samme underliggende FPL-rod som Van Oevelen-sagen: ét forsøgt
-                    # (eller fejlslagent) bytte i FPL's system har ramt begge spilleres
-                    # ejerskabs-data forkert, hver i sin retning.
-}
+
+VAN_OEVELEN_ID = 554   # Kayne van Oevelen - reelt udlånt til Valencia, spiller ikke i vores liga
+TZOLIS_ID = 557        # Christos Tzolis - hans RIGTIGE bevægelser bliver fejlagtigt logget under Van Oevelens ID
 
 
 def get_corrected_element_status(element_status, transactions=None):
     """
     Kør ALTID element-status igennem denne før den bruges til ejerskabs-tjek
-    andre steder - retter kendte, bekræftede fejl i FPL's egen data centralt,
-    ét sted, i stedet for at patche hver enkelt brugssted for sig.
+    andre steder.
 
-    VIGTIGT: hvis en spiller i OWNERSHIP_OVERRIDES nogensinde optræder i en
-    REEL, gennemført transaktion (waiver/trade) - som fx hvis HernDog rent
-    faktisk handler Tzolis væk - SKAL rettelsen automatisk stoppe med at
-    gælde for præcis den spiller. Ellers ville vi permanent forhindre en ægte
-    fremtidig handel i at slå igennem. Kræver derfor transactions-listen for
-    at kunne tjekke dette.
+    BEKRÆFTET, MÆRKELIGT MØNSTER (fundet 15. sep 2026, bekræftet med screenshot
+    af Bottlers Anonymous' faktiske GW4-trup): FPL's system logger Tzolis'
+    RIGTIGE transfers under Van Oevelens ID (554) i stedet for hans eget (557) -
+    formentlig fordi Van Oevelens rodede Ipswich->Valencia-transfer har forvirret
+    FPL's egen bogføring. Løsningen sporer derfor Tzolis' rigtige ejer ud fra
+    Van Oevelens transaktionshistorik, i stedet for en fast værdi - så det
+    automatisk følger med hver gang "Van Oevelen" optræder i en transaktion,
+    uden manuel indgriben hver gang.
+
+    Van Oevelen selv sættes altid til uejet, da han reelt ikke er en aktiv del
+    af vores liga længere.
     """
-    since_traded = set()
+    tzolis_owner = 126623  # udgangspunkt: HernDog IF (bekræftet ejerskab fra GW1)
     if transactions:
-        for t in transactions:
-            if t.get("result") != "a":
-                continue
-            for pid in (t.get("element_in"), t.get("element_out")):
-                if pid in OWNERSHIP_OVERRIDES:
-                    since_traded.add(pid)
+        van_oevelen_txns = [
+            t for t in transactions
+            if t.get("result") == "a" and (t.get("element_in") == VAN_OEVELEN_ID or t.get("element_out") == VAN_OEVELEN_ID)
+        ]
+        if van_oevelen_txns:
+            latest = max(van_oevelen_txns, key=lambda t: t["id"])
+            tzolis_owner = latest["entry"] if latest.get("element_in") == VAN_OEVELEN_ID else None
 
+    overrides = {VAN_OEVELEN_ID: None, TZOLIS_ID: tzolis_owner}
     corrected = []
     for es in element_status:
         eid = es.get("element")
-        if eid in OWNERSHIP_OVERRIDES and eid not in since_traded:
+        if eid in overrides:
             es = dict(es)
-            es["owner"] = OWNERSHIP_OVERRIDES[eid]
+            es["owner"] = overrides[eid]
         corrected.append(es)
     return corrected
