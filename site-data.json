@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-14T22:11:12Z",
+  "updated": "2026-09-15T12:20:08Z",
   "current_gw": 3,
   "season_started": true,
   "next_deadline": "2026-09-18T17:30:00Z",
@@ -21,7 +21,7 @@
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 204,
+      "total": 205,
       "rank": 3,
       "trend": 0
     },
@@ -397,15 +397,26 @@
   ],
   "transfer_suggestions": [
     {
-      "out": "Hall",
+      "out": "Suzuki",
       "out_score": 34.6,
-      "in": "Bogle",
-      "in_club": "Leeds",
-      "in_score": 47.6,
-      "gap": 13.0,
-      "pos": "DEF",
-      "reason": "Du forbedrer dit hold ved at hente Bogle (DEF), som sikrer dig en markant højere score på 47,6 point mod Halls 34,6 point."
+      "in": "Tzolakis",
+      "in_club": "Hull",
+      "in_score": 52.4,
+      "gap": 17.8,
+      "pos": "GK",
+      "reason": "Du opgraderer dit hold ved at skifte Suzuki (34.6) ud med Tzolakis, hvilket giver dig en markant højere score på 52.4."
     }
   ],
-  "trade_suggestions": []
+  "trade_suggestions": [
+    {
+      "my_player": "Thiago",
+      "my_score": 23.0,
+      "target": "Igor Jesus",
+      "target_owner": "Mainoo Character FC",
+      "target_score": 41.3,
+      "gap": 18.3,
+      "pos": "FWD",
+      "reason": "Igor Jesus (score 41.3) er stærkere end Thiago (score 23.0) og sidder ubrugt på bænken hos Mainoo Character FC. Foreslå et bytte."
+    }
+  ]
 }

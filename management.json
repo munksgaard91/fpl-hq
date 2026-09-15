@@ -132,10 +132,10 @@
       "count": 3,
       "difficulty": [
         3,
-        3,
         2,
         3,
-        3
+        3,
+        4
       ]
     },
     {
@@ -145,83 +145,83 @@
         3,
         3,
         3,
-        3,
-        4
+        4,
+        2
       ]
     },
     {
       "club": "Brentford",
       "count": 1,
       "difficulty": [
-        3,
         4,
         4,
         4,
-        2
+        2,
+        3
       ]
     },
     {
       "club": "Brighton",
       "count": 1,
       "difficulty": [
-        2,
         4,
         3,
         3,
-        4
+        4,
+        5
       ]
     },
     {
       "club": "Chelsea",
       "count": 1,
       "difficulty": [
-        2,
         3,
         3,
         3,
-        3
+        3,
+        4
       ]
     },
     {
       "club": "Everton",
       "count": 2,
       "difficulty": [
-        3,
         2,
         2,
         4,
-        5
+        5,
+        3
       ]
     },
     {
       "club": "Man City",
       "count": 2,
       "difficulty": [
-        4,
         2,
         4,
         2,
-        4
+        4,
+        2
       ]
     },
     {
       "club": "Man Utd",
       "count": 2,
       "difficulty": [
-        4,
         3,
         3,
         3,
-        3
+        3,
+        4
       ]
     },
     {
       "club": "Newcastle",
       "count": 1,
       "difficulty": [
+        2,
+        2,
         3,
-        2,
-        2,
         3,
         3
       ]
@@ -230,14 +230,14 @@
       "club": "Nott'm Forest",
       "count": 1,
       "difficulty": [
-        4,
         2,
         3,
         4,
-        2
+        2,
+        3
       ]
     }
   ],
   "injury_news": [],
-  "updated": "2026-09-14T22:11:12Z"
+  "updated": "2026-09-15T12:20:08Z"
 }
