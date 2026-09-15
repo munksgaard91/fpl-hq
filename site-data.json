@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-15T12:20:08Z",
-  "current_gw": 3,
+  "updated": "2026-09-15T17:23:14Z",
+  "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-09-18T17:30:00Z",
   "standings": [
@@ -9,14 +9,14 @@
       "name": "Mainoo Character FC",
       "total": 239,
       "rank": 1,
-      "trend": 1
+      "trend": 0
     },
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
       "total": 233,
       "rank": 2,
-      "trend": -1
+      "trend": 0
     },
     {
       "league_entry": 127144,
@@ -49,18 +49,14 @@
       "owner": "Mainoo Character FC",
       "news": "Calf injury - Unknown return date",
       "chance": 0
-    },
-    {
-      "player": "Van Oevelen",
-      "club": "Ipswich",
-      "owner_entry_id": 2538,
-      "owner": "Bottlers Anonymous",
-      "news": "Has joined Valencia on loan for the rest of the season",
-      "chance": 0
     }
   ],
   "league_transfer_news": [],
   "gw_summaries": [
+    {
+      "gw": 4,
+      "text": "Efter Gameweek 4 i Draft-ligaen tegner der sig et klart billede af den aktuelle stilling og de indbyrdes styrkeforhold mellem de fem hold. \n\nMainoo Character FC indtager i øjeblikket ligaens førsteplads med i alt 239 point, tæt forfulgt af HaCunha Mateta på andenpladsen med 233 point. HernDog IF besætter tredjepladsen med 205 point. I den modsatte ende af tabellen ligger Bottlers Anonymous dårligst placeret med 144 point, mens Kop of Jensen ligger lige over på fjerdepladsen med 155 point.\n\nEn generel observation af stillingen efter fjerde runde er den tydelige opdeling af ligaen i to grupper. Top tre-holdene har alle passeret den skarpe grænse på 200 point, hvilket har skabt et markant pointmæssigt gab på hele 50 point mellem HernDog IF på tredjepladsen og Kop of Jensen på fjerdepladsen."
+    },
     {
       "gw": 3,
       "text": "Efter tredje spillerunde i den private draft-liga tegner der sig et tydeligt billede af den aktuelle stilling. Holdet HaCunha Mateta indtager førstepladsen med en samlet score på 188 point, skarpt forfulgt af Mainoo Character FC, der ligger på andenpladsen med 169 point. \n\nI den midterste og nederste del af tabellen finder vi HernDog IF på en foreløbig tredjeplads med 143 point. Bottlers Anonymous indtager fjerdepladsen med 115 point, mens Kop of Jensen i øjeblikket ligger dårligst placeret i ligaen med en samlet score på 109 point. \n\nEn generel observation af stillingen efter tredje runde viser en pointmæssig spredning på i alt 79 point fra listens top til bund. Der er etableret et forspring på 19 point fra første- til andenpladsen, mens konkurrencen i den nedre ende er mere snæver med kun 6 points forskel mellem de to lavest placerede hold. \n\nDer er til denne runde ikke registreret yderligere data vedrørende individuelle spillerpræstationer eller klubskifter."
@@ -83,11 +79,11 @@
     "longest_streak": null
   },
   "bench_trend": {
-    "1510": 50,
-    "2538": 10,
-    "17803": 16,
-    "48885": 28,
-    "126623": 33
+    "1510": 75,
+    "2538": 33,
+    "17803": 26,
+    "48885": 43,
+    "126623": 38
   },
   "transactions": [
     {
@@ -398,13 +394,13 @@
   "transfer_suggestions": [
     {
       "out": "Suzuki",
-      "out_score": 34.6,
+      "out_score": 34.5,
       "in": "Tzolakis",
       "in_club": "Hull",
-      "in_score": 52.4,
-      "gap": 17.8,
+      "in_score": 52.5,
+      "gap": 18.0,
       "pos": "GK",
-      "reason": "Du opgraderer dit hold ved at skifte Suzuki (34.6) ud med Tzolakis, hvilket giver dig en markant højere score på 52.4."
+      "reason": "Dette bytte giver dig Tzolakis, som har en markant højere score på 52,5 i forhold til Suzukis score på kun 34,5."
     }
   ],
   "trade_suggestions": [
@@ -413,10 +409,10 @@
       "my_score": 23.0,
       "target": "Igor Jesus",
       "target_owner": "Mainoo Character FC",
-      "target_score": 41.3,
-      "gap": 18.3,
+      "target_score": 41.4,
+      "gap": 18.4,
       "pos": "FWD",
-      "reason": "Igor Jesus (score 41.3) er stærkere end Thiago (score 23.0) og sidder ubrugt på bænken hos Mainoo Character FC. Foreslå et bytte."
+      "reason": "Igor Jesus har en stærkere score på 41.4 end Thiagos 23.0, og han sidder ubrugt på bænken hos Mainoo Character FC."
     }
   ]
 }
