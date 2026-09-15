@@ -47,8 +47,8 @@
       "name": "White",
       "club": "Arsenal",
       "pos": "DEF",
-      "status": "a",
-      "chance": 100
+      "status": "d",
+      "chance": 75
     },
     {
       "id": 399,
@@ -125,7 +125,14 @@
       "chance": 100
     }
   ],
-  "suggestions": [],
+  "suggestions": [
+    {
+      "out": "White",
+      "in": null,
+      "type": "Formation",
+      "reason": "White er flagget (75% spilchance), men ingen bænket spiller på samme position kan erstatte 1:1 - overvej et formationsskift."
+    }
+  ],
   "fixtures": [
     {
       "club": "Arsenal",
@@ -238,6 +245,14 @@
       ]
     }
   ],
-  "injury_news": [],
-  "updated": "2026-09-15T17:23:14Z"
+  "injury_news": [
+    {
+      "player": "White",
+      "club": "Arsenal",
+      "news": "Muscular injury - 75% chance of playing",
+      "status": "d",
+      "chance": 75
+    }
+  ],
+  "updated": "2026-09-15T21:48:45Z"
 }
