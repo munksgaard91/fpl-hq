@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-16T12:17:27Z",
+  "updated": "2026-09-16T17:21:59Z",
   "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-09-18T17:30:00Z",
@@ -400,7 +400,7 @@
       "in_score": 52.7,
       "gap": 18.2,
       "pos": "GK",
-      "reason": "Du opgraderer dit hold og vinder flere point ved at få Tzolakis med en score på 52.7 i stedet for Suzuki med 34.5."
+      "reason": "Du opgraderer dit hold ved at hente Tzolakis, der med 52,7 point giver dig en markant højere score end Suzuki med 34,5 point."
     }
   ],
   "trade_suggestions": [
@@ -412,7 +412,7 @@
       "target_score": 41.4,
       "gap": 18.4,
       "pos": "FWD",
-      "reason": "Igor Jesus har en stærkere score på 41.4 end Thiagos 23.0 og sidder ubrugt på bænken hos Mainoo Character FC."
+      "reason": "Igor Jesus har en stærkere score på 41.4 end Thiagos 23.0, og han sidder ubrugt på bænken hos Mainoo Character FC."
     }
   ]
 }

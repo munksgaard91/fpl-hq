@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-16T12:17:27Z",
+  "updated": "2026-09-16T17:21:59Z",
   "players": [
     {
       "id": 411,
@@ -13,7 +13,7 @@
       "form": "8.2",
       "status": "a",
       "chance": null,
-      "argument": "Han fortsætter storformen med 33 point denne sæson indtil videre efter hele 239 point i sidste sæson (2025/26)."
+      "argument": "Efter 239 point i 2025/26-sæsonen leverer han stærkt med 33 point i denne sæson og lette kampe forude."
     },
     {
       "id": 391,
@@ -27,21 +27,7 @@
       "form": "8.2",
       "status": "a",
       "chance": null,
-      "argument": "Solidt valg med lette kampe forude (snit 2,7) og fine 33 point i denne sæson indtil videre."
-    },
-    {
-      "id": 399,
-      "name": "Cherki",
-      "club": "Man City",
-      "team_id": 15,
-      "pos": "MID",
-      "score": 53.7,
-      "last_season_points": 135,
-      "points_this_season_so_far": 26,
-      "form": "6.5",
-      "status": "a",
-      "chance": null,
-      "argument": "Leverede 135 point i sidste sæson (2025/26) og har et overkommeligt kampprogram med snit på 2,7 forude."
+      "argument": "Har hentet 33 point i denne sæson indtil videre, hvilket lover godt mod sidste sæsons 79 point."
     },
     {
       "id": 480,
@@ -55,7 +41,21 @@
       "form": "6.5",
       "status": "a",
       "chance": 100,
-      "argument": "Fuldstændig klar med 26 point i denne sæson indtil videre ovenpå stærke 188 point sidste sæson (2025/26)."
+      "argument": "En pålidelig midtbanespiller med 26 point i denne sæson og solide 188 point fra sidste sæson (2025/26)."
+    },
+    {
+      "id": 399,
+      "name": "Cherki",
+      "club": "Man City",
+      "team_id": 15,
+      "pos": "MID",
+      "score": 53.6,
+      "last_season_points": 135,
+      "points_this_season_so_far": 26,
+      "form": "6.5",
+      "status": "a",
+      "chance": null,
+      "argument": "Præsterer fornuftigt med 26 point i denne sæson indtil videre, og de næste kampe har sværhedsgrad 2,7."
     },
     {
       "id": 165,
@@ -69,7 +69,7 @@
       "form": "8.2",
       "status": "a",
       "chance": null,
-      "argument": "En farlig herre med 33 point denne sæson indtil videre efter solide 177 point i sidste sæson (2025/26)."
+      "argument": "Flotte 33 point i denne sæson bygger godt ovenpå de stærke 177 point fra 2025/26-sæsonen."
     },
     {
       "id": 572,
@@ -83,7 +83,7 @@
       "form": "7.0",
       "status": "a",
       "chance": null,
-      "argument": "Klar til kamp og har allerede skrabet 28 point sammen i denne sæson indtil videre."
+      "argument": "Målmanden har hentet 28 point i denne sæson indtil videre og møder gennemsnitlig modstand på 3,0."
     },
     {
       "id": 286,
@@ -97,7 +97,7 @@
       "form": "6.8",
       "status": "a",
       "chance": null,
-      "argument": "Har sikret sig 27 point i denne sæson indtil videre og står overfor moderat svære kampe (snit 3,0)."
+      "argument": "Med 27 point i denne sæson indtil videre og middel sværhedsgrad forude er han en brugbar mulighed."
     },
     {
       "id": 229,
@@ -111,7 +111,7 @@
       "form": "7.2",
       "status": "a",
       "chance": null,
-      "argument": "Oplevede en stor sidste sæson (2025/26) med 170 point og har nu lette modstandere i vente (snit 2,7)."
+      "argument": "Viste stor styrke med 170 point i 2025/26 og har nu 29 point i denne sæson."
     },
     {
       "id": 12,
@@ -119,13 +119,13 @@
       "club": "Arsenal",
       "team_id": 1,
       "pos": "MID",
-      "score": 51.7,
+      "score": 51.8,
       "last_season_points": 157,
       "points_this_season_so_far": 30,
       "form": "7.5",
       "status": "a",
       "chance": null,
-      "argument": "Han har 30 point i denne sæson indtil videre efter fine 157 point i sidste sæson (2025/26)."
+      "argument": "Stærk profil med 30 point i denne sæson indtil videre og et attraktivt kampprogram på 2,7."
     },
     {
       "id": 388,
@@ -139,7 +139,7 @@
       "form": "6.5",
       "status": "a",
       "chance": null,
-      "argument": "Efter 179 point sidste sæson (2025/26) står han klar med 26 point i denne sæson indtil videre."
+      "argument": "Efter 179 point i 2025/26 har han foreløbigt skrabet 26 point sammen i denne sæson."
     },
     {
       "id": 8,
@@ -153,7 +153,7 @@
       "form": "7.0",
       "status": "a",
       "chance": null,
-      "argument": "Stabil defensiv mulighed med let kampprogram (snit 2,7) og 28 point på kontoen i denne sæson indtil videre."
+      "argument": "Supplerer sidste sæsons 109 point flot med 28 point i denne sæson indtil videre."
     },
     {
       "id": 426,
@@ -167,7 +167,7 @@
       "form": "7.2",
       "status": "a",
       "chance": null,
-      "argument": "Imponerende 235 point i sidste sæson (2025/26) gør ham spændende, trods kun 29 point i denne sæson indtil videre."
+      "argument": "En absolut topspiller, der efter 235 point i 2025/26 nu har 29 point i denne sæson."
     },
     {
       "id": 277,
@@ -181,7 +181,7 @@
       "form": "6.2",
       "status": "a",
       "chance": null,
-      "argument": "Et godkendt budgetvalg med 25 point i denne sæson indtil videre og et gennemsnitligt kampprogram på 3,0."
+      "argument": "Står noteret for 25 point i denne sæson, men kampprogrammet har en middel sværhedsgrad på 3,0."
     },
     {
       "id": 316,
@@ -189,13 +189,13 @@
       "club": "Ipswich",
       "team_id": 12,
       "pos": "FWD",
-      "score": 47.5,
+      "score": 47.6,
       "last_season_points": null,
       "points_this_season_so_far": 24,
       "form": "6.0",
       "status": "a",
       "chance": 100,
-      "argument": "De næste modstandere er svære (snit 3,3) for angriberen med 24 point i denne sæson indtil videre."
+      "argument": "Kun 24 point i denne sæson indtil videre og et relativt svært kampprogram trækker ned."
     },
     {
       "id": 282,
@@ -209,7 +209,7 @@
       "form": "6.0",
       "status": "a",
       "chance": null,
-      "argument": "Har hentet 24 point i denne sæson indtil videre og er klar til de næste kampe (sværhedsgrad 3,0)."
+      "argument": "Har opnået 24 point i denne sæson og har et jævnt svært kampprogram forude."
     },
     {
       "id": 4,
@@ -223,7 +223,7 @@
       "form": "6.0",
       "status": "a",
       "chance": null,
-      "argument": "Sidste sæsons (2025/26) stærke 209 point og et let kampprogram (snit 2,7) gør ham meget attraktiv nu."
+      "argument": "Trods flotte 209 point i 2025/26 er det kun blevet til 24 point i denne sæson."
     },
     {
       "id": 453,
@@ -231,13 +231,13 @@
       "club": "Newcastle",
       "team_id": 17,
       "pos": "MID",
-      "score": 46.9,
+      "score": 47.0,
       "last_season_points": 106,
       "points_this_season_so_far": 19,
       "form": "4.8",
       "status": "a",
       "chance": null,
-      "argument": "Rigtig fine kampe i vente (snit 2,3) for midtbanespilleren, der hentede 106 point i sidste sæson (2025/26)."
+      "argument": "Har blot 19 point i denne sæson indtil videre, men kampprogrammet på 2,3 er meget let."
     },
     {
       "id": 236,
@@ -245,13 +245,13 @@
       "club": "Everton",
       "team_id": 9,
       "pos": "MID",
-      "score": 46.2,
+      "score": 46.3,
       "last_season_points": 151,
       "points_this_season_so_far": 17,
       "form": "4.2",
       "status": "a",
       "chance": null,
-      "argument": "Præsterede 151 point i sidste sæson (2025/26), men står kun med 17 point i denne sæson indtil videre."
+      "argument": "Skuffende 17 point i denne sæson sammenlignet med de flotte 151 point fra sidste sæson."
     },
     {
       "id": 230,
@@ -265,7 +265,7 @@
       "form": "4.8",
       "status": "a",
       "chance": null,
-      "argument": "Er helt klar til at spille og har hentet 19 point i denne sæson indtil videre."
+      "argument": "Har kun indsamlet 19 point i denne sæson, men det kommende program på 2,7 er overkommeligt."
     },
     {
       "id": 15,
@@ -279,7 +279,7 @@
       "form": "6.8",
       "status": "a",
       "chance": null,
-      "argument": "Har allerede 27 point i denne sæson indtil videre mod kun 74 point i hele sidste sæson (2025/26)."
+      "argument": "Ligger på 27 point i denne sæson og ser ud til at kunne slå sidste sæsons 74 point."
     },
     {
       "id": 1,
@@ -293,7 +293,7 @@
       "form": "7.2",
       "status": "a",
       "chance": null,
-      "argument": "Keeperen har 29 point i denne sæson indtil videre efter at have opnået 162 point sidste sæson (2025/26)."
+      "argument": "Med 162 point i 2025/26-sæsonen og 29 point i denne sæson er han et sikkert valg."
     },
     {
       "id": 40,
@@ -307,7 +307,7 @@
       "form": "6.8",
       "status": "a",
       "chance": null,
-      "argument": "Leverede flotte 169 point i sidste sæson (2025/26) og har 27 point på kontoen i denne sæson indtil videre."
+      "argument": "Efter 169 point i 2025/26 har han præsteret godkendt med 27 point i denne sæson."
     },
     {
       "id": 586,
@@ -315,13 +315,13 @@
       "club": "Hull",
       "team_id": 11,
       "pos": "DEF",
-      "score": 44.7,
+      "score": 44.6,
       "last_season_points": null,
       "points_this_season_so_far": 25,
       "form": "6.2",
       "status": "d",
       "chance": 50,
-      "argument": "OBS: Han har status d lige nu, selvom han har skrabet 25 point sammen i denne sæson indtil videre."
+      "argument": "Hans 25 point i denne sæson overskygges af en usikker status d lige nu."
     },
     {
       "id": 379,
@@ -329,27 +329,27 @@
       "club": "Liverpool",
       "team_id": 14,
       "pos": "FWD",
-      "score": 44.6,
+      "score": 44.5,
       "last_season_points": null,
       "points_this_season_so_far": 25,
       "form": "6.2",
       "status": "a",
       "chance": null,
-      "argument": "Har samlet 25 point i denne sæson indtil videre, men de næste tre kampe er svære (snit 3,3)."
+      "argument": "Har skuffet med 25 point i denne sæson og står overfor sværere kampe med snit på 3,3."
     },
     {
-      "id": 397,
-      "name": "Semenyo",
-      "club": "Man City",
-      "team_id": 15,
+      "id": 154,
+      "name": "Palmer",
+      "club": "Chelsea",
+      "team_id": 6,
       "pos": "MID",
-      "score": 44.3,
-      "last_season_points": 202,
-      "points_this_season_so_far": 16,
-      "form": "4.0",
+      "score": 44.2,
+      "last_season_points": 114,
+      "points_this_season_so_far": 26,
+      "form": "6.5",
       "status": "a",
-      "chance": null,
-      "argument": "Skuffende 16 point i denne sæson indtil videre efter en forrygende sidste sæson (2025/26) med 202 point."
+      "chance": 100,
+      "argument": "Hentede 114 point i 2025/26 og fortsætter stabilt med 26 point i denne sæson indtil videre."
     }
   ]
 }
