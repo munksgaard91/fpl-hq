@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-17T12:17:04Z",
+  "updated": "2026-09-17T17:20:57Z",
   "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-09-18T17:30:00Z",
@@ -48,6 +48,14 @@
       "owner_entry_id": 48885,
       "owner": "Mainoo Character FC",
       "news": "Calf injury - Unknown return date",
+      "chance": 0
+    },
+    {
+      "player": "Mendy",
+      "club": "Hull",
+      "owner_entry_id": 2538,
+      "owner": "Bottlers Anonymous",
+      "news": "Concussion - Expected back 11 Oct",
       "chance": 0
     }
   ],
@@ -400,7 +408,7 @@
       "in_score": 52.9,
       "gap": 18.4,
       "pos": "GK",
-      "reason": "Ved at skifte Suzuki ud med Tzolakis vinder du en målmand med en markant højere score på 52.9 mod Suzukis 34.5."
+      "reason": "Ved at skifte Suzuki ud med målmanden Tzolakis vinder du en markant højere score, da du opgraderer fra 34.5 til 52.9."
     }
   ],
   "trade_suggestions": [
@@ -409,10 +417,10 @@
       "my_score": 23.0,
       "target": "Igor Jesus",
       "target_owner": "Mainoo Character FC",
-      "target_score": 41.5,
-      "gap": 18.5,
+      "target_score": 41.6,
+      "gap": 18.6,
       "pos": "FWD",
-      "reason": "Igor Jesus har en stærkere score på 41.5 mod Thiagos 23.0, og han sidder ubenyttet på bænken hos Mainoo Character FC."
+      "reason": "Igor Jesus har en stærkere score på 41.6 end Thiago med 23.0, og han sidder ubrugt på bænken hos Mainoo Character FC."
     }
   ]
 }
