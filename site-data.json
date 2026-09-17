@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-17T17:20:57Z",
+  "updated": "2026-09-17T21:49:33Z",
   "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-09-18T17:30:00Z",
@@ -48,14 +48,6 @@
       "owner_entry_id": 48885,
       "owner": "Mainoo Character FC",
       "news": "Calf injury - Unknown return date",
-      "chance": 0
-    },
-    {
-      "player": "Mendy",
-      "club": "Hull",
-      "owner_entry_id": 2538,
-      "owner": "Bottlers Anonymous",
-      "news": "Concussion - Expected back 11 Oct",
       "chance": 0
     }
   ],
@@ -397,6 +389,94 @@
       "player_in": "Charles",
       "player_out": "Mosquera",
       "added": "2026-09-11T05:26:59.565094Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Bogle",
+      "player_out": "Thiaw",
+      "added": "2026-09-14T22:02:27.736995Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Belloumi",
+      "player_out": "Dewsbury-Hall",
+      "added": "2026-09-14T22:02:27.737070Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Emersonn",
+      "player_out": "Wissa",
+      "added": "2026-09-14T22:02:27.737109Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Waiver",
+      "player_in": "Dunk",
+      "player_out": "Lacroix",
+      "added": "2026-09-16T17:59:52.667801Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Waiver",
+      "player_in": "Muharemović",
+      "player_out": "Maguire",
+      "added": "2026-09-16T17:59:52.667822Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "J.Timber",
+      "player_out": "Mendy",
+      "added": "2026-09-17T04:55:27.974876Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Tavernier",
+      "player_out": "Lewis-Potter",
+      "added": "2026-09-17T04:55:27.974928Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Mykolenko",
+      "player_out": "Ajer",
+      "added": "2026-09-17T08:13:09.274611Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Ndoye",
+      "player_out": "Kamada",
+      "added": "2026-09-17T08:13:09.274685Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Delap",
+      "player_out": "Brobbey",
+      "added": "2026-09-17T08:13:09.274704Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "HaCunha Mateta",
+      "kind": "Waiver",
+      "player_in": "Jacquet",
+      "player_out": "Hall",
+      "added": "2026-09-17T14:04:50.958767Z"
     }
   ],
   "transfer_suggestions": [
@@ -405,10 +485,10 @@
       "out_score": 34.5,
       "in": "Tzolakis",
       "in_club": "Hull",
-      "in_score": 52.9,
-      "gap": 18.4,
+      "in_score": 53.0,
+      "gap": 18.5,
       "pos": "GK",
-      "reason": "Ved at skifte Suzuki ud med målmanden Tzolakis vinder du en markant højere score, da du opgraderer fra 34.5 til 52.9."
+      "reason": "Du vinder 18,5 point på målmandsposten ved at skifte Suzuki (34,5) ud med Tzolakis (53,0), hvilket direkte øger dit holds samlede score."
     }
   ],
   "trade_suggestions": [
@@ -420,7 +500,7 @@
       "target_score": 41.6,
       "gap": 18.6,
       "pos": "FWD",
-      "reason": "Igor Jesus har en stærkere score på 41.6 end Thiago med 23.0, og han sidder ubrugt på bænken hos Mainoo Character FC."
+      "reason": "Igor Jesus har en stærkere score på 41.6 mod Thiagos 23.0 og sidder ubrugt på bænken hos Mainoo Character FC, så han bør byttes."
     }
   ]
 }
