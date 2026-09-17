@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-16T21:47:04Z",
+  "updated": "2026-09-17T12:17:04Z",
   "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-09-18T17:30:00Z",
@@ -397,10 +397,10 @@
       "out_score": 34.5,
       "in": "Tzolakis",
       "in_club": "Hull",
-      "in_score": 52.8,
-      "gap": 18.3,
+      "in_score": 52.9,
+      "gap": 18.4,
       "pos": "GK",
-      "reason": "Ved at erstatte Suzuki med Tzolakis fra Hull vinder du 18,3 point mere til dit hold, da Tzolakis har en højere score på 52,8."
+      "reason": "Ved at skifte Suzuki ud med Tzolakis vinder du en målmand med en markant højere score på 52.9 mod Suzukis 34.5."
     }
   ],
   "trade_suggestions": [
@@ -409,10 +409,10 @@
       "my_score": 23.0,
       "target": "Igor Jesus",
       "target_owner": "Mainoo Character FC",
-      "target_score": 41.4,
-      "gap": 18.4,
+      "target_score": 41.5,
+      "gap": 18.5,
       "pos": "FWD",
-      "reason": "Igor Jesus scorer 41.4 mod Thiagos 23.0 og sidder ubrugt på bænken hos Mainoo Character FC, så han er oplagt at bytte."
+      "reason": "Igor Jesus har en stærkere score på 41.5 mod Thiagos 23.0, og han sidder ubenyttet på bænken hos Mainoo Character FC."
     }
   ]
 }
