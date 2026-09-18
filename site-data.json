@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-18T11:57:35Z",
+  "updated": "2026-09-18T16:46:22Z",
   "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-09-18T17:30:00Z",
@@ -477,6 +477,14 @@
       "player_in": "Jacquet",
       "player_out": "Hall",
       "added": "2026-09-17T14:04:50.958767Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Free agent",
+      "player_in": "Matheus N.",
+      "player_out": "Dunk",
+      "added": "2026-09-18T14:43:14.987961Z"
     }
   ],
   "transfer_suggestions": [
@@ -485,10 +493,10 @@
       "out_score": 34.5,
       "in": "Tzolakis",
       "in_club": "Hull",
-      "in_score": 53.3,
-      "gap": 18.8,
+      "in_score": 53.5,
+      "gap": 19.0,
       "pos": "GK",
-      "reason": "Du forbedrer dit hold ved at skifte til Tzolakis, hvilket giver dig en højere score på 53.3 point mod Suzukis 34.5 point."
+      "reason": "Du vinder en højere score ved at skifte Suzuki (34.5) ud med Tzolakis (53.5), hvilket øger din samlede score med 19 point."
     }
   ],
   "trade_suggestions": [
@@ -497,10 +505,10 @@
       "my_score": 23.0,
       "target": "Igor Jesus",
       "target_owner": "Mainoo Character FC",
-      "target_score": 41.8,
-      "gap": 18.8,
+      "target_score": 41.9,
+      "gap": 18.9,
       "pos": "FWD",
-      "reason": "Igor Jesus har en højere score på 41.8 end Thiagos 23.0, og han sidder ubrugt på bænken hos Mainoo Character FC."
+      "reason": "Igor Jesus har en højere score på 41.9 end Thiagos 23.0, og han sidder ubenyttet på bænken hos Mainoo Character FC."
     }
   ]
 }
