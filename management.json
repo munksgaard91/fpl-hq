@@ -3,20 +3,20 @@
   "lineup_set": true,
   "starters": [
     {
-      "id": 597,
-      "name": "Suzuki",
-      "club": "Aston Villa",
+      "id": 1,
+      "name": "Raya",
+      "club": "Arsenal",
       "pos": "GK",
       "status": "a",
       "chance": null
     },
     {
-      "id": 449,
-      "name": "Hall",
-      "club": "Newcastle",
+      "id": 362,
+      "name": "Jacquet",
+      "club": "Liverpool",
       "pos": "DEF",
       "status": "a",
-      "chance": null
+      "chance": 100
     },
     {
       "id": 229,
@@ -35,18 +35,18 @@
       "chance": null
     },
     {
-      "id": 115,
-      "name": "De Cuyper",
-      "club": "Brighton",
-      "pos": "DEF",
-      "status": "a",
-      "chance": null
-    },
-    {
       "id": 10,
       "name": "White",
       "club": "Arsenal",
       "pos": "DEF",
+      "status": "a",
+      "chance": 100
+    },
+    {
+      "id": 480,
+      "name": "Gibbs-White",
+      "club": "Nott'm Forest",
+      "pos": "MID",
       "status": "a",
       "chance": 100
     },
@@ -83,19 +83,19 @@
       "chance": 100
     },
     {
-      "id": 106,
-      "name": "Thiago",
-      "club": "Brentford",
+      "id": 439,
+      "name": "Šeško",
+      "club": "Man Utd",
       "pos": "FWD",
       "status": "a",
-      "chance": null
+      "chance": 100
     }
   ],
   "bench": [
     {
-      "id": 1,
-      "name": "Raya",
-      "club": "Arsenal",
+      "id": 597,
+      "name": "Suzuki",
+      "club": "Aston Villa",
       "pos": "GK",
       "status": "a",
       "chance": null
@@ -109,20 +109,20 @@
       "chance": null
     },
     {
-      "id": 480,
-      "name": "Gibbs-White",
-      "club": "Nott'm Forest",
-      "pos": "MID",
+      "id": 115,
+      "name": "De Cuyper",
+      "club": "Brighton",
+      "pos": "DEF",
       "status": "a",
-      "chance": 100
+      "chance": null
     },
     {
-      "id": 439,
-      "name": "Šeško",
-      "club": "Man Utd",
+      "id": 106,
+      "name": "Thiago",
+      "club": "Brentford",
       "pos": "FWD",
       "status": "a",
-      "chance": 100
+      "chance": null
     }
   ],
   "suggestions": [],
@@ -194,6 +194,17 @@
       ]
     },
     {
+      "club": "Liverpool",
+      "count": 1,
+      "difficulty": [
+        3,
+        4,
+        3,
+        2,
+        4
+      ]
+    },
+    {
       "club": "Man City",
       "count": 2,
       "difficulty": [
@@ -216,17 +227,6 @@
       ]
     },
     {
-      "club": "Newcastle",
-      "count": 1,
-      "difficulty": [
-        2,
-        2,
-        3,
-        3,
-        3
-      ]
-    },
-    {
       "club": "Nott'm Forest",
       "count": 1,
       "difficulty": [
@@ -239,5 +239,5 @@
     }
   ],
   "injury_news": [],
-  "updated": "2026-09-18T16:46:22Z"
+  "updated": "2026-09-18T21:20:46Z"
 }

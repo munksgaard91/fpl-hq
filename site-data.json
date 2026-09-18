@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-18T16:46:22Z",
+  "updated": "2026-09-18T21:20:46Z",
   "current_gw": 4,
   "season_started": true,
-  "next_deadline": "2026-09-18T17:30:00Z",
+  "next_deadline": "2026-10-10T10:00:00Z",
   "standings": [
     {
       "league_entry": 48956,
@@ -487,28 +487,6 @@
       "added": "2026-09-18T14:43:14.987961Z"
     }
   ],
-  "transfer_suggestions": [
-    {
-      "out": "Suzuki",
-      "out_score": 34.5,
-      "in": "Tzolakis",
-      "in_club": "Hull",
-      "in_score": 53.5,
-      "gap": 19.0,
-      "pos": "GK",
-      "reason": "Du vinder en højere score ved at skifte Suzuki (34.5) ud med Tzolakis (53.5), hvilket øger din samlede score med 19 point."
-    }
-  ],
-  "trade_suggestions": [
-    {
-      "my_player": "Thiago",
-      "my_score": 23.0,
-      "target": "Igor Jesus",
-      "target_owner": "Mainoo Character FC",
-      "target_score": 41.9,
-      "gap": 18.9,
-      "pos": "FWD",
-      "reason": "Igor Jesus har en højere score på 41.9 end Thiagos 23.0, og han sidder ubenyttet på bænken hos Mainoo Character FC."
-    }
-  ]
+  "transfer_suggestions": [],
+  "trade_suggestions": []
 }
