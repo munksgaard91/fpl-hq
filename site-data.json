@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-19T16:08:31Z",
+  "updated": "2026-09-19T21:09:35Z",
   "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-10-10T10:00:00Z",
@@ -7,40 +7,40 @@
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 248,
+      "total": 259,
       "rank": 1,
       "trend": 0
     },
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 235,
+      "total": 254,
       "rank": 2,
       "trend": 0
     },
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 205,
+      "total": 220,
       "rank": 3,
       "trend": 0
     },
     {
       "league_entry": 17813,
       "name": "Kop of Jensen",
-      "total": 155,
+      "total": 157,
       "rank": 4,
       "trend": 0
     },
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 146,
+      "total": 154,
       "rank": 5,
       "trend": 0
     }
   ],
-  "point_gap": 102,
+  "point_gap": 105,
   "alerts": [
     {
       "player": "Collins",
@@ -496,7 +496,7 @@
       "in_score": 48.5,
       "gap": 14.4,
       "pos": "DEF",
-      "reason": "Dette bytte giver dig Branthwaite med en markant højere score på 48.5 i forhold til Jacquet, der kun har en score på 34.1."
+      "reason": "Ved at bytte Jacquet ud med Branthwaite øger du din score fra 34,1 til 48,5 på forsvarspositionen."
     }
   ],
   "trade_suggestions": []
