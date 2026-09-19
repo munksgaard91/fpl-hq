@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-19T11:41:33Z",
+  "updated": "2026-09-19T16:08:31Z",
   "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-10-10T10:00:00Z",
@@ -487,6 +487,17 @@
       "added": "2026-09-18T14:43:14.987961Z"
     }
   ],
-  "transfer_suggestions": [],
+  "transfer_suggestions": [
+    {
+      "out": "Jacquet",
+      "out_score": 34.1,
+      "in": "Branthwaite",
+      "in_club": "Everton",
+      "in_score": 48.5,
+      "gap": 14.4,
+      "pos": "DEF",
+      "reason": "Dette bytte giver dig Branthwaite med en markant højere score på 48.5 i forhold til Jacquet, der kun har en score på 34.1."
+    }
+  ],
   "trade_suggestions": []
 }
