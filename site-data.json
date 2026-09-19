@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-18T21:20:46Z",
+  "updated": "2026-09-19T11:41:33Z",
   "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-10-10T10:00:00Z",
@@ -7,14 +7,14 @@
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 239,
+      "total": 248,
       "rank": 1,
       "trend": 0
     },
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 233,
+      "total": 235,
       "rank": 2,
       "trend": 0
     },
@@ -35,12 +35,12 @@
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 144,
+      "total": 146,
       "rank": 5,
       "trend": 0
     }
   ],
-  "point_gap": 95,
+  "point_gap": 102,
   "alerts": [
     {
       "player": "Collins",
