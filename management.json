@@ -39,8 +39,8 @@
       "name": "White",
       "club": "Arsenal",
       "pos": "DEF",
-      "status": "a",
-      "chance": 100
+      "status": "d",
+      "chance": 75
     },
     {
       "id": 480,
@@ -87,8 +87,8 @@
       "name": "Šeško",
       "club": "Man Utd",
       "pos": "FWD",
-      "status": "a",
-      "chance": 100
+      "status": "d",
+      "chance": 75
     }
   ],
   "bench": [
@@ -125,7 +125,20 @@
       "chance": null
     }
   ],
-  "suggestions": [],
+  "suggestions": [
+    {
+      "out": "White",
+      "in": "De Cuyper",
+      "type": "Line-up",
+      "reason": "White er flagget (75% spilchance) - De Cuyper er tilgængelig på samme position."
+    },
+    {
+      "out": "Šeško",
+      "in": "Barry",
+      "type": "Line-up",
+      "reason": "Šeško er flagget (75% spilchance) - Barry er tilgængelig på samme position."
+    }
+  ],
   "fixtures": [
     {
       "club": "Arsenal",
@@ -238,6 +251,21 @@
       ]
     }
   ],
-  "injury_news": [],
-  "updated": "2026-09-20T16:36:30Z"
+  "injury_news": [
+    {
+      "player": "White",
+      "club": "Arsenal",
+      "news": "Groin injury - 75% chance of playing",
+      "status": "d",
+      "chance": 75
+    },
+    {
+      "player": "Šeško",
+      "club": "Man Utd",
+      "news": "Unspecified injury - 75% chance of playing",
+      "status": "d",
+      "chance": 75
+    }
+  ],
+  "updated": "2026-09-20T21:06:44Z"
 }

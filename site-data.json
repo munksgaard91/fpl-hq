@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-20T16:36:30Z",
+  "updated": "2026-09-20T21:06:44Z",
   "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-10-10T10:00:00Z",
@@ -7,40 +7,40 @@
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 259,
+      "total": 288,
       "rank": 1,
       "trend": 0
     },
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 254,
+      "total": 274,
       "rank": 2,
       "trend": 0
     },
     {
       "league_entry": 127144,
       "name": "HernDog IF",
-      "total": 220,
+      "total": 239,
       "rank": 3,
       "trend": 0
     },
     {
       "league_entry": 17813,
       "name": "Kop of Jensen",
-      "total": 157,
+      "total": 200,
       "rank": 4,
       "trend": 0
     },
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 154,
+      "total": 165,
       "rank": 5,
       "trend": 0
     }
   ],
-  "point_gap": 105,
+  "point_gap": 123,
   "alerts": [
     {
       "player": "Collins",
@@ -487,6 +487,17 @@
       "added": "2026-09-18T14:43:14.987961Z"
     }
   ],
-  "transfer_suggestions": [],
+  "transfer_suggestions": [
+    {
+      "out": "White",
+      "out_score": 31.2,
+      "in": "Branthwaite",
+      "in_club": "Everton",
+      "in_score": 48.6,
+      "gap": 17.4,
+      "pos": "DEF",
+      "reason": "Du vinder en markant højere score på 48,6 i stedet for Whites score på 31,2 ved at hente Everton-forsvareren Branthwaite."
+    }
+  ],
   "trade_suggestions": []
 }
