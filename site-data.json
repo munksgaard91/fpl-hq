@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-20T21:06:44Z",
+  "updated": "2026-09-21T13:26:58Z",
   "current_gw": 4,
   "season_started": true,
   "next_deadline": "2026-10-10T10:00:00Z",
@@ -7,14 +7,14 @@
     {
       "league_entry": 48956,
       "name": "Mainoo Character FC",
-      "total": 288,
+      "total": 298,
       "rank": 1,
       "trend": 0
     },
     {
       "league_entry": 1510,
       "name": "HaCunha Mateta",
-      "total": 274,
+      "total": 286,
       "rank": 2,
       "trend": 0
     },
@@ -35,12 +35,12 @@
     {
       "league_entry": 2539,
       "name": "Bottlers Anonymous",
-      "total": 165,
+      "total": 167,
       "rank": 5,
       "trend": 0
     }
   ],
-  "point_gap": 123,
+  "point_gap": 131,
   "alerts": [
     {
       "player": "Collins",
@@ -489,15 +489,26 @@
   ],
   "transfer_suggestions": [
     {
-      "out": "White",
-      "out_score": 31.2,
+      "out": "Jacquet",
+      "out_score": 32.9,
       "in": "Branthwaite",
       "in_club": "Everton",
-      "in_score": 48.6,
-      "gap": 17.4,
+      "in_score": 48.7,
+      "gap": 15.8,
       "pos": "DEF",
-      "reason": "Du vinder en markant højere score på 48,6 i stedet for Whites score på 31,2 ved at hente Everton-forsvareren Branthwaite."
+      "reason": "Ved at skifte Jacquet ud med Branthwaite opgraderer du dit forsvar med en spiller, der har en markant højere score på 48.7 mod 32.9."
     }
   ],
-  "trade_suggestions": []
+  "trade_suggestions": [
+    {
+      "my_player": "Jacquet",
+      "my_score": 32.9,
+      "target": "Vuskovic",
+      "target_owner": "HernDog IF",
+      "target_score": 48.4,
+      "gap": 15.5,
+      "pos": "DEF",
+      "reason": "Vuskovic har en højere score (48.4) end Jacquet (32.9), og da HernDog IF alligevel lader ham sidde på bænken, bør du bytte."
+    }
+  ]
 }

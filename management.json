@@ -11,12 +11,12 @@
       "chance": null
     },
     {
-      "id": 362,
-      "name": "Jacquet",
-      "club": "Liverpool",
+      "id": 388,
+      "name": "Guéhi",
+      "club": "Man City",
       "pos": "DEF",
       "status": "a",
-      "chance": 100
+      "chance": null
     },
     {
       "id": 229,
@@ -27,33 +27,25 @@
       "chance": null
     },
     {
-      "id": 388,
-      "name": "Guéhi",
-      "club": "Man City",
+      "id": 362,
+      "name": "Jacquet",
+      "club": "Liverpool",
+      "pos": "DEF",
+      "status": "a",
+      "chance": 100
+    },
+    {
+      "id": 115,
+      "name": "De Cuyper",
+      "club": "Brighton",
       "pos": "DEF",
       "status": "a",
       "chance": null
     },
     {
-      "id": 10,
-      "name": "White",
-      "club": "Arsenal",
-      "pos": "DEF",
-      "status": "d",
-      "chance": 75
-    },
-    {
-      "id": 480,
-      "name": "Gibbs-White",
-      "club": "Nott'm Forest",
-      "pos": "MID",
-      "status": "a",
-      "chance": 100
-    },
-    {
-      "id": 399,
-      "name": "Cherki",
-      "club": "Man City",
+      "id": 426,
+      "name": "B.Fernandes",
+      "club": "Man Utd",
       "pos": "MID",
       "status": "a",
       "chance": null
@@ -67,28 +59,36 @@
       "chance": null
     },
     {
-      "id": 426,
-      "name": "B.Fernandes",
-      "club": "Man Utd",
+      "id": 399,
+      "name": "Cherki",
+      "club": "Man City",
       "pos": "MID",
       "status": "a",
       "chance": null
+    },
+    {
+      "id": 480,
+      "name": "Gibbs-White",
+      "club": "Nott'm Forest",
+      "pos": "MID",
+      "status": "a",
+      "chance": 100
     },
     {
       "id": 154,
       "name": "Palmer",
       "club": "Chelsea",
       "pos": "MID",
-      "status": "a",
-      "chance": 100
-    },
-    {
-      "id": 439,
-      "name": "Šeško",
-      "club": "Man Utd",
-      "pos": "FWD",
       "status": "d",
       "chance": 75
+    },
+    {
+      "id": 249,
+      "name": "Barry",
+      "club": "Everton",
+      "pos": "FWD",
+      "status": "a",
+      "chance": null
     }
   ],
   "bench": [
@@ -101,20 +101,20 @@
       "chance": null
     },
     {
-      "id": 249,
-      "name": "Barry",
-      "club": "Everton",
-      "pos": "FWD",
-      "status": "a",
-      "chance": null
+      "id": 10,
+      "name": "White",
+      "club": "Arsenal",
+      "pos": "DEF",
+      "status": "d",
+      "chance": 75
     },
     {
-      "id": 115,
-      "name": "De Cuyper",
-      "club": "Brighton",
-      "pos": "DEF",
-      "status": "a",
-      "chance": null
+      "id": 439,
+      "name": "Šeško",
+      "club": "Man Utd",
+      "pos": "FWD",
+      "status": "d",
+      "chance": 75
     },
     {
       "id": 106,
@@ -127,16 +127,10 @@
   ],
   "suggestions": [
     {
-      "out": "White",
-      "in": "De Cuyper",
-      "type": "Line-up",
-      "reason": "White er flagget (75% spilchance) - De Cuyper er tilgængelig på samme position."
-    },
-    {
-      "out": "Šeško",
-      "in": "Barry",
-      "type": "Line-up",
-      "reason": "Šeško er flagget (75% spilchance) - Barry er tilgængelig på samme position."
+      "out": "Palmer",
+      "in": null,
+      "type": "Formation",
+      "reason": "Palmer er flagget (75% spilchance), men ingen bænket spiller på samme position kan erstatte 1:1 - overvej et formationsskift."
     }
   ],
   "fixtures": [
@@ -144,11 +138,11 @@
       "club": "Arsenal",
       "count": 3,
       "difficulty": [
-        3,
         2,
         3,
         3,
-        4
+        4,
+        2
       ]
     },
     {
@@ -157,9 +151,9 @@
       "difficulty": [
         3,
         3,
-        3,
         4,
-        2
+        2,
+        4
       ]
     },
     {
@@ -168,8 +162,8 @@
       "difficulty": [
         4,
         4,
-        4,
         2,
+        3,
         3
       ]
     },
@@ -177,11 +171,11 @@
       "club": "Brighton",
       "count": 1,
       "difficulty": [
-        4,
         3,
         3,
         4,
-        5
+        5,
+        3
       ]
     },
     {
@@ -191,8 +185,8 @@
         3,
         3,
         3,
-        3,
-        4
+        4,
+        3
       ]
     },
     {
@@ -200,32 +194,32 @@
       "count": 2,
       "difficulty": [
         2,
-        2,
         4,
         5,
-        3
+        3,
+        2
       ]
     },
     {
       "club": "Liverpool",
       "count": 1,
       "difficulty": [
-        3,
         4,
         3,
         2,
-        4
+        4,
+        3
       ]
     },
     {
       "club": "Man City",
       "count": 2,
       "difficulty": [
-        2,
         4,
         2,
         4,
-        2
+        2,
+        3
       ]
     },
     {
@@ -235,23 +229,30 @@
         3,
         3,
         3,
-        3,
-        4
+        4,
+        3
       ]
     },
     {
       "club": "Nott'm Forest",
       "count": 1,
       "difficulty": [
-        2,
         3,
         4,
         2,
-        3
+        3,
+        4
       ]
     }
   ],
   "injury_news": [
+    {
+      "player": "Palmer",
+      "club": "Chelsea",
+      "news": "Muscular injury - 75% chance of playing",
+      "status": "d",
+      "chance": 75
+    },
     {
       "player": "White",
       "club": "Arsenal",
@@ -262,10 +263,10 @@
     {
       "player": "Šeško",
       "club": "Man Utd",
-      "news": "Unspecified injury - 75% chance of playing",
+      "news": "Shin injury - 75% chance of playing",
       "status": "d",
       "chance": 75
     }
   ],
-  "updated": "2026-09-20T21:06:44Z"
+  "updated": "2026-09-21T13:26:58Z"
 }
