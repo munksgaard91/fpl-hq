@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-21T13:26:58Z",
-  "current_gw": 4,
+  "updated": "2026-09-21T22:21:46Z",
+  "current_gw": 5,
   "season_started": true,
   "next_deadline": "2026-10-10T10:00:00Z",
   "standings": [
@@ -79,11 +79,11 @@
     "longest_streak": null
   },
   "bench_trend": {
-    "1510": 75,
-    "2538": 33,
-    "17803": 26,
-    "48885": 43,
-    "126623": 38
+    "1510": 82,
+    "2538": 35,
+    "17803": 51,
+    "48885": 52,
+    "126623": 68
   },
   "transactions": [
     {
@@ -493,10 +493,10 @@
       "out_score": 32.9,
       "in": "Branthwaite",
       "in_club": "Everton",
-      "in_score": 48.7,
-      "gap": 15.8,
+      "in_score": 47.8,
+      "gap": 14.9,
       "pos": "DEF",
-      "reason": "Ved at skifte Jacquet ud med Branthwaite opgraderer du dit forsvar med en spiller, der har en markant højere score på 48.7 mod 32.9."
+      "reason": "Branthwaite scorer 14.9 point højere end Jacquet lige nu."
     }
   ],
   "trade_suggestions": [
@@ -508,7 +508,7 @@
       "target_score": 48.4,
       "gap": 15.5,
       "pos": "DEF",
-      "reason": "Vuskovic har en højere score (48.4) end Jacquet (32.9), og da HernDog IF alligevel lader ham sidde på bænken, bør du bytte."
+      "reason": "Vuskovic scorer 15.5 point højere end Jacquet, og sidder på bænken hos HernDog IF."
     }
   ]
 }
