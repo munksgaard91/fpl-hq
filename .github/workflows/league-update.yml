@@ -1,8 +1,11 @@
 name: League gameweek update
 
+# PAUSET midlertidigt - kun manuel kørsel mens vi bygger Pre-GW/Post-GW om.
+# Sæt cron-linjen (nedenfor, udkommenteret) tilbage når den nye struktur er
+# færdig og testet.
 on:
-  schedule:
-    - cron: '5 * * * *'   # 5 min over hver time - forskudt fra site-data.yml (kører præcis på hel time) for at undgå at begge skriver til picks-history.json samtidig
+  # schedule:
+  #   - cron: '5 * * * *'
   workflow_dispatch:             # tillader manuelt "Run workflow" i GitHub-UI
     inputs:
       real_run:
@@ -41,6 +44,6 @@ jobs:
         run: |
           git config user.name "fpl-league-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add league-state.json picks-history.json
+          git add league-state.json picks-history.json team-snapshot.json transfer-news-state.json
           git diff --cached --quiet || git commit -m "Update league state after gameweek run"
           git push
