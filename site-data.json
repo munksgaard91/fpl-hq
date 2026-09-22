@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-21T22:21:46Z",
+  "updated": "2026-09-22T12:11:19Z",
   "current_gw": 5,
   "season_started": true,
   "next_deadline": "2026-10-10T10:00:00Z",
@@ -490,25 +490,35 @@
   "transfer_suggestions": [
     {
       "out": "Jacquet",
-      "out_score": 32.9,
+      "out_score": 33.0,
       "in": "Branthwaite",
       "in_club": "Everton",
       "in_score": 47.8,
-      "gap": 14.9,
+      "gap": 14.8,
       "pos": "DEF",
-      "reason": "Branthwaite scorer 14.9 point højere end Jacquet lige nu."
+      "reason": "Branthwaite scorer 14.8 point højere end Jacquet lige nu."
     }
   ],
   "trade_suggestions": [
     {
       "my_player": "Jacquet",
-      "my_score": 32.9,
+      "my_score": 33.0,
       "target": "Vuskovic",
       "target_owner": "HernDog IF",
-      "target_score": 48.4,
+      "target_score": 48.5,
       "gap": 15.5,
       "pos": "DEF",
       "reason": "Vuskovic scorer 15.5 point højere end Jacquet, og sidder på bænken hos HernDog IF."
+    },
+    {
+      "my_player": "Palmer",
+      "my_score": 40.7,
+      "target": "Groß",
+      "target_owner": "HernDog IF",
+      "target_score": 52.7,
+      "gap": 12.0,
+      "pos": "MID",
+      "reason": "Groß scorer 12.0 point højere end Palmer, og sidder på bænken hos HernDog IF."
     }
   ]
 }
