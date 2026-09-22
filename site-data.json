@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-22T17:24:54Z",
+  "updated": "2026-09-22T21:43:07Z",
   "current_gw": 5,
   "season_started": true,
   "next_deadline": "2026-10-10T10:00:00Z",
@@ -53,6 +53,10 @@
   ],
   "league_transfer_news": [],
   "gw_summaries": [
+    {
+      "gw": 5,
+      "text": "Efter femte spillerunde i den private draft-liga tegner der sig et klart billede af den aktuelle stilling. Kampen i toppen af tabellen er tæt, mens der er opstået mærkbare pointforskelle ned gennem rækken.\n\nMainoo Character FC indtager i øjeblikket førstepladsen med samlet 298 point, tæt forfulgt af HaCunha Mateta, der ligger næstbedst med 286 point. I den modsatte ende af tabellen finder vi Bottlers Anonymous, som med 167 point må konstatere at ligge dårligst placeret efter denne runde.\n\nEn generel observation af stillingen efter GW5 viser en markant spredning på i alt 131 point fra første- til femtepladsen. Dette indikerer en tidlig opdeling af ligaen, hvor HernDog IF (239 point) og Kop of Jensen (200 point) i øjeblikket udgør midterfeltet. \n\nDer er til denne runde ikke registreret nogen klubskifter eller nye spillere, ligesom der ikke foreligger data på rundens bedste eller dårligste enkeltspillere."
+    },
     {
       "gw": 4,
       "text": "Efter Gameweek 4 i Draft-ligaen tegner der sig et klart billede af den aktuelle stilling og de indbyrdes styrkeforhold mellem de fem hold. \n\nMainoo Character FC indtager i øjeblikket ligaens førsteplads med i alt 239 point, tæt forfulgt af HaCunha Mateta på andenpladsen med 233 point. HernDog IF besætter tredjepladsen med 205 point. I den modsatte ende af tabellen ligger Bottlers Anonymous dårligst placeret med 144 point, mens Kop of Jensen ligger lige over på fjerdepladsen med 155 point.\n\nEn generel observation af stillingen efter fjerde runde er den tydelige opdeling af ligaen i to grupper. Top tre-holdene har alle passeret den skarpe grænse på 200 point, hvilket har skabt et markant pointmæssigt gab på hele 50 point mellem HernDog IF på tredjepladsen og Kop of Jensen på fjerdepladsen."
@@ -496,29 +500,39 @@
       "in_score": 50.7,
       "gap": 13.7,
       "pos": "DEF",
-      "reason": "Hall scorer 13.7 point højere end Jacquet lige nu."
+      "reason": "Ved at skifte Jacquet ud med Hall opgraderer du dit forsvar og vinder en markant højere score på 50.7 i forhold til 37.0."
     },
     {
       "out": "Palmer",
-      "out_score": 40.5,
+      "out_score": 40.4,
       "in": "Barnes",
       "in_club": "Newcastle",
       "in_score": 53.9,
-      "gap": 13.4,
+      "gap": 13.5,
       "pos": "MID",
-      "reason": "Barnes scorer 13.4 point højere end Palmer lige nu."
+      "reason": "Dette bytte opgraderer din midtbane og øger din score fra 40.4 til 53.9 ved at hente Barnes ind i stedet for Palmer."
     }
   ],
   "trade_suggestions": [
     {
       "my_player": "Palmer",
-      "my_score": 40.5,
+      "my_score": 40.4,
       "target": "Groß",
       "target_owner": "HernDog IF",
       "target_score": 60.3,
-      "gap": 19.8,
+      "gap": 19.9,
       "pos": "MID",
-      "reason": "Groß scorer 19.8 point højere end Palmer, og sidder på bænken hos HernDog IF."
+      "reason": "Groß har en stærkere score på 60.3 mod Palmers 40.4, og HernDog IF lader ham sidde ubenyttet på bænken."
+    },
+    {
+      "my_player": "Jacquet",
+      "my_score": 37.0,
+      "target": "Vuskovic",
+      "target_owner": "HernDog IF",
+      "target_score": 49.0,
+      "gap": 12.0,
+      "pos": "DEF",
+      "reason": "Vuskovic har en stærkere score på 49.0 mod Jacquets 37.0, og HernDog IF lader ham sidde ubenyttet på bænken."
     }
   ]
 }
