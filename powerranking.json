@@ -1,6 +1,20 @@
 {
-  "updated": "2026-09-22T12:11:19Z",
+  "updated": "2026-09-22T17:24:54Z",
   "players": [
+    {
+      "id": 124,
+      "name": "Groß",
+      "club": "Brighton",
+      "team_id": 5,
+      "pos": "MID",
+      "score": 60.3,
+      "last_season_points": 78,
+      "points_this_season_so_far": 47,
+      "form": "11.2",
+      "status": "a",
+      "chance": null,
+      "argument": "78 point sidste sæson."
+    },
     {
       "id": 229,
       "name": "Tarkowski",
@@ -16,18 +30,32 @@
       "argument": "170 point sidste sæson."
     },
     {
-      "id": 124,
-      "name": "Groß",
-      "club": "Brighton",
-      "team_id": 5,
-      "pos": "MID",
-      "score": 52.7,
-      "last_season_points": 78,
-      "points_this_season_so_far": 47,
-      "form": "9.4",
+      "id": 411,
+      "name": "Haaland",
+      "club": "Man City",
+      "team_id": 15,
+      "pos": "FWD",
+      "score": 54.8,
+      "last_season_points": 239,
+      "points_this_season_so_far": 39,
+      "form": "9.2",
       "status": "a",
       "chance": null,
-      "argument": "78 point sidste sæson."
+      "argument": "239 point sidste sæson."
+    },
+    {
+      "id": 453,
+      "name": "Barnes",
+      "club": "Newcastle",
+      "team_id": 17,
+      "pos": "MID",
+      "score": 53.9,
+      "last_season_points": 106,
+      "points_this_season_so_far": 28,
+      "form": "6.5",
+      "status": "a",
+      "chance": null,
+      "argument": "106 point sidste sæson."
     },
     {
       "id": 12,
@@ -42,6 +70,20 @@
       "status": "a",
       "chance": null,
       "argument": "157 point sidste sæson."
+    },
+    {
+      "id": 449,
+      "name": "Hall",
+      "club": "Newcastle",
+      "team_id": 17,
+      "pos": "DEF",
+      "score": 50.7,
+      "last_season_points": 79,
+      "points_this_season_so_far": 31,
+      "form": "7.0",
+      "status": "a",
+      "chance": null,
+      "argument": "79 point sidste sæson."
     },
     {
       "id": 286,
@@ -63,27 +105,13 @@
       "club": "Arsenal",
       "team_id": 1,
       "pos": "DEF",
-      "score": 50.5,
+      "score": 50.4,
       "last_season_points": 209,
       "points_this_season_so_far": 25,
       "form": "5.0",
       "status": "a",
       "chance": null,
       "argument": "209 point sidste sæson."
-    },
-    {
-      "id": 115,
-      "name": "De Cuyper",
-      "club": "Brighton",
-      "team_id": 5,
-      "pos": "DEF",
-      "score": 50.3,
-      "last_season_points": 84,
-      "points_this_season_so_far": 38,
-      "form": "7.6",
-      "status": "a",
-      "chance": null,
-      "argument": "84 point sidste sæson."
     },
     {
       "id": 426,
@@ -100,32 +128,18 @@
       "argument": "235 point sidste sæson."
     },
     {
-      "id": 453,
-      "name": "Barnes",
-      "club": "Newcastle",
-      "team_id": 17,
-      "pos": "MID",
-      "score": 50.1,
-      "last_season_points": 106,
-      "points_this_season_so_far": 28,
-      "form": "5.6",
-      "status": "a",
-      "chance": null,
-      "argument": "106 point sidste sæson."
-    },
-    {
-      "id": 553,
-      "name": "Isidor",
-      "club": "Sunderland",
-      "team_id": 20,
+      "id": 138,
+      "name": "Kostoulas",
+      "club": "Brighton",
+      "team_id": 5,
       "pos": "FWD",
-      "score": 49.6,
-      "last_season_points": 74,
-      "points_this_season_so_far": 15,
-      "form": "3.5",
+      "score": 50.2,
+      "last_season_points": null,
+      "points_this_season_so_far": 28,
+      "form": "6.8",
       "status": "a",
       "chance": null,
-      "argument": "74 point sidste sæson."
+      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 1,
@@ -156,29 +170,15 @@
       "argument": "92 point sidste sæson."
     },
     {
-      "id": 411,
-      "name": "Haaland",
-      "club": "Man City",
-      "team_id": 15,
-      "pos": "FWD",
-      "score": 48.8,
-      "last_season_points": 239,
-      "points_this_season_so_far": 39,
-      "form": "7.8",
-      "status": "a",
-      "chance": null,
-      "argument": "239 point sidste sæson."
-    },
-    {
       "id": 504,
       "name": "Vuskovic",
       "club": "Brighton",
       "team_id": 5,
       "pos": "DEF",
-      "score": 48.5,
+      "score": 48.9,
       "last_season_points": null,
       "points_this_season_so_far": 32,
-      "form": "6.4",
+      "form": "6.5",
       "status": "a",
       "chance": null,
       "argument": "Ingen sæsondata tilgængelig."
@@ -189,10 +189,24 @@
       "club": "Hull",
       "team_id": 11,
       "pos": "GK",
-      "score": 48.2,
+      "score": 48.3,
       "last_season_points": null,
       "points_this_season_so_far": 34,
       "form": "6.0",
+      "status": "a",
+      "chance": null,
+      "argument": "Ingen sæsondata tilgængelig."
+    },
+    {
+      "id": 379,
+      "name": "Isak",
+      "club": "Liverpool",
+      "team_id": 14,
+      "pos": "FWD",
+      "score": 48.2,
+      "last_season_points": null,
+      "points_this_season_so_far": 33,
+      "form": "7.8",
       "status": "a",
       "chance": null,
       "argument": "Ingen sæsondata tilgængelig."
@@ -226,18 +240,18 @@
       "argument": "109 point sidste sæson."
     },
     {
-      "id": 449,
-      "name": "Hall",
-      "club": "Newcastle",
-      "team_id": 17,
-      "pos": "DEF",
-      "score": 47.3,
-      "last_season_points": 79,
-      "points_this_season_so_far": 31,
-      "form": "6.2",
+      "id": 397,
+      "name": "Semenyo",
+      "club": "Man City",
+      "team_id": 15,
+      "pos": "MID",
+      "score": 46.8,
+      "last_season_points": 202,
+      "points_this_season_so_far": 33,
+      "form": "7.8",
       "status": "a",
       "chance": null,
-      "argument": "79 point sidste sæson."
+      "argument": "202 point sidste sæson."
     },
     {
       "id": 173,
@@ -294,20 +308,6 @@
       "status": "a",
       "chance": 100,
       "argument": "188 point sidste sæson."
-    },
-    {
-      "id": 138,
-      "name": "Kostoulas",
-      "club": "Brighton",
-      "team_id": 5,
-      "pos": "FWD",
-      "score": 45.8,
-      "last_season_points": null,
-      "points_this_season_so_far": 28,
-      "form": "5.6",
-      "status": "a",
-      "chance": null,
-      "argument": "Ingen sæsondata tilgængelig."
     },
     {
       "id": 268,
