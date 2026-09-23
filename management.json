@@ -1,0 +1,272 @@
+{
+  "available": true,
+  "lineup_set": true,
+  "starters": [
+    {
+      "id": 1,
+      "name": "Raya",
+      "club": "Arsenal",
+      "pos": "GK",
+      "status": "a",
+      "chance": null
+    },
+    {
+      "id": 388,
+      "name": "Guéhi",
+      "club": "Man City",
+      "pos": "DEF",
+      "status": "a",
+      "chance": null
+    },
+    {
+      "id": 229,
+      "name": "Tarkowski",
+      "club": "Everton",
+      "pos": "DEF",
+      "status": "a",
+      "chance": null
+    },
+    {
+      "id": 362,
+      "name": "Jacquet",
+      "club": "Liverpool",
+      "pos": "DEF",
+      "status": "a",
+      "chance": 100
+    },
+    {
+      "id": 115,
+      "name": "De Cuyper",
+      "club": "Brighton",
+      "pos": "DEF",
+      "status": "a",
+      "chance": null
+    },
+    {
+      "id": 426,
+      "name": "B.Fernandes",
+      "club": "Man Utd",
+      "pos": "MID",
+      "status": "a",
+      "chance": null
+    },
+    {
+      "id": 12,
+      "name": "Saka",
+      "club": "Arsenal",
+      "pos": "MID",
+      "status": "a",
+      "chance": null
+    },
+    {
+      "id": 399,
+      "name": "Cherki",
+      "club": "Man City",
+      "pos": "MID",
+      "status": "a",
+      "chance": null
+    },
+    {
+      "id": 480,
+      "name": "Gibbs-White",
+      "club": "Nott'm Forest",
+      "pos": "MID",
+      "status": "a",
+      "chance": 100
+    },
+    {
+      "id": 154,
+      "name": "Palmer",
+      "club": "Chelsea",
+      "pos": "MID",
+      "status": "d",
+      "chance": 75
+    },
+    {
+      "id": 249,
+      "name": "Barry",
+      "club": "Everton",
+      "pos": "FWD",
+      "status": "a",
+      "chance": null
+    }
+  ],
+  "bench": [
+    {
+      "id": 597,
+      "name": "Suzuki",
+      "club": "Aston Villa",
+      "pos": "GK",
+      "status": "a",
+      "chance": null
+    },
+    {
+      "id": 10,
+      "name": "White",
+      "club": "Arsenal",
+      "pos": "DEF",
+      "status": "d",
+      "chance": 75
+    },
+    {
+      "id": 439,
+      "name": "Šeško",
+      "club": "Man Utd",
+      "pos": "FWD",
+      "status": "d",
+      "chance": 75
+    },
+    {
+      "id": 106,
+      "name": "Thiago",
+      "club": "Brentford",
+      "pos": "FWD",
+      "status": "a",
+      "chance": null
+    }
+  ],
+  "suggestions": [
+    {
+      "out": "Palmer",
+      "in": null,
+      "type": "Formation",
+      "reason": "Palmer er flagget (75% spilchance), men ingen bænket spiller på samme position kan erstatte 1:1 - overvej et formationsskift."
+    }
+  ],
+  "fixtures": [
+    {
+      "club": "Arsenal",
+      "count": 3,
+      "difficulty": [
+        2,
+        3,
+        3,
+        4,
+        2
+      ]
+    },
+    {
+      "club": "Aston Villa",
+      "count": 1,
+      "difficulty": [
+        3,
+        3,
+        4,
+        2,
+        4
+      ]
+    },
+    {
+      "club": "Brentford",
+      "count": 1,
+      "difficulty": [
+        4,
+        4,
+        2,
+        3,
+        3
+      ]
+    },
+    {
+      "club": "Brighton",
+      "count": 1,
+      "difficulty": [
+        3,
+        3,
+        4,
+        5,
+        3
+      ]
+    },
+    {
+      "club": "Chelsea",
+      "count": 1,
+      "difficulty": [
+        3,
+        3,
+        3,
+        4,
+        3
+      ]
+    },
+    {
+      "club": "Everton",
+      "count": 2,
+      "difficulty": [
+        2,
+        4,
+        5,
+        3,
+        2
+      ]
+    },
+    {
+      "club": "Liverpool",
+      "count": 1,
+      "difficulty": [
+        4,
+        3,
+        2,
+        4,
+        3
+      ]
+    },
+    {
+      "club": "Man City",
+      "count": 2,
+      "difficulty": [
+        4,
+        2,
+        4,
+        2,
+        3
+      ]
+    },
+    {
+      "club": "Man Utd",
+      "count": 2,
+      "difficulty": [
+        3,
+        3,
+        3,
+        4,
+        3
+      ]
+    },
+    {
+      "club": "Nott'm Forest",
+      "count": 1,
+      "difficulty": [
+        3,
+        4,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "injury_news": [
+    {
+      "player": "Palmer",
+      "club": "Chelsea",
+      "news": "Muscular injury - 75% chance of playing",
+      "status": "d",
+      "chance": 75
+    },
+    {
+      "player": "White",
+      "club": "Arsenal",
+      "news": "Groin injury - 75% chance of playing",
+      "status": "d",
+      "chance": 75
+    },
+    {
+      "player": "Šeško",
+      "club": "Man Utd",
+      "news": "Shin injury - 75% chance of playing",
+      "status": "d",
+      "chance": 75
+    }
+  ],
+  "updated": "2026-09-23T21:53:03Z"
+}

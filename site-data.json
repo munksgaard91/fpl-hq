@@ -1,0 +1,512 @@
+{
+  "updated": "2026-09-23T21:53:03Z",
+  "current_gw": 5,
+  "season_started": true,
+  "next_deadline": "2026-10-10T10:00:00Z",
+  "standings": [
+    {
+      "league_entry": 48956,
+      "name": "Mainoo Character FC",
+      "total": 298,
+      "rank": 1,
+      "trend": null
+    },
+    {
+      "league_entry": 1510,
+      "name": "HaCunha Mateta",
+      "total": 286,
+      "rank": 2,
+      "trend": null
+    },
+    {
+      "league_entry": 127144,
+      "name": "HernDog IF",
+      "total": 239,
+      "rank": 3,
+      "trend": null
+    },
+    {
+      "league_entry": 17813,
+      "name": "Kop of Jensen",
+      "total": 200,
+      "rank": 4,
+      "trend": null
+    },
+    {
+      "league_entry": 2539,
+      "name": "Bottlers Anonymous",
+      "total": 167,
+      "rank": 5,
+      "trend": null
+    }
+  ],
+  "point_gap": 131,
+  "alerts": [
+    {
+      "player": "Collins",
+      "club": "Brentford",
+      "owner_entry_id": 48885,
+      "owner": "Mainoo Character FC",
+      "news": "Calf injury - Unknown return date",
+      "chance": 0
+    }
+  ],
+  "league_transfer_news": [],
+  "gw_summaries": [
+    {
+      "gw": 5,
+      "text": "Efter femte spillerunde i den private draft-liga tegner der sig et klart billede af styrkeforholdet i tabellen. Kampen i toppen er tæt, mens der allerede nu er opstået markante afstande mellem holdene.\n\nDet er aktuelt Mainoo Character FC, der fører ligaen med i alt 298 point. Holdet er skarpt forfulgt af HaCunha Mateta på andenpladsen med 286 point, hvilket vidner om en intens duel i den absolutte top. \n\nI midten af rækken indtager HernDog IF en foreløbig tredjeplads med 239 point, mens Kop of Jensen ligger nummer fire med 200 point. I bunden af tabellen befinder Bottlers Anonymous sig med 167 point, hvilket placerer dem dårligst efter de første fem runder.\n\nEn generel observation efter denne spillerunde er den markante pointspredning fra top til bund. Der er nu 131 points forskel mellem første- og sidstepladsen, hvilket indikerer en tidlig opdeling af ligaen i tre niveauer."
+    }
+  ],
+  "highlights": {
+    "highest_gw_score": {
+      "name": "Mainoo Character FC",
+      "score": 298,
+      "gw": "GW5"
+    },
+    "longest_streak": null
+  },
+  "bench_trend": {
+    "1510": 82,
+    "2538": 35,
+    "17803": 51,
+    "48885": 52,
+    "126623": 68
+  },
+  "transactions": [
+    {
+      "gw": 1,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Waiver",
+      "player_in": "E.Le Fée",
+      "player_out": "Ndiaye",
+      "added": "2026-08-18T18:46:39.360936Z"
+    },
+    {
+      "gw": 1,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Tel",
+      "player_out": "Gomez",
+      "added": "2026-08-18T18:52:29.457213Z"
+    },
+    {
+      "gw": 1,
+      "entry_name": "HaCunha Mateta",
+      "kind": "Waiver",
+      "player_in": "Hall",
+      "player_out": "Senesi",
+      "added": "2026-08-18T18:56:06.736236Z"
+    },
+    {
+      "gw": 1,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Bruno G.",
+      "player_out": "Merino",
+      "added": "2026-08-18T18:56:45.549244Z"
+    },
+    {
+      "gw": 1,
+      "entry_name": "Kop of Jensen",
+      "kind": "Free agent",
+      "player_in": "Maddison",
+      "player_out": "Groß",
+      "added": "2026-08-21T15:46:45.953732Z"
+    },
+    {
+      "gw": 1,
+      "entry_name": "Kop of Jensen",
+      "kind": "Free agent",
+      "player_in": "Sávio",
+      "player_out": "Gravenberch",
+      "added": "2026-08-21T15:48:11.155384Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Wissa",
+      "player_out": "Gyökeres",
+      "added": "2026-08-24T14:54:07.755858Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Trafford",
+      "player_out": "Martinez",
+      "added": "2026-08-24T14:54:07.755900Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Waiver",
+      "player_in": "Florentino",
+      "player_out": "Henderson",
+      "added": "2026-08-26T15:59:31.640004Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Lewis-Skelly",
+      "player_out": "Dorgu",
+      "added": "2026-08-26T18:57:03.990264Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Xhaka",
+      "player_out": "Cunha",
+      "added": "2026-08-26T18:57:03.990326Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "HaCunha Mateta",
+      "kind": "Waiver",
+      "player_in": "De Cuyper",
+      "player_out": "Truffert",
+      "added": "2026-08-27T16:50:58.636990Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "HaCunha Mateta",
+      "kind": "Waiver",
+      "player_in": "Barry",
+      "player_out": "Woltemade",
+      "added": "2026-08-27T16:50:58.637053Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Gonzalo",
+      "player_out": "Watkins",
+      "added": "2026-08-27T16:51:24.844016Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Targett",
+      "player_out": "Tel",
+      "added": "2026-08-27T16:51:24.844065Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Ajer",
+      "player_out": "Milenković",
+      "added": "2026-08-27T16:51:24.844086Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Free agent",
+      "player_in": "McBurnie",
+      "player_out": "Osula",
+      "added": "2026-08-27T18:38:37.550752Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Free agent",
+      "player_in": "Ajayi",
+      "player_out": "Robinson",
+      "added": "2026-08-27T18:41:12.868026Z"
+    },
+    {
+      "gw": 2,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Free agent",
+      "player_in": "Sánchez",
+      "player_out": "A.Becker",
+      "added": "2026-08-27T18:43:21.466785Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Isidor",
+      "player_out": "Mateta",
+      "added": "2026-09-01T04:56:35.494790Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Hato",
+      "player_out": "Khusanov",
+      "added": "2026-09-01T04:56:35.494841Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Foden",
+      "player_out": "Anderson",
+      "added": "2026-09-01T04:56:35.494864Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Waiver",
+      "player_in": "Cunha",
+      "player_out": "E.Le Fée",
+      "added": "2026-09-02T19:07:44.672994Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Allan",
+      "player_out": "Sávio",
+      "added": "2026-09-03T14:06:16.081674Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Kayode",
+      "player_out": "James",
+      "added": "2026-09-03T14:06:16.081779Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Munoz",
+      "player_out": "Mac Allister",
+      "added": "2026-09-03T14:06:16.081809Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Elanga",
+      "player_out": "Van Oevelen",
+      "added": "2026-09-03T16:43:16.043861Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Free agent",
+      "player_in": "Marmoush",
+      "player_out": "McBurnie",
+      "added": "2026-09-03T18:04:22.654344Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Free agent",
+      "player_in": "Lewis-Potter",
+      "player_out": "Lewis-Skelly",
+      "added": "2026-09-03T18:08:31.117467Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Kop of Jensen",
+      "kind": "Free agent",
+      "player_in": "Dewsbury-Hall",
+      "player_out": "Maddison",
+      "added": "2026-09-04T08:54:23.632805Z"
+    },
+    {
+      "gw": 3,
+      "entry_name": "Kop of Jensen",
+      "kind": "Free agent",
+      "player_in": "Enzo",
+      "player_out": "McGinn",
+      "added": "2026-09-04T14:41:26.714194Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Van Oevelen",
+      "player_out": "Foden",
+      "added": "2026-09-06T19:20:24.313590Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Mendy",
+      "player_out": "O'Reilly",
+      "added": "2026-09-06T19:20:24.313674Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "A.Becker",
+      "player_out": "Sánchez",
+      "added": "2026-09-06T19:20:24.313712Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "HaCunha Mateta",
+      "kind": "Waiver",
+      "player_in": "Suzuki",
+      "player_out": "Kelleher",
+      "added": "2026-09-07T14:59:23.706339Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Kamada",
+      "player_out": "Elanga",
+      "added": "2026-09-09T12:23:32.795848Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Groß",
+      "player_out": "Targett",
+      "added": "2026-09-09T12:23:32.795900Z"
+    },
+    {
+      "gw": 4,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Charles",
+      "player_out": "Mosquera",
+      "added": "2026-09-11T05:26:59.565094Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Bogle",
+      "player_out": "Thiaw",
+      "added": "2026-09-14T22:02:27.736995Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Belloumi",
+      "player_out": "Dewsbury-Hall",
+      "added": "2026-09-14T22:02:27.737070Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Kop of Jensen",
+      "kind": "Waiver",
+      "player_in": "Emersonn",
+      "player_out": "Wissa",
+      "added": "2026-09-14T22:02:27.737109Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Waiver",
+      "player_in": "Dunk",
+      "player_out": "Lacroix",
+      "added": "2026-09-16T17:59:52.667801Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Waiver",
+      "player_in": "Muharemović",
+      "player_out": "Maguire",
+      "added": "2026-09-16T17:59:52.667822Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "J.Timber",
+      "player_out": "Mendy",
+      "added": "2026-09-17T04:55:27.974876Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Bottlers Anonymous",
+      "kind": "Waiver",
+      "player_in": "Tavernier",
+      "player_out": "Lewis-Potter",
+      "added": "2026-09-17T04:55:27.974928Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Mykolenko",
+      "player_out": "Ajer",
+      "added": "2026-09-17T08:13:09.274611Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Ndoye",
+      "player_out": "Kamada",
+      "added": "2026-09-17T08:13:09.274685Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "HernDog IF",
+      "kind": "Waiver",
+      "player_in": "Delap",
+      "player_out": "Brobbey",
+      "added": "2026-09-17T08:13:09.274704Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "HaCunha Mateta",
+      "kind": "Waiver",
+      "player_in": "Jacquet",
+      "player_out": "Hall",
+      "added": "2026-09-17T14:04:50.958767Z"
+    },
+    {
+      "gw": 5,
+      "entry_name": "Mainoo Character FC",
+      "kind": "Free agent",
+      "player_in": "Matheus N.",
+      "player_out": "Dunk",
+      "added": "2026-09-18T14:43:14.987961Z"
+    }
+  ],
+  "transfer_suggestions": [
+    {
+      "out": "Palmer",
+      "out_score": 32.6,
+      "in": "Barnes",
+      "in_club": "Newcastle",
+      "in_score": 53.9,
+      "gap": 21.3,
+      "pos": "MID",
+      "reason": "Ved at skifte Palmer ud med Barnes får du en midtbanespiller med en højere score på 53.9 i stedet for Palmers 32.6."
+    },
+    {
+      "out": "Jacquet",
+      "out_score": 37.1,
+      "in": "Hall",
+      "in_club": "Newcastle",
+      "in_score": 50.7,
+      "gap": 13.6,
+      "pos": "DEF",
+      "reason": "Du opgraderer dit forsvar ved at få Hall, der har en score på 50.7, i stedet for Jacquet med en score på 37.1."
+    }
+  ],
+  "trade_suggestions": [
+    {
+      "my_player": "Palmer",
+      "my_score": 32.6,
+      "target": "Groß",
+      "target_owner": "HernDog IF",
+      "target_score": 60.3,
+      "gap": 27.7,
+      "pos": "MID",
+      "reason": "Groß har en bedre score på 60.3 mod Palmers 32.6 og sidder ubrugt på bænken hos HernDog IF, som ikke bruger ham."
+    }
+  ]
+}
