@@ -969,7 +969,16 @@ TOTTENHAM-REGEL: {tottenham_result if tottenham_result else "Tottenham vandt ell
     deadline_line = "Ukendt — tjek draft.premierleague.com"
     if next_deadline:
         next_gw, deadline_ts = next_deadline
-        deadline_line = f"GW{next_gw}: {format_deadline_da(deadline_ts)}"
+        # Feltet handler specifikt om trades/waivers, så det skal vise
+        # WAIVER-deadline (GW-deadline minus 24 timer, jf. FPL's egen
+        # waivers_before_deadline_hours-indstilling), ikke selve kampdeadline -
+        # og i dansk tid, ikke rå UTC.
+        from datetime import datetime, timedelta
+        deadline_dt = datetime.fromisoformat(deadline_ts.replace("Z", "+00:00"))
+        waiver_dt = deadline_dt - timedelta(hours=24) + timedelta(hours=2)  # -24t waiver-regel, +2t dansk sommertid
+        weekday = DA_WEEKDAYS[waiver_dt.weekday()]
+        month = DA_MONTHS[waiver_dt.month - 1]
+        deadline_line = f"GW{next_gw} waiver-deadline: {weekday} {waiver_dt.day}. {month} kl. {waiver_dt.strftime('%H:%M')} dansk tid"
 
     # Billede af ugens topscorer i hele ligaen (samme spiller som "Ugens bedste"-feltet)
     thumbnail_url = None
