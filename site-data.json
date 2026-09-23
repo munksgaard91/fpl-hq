@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23T12:23:45Z",
+  "updated": "2026-09-23T17:32:20Z",
   "current_gw": 5,
   "season_started": true,
   "next_deadline": "2026-10-10T10:00:00Z",
@@ -493,6 +493,16 @@
   ],
   "transfer_suggestions": [
     {
+      "out": "Palmer",
+      "out_score": 40.2,
+      "in": "Barnes",
+      "in_club": "Newcastle",
+      "in_score": 53.9,
+      "gap": 13.7,
+      "pos": "MID",
+      "reason": "Ved at skifte Palmer ud med Barnes opgraderer du din MID-position og øger din score fra 40.2 til 53.9."
+    },
+    {
       "out": "Jacquet",
       "out_score": 37.1,
       "in": "Hall",
@@ -500,29 +510,19 @@
       "in_score": 50.7,
       "gap": 13.6,
       "pos": "DEF",
-      "reason": "Ved at skifte Jacquet ud med Hall opgraderer du til en forsvarer med en markant højere score på 50.7 mod Jacquets 37.1."
-    },
-    {
-      "out": "Palmer",
-      "out_score": 40.3,
-      "in": "Barnes",
-      "in_club": "Newcastle",
-      "in_score": 53.9,
-      "gap": 13.6,
-      "pos": "MID",
-      "reason": "Dette bytte giver dig midtbanespilleren Barnes, hvis score på 53.9 sikrer dig en direkte pointmæssig forbedring i forhold til Palmers 40.3."
+      "reason": "Ved at skifte Jacquet ud med Hall opgraderer du din DEF-position og øger din score fra 37.1 til 50.7."
     }
   ],
   "trade_suggestions": [
     {
       "my_player": "Palmer",
-      "my_score": 40.3,
+      "my_score": 40.2,
       "target": "Groß",
       "target_owner": "HernDog IF",
       "target_score": 60.3,
-      "gap": 20.0,
+      "gap": 20.1,
       "pos": "MID",
-      "reason": "Groß har en højere score (60,3) end Palmer (40,3), og HernDog IF lader ham sidde ubrugt på bænken."
+      "reason": "Groß har en stærkere score på 60.3 mod Palmers 40.2, og HernDog IF lader ham alligevel sidde ubrugt på bænken."
     }
   ]
 }
