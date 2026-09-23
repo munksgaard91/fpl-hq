@@ -41,6 +41,8 @@ jobs:
         run: |
           git config user.name "fpl-league-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add league-state.json picks-history.json team-snapshot.json transfer-news-state.json
+          for f in league-state.json picks-history.json team-snapshot.json transfer-news-state.json; do
+            [ -f "$f" ] && git add "$f"
+          done
           git diff --cached --quiet || git commit -m "Update league state after gameweek run"
           git push
