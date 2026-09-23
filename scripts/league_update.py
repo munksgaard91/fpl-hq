@@ -741,6 +741,14 @@ def run_pre_gameweek():
 
 
 def main():
+    # Sikrer filen ALTID findes på disk, uanset hvilken gren nedenfor der kører
+    # - forhindrer 'git add transfer-news-state.json' i at fejle med "did not
+    # match any files" hvis ingen af de øvrige kald når at oprette den (fx hvis
+    # Pre-Gameweek springer over pga. tidsvinduet, og GW-beskeden heller ikke
+    # rører denne fil).
+    if not os.path.exists(TRANSFER_NEWS_STATE_FILE):
+        save_transfer_news_state(load_transfer_news_state())
+
     if os.environ.get("SEASON_KICKOFF", "").lower() == "true":
         run_season_kickoff()
         return
