@@ -624,7 +624,7 @@ def run_pre_gameweek():
     now = datetime.now(timezone.utc)
     hours_until_deadline = (deadline_dt - now).total_seconds() / 3600
 
-    force_test = os.environ.get("FORCE_TEST", "").lower() == "true"
+    force_test = os.environ.get("PRE_GAMEWEEK", "").lower() == "true"
     news_state = load_transfer_news_state()
 
     if not force_test:
@@ -745,8 +745,15 @@ def main():
         run_season_kickoff()
         return
     if os.environ.get("PRE_GAMEWEEK", "").lower() == "true":
+        # Eksplicit, isoleret manuel/test-kørsel af KUN pre-gameweek-tjekket.
         run_pre_gameweek()
         return
+
+    # Normal, planlagt kørsel: tjek BEGGE i samme kørsel. run_pre_gameweek()
+    # har sin egen "kun handl hvis inden for 1-times-vinduet"-logik indbygget,
+    # så det er trygt at kalde den her hver gang uden ekstra omkostning når
+    # den ikke er relevant.
+    run_pre_gameweek()
 
     state = load_state()
     picks_history = load_picks_history()
