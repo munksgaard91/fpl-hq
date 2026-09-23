@@ -226,6 +226,11 @@ def get_frozen_squad(entry_id, gw, picks_history):
     første gang vi ser en gameweek, fryser vi picks-dataen permanent i
     picks-history.json. Alle senere kald genbruger den frosne kopi i stedet for
     at spørge FPL igen, så data aldrig kan "drifte" efter at være gemt.
+
+    BEKRÆFTET (15. sep 2026): Tzolis' rigtige trup-placeringer bliver fejlagtigt
+    logget under Van Oevelens ID (554) i FPL's rå picks-data, samme mønster som
+    i element-status. Substituerer derfor 554->557 FØR fastfrysning, så den
+    forkerte værdi aldrig låses ind i en ny gameweeks snapshot.
     """
     gw_key = f"GW{gw}"
     entry_key = str(entry_id)
@@ -235,6 +240,9 @@ def get_frozen_squad(entry_id, gw, picks_history):
     picks = get_entry_gw_squad(entry_id, gw)
     if picks is None:
         return None
+    for p in picks:
+        if p.get("element") == VAN_OEVELEN_ID:
+            p["element"] = TZOLIS_ID
     picks_history.setdefault(gw_key, {})[entry_key] = picks
     return picks
 
@@ -839,28 +847,6 @@ def main():
         last_eid = standings[-1]["league_entry"]
         last_place_name = entry_name_map.get(last_eid, f"Entry {last_eid}")
 
-    # -------- transactions since last post --------
-    trans_data = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions")
-    all_trans = [t for t in trans_data.get("transactions", []) if t.get("result") == "a"]
-    news_state = load_transfer_news_state()
-    last_shown_txn_id = news_state.get("last_posted_id", 0)
-    new_trans = [t for t in all_trans if t["id"] > last_shown_txn_id]
-    kind_labels = {"w": "Waiver", "f": "Free agent", "t": "Trade"}
-    by_entry = {}
-    for t in new_trans:
-        kind = kind_labels.get(t.get("kind"), t.get("kind", "transaction"))
-        entry_id = t.get("entry")
-        in_name = player_names.get(t.get("element_in"), f"spiller {t.get('element_in')}")
-        out_name = player_names.get(t.get("element_out"))
-        desc = f"{in_name} ind, {out_name} ud" if out_name else f"{in_name} ind"
-        by_entry.setdefault(entry_id, []).append(f"{desc} ({kind})")
-    trans_lines = []
-    for entry_id, moves in by_entry.items():
-        ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
-        trans_lines.append(f"**{ename}**")
-        trans_lines.extend(moves)
-        trans_lines.append("")
-
     # -------- assemble context for Gemini --------
     best_line = "Ingen data"
     if league_best:
@@ -889,9 +875,6 @@ Pointforskel mellem 1. og sidsteplads: {point_gap} point.
 BEDSTE ENKELTSPILLER DENNE UGE: {best_line}
 DÅRLIGSTE ENKELTSPILLER DENNE UGE (blandt startere): {worst_line}
 STØRSTE "OUCH" PÅ BÆNKEN: {bench_line if bench_line else "Ingen — ingen bænkspiller ville reelt have gjort en forskel denne uge."}
-
-TRANSAKTIONER SIDEN SIDST:
-{chr(10).join(trans_lines) if trans_lines else "Ingen waivers eller trades siden sidst."}
 
 SKADER/STATUS PÅ EJEDE SPILLERE (fra FPL's officielle data, kun nævn hvis relevant):
 {chr(10).join(owned_injury_lines) if owned_injury_lines else "Ingen kendte skader på ejede spillere lige nu."}
@@ -927,7 +910,17 @@ TOTTENHAM-REGEL: {tottenham_result if tottenham_result else "Tottenham vandt ell
         next_gw, deadline_ts = next_deadline
         deadline_line = f"GW{next_gw}: {format_deadline_da(deadline_ts)}"
 
-    post_to_discord(gw, standings_lines, best_line, worst_line, bench_line, discipline_line, trans_lines, summary_text, point_gap, deadline_line, test_mode)
+    # Billede af ugens topscorer i hele ligaen (samme spiller som "Ugens bedste"-feltet)
+    thumbnail_url = None
+    if league_best:
+        _, best_pid, _ = league_best
+        by_id = {p["id"]: p for p in bootstrap["elements"]}
+        best_player = by_id.get(best_pid)
+        if best_player and best_player.get("photo"):
+            photo_code = best_player["photo"].replace(".jpg", "")
+            thumbnail_url = f"https://resources.premierleague.com/premierleague/photos/players/250x250/p{photo_code}.png"
+
+    post_to_discord(gw, standings_lines, best_line, worst_line, bench_line, discipline_line, thumbnail_url, summary_text, point_gap, deadline_line, test_mode)
 
     # picks-history er et rent arkiv (ikke en duplikat-spærre som last_posted_event),
     # så den gemmes altid, også under test - jo før en gameweeks picks bliver frosset,
@@ -939,8 +932,6 @@ TOTTENHAM-REGEL: {tottenham_result if tottenham_result else "Tottenham vandt ell
         state["last_posted_event"] = gw
         state["last_ranks"] = current_ranks
         save_state(state)
-        if all_trans:
-            save_transfer_news_state({"last_posted_id": max(t["id"] for t in all_trans)})
         print(f"GW{gw} postet og state gemt.")
     elif test_mode:
         print(f"Test-tilstand: besked postet, men state IKKE gemt (for ikke at blokere en ægte fremtidig post).")
@@ -1096,7 +1087,7 @@ def truncate_for_discord_field(lines, max_len=1000):
     return "\n".join(kept) + f"\n*(+{omitted} flere, se historikken på siden)*"
 
 
-def post_to_discord(gw, standings_lines, best_line, worst_line, bench_line, discipline_line, trans_lines, summary_text, point_gap, deadline_line, test_mode=False):
+def post_to_discord(gw, standings_lines, best_line, worst_line, bench_line, discipline_line, thumbnail_url, summary_text, point_gap, deadline_line, test_mode=False):
     webhook = os.environ["DISCORD_WEBHOOK_URL"]
     title = "⚽ Gameweek 0" if test_mode and gw == 0 else f"⚽ Gameweek {gw}"
 
@@ -1118,13 +1109,12 @@ def post_to_discord(gw, standings_lines, best_line, worst_line, bench_line, disc
         ],
         "footer": {"text": f"Pointforskel fra første til sidstepladsen: {point_gap} point\nBotten tager ikke ansvar for fejl, er bare en simpel clanker"},
     }
+    if thumbnail_url:
+        embed["thumbnail"] = {"url": thumbnail_url}
     if bench_line:
         embed["fields"].append({"name": "🤥 Dyreste bænk", "value": bench_line, "inline": False})
     if discipline_line:
         embed["fields"].append({"name": "🟨 Ugens synder", "value": discipline_line, "inline": False})
-    if trans_lines:
-        embed["fields"].append({"name": "\u200b", "value": "\u200b", "inline": False})  # luft-felt
-        embed["fields"].append({"name": "Waivers & trades siden sidst", "value": truncate_for_discord_field(trans_lines), "inline": False})
 
     embed["fields"].append({"name": "\u200b", "value": "\u200b", "inline": False})  # luft-felt
     embed["fields"].append({

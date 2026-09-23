@@ -28,6 +28,7 @@ from fpl_common import (
     get_player_full_name, get_player_positions, get_player_names, get_player_clubs,
     get_league_entries, find_latest_finished_event, find_next_event,
     get_team_fixture_difficulty, get_live_points_map, get_corrected_element_status,
+    VAN_OEVELEN_ID, TZOLIS_ID,
 )
 
 MY_ENTRY_ID = 1510  # Rasmus / "HaCunha Mateta" - Management-fanen er bygget til dig specifikt
@@ -287,6 +288,10 @@ def get_frozen_squad(entry_id, gw, picks_history):
     i picks-history.json (delt med league_update.py). Alle senere kald genbruger
     den frosne kopi i stedet for at spørge FPL igen, så data aldrig kan
     "drifte" efter at være gemt.
+
+    BEKRÆFTET (15. sep 2026): Tzolis' rigtige trup-placeringer bliver fejlagtigt
+    logget under Van Oevelens ID (554) i FPL's rå picks-data, samme mønster som
+    i element-status. Substituerer derfor 554->557 FØR fastfrysning.
     """
     gw_key = f"GW{gw}"
     entry_key = str(entry_id)
@@ -296,6 +301,9 @@ def get_frozen_squad(entry_id, gw, picks_history):
     picks = get_entry_gw_picks(entry_id, gw)
     if picks is None:
         return None
+    for p in picks:
+        if p.get("element") == VAN_OEVELEN_ID:
+            p["element"] = TZOLIS_ID
     picks_history.setdefault(gw_key, {})[entry_key] = picks
     return picks
 
