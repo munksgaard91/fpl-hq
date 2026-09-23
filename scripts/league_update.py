@@ -545,18 +545,95 @@ def save_transfer_news_state(state):
         json.dump(state, f, ensure_ascii=False, indent=2)
 
 
-def run_post_transactions():
+def get_upcoming_relevant_fixtures(bootstrap, gw_id, element_status):
+    """Kun kampe hvor mindst én ejet spillers klub er involveret - undgår at liste
+    kampe der reelt er irrelevante for vores liga."""
+    by_id = {p["id"]: p for p in bootstrap["elements"]}
+    owned_clubs = set()
+    for es in element_status:
+        if es.get("owner"):
+            p = by_id.get(es["element"])
+            if p:
+                owned_clubs.add(p["team"])
+
+    fixtures = fetch_json(f"{FPL_BASE}/fixtures/?event={gw_id}")
+    fixtures.sort(key=lambda f: f["kickoff_time"])
+    relevant = [f for f in fixtures if f["team_h"] in owned_clubs or f["team_a"] in owned_clubs]
+
+    from datetime import datetime, timedelta
+    lines = []
+    for f in relevant:
+        h = TEAM_NAMES.get(f["team_h"], "?")
+        a = TEAM_NAMES.get(f["team_a"], "?")
+        dt_da = datetime.fromisoformat(f["kickoff_time"].replace("Z", "+00:00")) + timedelta(hours=2)
+        weekday = DA_WEEKDAYS[dt_da.weekday()]
+        month = DA_MONTHS[dt_da.month - 1]
+        lines.append(f"{weekday} {dt_da.day}. {month} kl. {dt_da.strftime('%H:%M')} — {h} v {a}")
+    return lines
+
+
+def get_biggest_transferred_player_thumbnail(bootstrap, transactions):
+    """Blandt spillere involveret i transaktionerne, find den med flest point i
+    INDEVÆRENDE sæson og byg et billede-link til ham - viser den mest kendte af
+    de transfererede spillere, ikke bogstaveligt tilfældig."""
+    by_id = {p["id"]: p for p in bootstrap["elements"]}
+    involved_ids = set()
+    for t in transactions:
+        if t.get("element_in"):
+            involved_ids.add(t["element_in"])
+        if t.get("element_out"):
+            involved_ids.add(t["element_out"])
+
+    best_player = None
+    best_points = -1
+    for pid in involved_ids:
+        p = by_id.get(pid)
+        if not p:
+            continue
+        pts = p.get("total_points", 0)
+        if pts > best_points:
+            best_points = pts
+            best_player = p
+
+    if best_player and best_player.get("photo"):
+        photo_code = best_player["photo"].replace(".jpg", "")
+        return f"https://resources.premierleague.com/premierleague/photos/players/250x250/p{photo_code}.png"
+    return None
+
+
+def run_pre_gameweek():
     """
-    Engangs-besked, trigges manuelt (POST_TRANSACTIONS=true) når brugeren beder
-    om det - viser KUN de nyeste transaktioner siden sidste gang denne funktion
-    blev kørt FOR RIGTIGT (ikke DRY_RUN), sporet via transfer-news-state.json -
-    ikke en hårdkodet liste der skal opdateres manuelt hver gang. Grupperer
-    trades først, waivers bagefter. Selve listen er ren, deterministisk tekst
-    (ingen AI) for at garantere 100% korrekte navne/retninger - kun den korte
-    hype-intro er AI-skrevet.
+    Automatisk, trigges hver time via main() - men SENDER kun i vinduet omkring
+    1 time før næste deadline, og kun én gang pr. deadline (sporet i
+    transfer-news-state.json). Indeholder kampprogram (kun kampe med ejede
+    spilleres klubber) + waivers/trades siden sidst. Springer Gemini-kaldet
+    helt over hvis der ikke er nogen nye transaktioner (sparer omkostning) -
+    bruger i stedet en simpel, statisk intro.
     """
     bootstrap = fetch_json(f"{FPL_BASE}/bootstrap-static/")
     player_names = get_player_names(bootstrap)
+
+    next_deadline = find_next_deadline(bootstrap)
+    if not next_deadline:
+        print("Ingen kommende deadline fundet - springer over.", file=sys.stderr)
+        return
+    next_gw_id, deadline_ts = next_deadline
+
+    from datetime import datetime, timezone
+    deadline_dt = datetime.fromisoformat(deadline_ts.replace("Z", "+00:00"))
+    now = datetime.now(timezone.utc)
+    hours_until_deadline = (deadline_dt - now).total_seconds() / 3600
+
+    force_test = os.environ.get("FORCE_TEST", "").lower() == "true"
+    news_state = load_transfer_news_state()
+
+    if not force_test:
+        if not (0 <= hours_until_deadline <= 1):
+            print(f"Uden for 1-times-vinduet ({hours_until_deadline:.1f} timer til deadline) - springer over.", file=sys.stderr)
+            return
+        if news_state.get("last_pregw_gw_id") == next_gw_id:
+            print(f"Pre-gameweek-besked allerede sendt for GW{next_gw_id} - springer over.", file=sys.stderr)
+            return
 
     league = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/details")
     entry_name_map = {}
@@ -564,17 +641,15 @@ def run_post_transactions():
         entry_name_map[e["id"]] = e["entry_name"]
         entry_name_map[e["entry_id"]] = e["entry_name"]
 
-    news_state = load_transfer_news_state()
-    last_posted_id = news_state.get("last_posted_id", 0)
+    element_status_raw = fetch_json(f"{DRAFT_BASE}/league/{LEAGUE_ID}/element-status")["element_status"]
+    raw_transactions_all = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions").get("transactions", [])
+    element_status = get_corrected_element_status(element_status_raw, raw_transactions_all)
 
-    trans_data = fetch_json(f"{DRAFT_BASE}/draft/league/{LEAGUE_ID}/transactions")
-    accepted = [t for t in trans_data.get("transactions", []) if t.get("result") == "a"]
-    new_ones_all = [t for t in accepted if t["id"] > last_posted_id]
-    # Vis kun den SENESTE gameweeks transaktioner, ikke en blanding hvis flere
-    # gameweeks' waivers er samlet op siden sidste post - undgår at gamle
-    # rester fra en tidligere gameweek dukker op sammen med de aktuelle.
-    latest_event = max((t["event"] for t in new_ones_all), default=None)
-    new_ones = [t for t in new_ones_all if t["event"] == latest_event] if latest_event else []
+    fixture_lines = get_upcoming_relevant_fixtures(bootstrap, next_gw_id, element_status)
+
+    last_posted_id = news_state.get("last_posted_id", 0)
+    accepted = [t for t in raw_transactions_all if t.get("result") == "a"]
+    new_ones = [t for t in accepted if t["id"] > last_posted_id]
     highest_id_seen = max((t["id"] for t in accepted), default=last_posted_id)
 
     trades = [t for t in new_ones if t.get("kind") == "t"]
@@ -582,102 +657,73 @@ def run_post_transactions():
 
     def format_line(t):
         kind_label = "Waiver" if t.get("kind") == "w" else "Fri agent"
-        entry_id = t.get("entry")
         in_name = player_names.get(t.get("element_in"), f"spiller {t.get('element_in')}")
         out_name = player_names.get(t.get("element_out"))
-        ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
+        ename = entry_name_map.get(t.get("entry"), f"Entry {t.get('entry')}")
         desc = f"{in_name} ind, {out_name} ud" if out_name else f"{in_name} ind"
         return f"**{ename}**: {desc} ({kind_label})"
 
     def format_trade_line(t):
-        entry_id = t.get("entry")
         in_name = player_names.get(t.get("element_in"), f"spiller {t.get('element_in')}")
         out_name = player_names.get(t.get("element_out"), f"spiller {t.get('element_out')}")
-        ename = entry_name_map.get(entry_id, f"Entry {entry_id}")
+        ename = entry_name_map.get(t.get("entry"), f"Entry {t.get('entry')}")
         return f"**{ename}**: {in_name} ind, {out_name} ud (Trade)"
 
-    next_deadline = find_next_deadline(bootstrap)
-    deadline_line = "Ukendt"
-    next_gw_id = None
-    if next_deadline:
-        next_gw_id, deadline_ts = next_deadline
-        deadline_line = format_deadline_da(deadline_ts)
-
-    # Ægte åbningskamp for den kommende gameweek - til at bygge hype op omkring,
-    # ikke opdigtet. Bruges kun hvis vi kender den kommende gameweek.
-    opening_fixture_line = None
-    if next_gw_id:
-        try:
-            fixtures = fetch_json(f"{FPL_BASE}/fixtures/?event={next_gw_id}")
-            if fixtures:
-                from datetime import datetime, timezone, timedelta
-                earliest = min(fixtures, key=lambda f: f["kickoff_time"])
-                h = TEAM_NAMES.get(earliest["team_h"], "?")
-                a = TEAM_NAMES.get(earliest["team_a"], "?")
-                dt_utc = datetime.fromisoformat(earliest["kickoff_time"].replace("Z", "+00:00"))
-                dt_da = dt_utc.astimezone(timezone.utc) + timedelta(hours=2)  # CEST (dansk sommertid) - korrekt for perioden frem til udgangen af oktober
-                weekday = DA_WEEKDAYS[dt_da.weekday()]
-                month = DA_MONTHS[dt_da.month - 1]
-                kickoff_da = f"{weekday} {dt_da.day}. {month} kl. {dt_da.strftime('%H:%M')}"
-                opening_fixture_line = f"Første kamp i GW{next_gw_id}: {h} v {a}, {kickoff_da} dansk tid"
-        except Exception:
-            pass
+    deadline_line_da = format_deadline_da(deadline_ts)
+    thumbnail_url = get_biggest_transferred_player_thumbnail(bootstrap, new_ones) if new_ones else None
 
     if trades or waivers:
-        trans_summary = (
-            f"Der er lige gået {len(trades)} trade(s) og {len(waivers)} waiver(s)/fri agent-hentning(er) "
-            f"igennem i vores FPL Draft-liga \"{league['league']['name']}\".\n"
+        context = (
+            f"Der er 1 time til GW{next_gw_id}'s deadline. {len(trades)} trade(s) og {len(waivers)} "
+            f"waiver(s)/fri agent-hentning(er) er gået igennem siden sidst i vores FPL Draft-liga "
+            f"\"{league['league']['name']}\".\n"
             + "\n".join(format_trade_line(t) for t in trades)
             + "\n" + "\n".join(format_line(t) for t in waivers)
         )
+        prompt = (
+            "Skriv en KORT, hypende introsætning (maks 40 ord, på dansk, letsindig/kammeratlig tone) til en "
+            "Discord-besked der varsler at der er 1 time til deadline, og opsummerer ugens waivers/trades i "
+            "en lille FPL Draft-liga mellem venner. Brug KUN dataen givet, opfind ALDRIG noget som helst der "
+            "ikke fremgår af den. Brug ALDRIG egen baggrundsviden om spillere eller klubber (dette er en "
+            "fiktiv liga-sæson).\n\n"
+            f"{context}"
+        )
+        intro = call_gemini_raw(prompt)
+        summary_text = intro if intro is not None else f"1 time til deadline for GW{next_gw_id}! Få styr på sidste waivers/trades."
     else:
-        trans_summary = "Ingen nye waivers eller trades er gået igennem siden sidst - stille og roligt på transfer-fronten lige nu."
+        # Ingen transaktioner - intet Gemini-kald nødvendigt, sparer omkostning.
+        summary_text = f"1 time til deadline for GW{next_gw_id}! Stille på transfer-fronten, men her er ugens kampprogram."
 
-    context = trans_summary
-    if opening_fixture_line:
-        context += f"\n\n{opening_fixture_line}"
-    if next_gw_id:
-        context += f"\n\nNæste deadline: GW{next_gw_id}, {deadline_line}"
-
-    prompt = (
-        "Skriv en KORT, hypende introsætning (maks 40 ord, på dansk, letsindig/kammeratlig tone) til en "
-        "Discord-besked der opsummerer denne gameweeks waivers og trades i en lille FPL Draft-liga mellem "
-        "venner. Nævn kort at de seneste officielle transfers er tikket ind, og byg spænding op til den "
-        "kommende gameweek - brug evt. åbningskampen givet nedenfor som en del af hypen, hvis den er givet. "
-        "Brug KUN dataen givet, opfind ALDRIG noget som helst der ikke fremgår af den - ingen kampe, skader "
-        "eller klubskifter du ikke kender. Brug ALDRIG egen baggrundsviden om spillere eller klubber (dette "
-        "er en fiktiv liga-sæson).\n\n"
-        f"{context}"
-    )
-    intro = call_gemini_raw(prompt)
-    if intro is None:
-        intro = f"Så er de seneste officielle transfers tikket ind! {opening_fixture_line or ''}".strip()
-    summary_text = intro
-
-    lines = [summary_text, ""]
+    lines = [summary_text, "", "**⚽ Jeres kampprogram**"]
+    lines.extend(fixture_lines if fixture_lines else ["Ingen kampe fundet for ejede klubber denne uge."])
+    lines.append("")
     if trades:
         lines.append("**🔄 Trades**")
-        lines.extend(format_trade_line(t) for t in trades)
+        lines.append(truncate_for_discord_field([format_trade_line(t) for t in trades]))
         lines.append("")
     if waivers:
         lines.append("**📝 Waivers & frie agenter**")
-        lines.extend(format_line(t) for t in waivers)
+        lines.append(truncate_for_discord_field([format_line(t) for t in waivers]))
         lines.append("")
-    lines.append(f"-# Der er nu frie transfers indtil deadline ({deadline_line}) — det betyder I kan hente frie spillere med det samme, uden at vente på en waiver-runde.")
+    lines.append(f"-# Der er nu frie transfers indtil deadline ({deadline_line_da}) — det betyder I kan hente frie spillere med det samme, uden at vente på en waiver-runde.")
 
     description = "\n".join(lines)
     footer_text = "Botten tager ikke ansvar for fejl, er bare en simpel clanker"
 
+    embed = {"title": "📰 Pre-Gameweek", "description": description, "color": 2926465, "footer": {"text": footer_text}}
+    if thumbnail_url:
+        embed["thumbnail"] = {"url": thumbnail_url}
+
     if os.environ.get("DRY_RUN", "").lower() == "true":
         print("=== DRY_RUN: intet sendt til Discord, dette er hvad der VILLE være sendt ===")
-        print(json.dumps({"embeds": [{"title": "📋 Transfer News", "description": description, "footer": {"text": footer_text}}]}, ensure_ascii=False, indent=2))
+        print(json.dumps({"embeds": [embed]}, ensure_ascii=False, indent=2))
         print("=== DRY_RUN slut ===")
         return
 
     webhook = os.environ["DISCORD_WEBHOOK_URL"]
     body = json.dumps({
         "username": "Update Bot", "content": "@everyone",
-        "embeds": [{"title": "📋 Transfer News", "description": description, "color": 2926465, "footer": {"text": footer_text}}],
+        "embeds": [embed],
         "allowed_mentions": {"parse": ["everyone"]},
     }).encode("utf-8")
     req = urllib.request.Request(
@@ -689,17 +735,17 @@ def run_post_transactions():
         method="POST",
     )
     with urllib.request.urlopen(req, timeout=20) as resp:
-        print("Transaktions-besked postet, Discord response:", resp.status)
-    save_transfer_news_state({"last_posted_id": highest_id_seen})
-    print(f"transfer-news-state.json opdateret, last_posted_id={highest_id_seen}")
+        print("Pre-gameweek-besked postet, Discord response:", resp.status)
+    save_transfer_news_state({"last_posted_id": highest_id_seen, "last_pregw_gw_id": next_gw_id})
+    print(f"transfer-news-state.json opdateret, last_posted_id={highest_id_seen}, last_pregw_gw_id={next_gw_id}")
 
 
 def main():
     if os.environ.get("SEASON_KICKOFF", "").lower() == "true":
         run_season_kickoff()
         return
-    if os.environ.get("POST_TRANSACTIONS", "").lower() == "true":
-        run_post_transactions()
+    if os.environ.get("PRE_GAMEWEEK", "").lower() == "true":
+        run_pre_gameweek()
         return
 
     state = load_state()
