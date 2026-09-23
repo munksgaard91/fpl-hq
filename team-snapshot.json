@@ -1,0 +1,3337 @@
+{
+  "1": {
+    "team": 1,
+    "removed": false,
+    "name": "Raya"
+  },
+  "2": {
+    "team": 1,
+    "removed": false,
+    "name": "Arrizabalaga"
+  },
+  "3": {
+    "team": 1,
+    "removed": false,
+    "name": "Meslier"
+  },
+  "4": {
+    "team": 1,
+    "removed": false,
+    "name": "Gabriel"
+  },
+  "5": {
+    "team": 1,
+    "removed": false,
+    "name": "J.Timber"
+  },
+  "6": {
+    "team": 1,
+    "removed": false,
+    "name": "Saliba"
+  },
+  "7": {
+    "team": 1,
+    "removed": false,
+    "name": "Lewis-Skelly"
+  },
+  "8": {
+    "team": 1,
+    "removed": false,
+    "name": "Calafiori"
+  },
+  "9": {
+    "team": 1,
+    "removed": false,
+    "name": "Hincapie"
+  },
+  "10": {
+    "team": 1,
+    "removed": false,
+    "name": "White"
+  },
+  "11": {
+    "team": 1,
+    "removed": false,
+    "name": "Mosquera"
+  },
+  "12": {
+    "team": 1,
+    "removed": false,
+    "name": "Saka"
+  },
+  "13": {
+    "team": 1,
+    "removed": false,
+    "name": "Rice"
+  },
+  "14": {
+    "team": 1,
+    "removed": false,
+    "name": "Eze"
+  },
+  "15": {
+    "team": 1,
+    "removed": false,
+    "name": "Ødegaard"
+  },
+  "16": {
+    "team": 1,
+    "removed": false,
+    "name": "Madueke"
+  },
+  "17": {
+    "team": 1,
+    "removed": false,
+    "name": "Merino"
+  },
+  "18": {
+    "team": 1,
+    "removed": false,
+    "name": "Martinelli"
+  },
+  "19": {
+    "team": 1,
+    "removed": false,
+    "name": "Zubimendi"
+  },
+  "20": {
+    "team": 1,
+    "removed": false,
+    "name": "Dowman"
+  },
+  "22": {
+    "team": 1,
+    "removed": false,
+    "name": "Nwaneri"
+  },
+  "23": {
+    "team": 1,
+    "removed": false,
+    "name": "Fábio Vieira"
+  },
+  "24": {
+    "team": 1,
+    "removed": false,
+    "name": "Nelson"
+  },
+  "25": {
+    "team": 1,
+    "removed": false,
+    "name": "Gyökeres"
+  },
+  "26": {
+    "team": 1,
+    "removed": false,
+    "name": "Havertz"
+  },
+  "27": {
+    "team": 1,
+    "removed": false,
+    "name": "G.Jesus"
+  },
+  "31": {
+    "team": 1,
+    "removed": false,
+    "name": "Konsa"
+  },
+  "452": {
+    "team": 1,
+    "removed": false,
+    "name": "Bruno G."
+  },
+  "557": {
+    "team": 1,
+    "removed": false,
+    "name": "Tzolis"
+  },
+  "29": {
+    "team": 2,
+    "removed": false,
+    "name": "M.Bizot"
+  },
+  "30": {
+    "team": 2,
+    "removed": false,
+    "name": "Digne"
+  },
+  "32": {
+    "team": 2,
+    "removed": false,
+    "name": "Cash"
+  },
+  "33": {
+    "team": 2,
+    "removed": false,
+    "name": "Mings"
+  },
+  "34": {
+    "team": 2,
+    "removed": false,
+    "name": "Pau"
+  },
+  "35": {
+    "team": 2,
+    "removed": false,
+    "name": "Bogarde"
+  },
+  "36": {
+    "team": 2,
+    "removed": false,
+    "name": "Maatsen"
+  },
+  "37": {
+    "team": 2,
+    "removed": false,
+    "name": "Lindelöf"
+  },
+  "38": {
+    "team": 2,
+    "removed": false,
+    "name": "A.García"
+  },
+  "39": {
+    "team": 2,
+    "removed": false,
+    "name": "Nedeljkovic"
+  },
+  "41": {
+    "team": 2,
+    "removed": false,
+    "name": "Buendía"
+  },
+  "44": {
+    "team": 2,
+    "removed": false,
+    "name": "Bailey"
+  },
+  "45": {
+    "team": 2,
+    "removed": false,
+    "name": "McGinn"
+  },
+  "46": {
+    "team": 2,
+    "removed": false,
+    "name": "Barkley"
+  },
+  "47": {
+    "team": 2,
+    "removed": false,
+    "name": "Kamara"
+  },
+  "48": {
+    "team": 2,
+    "removed": false,
+    "name": "Onana"
+  },
+  "49": {
+    "team": 2,
+    "removed": false,
+    "name": "Iling Jr"
+  },
+  "50": {
+    "team": 2,
+    "removed": false,
+    "name": "Burrowes"
+  },
+  "51": {
+    "team": 2,
+    "removed": false,
+    "name": "George Hemmings"
+  },
+  "52": {
+    "team": 2,
+    "removed": false,
+    "name": "Alysson"
+  },
+  "53": {
+    "team": 2,
+    "removed": false,
+    "name": "Manzambi"
+  },
+  "54": {
+    "team": 2,
+    "removed": false,
+    "name": "Gomes"
+  },
+  "55": {
+    "team": 2,
+    "removed": false,
+    "name": "Watkins"
+  },
+  "56": {
+    "team": 2,
+    "removed": false,
+    "name": "Abraham"
+  },
+  "160": {
+    "team": 2,
+    "removed": false,
+    "name": "Garnacho"
+  },
+  "166": {
+    "team": 2,
+    "removed": false,
+    "name": "N.Jackson"
+  },
+  "582": {
+    "team": 2,
+    "removed": false,
+    "name": "Madjo"
+  },
+  "596": {
+    "team": 2,
+    "removed": false,
+    "name": "Ruggeri"
+  },
+  "597": {
+    "team": 2,
+    "removed": false,
+    "name": "Suzuki"
+  },
+  "606": {
+    "team": 2,
+    "removed": false,
+    "name": "Rowe"
+  },
+  "607": {
+    "team": 2,
+    "removed": false,
+    "name": "Lynch"
+  },
+  "611": {
+    "team": 2,
+    "removed": false,
+    "name": "Wan-Bissaka"
+  },
+  "618": {
+    "team": 2,
+    "removed": false,
+    "name": "Goretzka"
+  },
+  "630": {
+    "team": 2,
+    "removed": false,
+    "name": "Harwood-Bellis"
+  },
+  "631": {
+    "team": 2,
+    "removed": false,
+    "name": "Mbaye"
+  },
+  "667": {
+    "team": 2,
+    "removed": false,
+    "name": "Wright"
+  },
+  "57": {
+    "team": 3,
+    "removed": false,
+    "name": "Petrović"
+  },
+  "58": {
+    "team": 3,
+    "removed": false,
+    "name": "Forster"
+  },
+  "59": {
+    "team": 3,
+    "removed": false,
+    "name": "Dennis"
+  },
+  "60": {
+    "team": 3,
+    "removed": false,
+    "name": "Hill"
+  },
+  "61": {
+    "team": 3,
+    "removed": false,
+    "name": "Truffert"
+  },
+  "62": {
+    "team": 3,
+    "removed": false,
+    "name": "Diakité"
+  },
+  "63": {
+    "team": 3,
+    "removed": false,
+    "name": "Milosavljević"
+  },
+  "64": {
+    "team": 3,
+    "removed": false,
+    "name": "Smith"
+  },
+  "65": {
+    "team": 3,
+    "removed": false,
+    "name": "J.Araujo"
+  },
+  "66": {
+    "team": 3,
+    "removed": false,
+    "name": "Soler"
+  },
+  "67": {
+    "team": 3,
+    "removed": false,
+    "name": "Rayan"
+  },
+  "68": {
+    "team": 3,
+    "removed": false,
+    "name": "Tavernier"
+  },
+  "69": {
+    "team": 3,
+    "removed": false,
+    "name": "Scott"
+  },
+  "70": {
+    "team": 3,
+    "removed": false,
+    "name": "Kluivert"
+  },
+  "71": {
+    "team": 3,
+    "removed": false,
+    "name": "Cook"
+  },
+  "72": {
+    "team": 3,
+    "removed": false,
+    "name": "Gannon-Doak"
+  },
+  "73": {
+    "team": 3,
+    "removed": false,
+    "name": "Adams"
+  },
+  "74": {
+    "team": 3,
+    "removed": false,
+    "name": "Brooks"
+  },
+  "75": {
+    "team": 3,
+    "removed": false,
+    "name": "Christie"
+  },
+  "76": {
+    "team": 3,
+    "removed": false,
+    "name": "Tóth.A"
+  },
+  "77": {
+    "team": 3,
+    "removed": false,
+    "name": "Adli"
+  },
+  "78": {
+    "team": 3,
+    "removed": false,
+    "name": "Kroupi.Jr"
+  },
+  "79": {
+    "team": 3,
+    "removed": false,
+    "name": "Evanilson"
+  },
+  "80": {
+    "team": 3,
+    "removed": false,
+    "name": "Enes Ünal"
+  },
+  "81": {
+    "team": 3,
+    "removed": false,
+    "name": "Rodríguez"
+  },
+  "566": {
+    "team": 3,
+    "removed": false,
+    "name": "Silva"
+  },
+  "573": {
+    "team": 3,
+    "removed": false,
+    "name": "Sanchez"
+  },
+  "608": {
+    "team": 3,
+    "removed": false,
+    "name": "Jebbison"
+  },
+  "615": {
+    "team": 3,
+    "removed": false,
+    "name": "Di Gregorio"
+  },
+  "82": {
+    "team": 4,
+    "removed": false,
+    "name": "Kelleher"
+  },
+  "83": {
+    "team": 4,
+    "removed": false,
+    "name": "Valdimarsson"
+  },
+  "84": {
+    "team": 4,
+    "removed": false,
+    "name": "Collins"
+  },
+  "85": {
+    "team": 4,
+    "removed": false,
+    "name": "Van den Berg"
+  },
+  "86": {
+    "team": 4,
+    "removed": false,
+    "name": "Lewis-Potter"
+  },
+  "87": {
+    "team": 4,
+    "removed": false,
+    "name": "Ajer"
+  },
+  "88": {
+    "team": 4,
+    "removed": false,
+    "name": "Kayode"
+  },
+  "89": {
+    "team": 4,
+    "removed": false,
+    "name": "Henry"
+  },
+  "90": {
+    "team": 4,
+    "removed": false,
+    "name": "Hickey"
+  },
+  "92": {
+    "team": 4,
+    "removed": false,
+    "name": "Ji-soo"
+  },
+  "93": {
+    "team": 4,
+    "removed": false,
+    "name": "Schuster"
+  },
+  "94": {
+    "team": 4,
+    "removed": false,
+    "name": "Schade"
+  },
+  "95": {
+    "team": 4,
+    "removed": false,
+    "name": "O.Dango"
+  },
+  "96": {
+    "team": 4,
+    "removed": false,
+    "name": "Damsgaard"
+  },
+  "97": {
+    "team": 4,
+    "removed": false,
+    "name": "Jensen"
+  },
+  "98": {
+    "team": 4,
+    "removed": false,
+    "name": "Janelt"
+  },
+  "99": {
+    "team": 4,
+    "removed": false,
+    "name": "Milambo"
+  },
+  "100": {
+    "team": 4,
+    "removed": false,
+    "name": "Carvalho"
+  },
+  "102": {
+    "team": 4,
+    "removed": false,
+    "name": "Yarmoliuk"
+  },
+  "103": {
+    "team": 4,
+    "removed": false,
+    "name": "Dasilva"
+  },
+  "105": {
+    "team": 4,
+    "removed": false,
+    "name": "Anthony"
+  },
+  "106": {
+    "team": 4,
+    "removed": false,
+    "name": "Thiago"
+  },
+  "107": {
+    "team": 4,
+    "removed": false,
+    "name": "Furo"
+  },
+  "108": {
+    "team": 4,
+    "removed": false,
+    "name": "Wilson"
+  },
+  "565": {
+    "team": 4,
+    "removed": false,
+    "name": "M.Sangaré"
+  },
+  "620": {
+    "team": 4,
+    "removed": false,
+    "name": "Diouf"
+  },
+  "657": {
+    "team": 4,
+    "removed": false,
+    "name": "Nunes"
+  },
+  "660": {
+    "team": 4,
+    "removed": false,
+    "name": "Fredrick"
+  },
+  "661": {
+    "team": 4,
+    "removed": false,
+    "name": "Balcombe"
+  },
+  "109": {
+    "team": 5,
+    "removed": false,
+    "name": "Verbruggen"
+  },
+  "111": {
+    "team": 5,
+    "removed": false,
+    "name": "Steele"
+  },
+  "113": {
+    "team": 5,
+    "removed": false,
+    "name": "F.Kadıoğlu"
+  },
+  "114": {
+    "team": 5,
+    "removed": false,
+    "name": "Boscagli"
+  },
+  "115": {
+    "team": 5,
+    "removed": false,
+    "name": "De Cuyper"
+  },
+  "116": {
+    "team": 5,
+    "removed": false,
+    "name": "Dunk"
+  },
+  "117": {
+    "team": 5,
+    "removed": false,
+    "name": "Coppola"
+  },
+  "118": {
+    "team": 5,
+    "removed": false,
+    "name": "Igor"
+  },
+  "119": {
+    "team": 5,
+    "removed": false,
+    "name": "Costinha"
+  },
+  "120": {
+    "team": 5,
+    "removed": false,
+    "name": "Svoboda"
+  },
+  "121": {
+    "team": 5,
+    "removed": false,
+    "name": "Mitoma"
+  },
+  "122": {
+    "team": 5,
+    "removed": false,
+    "name": "Minteh"
+  },
+  "123": {
+    "team": 5,
+    "removed": false,
+    "name": "Hinshelwood"
+  },
+  "124": {
+    "team": 5,
+    "removed": false,
+    "name": "Groß"
+  },
+  "125": {
+    "team": 5,
+    "removed": false,
+    "name": "Georginio"
+  },
+  "126": {
+    "team": 5,
+    "removed": false,
+    "name": "O'Riley"
+  },
+  "127": {
+    "team": 5,
+    "removed": false,
+    "name": "Gomez"
+  },
+  "128": {
+    "team": 5,
+    "removed": false,
+    "name": "Buonanotte"
+  },
+  "129": {
+    "team": 5,
+    "removed": false,
+    "name": "Ayari"
+  },
+  "130": {
+    "team": 5,
+    "removed": false,
+    "name": "Wieffer"
+  },
+  "132": {
+    "team": 5,
+    "removed": false,
+    "name": "Howell"
+  },
+  "133": {
+    "team": 5,
+    "removed": false,
+    "name": "Watson"
+  },
+  "134": {
+    "team": 5,
+    "removed": false,
+    "name": "Oriola"
+  },
+  "135": {
+    "team": 5,
+    "removed": false,
+    "name": "Yohanna"
+  },
+  "137": {
+    "team": 5,
+    "removed": false,
+    "name": "Tzimas"
+  },
+  "138": {
+    "team": 5,
+    "removed": false,
+    "name": "Kostoulas"
+  },
+  "139": {
+    "team": 5,
+    "removed": false,
+    "name": "Ferguson"
+  },
+  "328": {
+    "team": 5,
+    "removed": false,
+    "name": "Struijk"
+  },
+  "504": {
+    "team": 5,
+    "removed": false,
+    "name": "Vuskovic"
+  },
+  "594": {
+    "team": 5,
+    "removed": false,
+    "name": "David"
+  },
+  "600": {
+    "team": 5,
+    "removed": false,
+    "name": "Osman"
+  },
+  "605": {
+    "team": 5,
+    "removed": false,
+    "name": "Yalcouyé"
+  },
+  "614": {
+    "team": 5,
+    "removed": false,
+    "name": "Hadjam"
+  },
+  "624": {
+    "team": 5,
+    "removed": false,
+    "name": "Cozier-Duberry"
+  },
+  "639": {
+    "team": 5,
+    "removed": false,
+    "name": "Andrés"
+  },
+  "652": {
+    "team": 5,
+    "removed": false,
+    "name": "Azeez"
+  },
+  "658": {
+    "team": 5,
+    "removed": false,
+    "name": "Ibrahim"
+  },
+  "28": {
+    "team": 6,
+    "removed": false,
+    "name": "Martinez"
+  },
+  "40": {
+    "team": 6,
+    "removed": false,
+    "name": "Rogers"
+  },
+  "101": {
+    "team": 6,
+    "removed": false,
+    "name": "Henderson"
+  },
+  "136": {
+    "team": 6,
+    "removed": false,
+    "name": "Welbeck"
+  },
+  "140": {
+    "team": 6,
+    "removed": false,
+    "name": "Sánchez"
+  },
+  "141": {
+    "team": 6,
+    "removed": false,
+    "name": "Jörgensen"
+  },
+  "142": {
+    "team": 6,
+    "removed": false,
+    "name": "James"
+  },
+  "143": {
+    "team": 6,
+    "removed": false,
+    "name": "Chalobah"
+  },
+  "144": {
+    "team": 6,
+    "removed": false,
+    "name": "Gusto"
+  },
+  "145": {
+    "team": 6,
+    "removed": false,
+    "name": "Fofana"
+  },
+  "146": {
+    "team": 6,
+    "removed": false,
+    "name": "B.Badiashile"
+  },
+  "148": {
+    "team": 6,
+    "removed": false,
+    "name": "Hato"
+  },
+  "149": {
+    "team": 6,
+    "removed": false,
+    "name": "Colwill"
+  },
+  "150": {
+    "team": 6,
+    "removed": false,
+    "name": "M.Sarr"
+  },
+  "151": {
+    "team": 6,
+    "removed": false,
+    "name": "Acheampong"
+  },
+  "152": {
+    "team": 6,
+    "removed": false,
+    "name": "Palestra"
+  },
+  "154": {
+    "team": 6,
+    "removed": false,
+    "name": "Palmer"
+  },
+  "156": {
+    "team": 6,
+    "removed": false,
+    "name": "Neto"
+  },
+  "157": {
+    "team": 6,
+    "removed": false,
+    "name": "Estêvão"
+  },
+  "158": {
+    "team": 6,
+    "removed": false,
+    "name": "Gittens"
+  },
+  "159": {
+    "team": 6,
+    "removed": false,
+    "name": "Caicedo"
+  },
+  "161": {
+    "team": 6,
+    "removed": false,
+    "name": "Lavia"
+  },
+  "163": {
+    "team": 6,
+    "removed": false,
+    "name": "D.Essugo"
+  },
+  "164": {
+    "team": 6,
+    "removed": false,
+    "name": "Quenda"
+  },
+  "165": {
+    "team": 6,
+    "removed": false,
+    "name": "João Pedro"
+  },
+  "168": {
+    "team": 6,
+    "removed": false,
+    "name": "Marc Guiu"
+  },
+  "169": {
+    "team": 6,
+    "removed": false,
+    "name": "Mheuka"
+  },
+  "170": {
+    "team": 6,
+    "removed": false,
+    "name": "Emegha"
+  },
+  "200": {
+    "team": 6,
+    "removed": false,
+    "name": "Lacroix"
+  },
+  "560": {
+    "team": 6,
+    "removed": false,
+    "name": "Penders"
+  },
+  "561": {
+    "team": 6,
+    "removed": false,
+    "name": "Anselmino"
+  },
+  "568": {
+    "team": 6,
+    "removed": false,
+    "name": "Barco"
+  },
+  "583": {
+    "team": 6,
+    "removed": false,
+    "name": "Chavarria"
+  },
+  "662": {
+    "team": 6,
+    "removed": false,
+    "name": "Nicoll-Jazuli"
+  },
+  "91": {
+    "team": 7,
+    "removed": false,
+    "name": "Pinnock"
+  },
+  "104": {
+    "team": 7,
+    "removed": false,
+    "name": "Onyeka"
+  },
+  "110": {
+    "team": 7,
+    "removed": false,
+    "name": "Rushworth"
+  },
+  "171": {
+    "team": 7,
+    "removed": false,
+    "name": "Dovin"
+  },
+  "172": {
+    "team": 7,
+    "removed": false,
+    "name": "Wilson"
+  },
+  "173": {
+    "team": 7,
+    "removed": false,
+    "name": "Thomas"
+  },
+  "174": {
+    "team": 7,
+    "removed": false,
+    "name": "Kitching"
+  },
+  "175": {
+    "team": 7,
+    "removed": false,
+    "name": "van Ewijk"
+  },
+  "176": {
+    "team": 7,
+    "removed": false,
+    "name": "Dasilva"
+  },
+  "177": {
+    "team": 7,
+    "removed": false,
+    "name": "Kesler-Hayden"
+  },
+  "178": {
+    "team": 7,
+    "removed": false,
+    "name": "Bidwell"
+  },
+  "179": {
+    "team": 7,
+    "removed": false,
+    "name": "Latibeaudiere"
+  },
+  "180": {
+    "team": 7,
+    "removed": false,
+    "name": "Woolfenden"
+  },
+  "181": {
+    "team": 7,
+    "removed": false,
+    "name": "Brau"
+  },
+  "182": {
+    "team": 7,
+    "removed": false,
+    "name": "Amenda"
+  },
+  "183": {
+    "team": 7,
+    "removed": false,
+    "name": "Rudoni"
+  },
+  "184": {
+    "team": 7,
+    "removed": false,
+    "name": "Grimes"
+  },
+  "185": {
+    "team": 7,
+    "removed": false,
+    "name": "Sakamoto"
+  },
+  "186": {
+    "team": 7,
+    "removed": false,
+    "name": "Mason-Clark"
+  },
+  "187": {
+    "team": 7,
+    "removed": false,
+    "name": "Eccles"
+  },
+  "188": {
+    "team": 7,
+    "removed": false,
+    "name": "Torp"
+  },
+  "189": {
+    "team": 7,
+    "removed": false,
+    "name": "Shepherd"
+  },
+  "190": {
+    "team": 7,
+    "removed": false,
+    "name": "Tchaouna"
+  },
+  "191": {
+    "team": 7,
+    "removed": false,
+    "name": "Borges Rodrigues"
+  },
+  "192": {
+    "team": 7,
+    "removed": false,
+    "name": "Andrews"
+  },
+  "193": {
+    "team": 7,
+    "removed": false,
+    "name": "Wright"
+  },
+  "194": {
+    "team": 7,
+    "removed": false,
+    "name": "Thomas-Asante"
+  },
+  "195": {
+    "team": 7,
+    "removed": false,
+    "name": "Simms"
+  },
+  "196": {
+    "team": 7,
+    "removed": false,
+    "name": "Markelo"
+  },
+  "197": {
+    "team": 7,
+    "removed": false,
+    "name": "Bassette"
+  },
+  "492": {
+    "team": 7,
+    "removed": false,
+    "name": "Awoniyi"
+  },
+  "575": {
+    "team": 7,
+    "removed": false,
+    "name": "Yirenkyi"
+  },
+  "584": {
+    "team": 7,
+    "removed": false,
+    "name": "Hamer"
+  },
+  "599": {
+    "team": 7,
+    "removed": false,
+    "name": "Cherif"
+  },
+  "623": {
+    "team": 7,
+    "removed": false,
+    "name": "Bentley"
+  },
+  "655": {
+    "team": 7,
+    "removed": false,
+    "name": "Gboho"
+  },
+  "656": {
+    "team": 7,
+    "removed": false,
+    "name": "Mfuni"
+  },
+  "42": {
+    "team": 8,
+    "removed": false,
+    "name": "Guessand"
+  },
+  "153": {
+    "team": 8,
+    "removed": false,
+    "name": "Disasi"
+  },
+  "198": {
+    "team": 8,
+    "removed": false,
+    "name": "Henderson"
+  },
+  "199": {
+    "team": 8,
+    "removed": false,
+    "name": "Benitez"
+  },
+  "202": {
+    "team": 8,
+    "removed": false,
+    "name": "Richards"
+  },
+  "203": {
+    "team": 8,
+    "removed": false,
+    "name": "Canvot"
+  },
+  "204": {
+    "team": 8,
+    "removed": false,
+    "name": "Mitchell"
+  },
+  "205": {
+    "team": 8,
+    "removed": false,
+    "name": "Sosa"
+  },
+  "206": {
+    "team": 8,
+    "removed": false,
+    "name": "Chadi Riad"
+  },
+  "207": {
+    "team": 8,
+    "removed": false,
+    "name": "Mingueza"
+  },
+  "208": {
+    "team": 8,
+    "removed": false,
+    "name": "Sarr"
+  },
+  "210": {
+    "team": 8,
+    "removed": false,
+    "name": "Wharton"
+  },
+  "211": {
+    "team": 8,
+    "removed": false,
+    "name": "Yeremy"
+  },
+  "212": {
+    "team": 8,
+    "removed": false,
+    "name": "Hughes"
+  },
+  "213": {
+    "team": 8,
+    "removed": false,
+    "name": "Lerma"
+  },
+  "214": {
+    "team": 8,
+    "removed": false,
+    "name": "Kamada"
+  },
+  "215": {
+    "team": 8,
+    "removed": false,
+    "name": "Devenny"
+  },
+  "216": {
+    "team": 8,
+    "removed": false,
+    "name": "Esse"
+  },
+  "217": {
+    "team": 8,
+    "removed": false,
+    "name": "M.França"
+  },
+  "218": {
+    "team": 8,
+    "removed": false,
+    "name": "Doucouré"
+  },
+  "219": {
+    "team": 8,
+    "removed": false,
+    "name": "J.Rak-Sakyi"
+  },
+  "220": {
+    "team": 8,
+    "removed": false,
+    "name": "Cardines"
+  },
+  "221": {
+    "team": 8,
+    "removed": false,
+    "name": "Drakes-Thomas"
+  },
+  "222": {
+    "team": 8,
+    "removed": false,
+    "name": "Strand Larsen"
+  },
+  "223": {
+    "team": 8,
+    "removed": false,
+    "name": "Mateta"
+  },
+  "224": {
+    "team": 8,
+    "removed": false,
+    "name": "Nketiah"
+  },
+  "225": {
+    "team": 8,
+    "removed": false,
+    "name": "Uche"
+  },
+  "241": {
+    "team": 8,
+    "removed": false,
+    "name": "McNeil"
+  },
+  "555": {
+    "team": 8,
+    "removed": false,
+    "name": "Matthews"
+  },
+  "577": {
+    "team": 8,
+    "removed": false,
+    "name": "Tomiyasu"
+  },
+  "588": {
+    "team": 8,
+    "removed": false,
+    "name": "Khalaili"
+  },
+  "595": {
+    "team": 8,
+    "removed": false,
+    "name": "Gozo"
+  },
+  "633": {
+    "team": 8,
+    "removed": false,
+    "name": "Ahanor"
+  },
+  "643": {
+    "team": 8,
+    "removed": false,
+    "name": "Chilwell"
+  },
+  "644": {
+    "team": 8,
+    "removed": false,
+    "name": "Timber"
+  },
+  "647": {
+    "team": 8,
+    "removed": false,
+    "name": "Osorio"
+  },
+  "21": {
+    "team": 9,
+    "removed": false,
+    "name": "Nørgaard"
+  },
+  "209": {
+    "team": 9,
+    "removed": false,
+    "name": "Johnson"
+  },
+  "226": {
+    "team": 9,
+    "removed": false,
+    "name": "Pickford"
+  },
+  "227": {
+    "team": 9,
+    "removed": false,
+    "name": "Travers"
+  },
+  "228": {
+    "team": 9,
+    "removed": false,
+    "name": "King"
+  },
+  "229": {
+    "team": 9,
+    "removed": false,
+    "name": "Tarkowski"
+  },
+  "230": {
+    "team": 9,
+    "removed": false,
+    "name": "Branthwaite"
+  },
+  "231": {
+    "team": 9,
+    "removed": false,
+    "name": "Keane"
+  },
+  "232": {
+    "team": 9,
+    "removed": false,
+    "name": "O'Brien"
+  },
+  "233": {
+    "team": 9,
+    "removed": false,
+    "name": "Mykolenko"
+  },
+  "234": {
+    "team": 9,
+    "removed": false,
+    "name": "Patterson"
+  },
+  "235": {
+    "team": 9,
+    "removed": false,
+    "name": "Aznou"
+  },
+  "236": {
+    "team": 9,
+    "removed": false,
+    "name": "Dewsbury-Hall"
+  },
+  "238": {
+    "team": 9,
+    "removed": false,
+    "name": "Grealish"
+  },
+  "239": {
+    "team": 9,
+    "removed": false,
+    "name": "Garner"
+  },
+  "242": {
+    "team": 9,
+    "removed": false,
+    "name": "George"
+  },
+  "243": {
+    "team": 9,
+    "removed": false,
+    "name": "Alcaraz"
+  },
+  "244": {
+    "team": 9,
+    "removed": false,
+    "name": "Armstrong"
+  },
+  "245": {
+    "team": 9,
+    "removed": false,
+    "name": "Dibling"
+  },
+  "246": {
+    "team": 9,
+    "removed": false,
+    "name": "Röhl"
+  },
+  "247": {
+    "team": 9,
+    "removed": false,
+    "name": "Hackney"
+  },
+  "248": {
+    "team": 9,
+    "removed": false,
+    "name": "Beto"
+  },
+  "249": {
+    "team": 9,
+    "removed": false,
+    "name": "Barry"
+  },
+  "649": {
+    "team": 9,
+    "removed": false,
+    "name": "Maitland-Niles"
+  },
+  "654": {
+    "team": 9,
+    "removed": false,
+    "name": "Graham"
+  },
+  "250": {
+    "team": 10,
+    "removed": false,
+    "name": "Leno"
+  },
+  "251": {
+    "team": 10,
+    "removed": false,
+    "name": "Lecomte"
+  },
+  "252": {
+    "team": 10,
+    "removed": false,
+    "name": "McNally"
+  },
+  "253": {
+    "team": 10,
+    "removed": false,
+    "name": "Andersen"
+  },
+  "254": {
+    "team": 10,
+    "removed": false,
+    "name": "Robinson"
+  },
+  "255": {
+    "team": 10,
+    "removed": false,
+    "name": "J.Cuenca"
+  },
+  "256": {
+    "team": 10,
+    "removed": false,
+    "name": "Tete"
+  },
+  "257": {
+    "team": 10,
+    "removed": false,
+    "name": "Bassey"
+  },
+  "258": {
+    "team": 10,
+    "removed": false,
+    "name": "Castagne"
+  },
+  "261": {
+    "team": 10,
+    "removed": false,
+    "name": "Iwobi"
+  },
+  "262": {
+    "team": 10,
+    "removed": false,
+    "name": "Smith Rowe"
+  },
+  "263": {
+    "team": 10,
+    "removed": false,
+    "name": "Kevin"
+  },
+  "264": {
+    "team": 10,
+    "removed": false,
+    "name": "Bobb"
+  },
+  "265": {
+    "team": 10,
+    "removed": false,
+    "name": "Berge"
+  },
+  "266": {
+    "team": 10,
+    "removed": false,
+    "name": "Cairney"
+  },
+  "268": {
+    "team": 10,
+    "removed": false,
+    "name": "King"
+  },
+  "269": {
+    "team": 10,
+    "removed": false,
+    "name": "Sessegnon"
+  },
+  "270": {
+    "team": 10,
+    "removed": false,
+    "name": "Reed"
+  },
+  "271": {
+    "team": 10,
+    "removed": false,
+    "name": "Muniz"
+  },
+  "272": {
+    "team": 10,
+    "removed": false,
+    "name": "Kusi-Asare"
+  },
+  "569": {
+    "team": 10,
+    "removed": false,
+    "name": "Gonzalo"
+  },
+  "570": {
+    "team": 10,
+    "removed": false,
+    "name": "Palacios"
+  },
+  "580": {
+    "team": 10,
+    "removed": false,
+    "name": "Charles"
+  },
+  "610": {
+    "team": 10,
+    "removed": false,
+    "name": "De Fougerolles"
+  },
+  "626": {
+    "team": 10,
+    "removed": false,
+    "name": "Zepa"
+  },
+  "635": {
+    "team": 10,
+    "removed": false,
+    "name": "Larsson"
+  },
+  "636": {
+    "team": 10,
+    "removed": false,
+    "name": "Ángel"
+  },
+  "650": {
+    "team": 10,
+    "removed": false,
+    "name": "Affengruber"
+  },
+  "240": {
+    "team": 11,
+    "removed": false,
+    "name": "Iroegbunam"
+  },
+  "273": {
+    "team": 11,
+    "removed": false,
+    "name": "Phillips"
+  },
+  "274": {
+    "team": 11,
+    "removed": false,
+    "name": "Butland"
+  },
+  "275": {
+    "team": 11,
+    "removed": false,
+    "name": "Cartwright"
+  },
+  "276": {
+    "team": 11,
+    "removed": false,
+    "name": "Lo-Tutala"
+  },
+  "277": {
+    "team": 11,
+    "removed": false,
+    "name": "Egan"
+  },
+  "278": {
+    "team": 11,
+    "removed": false,
+    "name": "Hughes"
+  },
+  "279": {
+    "team": 11,
+    "removed": false,
+    "name": "Ajayi"
+  },
+  "280": {
+    "team": 11,
+    "removed": false,
+    "name": "Coyle"
+  },
+  "281": {
+    "team": 11,
+    "removed": false,
+    "name": "Drameh"
+  },
+  "282": {
+    "team": 11,
+    "removed": false,
+    "name": "Giles"
+  },
+  "283": {
+    "team": 11,
+    "removed": false,
+    "name": "Jacob"
+  },
+  "284": {
+    "team": 11,
+    "removed": false,
+    "name": "McCarthy"
+  },
+  "285": {
+    "team": 11,
+    "removed": false,
+    "name": "McNair"
+  },
+  "286": {
+    "team": 11,
+    "removed": false,
+    "name": "Belloumi"
+  },
+  "287": {
+    "team": 11,
+    "removed": false,
+    "name": "Millar"
+  },
+  "288": {
+    "team": 11,
+    "removed": false,
+    "name": "Dowell"
+  },
+  "289": {
+    "team": 11,
+    "removed": false,
+    "name": "Crooks"
+  },
+  "290": {
+    "team": 11,
+    "removed": false,
+    "name": "Slater"
+  },
+  "291": {
+    "team": 11,
+    "removed": false,
+    "name": "Matazo"
+  },
+  "292": {
+    "team": 11,
+    "removed": false,
+    "name": "Ömür"
+  },
+  "293": {
+    "team": 11,
+    "removed": false,
+    "name": "Kamara"
+  },
+  "294": {
+    "team": 11,
+    "removed": false,
+    "name": "Zambrano"
+  },
+  "295": {
+    "team": 11,
+    "removed": false,
+    "name": "McBurnie"
+  },
+  "296": {
+    "team": 11,
+    "removed": false,
+    "name": "Akintola"
+  },
+  "297": {
+    "team": 11,
+    "removed": false,
+    "name": "Gyabi"
+  },
+  "298": {
+    "team": 11,
+    "removed": false,
+    "name": "Destan"
+  },
+  "299": {
+    "team": 11,
+    "removed": false,
+    "name": "Burstow"
+  },
+  "340": {
+    "team": 11,
+    "removed": false,
+    "name": "Gelhardt"
+  },
+  "556": {
+    "team": 11,
+    "removed": false,
+    "name": "Targett"
+  },
+  "563": {
+    "team": 11,
+    "removed": false,
+    "name": "Morita"
+  },
+  "572": {
+    "team": 11,
+    "removed": false,
+    "name": "Tzolakis"
+  },
+  "574": {
+    "team": 11,
+    "removed": false,
+    "name": "Hjertø-Dahl"
+  },
+  "576": {
+    "team": 11,
+    "removed": false,
+    "name": "Stroud"
+  },
+  "585": {
+    "team": 11,
+    "removed": false,
+    "name": "Herrington"
+  },
+  "586": {
+    "team": 11,
+    "removed": false,
+    "name": "Mendy"
+  },
+  "589": {
+    "team": 11,
+    "removed": false,
+    "name": "Gourna-Douath"
+  },
+  "617": {
+    "team": 11,
+    "removed": false,
+    "name": "Cho"
+  },
+  "632": {
+    "team": 11,
+    "removed": false,
+    "name": "Ansah"
+  },
+  "637": {
+    "team": 11,
+    "removed": false,
+    "name": "Vaz"
+  },
+  "638": {
+    "team": 11,
+    "removed": false,
+    "name": "Norton-Cuffy"
+  },
+  "642": {
+    "team": 11,
+    "removed": false,
+    "name": "Thomas"
+  },
+  "645": {
+    "team": 11,
+    "removed": false,
+    "name": "Mouzakitis"
+  },
+  "259": {
+    "team": 12,
+    "removed": false,
+    "name": "Diop"
+  },
+  "267": {
+    "team": 12,
+    "removed": false,
+    "name": "Lukić"
+  },
+  "300": {
+    "team": 12,
+    "removed": false,
+    "name": "Walton"
+  },
+  "301": {
+    "team": 12,
+    "removed": false,
+    "name": "Palmer"
+  },
+  "302": {
+    "team": 12,
+    "removed": false,
+    "name": "Button"
+  },
+  "303": {
+    "team": 12,
+    "removed": false,
+    "name": "Kipré"
+  },
+  "304": {
+    "team": 12,
+    "removed": false,
+    "name": "O'Shea"
+  },
+  "305": {
+    "team": 12,
+    "removed": false,
+    "name": "Davis"
+  },
+  "306": {
+    "team": 12,
+    "removed": false,
+    "name": "Greaves"
+  },
+  "307": {
+    "team": 12,
+    "removed": false,
+    "name": "Johnson"
+  },
+  "308": {
+    "team": 12,
+    "removed": false,
+    "name": "Furlong"
+  },
+  "309": {
+    "team": 12,
+    "removed": false,
+    "name": "Núñez"
+  },
+  "310": {
+    "team": 12,
+    "removed": false,
+    "name": "Matusiwa"
+  },
+  "311": {
+    "team": 12,
+    "removed": false,
+    "name": "Burns"
+  },
+  "312": {
+    "team": 12,
+    "removed": false,
+    "name": "Taylor"
+  },
+  "313": {
+    "team": 12,
+    "removed": false,
+    "name": "Clarke"
+  },
+  "314": {
+    "team": 12,
+    "removed": false,
+    "name": "Ogbene"
+  },
+  "315": {
+    "team": 12,
+    "removed": false,
+    "name": "Fatawu"
+  },
+  "316": {
+    "team": 12,
+    "removed": false,
+    "name": "Emersonn"
+  },
+  "317": {
+    "team": 12,
+    "removed": false,
+    "name": "Hirst"
+  },
+  "318": {
+    "team": 12,
+    "removed": false,
+    "name": "Philogene"
+  },
+  "319": {
+    "team": 12,
+    "removed": false,
+    "name": "Szmodics"
+  },
+  "320": {
+    "team": 12,
+    "removed": false,
+    "name": "Akpom"
+  },
+  "321": {
+    "team": 12,
+    "removed": false,
+    "name": "Walle Egeli"
+  },
+  "322": {
+    "team": 12,
+    "removed": false,
+    "name": "Al-Hamadi"
+  },
+  "323": {
+    "team": 12,
+    "removed": false,
+    "name": "McAteer"
+  },
+  "324": {
+    "team": 12,
+    "removed": false,
+    "name": "Mehmeti"
+  },
+  "554": {
+    "team": 12,
+    "removed": false,
+    "name": "Van Oevelen"
+  },
+  "562": {
+    "team": 12,
+    "removed": false,
+    "name": "Maeda"
+  },
+  "564": {
+    "team": 12,
+    "removed": false,
+    "name": "Scherpen"
+  },
+  "571": {
+    "team": 12,
+    "removed": false,
+    "name": "Florentino"
+  },
+  "591": {
+    "team": 12,
+    "removed": false,
+    "name": "Enciso"
+  },
+  "592": {
+    "team": 12,
+    "removed": false,
+    "name": "Ouattara"
+  },
+  "602": {
+    "team": 12,
+    "removed": false,
+    "name": "Humphreys"
+  },
+  "619": {
+    "team": 12,
+    "removed": false,
+    "name": "Palacios"
+  },
+  "640": {
+    "team": 12,
+    "removed": false,
+    "name": "Flemming"
+  },
+  "260": {
+    "team": 13,
+    "removed": false,
+    "name": "Wilson"
+  },
+  "326": {
+    "team": 13,
+    "removed": false,
+    "name": "Perri"
+  },
+  "327": {
+    "team": 13,
+    "removed": false,
+    "name": "Bijol"
+  },
+  "329": {
+    "team": 13,
+    "removed": false,
+    "name": "Rodon"
+  },
+  "330": {
+    "team": 13,
+    "removed": false,
+    "name": "Bogle"
+  },
+  "331": {
+    "team": 13,
+    "removed": false,
+    "name": "Gudmundsson"
+  },
+  "332": {
+    "team": 13,
+    "removed": false,
+    "name": "Justin"
+  },
+  "333": {
+    "team": 13,
+    "removed": false,
+    "name": "Bornauw"
+  },
+  "334": {
+    "team": 13,
+    "removed": false,
+    "name": "Muharemović"
+  },
+  "335": {
+    "team": 13,
+    "removed": false,
+    "name": "Stach"
+  },
+  "336": {
+    "team": 13,
+    "removed": false,
+    "name": "Okafor"
+  },
+  "337": {
+    "team": 13,
+    "removed": false,
+    "name": "Aaronson"
+  },
+  "338": {
+    "team": 13,
+    "removed": false,
+    "name": "Ampadu"
+  },
+  "339": {
+    "team": 13,
+    "removed": false,
+    "name": "Longstaff"
+  },
+  "341": {
+    "team": 13,
+    "removed": false,
+    "name": "Gnonto"
+  },
+  "342": {
+    "team": 13,
+    "removed": false,
+    "name": "Harrison"
+  },
+  "343": {
+    "team": 13,
+    "removed": false,
+    "name": "James"
+  },
+  "344": {
+    "team": 13,
+    "removed": false,
+    "name": "Gruev"
+  },
+  "345": {
+    "team": 13,
+    "removed": false,
+    "name": "Tanaka"
+  },
+  "346": {
+    "team": 13,
+    "removed": false,
+    "name": "Calvert-Lewin"
+  },
+  "347": {
+    "team": 13,
+    "removed": false,
+    "name": "Nmecha"
+  },
+  "348": {
+    "team": 13,
+    "removed": false,
+    "name": "Piroe"
+  },
+  "349": {
+    "team": 13,
+    "removed": false,
+    "name": "Mateo Joseph"
+  },
+  "385": {
+    "team": 13,
+    "removed": false,
+    "name": "Trafford"
+  },
+  "598": {
+    "team": 13,
+    "removed": false,
+    "name": "Elvedi"
+  },
+  "603": {
+    "team": 13,
+    "removed": false,
+    "name": "Lienou"
+  },
+  "604": {
+    "team": 13,
+    "removed": false,
+    "name": "Cresswell"
+  },
+  "625": {
+    "team": 13,
+    "removed": false,
+    "name": "Cairns"
+  },
+  "629": {
+    "team": 13,
+    "removed": false,
+    "name": "Zetterer"
+  },
+  "641": {
+    "team": 13,
+    "removed": false,
+    "name": "Bard"
+  },
+  "648": {
+    "team": 13,
+    "removed": false,
+    "name": "Bahoya"
+  },
+  "350": {
+    "team": 14,
+    "removed": false,
+    "name": "A.Becker"
+  },
+  "351": {
+    "team": 14,
+    "removed": false,
+    "name": "Mamardashvili"
+  },
+  "352": {
+    "team": 14,
+    "removed": false,
+    "name": "Woodman"
+  },
+  "353": {
+    "team": 14,
+    "removed": false,
+    "name": "Pecsi"
+  },
+  "354": {
+    "team": 14,
+    "removed": false,
+    "name": "Jaros"
+  },
+  "355": {
+    "team": 14,
+    "removed": false,
+    "name": "Davies"
+  },
+  "356": {
+    "team": 14,
+    "removed": false,
+    "name": "Virgil"
+  },
+  "357": {
+    "team": 14,
+    "removed": false,
+    "name": "Frimpong"
+  },
+  "358": {
+    "team": 14,
+    "removed": false,
+    "name": "Kerkez"
+  },
+  "359": {
+    "team": 14,
+    "removed": false,
+    "name": "Gomez"
+  },
+  "360": {
+    "team": 14,
+    "removed": false,
+    "name": "Bradley"
+  },
+  "361": {
+    "team": 14,
+    "removed": false,
+    "name": "Lucky"
+  },
+  "362": {
+    "team": 14,
+    "removed": false,
+    "name": "Jacquet"
+  },
+  "363": {
+    "team": 14,
+    "removed": false,
+    "name": "Leoni"
+  },
+  "364": {
+    "team": 14,
+    "removed": false,
+    "name": "Tsimikas"
+  },
+  "365": {
+    "team": 14,
+    "removed": false,
+    "name": "Ramsay"
+  },
+  "366": {
+    "team": 14,
+    "removed": false,
+    "name": "Wirtz"
+  },
+  "367": {
+    "team": 14,
+    "removed": false,
+    "name": "Gakpo"
+  },
+  "368": {
+    "team": 14,
+    "removed": false,
+    "name": "Szoboszlai"
+  },
+  "369": {
+    "team": 14,
+    "removed": false,
+    "name": "Ngumoha"
+  },
+  "370": {
+    "team": 14,
+    "removed": false,
+    "name": "Chiesa"
+  },
+  "371": {
+    "team": 14,
+    "removed": false,
+    "name": "Gravenberch"
+  },
+  "372": {
+    "team": 14,
+    "removed": false,
+    "name": "Mac Allister"
+  },
+  "373": {
+    "team": 14,
+    "removed": false,
+    "name": "C.Jones"
+  },
+  "374": {
+    "team": 14,
+    "removed": false,
+    "name": "Endo"
+  },
+  "375": {
+    "team": 14,
+    "removed": false,
+    "name": "Nyoni"
+  },
+  "376": {
+    "team": 14,
+    "removed": false,
+    "name": "Bajcetic"
+  },
+  "377": {
+    "team": 14,
+    "removed": false,
+    "name": "Munoz"
+  },
+  "378": {
+    "team": 14,
+    "removed": false,
+    "name": "McConnell"
+  },
+  "379": {
+    "team": 14,
+    "removed": false,
+    "name": "Isak"
+  },
+  "380": {
+    "team": 14,
+    "removed": false,
+    "name": "Ekitiké"
+  },
+  "381": {
+    "team": 14,
+    "removed": false,
+    "name": "Koumas"
+  },
+  "382": {
+    "team": 14,
+    "removed": false,
+    "name": "Danns"
+  },
+  "383": {
+    "team": 14,
+    "removed": false,
+    "name": "Elliott"
+  },
+  "579": {
+    "team": 14,
+    "removed": false,
+    "name": "Araujo"
+  },
+  "627": {
+    "team": 14,
+    "removed": false,
+    "name": "Barcola"
+  },
+  "155": {
+    "team": 15,
+    "removed": false,
+    "name": "Enzo"
+  },
+  "237": {
+    "team": 15,
+    "removed": false,
+    "name": "Ndiaye"
+  },
+  "384": {
+    "team": 15,
+    "removed": false,
+    "name": "Donnarumma"
+  },
+  "386": {
+    "team": 15,
+    "removed": false,
+    "name": "Bettinelli"
+  },
+  "387": {
+    "team": 15,
+    "removed": false,
+    "name": "O'Reilly"
+  },
+  "388": {
+    "team": 15,
+    "removed": false,
+    "name": "Guéhi"
+  },
+  "389": {
+    "team": 15,
+    "removed": false,
+    "name": "Matheus N."
+  },
+  "390": {
+    "team": 15,
+    "removed": false,
+    "name": "Rúben"
+  },
+  "391": {
+    "team": 15,
+    "removed": false,
+    "name": "Gvardiol"
+  },
+  "392": {
+    "team": 15,
+    "removed": false,
+    "name": "Aït-Nouri"
+  },
+  "393": {
+    "team": 15,
+    "removed": false,
+    "name": "Khusanov"
+  },
+  "394": {
+    "team": 15,
+    "removed": false,
+    "name": "Alleyne"
+  },
+  "395": {
+    "team": 15,
+    "removed": false,
+    "name": "Lewis"
+  },
+  "396": {
+    "team": 15,
+    "removed": false,
+    "name": "Vitor Reis"
+  },
+  "397": {
+    "team": 15,
+    "removed": false,
+    "name": "Semenyo"
+  },
+  "398": {
+    "team": 15,
+    "removed": false,
+    "name": "Foden"
+  },
+  "399": {
+    "team": 15,
+    "removed": false,
+    "name": "Cherki"
+  },
+  "400": {
+    "team": 15,
+    "removed": false,
+    "name": "Doku"
+  },
+  "402": {
+    "team": 15,
+    "removed": false,
+    "name": "Rodrigo"
+  },
+  "404": {
+    "team": 15,
+    "removed": false,
+    "name": "Reijnders"
+  },
+  "406": {
+    "team": 15,
+    "removed": false,
+    "name": "Kovačić"
+  },
+  "407": {
+    "team": 15,
+    "removed": false,
+    "name": "Echeverri"
+  },
+  "408": {
+    "team": 15,
+    "removed": false,
+    "name": "Phillips"
+  },
+  "409": {
+    "team": 15,
+    "removed": false,
+    "name": "Mukasa"
+  },
+  "410": {
+    "team": 15,
+    "removed": false,
+    "name": "Monga"
+  },
+  "411": {
+    "team": 15,
+    "removed": false,
+    "name": "Haaland"
+  },
+  "481": {
+    "team": 15,
+    "removed": false,
+    "name": "Anderson"
+  },
+  "587": {
+    "team": 15,
+    "removed": false,
+    "name": "Rulli"
+  },
+  "616": {
+    "team": 15,
+    "removed": false,
+    "name": "Bouaddi"
+  },
+  "621": {
+    "team": 15,
+    "removed": false,
+    "name": "McAidoo"
+  },
+  "622": {
+    "team": 15,
+    "removed": false,
+    "name": "Braithwaite"
+  },
+  "628": {
+    "team": 15,
+    "removed": false,
+    "name": "Allan"
+  },
+  "653": {
+    "team": 15,
+    "removed": false,
+    "name": "Samba"
+  },
+  "43": {
+    "team": 16,
+    "removed": false,
+    "name": "Tielemans"
+  },
+  "131": {
+    "team": 16,
+    "removed": false,
+    "name": "Baleba"
+  },
+  "162": {
+    "team": 16,
+    "removed": false,
+    "name": "Andrey Santos"
+  },
+  "325": {
+    "team": 16,
+    "removed": false,
+    "name": "Darlow"
+  },
+  "412": {
+    "team": 16,
+    "removed": false,
+    "name": "Lammens"
+  },
+  "413": {
+    "team": 16,
+    "removed": false,
+    "name": "Bayindir"
+  },
+  "414": {
+    "team": 16,
+    "removed": false,
+    "name": "Heaton"
+  },
+  "415": {
+    "team": 16,
+    "removed": false,
+    "name": "Dorgu"
+  },
+  "416": {
+    "team": 16,
+    "removed": false,
+    "name": "De Ligt"
+  },
+  "417": {
+    "team": 16,
+    "removed": false,
+    "name": "Dalot"
+  },
+  "418": {
+    "team": 16,
+    "removed": false,
+    "name": "Maguire"
+  },
+  "419": {
+    "team": 16,
+    "removed": false,
+    "name": "Martinez"
+  },
+  "420": {
+    "team": 16,
+    "removed": false,
+    "name": "Yoro"
+  },
+  "421": {
+    "team": 16,
+    "removed": false,
+    "name": "Heaven"
+  },
+  "422": {
+    "team": 16,
+    "removed": false,
+    "name": "Mazraoui"
+  },
+  "423": {
+    "team": 16,
+    "removed": false,
+    "name": "Shaw"
+  },
+  "424": {
+    "team": 16,
+    "removed": false,
+    "name": "Amass"
+  },
+  "425": {
+    "team": 16,
+    "removed": false,
+    "name": "Fredricson"
+  },
+  "426": {
+    "team": 16,
+    "removed": false,
+    "name": "B.Fernandes"
+  },
+  "427": {
+    "team": 16,
+    "removed": false,
+    "name": "Mbeumo"
+  },
+  "428": {
+    "team": 16,
+    "removed": false,
+    "name": "Cunha"
+  },
+  "429": {
+    "team": 16,
+    "removed": false,
+    "name": "Rashford"
+  },
+  "430": {
+    "team": 16,
+    "removed": false,
+    "name": "Mount"
+  },
+  "431": {
+    "team": 16,
+    "removed": false,
+    "name": "Amad"
+  },
+  "432": {
+    "team": 16,
+    "removed": false,
+    "name": "Mainoo"
+  },
+  "433": {
+    "team": 16,
+    "removed": false,
+    "name": "Ugarte"
+  },
+  "434": {
+    "team": 16,
+    "removed": false,
+    "name": "J.Fletcher"
+  },
+  "435": {
+    "team": 16,
+    "removed": false,
+    "name": "Lacey"
+  },
+  "436": {
+    "team": 16,
+    "removed": false,
+    "name": "Collyer"
+  },
+  "437": {
+    "team": 16,
+    "removed": false,
+    "name": "Bendito Mantato"
+  },
+  "438": {
+    "team": 16,
+    "removed": false,
+    "name": "Fletcher"
+  },
+  "439": {
+    "team": 16,
+    "removed": false,
+    "name": "Šeško"
+  },
+  "440": {
+    "team": 16,
+    "removed": false,
+    "name": "Zirkzee"
+  },
+  "441": {
+    "team": 16,
+    "removed": false,
+    "name": "Obi"
+  },
+  "405": {
+    "team": 17,
+    "removed": false,
+    "name": "N.Gonzalez"
+  },
+  "442": {
+    "team": 17,
+    "removed": false,
+    "name": "Pope"
+  },
+  "443": {
+    "team": 17,
+    "removed": false,
+    "name": "Gillespie"
+  },
+  "444": {
+    "team": 17,
+    "removed": false,
+    "name": "Jaouen"
+  },
+  "445": {
+    "team": 17,
+    "removed": false,
+    "name": "Thiaw"
+  },
+  "446": {
+    "team": 17,
+    "removed": false,
+    "name": "Schär"
+  },
+  "447": {
+    "team": 17,
+    "removed": false,
+    "name": "Botman"
+  },
+  "448": {
+    "team": 17,
+    "removed": false,
+    "name": "Burn"
+  },
+  "449": {
+    "team": 17,
+    "removed": false,
+    "name": "Hall"
+  },
+  "450": {
+    "team": 17,
+    "removed": false,
+    "name": "Livramento"
+  },
+  "451": {
+    "team": 17,
+    "removed": false,
+    "name": "A.Murphy"
+  },
+  "453": {
+    "team": 17,
+    "removed": false,
+    "name": "Barnes"
+  },
+  "454": {
+    "team": 17,
+    "removed": false,
+    "name": "Elanga"
+  },
+  "456": {
+    "team": 17,
+    "removed": false,
+    "name": "J.Ramsey"
+  },
+  "457": {
+    "team": 17,
+    "removed": false,
+    "name": "J.Murphy"
+  },
+  "458": {
+    "team": 17,
+    "removed": false,
+    "name": "Joelinton"
+  },
+  "459": {
+    "team": 17,
+    "removed": false,
+    "name": "L.Miley"
+  },
+  "460": {
+    "team": 17,
+    "removed": false,
+    "name": "Willock"
+  },
+  "461": {
+    "team": 17,
+    "removed": false,
+    "name": "Touré"
+  },
+  "462": {
+    "team": 17,
+    "removed": false,
+    "name": "Steur"
+  },
+  "463": {
+    "team": 17,
+    "removed": false,
+    "name": "Woltemade"
+  },
+  "464": {
+    "team": 17,
+    "removed": false,
+    "name": "Wissa"
+  },
+  "465": {
+    "team": 17,
+    "removed": false,
+    "name": "Osula"
+  },
+  "466": {
+    "team": 17,
+    "removed": false,
+    "name": "Neave"
+  },
+  "559": {
+    "team": 17,
+    "removed": false,
+    "name": "Bamba"
+  },
+  "567": {
+    "team": 17,
+    "removed": false,
+    "name": "Horníček"
+  },
+  "593": {
+    "team": 17,
+    "removed": false,
+    "name": "Dedić"
+  },
+  "609": {
+    "team": 17,
+    "removed": false,
+    "name": "Shahar"
+  },
+  "634": {
+    "team": 17,
+    "removed": false,
+    "name": "Fernandez-Pardo"
+  },
+  "659": {
+    "team": 17,
+    "removed": false,
+    "name": "Miley"
+  },
+  "663": {
+    "team": 17,
+    "removed": false,
+    "name": "Pivas"
+  },
+  "664": {
+    "team": 17,
+    "removed": false,
+    "name": "Salia"
+  },
+  "665": {
+    "team": 17,
+    "removed": false,
+    "name": "Mills"
+  },
+  "666": {
+    "team": 17,
+    "removed": false,
+    "name": "Thompson"
+  },
+  "167": {
+    "team": 18,
+    "removed": false,
+    "name": "Delap"
+  },
+  "201": {
+    "team": 18,
+    "removed": false,
+    "name": "Muñoz"
+  },
+  "467": {
+    "team": 18,
+    "removed": false,
+    "name": "Sels"
+  },
+  "468": {
+    "team": 18,
+    "removed": false,
+    "name": "John"
+  },
+  "469": {
+    "team": 18,
+    "removed": false,
+    "name": "N.Williams"
+  },
+  "470": {
+    "team": 18,
+    "removed": false,
+    "name": "Morato"
+  },
+  "471": {
+    "team": 18,
+    "removed": false,
+    "name": "Milenković"
+  },
+  "472": {
+    "team": 18,
+    "removed": false,
+    "name": "Murillo"
+  },
+  "473": {
+    "team": 18,
+    "removed": false,
+    "name": "Aina"
+  },
+  "474": {
+    "team": 18,
+    "removed": false,
+    "name": "Jair Cunha"
+  },
+  "475": {
+    "team": 18,
+    "removed": false,
+    "name": "Savona"
+  },
+  "476": {
+    "team": 18,
+    "removed": false,
+    "name": "O.Richards"
+  },
+  "477": {
+    "team": 18,
+    "removed": false,
+    "name": "Abbott"
+  },
+  "478": {
+    "team": 18,
+    "removed": false,
+    "name": "Netz"
+  },
+  "479": {
+    "team": 18,
+    "removed": false,
+    "name": "Bindon"
+  },
+  "480": {
+    "team": 18,
+    "removed": false,
+    "name": "Gibbs-White"
+  },
+  "482": {
+    "team": 18,
+    "removed": false,
+    "name": "Hudson-Odoi"
+  },
+  "483": {
+    "team": 18,
+    "removed": false,
+    "name": "Ndoye"
+  },
+  "484": {
+    "team": 18,
+    "removed": false,
+    "name": "Hutchinson"
+  },
+  "485": {
+    "team": 18,
+    "removed": false,
+    "name": "Bakwa"
+  },
+  "486": {
+    "team": 18,
+    "removed": false,
+    "name": "McAtee"
+  },
+  "487": {
+    "team": 18,
+    "removed": false,
+    "name": "Dominguez"
+  },
+  "488": {
+    "team": 18,
+    "removed": false,
+    "name": "I.Sangaré"
+  },
+  "489": {
+    "team": 18,
+    "removed": false,
+    "name": "Yates"
+  },
+  "490": {
+    "team": 18,
+    "removed": false,
+    "name": "Wood"
+  },
+  "491": {
+    "team": 18,
+    "removed": false,
+    "name": "Igor Jesus"
+  },
+  "493": {
+    "team": 18,
+    "removed": false,
+    "name": "Kalimuendo"
+  },
+  "558": {
+    "team": 18,
+    "removed": false,
+    "name": "Schlager"
+  },
+  "581": {
+    "team": 18,
+    "removed": false,
+    "name": "Diomande"
+  },
+  "590": {
+    "team": 18,
+    "removed": false,
+    "name": "Benda"
+  },
+  "112": {
+    "team": 19,
+    "removed": false,
+    "name": "Van Hecke"
+  },
+  "147": {
+    "team": 19,
+    "removed": false,
+    "name": "Tosin"
+  },
+  "401": {
+    "team": 19,
+    "removed": false,
+    "name": "Marmoush"
+  },
+  "403": {
+    "team": 19,
+    "removed": false,
+    "name": "Sávio"
+  },
+  "455": {
+    "team": 19,
+    "removed": false,
+    "name": "Tonali"
+  },
+  "494": {
+    "team": 19,
+    "removed": false,
+    "name": "Vicario"
+  },
+  "495": {
+    "team": 19,
+    "removed": false,
+    "name": "Austin"
+  },
+  "496": {
+    "team": 19,
+    "removed": false,
+    "name": "Kinsky"
+  },
+  "497": {
+    "team": 19,
+    "removed": false,
+    "name": "Dubravka"
+  },
+  "498": {
+    "team": 19,
+    "removed": false,
+    "name": "Senesi"
+  },
+  "499": {
+    "team": 19,
+    "removed": false,
+    "name": "Pedro Porro"
+  },
+  "500": {
+    "team": 19,
+    "removed": false,
+    "name": "Romero"
+  },
+  "502": {
+    "team": 19,
+    "removed": false,
+    "name": "Robertson"
+  },
+  "503": {
+    "team": 19,
+    "removed": false,
+    "name": "Van de Ven"
+  },
+  "505": {
+    "team": 19,
+    "removed": false,
+    "name": "Spence"
+  },
+  "506": {
+    "team": 19,
+    "removed": false,
+    "name": "Udogie"
+  },
+  "507": {
+    "team": 19,
+    "removed": false,
+    "name": "Phillips"
+  },
+  "508": {
+    "team": 19,
+    "removed": false,
+    "name": "Davies"
+  },
+  "509": {
+    "team": 19,
+    "removed": false,
+    "name": "Byfield"
+  },
+  "510": {
+    "team": 19,
+    "removed": false,
+    "name": "Rowswell"
+  },
+  "511": {
+    "team": 19,
+    "removed": false,
+    "name": "Souza"
+  },
+  "512": {
+    "team": 19,
+    "removed": false,
+    "name": "Kudus"
+  },
+  "513": {
+    "team": 19,
+    "removed": false,
+    "name": "Xavi"
+  },
+  "514": {
+    "team": 19,
+    "removed": false,
+    "name": "Tel"
+  },
+  "515": {
+    "team": 19,
+    "removed": false,
+    "name": "Maddison"
+  },
+  "516": {
+    "team": 19,
+    "removed": false,
+    "name": "Bentancur"
+  },
+  "517": {
+    "team": 19,
+    "removed": false,
+    "name": "Odobert"
+  },
+  "518": {
+    "team": 19,
+    "removed": false,
+    "name": "P.M.Sarr"
+  },
+  "519": {
+    "team": 19,
+    "removed": false,
+    "name": "Gallagher"
+  },
+  "520": {
+    "team": 19,
+    "removed": false,
+    "name": "Bergvall"
+  },
+  "521": {
+    "team": 19,
+    "removed": false,
+    "name": "Kulusevski"
+  },
+  "522": {
+    "team": 19,
+    "removed": false,
+    "name": "Gray"
+  },
+  "523": {
+    "team": 19,
+    "removed": false,
+    "name": "Moore"
+  },
+  "524": {
+    "team": 19,
+    "removed": false,
+    "name": "Olusesi"
+  },
+  "525": {
+    "team": 19,
+    "removed": false,
+    "name": "Fernandes"
+  },
+  "526": {
+    "team": 19,
+    "removed": false,
+    "name": "Solanke"
+  },
+  "527": {
+    "team": 19,
+    "removed": false,
+    "name": "Richarlison"
+  },
+  "528": {
+    "team": 19,
+    "removed": false,
+    "name": "Scarlett"
+  },
+  "578": {
+    "team": 19,
+    "removed": false,
+    "name": "Mudryk"
+  },
+  "601": {
+    "team": 19,
+    "removed": false,
+    "name": "Williams-Barnett"
+  },
+  "501": {
+    "team": 20,
+    "removed": false,
+    "name": "Danso"
+  },
+  "529": {
+    "team": 20,
+    "removed": false,
+    "name": "Roefs"
+  },
+  "530": {
+    "team": 20,
+    "removed": false,
+    "name": "Patterson"
+  },
+  "531": {
+    "team": 20,
+    "removed": false,
+    "name": "Ellborg"
+  },
+  "532": {
+    "team": 20,
+    "removed": false,
+    "name": "Ballard"
+  },
+  "533": {
+    "team": 20,
+    "removed": false,
+    "name": "Mukiele"
+  },
+  "534": {
+    "team": 20,
+    "removed": false,
+    "name": "Hume"
+  },
+  "535": {
+    "team": 20,
+    "removed": false,
+    "name": "Alderete"
+  },
+  "536": {
+    "team": 20,
+    "removed": false,
+    "name": "Reinildo"
+  },
+  "537": {
+    "team": 20,
+    "removed": false,
+    "name": "Seelt"
+  },
+  "538": {
+    "team": 20,
+    "removed": false,
+    "name": "Hjelde"
+  },
+  "539": {
+    "team": 20,
+    "removed": false,
+    "name": "O'Nien"
+  },
+  "540": {
+    "team": 20,
+    "removed": false,
+    "name": "Masuaku"
+  },
+  "541": {
+    "team": 20,
+    "removed": false,
+    "name": "Meunier"
+  },
+  "542": {
+    "team": 20,
+    "removed": false,
+    "name": "E.Le Fée"
+  },
+  "543": {
+    "team": 20,
+    "removed": false,
+    "name": "Diarra"
+  },
+  "544": {
+    "team": 20,
+    "removed": false,
+    "name": "Xhaka"
+  },
+  "545": {
+    "team": 20,
+    "removed": false,
+    "name": "Sadiki"
+  },
+  "546": {
+    "team": 20,
+    "removed": false,
+    "name": "Adingra"
+  },
+  "547": {
+    "team": 20,
+    "removed": false,
+    "name": "Mundle"
+  },
+  "548": {
+    "team": 20,
+    "removed": false,
+    "name": "Rigg"
+  },
+  "549": {
+    "team": 20,
+    "removed": false,
+    "name": "Talbi"
+  },
+  "550": {
+    "team": 20,
+    "removed": false,
+    "name": "Jocelin.T"
+  },
+  "551": {
+    "team": 20,
+    "removed": false,
+    "name": "N.Angulo"
+  },
+  "552": {
+    "team": 20,
+    "removed": false,
+    "name": "Brobbey"
+  },
+  "553": {
+    "team": 20,
+    "removed": false,
+    "name": "Isidor"
+  },
+  "612": {
+    "team": 20,
+    "removed": false,
+    "name": "Methalie"
+  },
+  "613": {
+    "team": 20,
+    "removed": false,
+    "name": "Ahoka"
+  },
+  "646": {
+    "team": 20,
+    "removed": false,
+    "name": "Fofana"
+  },
+  "651": {
+    "team": 20,
+    "removed": false,
+    "name": "J.Angulo"
+  }
+}
