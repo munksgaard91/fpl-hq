@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23T21:53:03Z",
+  "updated": "2026-09-24T12:23:33Z",
   "current_gw": 5,
   "season_started": true,
   "next_deadline": "2026-10-10T10:00:00Z",
@@ -52,12 +52,6 @@
     }
   ],
   "league_transfer_news": [],
-  "gw_summaries": [
-    {
-      "gw": 5,
-      "text": "Efter femte spillerunde i den private draft-liga tegner der sig et klart billede af styrkeforholdet i tabellen. Kampen i toppen er tæt, mens der allerede nu er opstået markante afstande mellem holdene.\n\nDet er aktuelt Mainoo Character FC, der fører ligaen med i alt 298 point. Holdet er skarpt forfulgt af HaCunha Mateta på andenpladsen med 286 point, hvilket vidner om en intens duel i den absolutte top. \n\nI midten af rækken indtager HernDog IF en foreløbig tredjeplads med 239 point, mens Kop of Jensen ligger nummer fire med 200 point. I bunden af tabellen befinder Bottlers Anonymous sig med 167 point, hvilket placerer dem dårligst efter de første fem runder.\n\nEn generel observation efter denne spillerunde er den markante pointspredning fra top til bund. Der er nu 131 points forskel mellem første- og sidstepladsen, hvilket indikerer en tidlig opdeling af ligaen i tre niveauer."
-    }
-  ],
   "highlights": {
     "highest_gw_score": {
       "name": "Mainoo Character FC",
@@ -473,40 +467,6 @@
       "player_in": "Matheus N.",
       "player_out": "Dunk",
       "added": "2026-09-18T14:43:14.987961Z"
-    }
-  ],
-  "transfer_suggestions": [
-    {
-      "out": "Palmer",
-      "out_score": 32.6,
-      "in": "Barnes",
-      "in_club": "Newcastle",
-      "in_score": 53.9,
-      "gap": 21.3,
-      "pos": "MID",
-      "reason": "Ved at skifte Palmer ud med Barnes får du en midtbanespiller med en højere score på 53.9 i stedet for Palmers 32.6."
-    },
-    {
-      "out": "Jacquet",
-      "out_score": 37.1,
-      "in": "Hall",
-      "in_club": "Newcastle",
-      "in_score": 50.7,
-      "gap": 13.6,
-      "pos": "DEF",
-      "reason": "Du opgraderer dit forsvar ved at få Hall, der har en score på 50.7, i stedet for Jacquet med en score på 37.1."
-    }
-  ],
-  "trade_suggestions": [
-    {
-      "my_player": "Palmer",
-      "my_score": 32.6,
-      "target": "Groß",
-      "target_owner": "HernDog IF",
-      "target_score": 60.3,
-      "gap": 27.7,
-      "pos": "MID",
-      "reason": "Groß har en bedre score på 60.3 mod Palmers 32.6 og sidder ubrugt på bænken hos HernDog IF, som ikke bruger ham."
     }
   ]
 }
