@@ -1103,7 +1103,22 @@ def call_gemini_raw(prompt):
     "degraderet" besked ud til @everyone.
     """
     api_key = os.environ["GEMINI_API_KEY"]
-    body = json.dumps({"contents": [{"parts": [{"text": prompt}]}]}).encode("utf-8")
+    body = json.dumps({
+        "contents": [{"parts": [{"text": prompt}]}],
+        # Sikkerhedsloft, ikke en stram grænse - alle prompts beder allerede om
+        # korte svar (maks 40-150 ord), dette forhindrer bare et ude-af-kontrol
+        # svar i at koste mere end nødvendigt hvis modellen ikke følger det.
+        "generationConfig": {
+            "maxOutputTokens": 2000,
+            # Gemini 3-modellerne har "thinking" slået til som standard, hvilket
+            # both koster ekstra (thinking-tokens tæller som output) OG risikerer
+            # at lække interne ræsonnerings-fragmenter ind i selve svarteksten -
+            # bekræftet direkte under test (rå talannoterede sætningsstumper i
+            # outputtet). Vores opgave er simpel tekstgenerering uden behov for
+            # dyb ræsonnering, så minimal thinking er både billigere og mere stabilt.
+            "thinkingConfig": {"thinkingLevel": "minimal"},
+        },
+    }).encode("utf-8")
 
     for model in ("gemini-3.5-flash", "gemini-3.6-flash"):
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
