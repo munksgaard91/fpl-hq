@@ -501,7 +501,7 @@ TRANSFERS LAVET I PRESEASON (waivers/trades siden draften):
         "title": "⚽ Sæsonstart!",
         "description": summary_text,
         "color": 2926465,
-        "footer": {"text": f"Første deadline: {deadline_line}\nBotten tager ikke ansvar for fejl, er bare en simpel clanker"},
+        "footer": {"text": f"Første deadline: {deadline_line}\nData hentet fra FPL API, fejl kan forekomme"},
     }
     discord_body = json.dumps({
         "username": "Update Bot", "content": "@everyone",
@@ -708,7 +708,7 @@ def run_pre_gameweek():
     lines.append(f"-# Der er nu frie transfers indtil deadline ({deadline_line_da}) — det betyder I kan hente frie spillere med det samme, uden at vente på en waiver-runde.")
 
     description = "\n".join(lines)
-    footer_text = "Botten tager ikke ansvar for fejl, er bare en simpel clanker"
+    footer_text = "Data hentet fra FPL API, fejl kan forekomme"
 
     embed = {"title": "📰 Pre-Gameweek", "description": description, "color": 2926465, "footer": {"text": footer_text}}
     if thumbnail_url:
@@ -1177,7 +1177,7 @@ def post_to_discord(gw, standings_lines, best_line, worst_line, bench_line, disc
             {"name": "🔥 Ugens bedste", "value": best_line, "inline": True},
             {"name": "🥶 Ugens værste", "value": worst_line, "inline": True},
         ],
-        "footer": {"text": f"Pointforskel fra første til sidstepladsen: {point_gap} point\nBotten tager ikke ansvar for fejl, er bare en simpel clanker"},
+        "footer": {"text": f"Pointforskel fra første til sidstepladsen: {point_gap} point\nData hentet fra FPL API, fejl kan forekomme"},
     }
     if thumbnail_url:
         embed["thumbnail"] = {"url": thumbnail_url}
