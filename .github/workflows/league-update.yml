@@ -26,6 +26,10 @@ on:
         required: false
         default: ''
 
+concurrency:
+  group: league-update
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -60,4 +64,5 @@ jobs:
             [ -f "$f" ] && git add "$f"
           done
           git diff --cached --quiet || git commit -m "Update league state after gameweek run"
+          git pull --rebase --autostash
           git push
