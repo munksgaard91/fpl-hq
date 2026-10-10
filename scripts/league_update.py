@@ -263,10 +263,11 @@ DA_MONTHS = ["januar", "februar", "marts", "april", "maj", "juni", "juli",
 def format_deadline_da(iso_ts):
     """Formatterer en UTC-ISO-timestamp til dansk, fx 'lørdag 29. august kl. 15:00'."""
     from datetime import datetime, timezone
-    dt = datetime.fromisoformat(iso_ts.replace("Z", "+00:00")).astimezone(timezone.utc)
+    from zoneinfo import ZoneInfo
+    dt = datetime.fromisoformat(iso_ts.replace("Z", "+00:00")).astimezone(ZoneInfo("Europe/Copenhagen"))
     weekday = DA_WEEKDAYS[dt.weekday()]
     month = DA_MONTHS[dt.month - 1]
-    return f"{weekday} {dt.day}. {month} kl. {dt.strftime('%H:%M')} UTC"
+    return f"{weekday} {dt.day}. {month} kl. {dt.strftime('%H:%M')}"
 
 
 def find_next_deadline(bootstrap):
@@ -565,7 +566,7 @@ def get_upcoming_relevant_fixtures(bootstrap, gw_id, element_status):
     for f in relevant:
         h = TEAM_NAMES.get(f["team_h"], "?")
         a = TEAM_NAMES.get(f["team_a"], "?")
-        dt_da = datetime.fromisoformat(f["kickoff_time"].replace("Z", "+00:00")) + timedelta(hours=2)
+        dt_da = datetime.fromisoformat(f["kickoff_time"].replace("Z", "+00:00")).astimezone(__import__("zoneinfo").ZoneInfo("Europe/Copenhagen"))
         weekday = DA_WEEKDAYS[dt_da.weekday()]
         month = DA_MONTHS[dt_da.month - 1]
         lines.append(f"{weekday} {dt_da.day}. {month} kl. {dt_da.strftime('%H:%M')} — {h} v {a}")
@@ -662,6 +663,9 @@ def run_pre_gameweek():
     last_posted_id = news_state.get("last_posted_id", 0)
     accepted = [t for t in raw_transactions_all if t.get("result") == "a"]
     new_ones = [t for t in accepted if t["id"] > last_posted_id]
+    # Sikkerhedsnet: ved manglende/nulstillet state må vi aldrig dumpe hele historikken.
+    # FPL tagger hver transaktion med den GW den gælder for ("event") - kun dem tæller her.
+    new_ones = [t for t in new_ones if t.get("event") == next_gw_id]
     highest_id_seen = max((t["id"] for t in accepted), default=last_posted_id)
 
     trades = [t for t in new_ones if t.get("kind") == "t"]
@@ -776,7 +780,10 @@ def main():
     # har sin egen "kun handl hvis inden for 1-times-vinduet"-logik indbygget,
     # så det er trygt at kalde den her hver gang uden ekstra omkostning når
     # den ikke er relevant.
-    run_pre_gameweek()
+    try:
+        run_pre_gameweek()
+    except Exception as e:  # en fejl i Pre-GW må aldrig blokere GW-beskeden
+        print(f"Pre-GW fejlede (ignoreret): {e!r}", file=sys.stderr)
 
     state = load_state()
     picks_history = load_picks_history()
@@ -990,7 +997,7 @@ TOTTENHAM-REGEL: {tottenham_result if tottenham_result else "Tottenham vandt ell
         # og i dansk tid, ikke rå UTC.
         from datetime import datetime, timedelta
         deadline_dt = datetime.fromisoformat(deadline_ts.replace("Z", "+00:00"))
-        waiver_dt = deadline_dt - timedelta(hours=24) + timedelta(hours=2)  # -24t waiver-regel, +2t dansk sommertid
+        waiver_dt = (deadline_dt - timedelta(hours=24)).astimezone(__import__("zoneinfo").ZoneInfo("Europe/Copenhagen"))  # -24t waiver-regel, dansk tid (sommer/vinter automatisk)
         weekday = DA_WEEKDAYS[waiver_dt.weekday()]
         month = DA_MONTHS[waiver_dt.month - 1]
         deadline_line = f"GW{next_gw} waiver-deadline: {weekday} {waiver_dt.day}. {month} kl. {waiver_dt.strftime('%H:%M')} dansk tid"
