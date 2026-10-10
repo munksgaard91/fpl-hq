@@ -13,6 +13,10 @@ on:
         description: 'Sæt til "true" for at tvinge Pre-GW-beskeden ud nu (ignorerer tidsvindue og "allerede sendt")'
         required: false
         default: 'false'
+      pregw_gw:
+        description: 'Valgfrit: GW-nummer der tvinges (fx 6). Tom = næste deadline'
+        required: false
+        default: ''
       dry_run:
         description: 'Sæt til "true" for at se beskeden i loggen uden at sende til Discord'
         required: false
@@ -43,6 +47,7 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           FORCE_TEST: ${{ (github.event_name == 'workflow_dispatch' && inputs.real_run != 'true') && 'true' || 'false' }}
           PRE_GAMEWEEK: ${{ inputs.force_pregw == 'true' && 'true' || 'false' }}
+          PREGW_GW: ${{ inputs.pregw_gw }}
           DRY_RUN: ${{ inputs.dry_run == 'true' && 'true' || 'false' }}
           ROAST_TARGET: ${{ inputs.roast_target }}
         run: python3 scripts/league_update.py
