@@ -624,6 +624,13 @@ def run_pre_gameweek():
         return
     next_gw_id, deadline_ts = next_deadline
 
+    # Manuel override: PREGW_GW=6 tvinger Pre-GW for en bestemt (evt. allerede låst) GW.
+    override_gw = os.environ.get("PREGW_GW", "").strip()
+    if override_gw.isdigit():
+        ev = next((e for e in bootstrap["events"] if e["id"] == int(override_gw)), None)
+        if ev:
+            next_gw_id, deadline_ts = ev["id"], ev["deadline_time"]
+
     from datetime import datetime, timezone
     deadline_dt = datetime.fromisoformat(deadline_ts.replace("Z", "+00:00"))
     now = datetime.now(timezone.utc)
@@ -677,9 +684,11 @@ def run_pre_gameweek():
     deadline_line_da = format_deadline_da(deadline_ts)
     thumbnail_url = get_biggest_transferred_player_thumbnail(bootstrap, new_ones) if new_ones else None
 
+    locked = hours_until_deadline < 0
     if trades or waivers:
         context = (
-            f"Der er snart deadline for GW{next_gw_id}. {len(trades)} trade(s) og {len(waivers)} "
+            (f"GW{next_gw_id} er netop gået i gang (deadline er passeret)." if locked else f"Der er snart deadline for GW{next_gw_id}.")
+            + f" {len(trades)} trade(s) og {len(waivers)} "
             f"waiver(s)/fri agent-hentning(er) er gået igennem siden sidst i vores FPL Draft-liga "
             f"\"{league['league']['name']}\".\n"
             + "\n".join(format_trade_line(t) for t in trades)
@@ -687,17 +696,17 @@ def run_pre_gameweek():
         )
         prompt = (
             "Skriv en KORT, hypende introsætning (maks 40 ord, på dansk, letsindig/kammeratlig tone) til en "
-            "Discord-besked der varsler at deadline nærmer sig, og opsummerer ugens waivers/trades i "
+            "Discord-besked der varsler at gameweeken starter/deadline nærmer sig, og opsummerer ugens waivers/trades i "
             "en lille FPL Draft-liga mellem venner. Brug KUN dataen givet, opfind ALDRIG noget som helst der "
             "ikke fremgår af den. Brug ALDRIG egen baggrundsviden om spillere eller klubber (dette er en "
             "fiktiv liga-sæson).\n\n"
             f"{context}"
         )
         intro = call_gemini_raw(prompt)
-        summary_text = intro if intro is not None else f"Snart deadline for GW{next_gw_id}! Få styr på sidste waivers/trades."
+        summary_text = intro if intro is not None else (f"GW{next_gw_id} er i gang! Her er de seneste waivers/trades." if locked else f"Snart deadline for GW{next_gw_id}! Få styr på sidste waivers/trades.")
     else:
         # Ingen transaktioner - intet Gemini-kald nødvendigt, sparer omkostning.
-        summary_text = f"Snart deadline for GW{next_gw_id}! Stille på transfer-fronten, men her er ugens kampprogram."
+        summary_text = (f"GW{next_gw_id} er i gang! Stille på transfer-fronten, men her er ugens kampprogram." if locked else f"Snart deadline for GW{next_gw_id}! Stille på transfer-fronten, men her er ugens kampprogram.")
 
     lines = [summary_text, "", "**⚽ Jeres kampprogram**"]
     lines.extend(fixture_lines if fixture_lines else ["Ingen kampe fundet for ejede klubber denne uge."])
@@ -710,7 +719,8 @@ def run_pre_gameweek():
         lines.append("**📝 Waivers & frie agenter**")
         lines.append(truncate_for_discord_field([format_line(t) for t in waivers]))
         lines.append("")
-    lines.append(f"-# Der er nu frie transfers indtil deadline ({deadline_line_da}) — det betyder I kan hente frie spillere med det samme, uden at vente på en waiver-runde.")
+    if not locked:
+        lines.append(f"-# Der er nu frie transfers indtil deadline ({deadline_line_da}) — det betyder I kan hente frie spillere med det samme, uden at vente på en waiver-runde.")
 
     description = "\n".join(lines)
     footer_text = "Data hentet fra FPL API, fejl kan forekomme"
