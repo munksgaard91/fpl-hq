@@ -324,6 +324,11 @@
     "removed": false,
     "name": "Wright"
   },
+  "672": {
+    "team": 2,
+    "removed": false,
+    "name": "Cissé"
+  },
   "57": {
     "team": 3,
     "removed": false,
@@ -3193,6 +3198,11 @@
     "team": 19,
     "removed": false,
     "name": "Williams-Barnett"
+  },
+  "671": {
+    "team": 19,
+    "removed": false,
+    "name": "Gunter"
   },
   "501": {
     "team": 20,
