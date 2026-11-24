@@ -1614,6 +1614,11 @@
     "removed": false,
     "name": "Affengruber"
   },
+  "674": {
+    "team": 10,
+    "removed": false,
+    "name": "Kaiser"
+  },
   "240": {
     "team": 11,
     "removed": false,
@@ -3358,5 +3363,10 @@
     "team": 20,
     "removed": false,
     "name": "Tutierov"
+  },
+  "673": {
+    "team": 20,
+    "removed": false,
+    "name": "Browne"
   }
 }
